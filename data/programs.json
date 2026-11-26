@@ -35,17 +35,17 @@
     "tr": "28–31 Ocak 2027 · Narköy Ekolojik Otel, Kandıra",
     "en": "28–31 January 2027 · Narköy Ecological Hotel, Kandıra"
    },
-   "price": 38400,
+   "price": 42000,
    "currency": "TRY",
    "maxInstallment": 1,
    "type": "kamp",
    "start": "2027-01-28",
    "priceText": {
-    "tr": "32.000 TL + KDV",
-    "en": "32,000 TL + VAT"
+    "tr": "35.000 TL + KDV",
+    "en": "35,000 TL + VAT"
    },
    "open": true,
-   "net": 32000,
+   "net": 35000,
    "vat": 20,
    "capacity": 0
   },

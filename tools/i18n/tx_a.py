@@ -111,7 +111,7 @@ T = {
 '28–31 January 2027 (4 days)': ('28.–31. Januar 2027 (4 Tage)', '28–31 января 2027 (4 дня)'),
 'Narköy Ecological Hotel, Kandıra / Kocaeli, Türkiye': ('Narköy Ökohotel, Kandıra / Kocaeli, Türkei', 'Эко-отель Narköy, Кандыра / Коджаэли, Турция'),
 'English; an interpreter for Turkish in every workshop': ('Englisch; in jedem Workshop ein Dolmetscher für Türkisch', 'Английский; на каждом занятии — переводчик на турецкий'),
-'32,000 TL + VAT · Come Together (2 people): 60,000 TL + VAT': ('32.000 TL + MwSt. · Gemeinsam kommen (2 Personen): 60.000 TL + MwSt.', '32 000 TL + НДС · Вместе (2 человека): 60 000 TL + НДС'),
+'35,000 TL + VAT · Come Together (2 people): 65,000 TL + VAT': ('35.000 TL + MwSt. · Gemeinsam kommen (2 Personen): 65.000 TL + MwSt.', '35 000 TL + НДС · Вместе (2 человека): 65 000 TL + НДС'),
 'Accommodation (twin or triple room), three meals a day, the workshop programme': ('Unterkunft (Zwei- oder Dreibettzimmer), drei Mahlzeiten täglich, das Workshop-Programm', 'Проживание (двух- или трёхместный номер), трёхразовое питание, программа мастер-классов'),
 'Travel (Kadıköy–Narköy transfer available for an extra fee), extra spending at the hotel': ('Anreise (Transfer Kadıköy–Narköy gegen Aufpreis), zusätzliche Ausgaben im Hotel', 'Дорога (трансфер Кадыкёй–Narköy за дополнительную плату), дополнительные расходы в отеле'),
 # Central
