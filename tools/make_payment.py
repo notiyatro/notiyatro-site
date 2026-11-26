@@ -268,7 +268,7 @@ def pay_page(lang):
   const legal = (el, prog) => { const CT = prog && prog.type === 'kamp' ? 'kamp' : 'atolye'; el.innerHTML = T.consent.replace('{c}', CT + '-sozlesmesi').replace('{cn}', T.cn[CT]); };
   const refundLine = prog => {
     if (!prog || !prog.start) return;
-    const DAYS = prog.type === 'kamp' ? 60 : 45, st = new Date(prog.start + 'T00:00:00+03:00'), last = new Date(st.getTime() - DAYS * 864e5);
+    const DAYS = 45, st = new Date(prog.start + 'T00:00:00+03:00'), last = new Date(st.getTime() - DAYS * 864e5);
     const ok = Date.now() <= last.getTime() + 864e5 - 1;
     const ds = last.toLocaleDateString(LANG === 'tr' ? 'tr-TR' : 'en-GB', {day:'numeric', month:'long', year:'numeric', timeZone:'Europe/Istanbul'});
     $('s-refund').textContent = ok ? T.refund_ok.replace('{d}', ds) : T.refund_no.replace('{n}', DAYS);

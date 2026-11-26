@@ -1,5 +1,6 @@
 """Yasal metinler. Katılım sözleşmeleri Serkan Ortaç'ın gönderdiği PDF'lerden alınmıştır
-(ISCW-2026 Katılımcı Sözleşmesi = atölye, 45 gün; ISCE Sözleşme = kamp, 60 gün).
+(ISCW-2026 Katılımcı Sözleşmesi = atölye; ISCE Sözleşme = kamp). İade süresi Kasım 2026’dan itibaren
+atölye ve kamplar için aynıdır: programdan 45 gün öncesine kadar.
 Online kayıt için yapılan değişiklikler: program adı/tarihi ödeme sayfasından gelir,
 imza/onay kutuları yerine ödeme sayfasındaki elektronik onay kullanılır."""
 
@@ -13,7 +14,7 @@ SELLER = '''<dl class="lg-firm">
 
 def contract(kind):
     camp = kind == 'kamp'
-    days = 60 if camp else 45
+    days = 45
     ev = 'kamp' if camp else 'atölye'
     Ev = 'Kamp' if camp else 'Atölye'
     return f'''
@@ -76,8 +77,7 @@ PREINFO = f'''
 <p>Hizmet, programın ilan edilen tarihlerinde ve yerinde (ya da Organizasyonun duyurduğu çevrim içi formatta) ifa edilir. Kayıt onayı ve program bilgileri katılımcının verdiği e-posta adresine ve/veya telefon numarasına gönderilir.</p>
 <h2 id="iptal">5. İptal ve iade koşulları</h2>
 <ul>
-<li><b>Atölyeler:</b> Programın başlangıç tarihinden 45 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 45 günden daha az süre kala yapılan iptallerde iade yapılmaz. Başlangıca 45 günden daha az süre kala yapılan kayıtlarda iade hakkı bulunmamaktadır.</li>
-<li><b>Kamplar:</b> Programın başlangıç tarihinden 60 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 60 günden daha az süre kala yapılan iptallerde iade yapılmaz. Başlangıca 60 günden daha az süre kala yapılan kayıtlarda iade hakkı bulunmamaktadır.</li>
+<li><b>Atölyeler ve kamplar:</b> Programın başlangıç tarihinden 45 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 45 günden daha az süre kala yapılan iptallerde iade yapılmaz. Başlangıca 45 günden daha az süre kala yapılan kayıtlarda iade hakkı bulunmamaktadır.</li>
 </ul>
 <p>Ödemeyi yaparak kaydını tamamlayan katılımcı, iptal ve iade koşullarını okumuş ve kabul etmiş sayılır.</p>
 <p>Ayrıntılar ve Organizasyon kaynaklı değişiklik, erteleme ve iptal halleri için <a href="../atolye-sozlesmesi/">Atölye Katılım Sözleşmesi</a> ve <a href="../kamp-sozlesmesi/">Kamp Katılım Sözleşmesi</a>'ne bakınız. İptal talepleri <a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazılı olarak iletilir. Cayma hakkına ilişkin hususlarda 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri saklıdır.</p>
