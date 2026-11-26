@@ -336,6 +336,48 @@ main{overflow-x:clip}
 
 #list > li:last-child{border-bottom:0}
 #sezon{padding-bottom:72px}
+
+/* uyelik programi */
+.memb{background:#FFE42B;color:#000;border-top:0;overflow:hidden}
+.memb .mtop{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.mkick{margin:0 0 16px;font-weight:900;letter-spacing:.06em;font-size:14px}
+.memb h2{margin:0;font-size:clamp(40px,5.6vw,78px);line-height:1.04;letter-spacing:-.03em;text-transform:uppercase;font-weight:900}
+.mlede{margin:22px 0 0;font-size:19px;font-weight:700;line-height:1.5;max-width:520px}
+.mtiers{margin:18px 0 26px;font-weight:900;letter-spacing:.04em;font-size:15px}
+.memb .btn.solid{background:#000;color:#FFE42B;border-color:#000}
+.mtoggle .m-close,.memb.open .mtoggle .m-open{display:none}.memb.open .mtoggle .m-close{display:inline}
+.mdeck{position:relative;display:block;width:100%;max-width:560px;justify-self:center;aspect-ratio:1/0.92;border:0;background:none;padding:0;cursor:pointer}
+.mslogan{position:absolute;right:-2%;top:-2%;width:46%;height:auto;transform:rotate(-6deg);animation:mwig 3.2s ease-in-out infinite}
+.mstack{position:absolute;inset:16% 4% 0 4%;display:block}
+.mstack img{position:absolute;bottom:4%;width:36%;height:auto;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.28);transition:transform .7s cubic-bezier(.2,.9,.2,1.1)}
+.mstack .d1{left:6%;transform:rotate(-12deg);animation:mf1 4s ease-in-out infinite}
+.mstack .d2{left:32%;transform:rotate(-2deg) translateY(-6%);animation:mf2 4s ease-in-out infinite .4s;z-index:2}
+.mstack .d3{left:58%;transform:rotate(9deg);animation:mf3 4s ease-in-out infinite .8s;z-index:3}
+@keyframes mf1{0%,100%{transform:rotate(-12deg) translateY(0)}50%{transform:rotate(-15deg) translateY(-5%)}}
+@keyframes mf2{0%,100%{transform:rotate(-2deg) translateY(-6%)}50%{transform:rotate(1deg) translateY(-11%)}}
+@keyframes mf3{0%,100%{transform:rotate(9deg) translateY(0)}50%{transform:rotate(13deg) translateY(-6%)}}
+@keyframes mwig{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(-3deg) scale(1.04)}}
+.mdeck:hover .d1{transform:rotate(-18deg) translate(-8%,-4%)}.mdeck:hover .d3{transform:rotate(15deg) translate(8%,-4%)}
+.mtap{position:absolute;left:46%;bottom:-2%;font-size:38px;animation:mtap 1.6s ease-in-out infinite;z-index:5;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+@keyframes mtap{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-14px) scale(1.08)}}
+.memb.open .mtap{display:none}
+.mcards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.mcards[hidden]{display:none}
+.mcard{background:#fff;border:2px solid #000;border-radius:22px;padding:22px 22px 20px;display:flex;flex-direction:column;opacity:0;transform:translateY(30px) rotate(-1deg);animation:min .6s cubic-bezier(.2,.9,.2,1.1) forwards}
+.mcard.c-stage{animation-delay:.12s;transform:translateY(30px) rotate(1deg)}.mcard.c-prem{animation-delay:.24s;background:#000;color:#fff}
+@keyframes min{to{opacity:1;transform:none}}
+.mcard img{width:62%;height:auto;border-radius:14px;margin:-6px auto 14px;display:block;box-shadow:0 10px 24px rgba(0,0,0,.2);transform:rotate(-3deg)}
+.mcard h3{margin:0 0 8px;font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
+.mcard>p{margin:0 0 14px;font-size:15px;line-height:1.5;font-weight:600}
+.mcard ul{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:12px}
+.mcard li{display:flex;gap:12px;align-items:center}
+.mcard li b{display:block;font-size:16px}.mcard li small{display:block;font-size:13px;opacity:.75}
+.mb{flex:0 0 46px;height:46px;border-radius:50%;background:#000;color:#FFE42B;display:grid;place-items:center;font-weight:900;font-size:13px}
+.c-prem .mb{background:#FFE42B;color:#000}
+.mperks{margin:auto 0 0;padding-top:12px;border-top:1.5px dashed currentColor;font-size:13px;font-weight:800}
+.mvalid{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;margin:8px 0 0;font-weight:800}
+@media(max-width:900px){.memb .mtop{grid-template-columns:1fr}.mdeck{aspect-ratio:1/1.05;max-width:440px}.mslogan{width:52%;top:0}.mstack{inset:30% 2% 0 2%}.mstack img{width:38%}.mcards{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
+@media(prefers-reduced-motion:reduce){.mstack img,.mslogan,.mtap{animation:none!important}.mcard{animation:none;opacity:1;transform:none}}
 </style>
 <style id="langs-css">.langs{position:relative}.langs summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:44px;min-height:42px;padding:0 10px;font-weight:800;font-size:14px;border-radius:999px}.langs summary::-webkit-details-marker{display:none}.langs summary::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}.langs summary:hover,.langs[open] summary{background:rgba(0,0,0,.06)}.langm{position:absolute;right:0;top:calc(100% + 6px);z-index:80;background:#fff;color:#000;border:1.5px solid #000;border-radius:14px;padding:6px;display:grid;min-width:150px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.langm a{padding:9px 12px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;color:inherit;white-space:nowrap}.langm a:hover{background:#F6F4EA}.langm a[aria-current]{background:#000;color:#fff}@media(max-width:600px){.langm{position:fixed;left:12px;right:12px;top:66px;grid-template-columns:1fr 1fr}}@media(max-width:420px){.langs summary{min-width:36px;padding:0 6px;font-size:12px}}</style><style id="wa-css">.wa-fab{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font:800 15px/1 Urbanist,system-ui,sans-serif;padding:0 20px 0 14px;height:56px;border-radius:999px;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .2s,box-shadow .2s}.wa-fab:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.28)}.wa-fab svg{width:30px;height:30px;flex:0 0 auto}.wa-fab .wa-dot{position:absolute;top:6px;left:40px;width:11px;height:11px;border-radius:50%;background:#b8ffcf;border:2px solid #25D366;animation:wap 1.8s ease-out infinite}@keyframes wap{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}@media(max-width:700px){.wa-fab{padding:0;width:56px;justify-content:center;right:14px;bottom:14px}.wa-fab span.wa-l{display:none}.wa-fab .wa-dot{left:36px}}@media(prefers-reduced-motion:reduce){.wa-fab .wa-dot{animation:none}}@media print{.wa-fab{display:none}}.wa-fab.wa-off{opacity:0;pointer-events:none;transform:translateY(12px)}.wa-fab{transition:opacity .25s,transform .25s,box-shadow .2s}</style></head>
 <body>
@@ -355,7 +397,7 @@ main{overflow-x:clip}
       <a href="workshops/">Workshop</a>
       <a href="camps/">Campus</a>
       <a href="#oyunlar">Produzioni</a>
-      <a href="#pass">Premium Pass</a>
+      <a href="#pass">Membership</a>
       <a href="#danismanlik">Studiare all’estero</a>
       <a href="#sertifika">Verifica certificato</a>
       <a href="#iletisim">Contatti</a>
@@ -467,21 +509,49 @@ main{overflow-x:clip}
   </div>
 </section>
 
-<section class="band red" id="pass" aria-labelledby="h-pass">
-  <div class="wrap pass">
-    <div>
-      <h2 id="h-pass">Un solo biglietto per tutta la stagione.</h2>
-      <p class="lede" style="margin-top:18px">Con il Premium Pass partecipi a tutti i workshop annunciati fino al 31 agosto 2027 e ricevi un campus in omaggio. Per chi vuole seguire tutta la stagione.</p>
+<section class="band memb" id="pass" aria-labelledby="h-pass">
+  <div class="wrap">
+    <div class="mtop">
+      <div class="mtxt">
+        <p class="mkick" lang="en">ISL COMMUNITY PASS · 2026–2027</p>
+        <h2 id="h-pass">Non solo un workshop. Un’intera stagione.</h2>
+        <p class="mlede">Incontrati ai workshop. Ritrovati ai campus. Crea insieme. Cresci per tutta la stagione.</p>
+        <p class="mtiers">Start / Stage / Premium</p>
+        <button type="button" class="btn solid mtoggle" aria-expanded="false" aria-controls="mcards"><span class="m-open">Scopri i pass</span><span class="m-close">Nascondi i pass</span></button>
+      </div>
+      <button type="button" class="mdeck" aria-expanded="false" aria-controls="mcards" aria-label="Mostra i pass di membership">
+        <img class="mslogan" src="../img/pass-slogan.png" alt="" width="480" height="200">
+        <span class="mstack">
+          <img class="d1" src="../img/pass-start.jpg" alt="" width="420" height="590">
+          <img class="d2" src="../img/pass-stage.jpg" alt="" width="420" height="590">
+          <img class="d3" src="../img/pass-premium.jpg" alt="" width="420" height="590">
+        </span>
+        <span class="mtap" aria-hidden="true">👆</span>
+      </button>
     </div>
-    <div class="ticket">
-      <span class="badge">Abbonamento stagionale</span>
-      <b>Premium Pass</b>
-      <ul>
-        <li>Tutti i workshop annunciati fino al 31 agosto 2027</li>
-        <li>Un International Stage Camp in omaggio</li>
-        <li>Accesso anticipato agli annunci</li>
-      </ul>
-      <a class="btn solid" href="https://wa.me/905304808292?text=I%27d%20like%20to%20know%20more%20about%20the%20Premium%20Pass" target="_blank" rel="noopener">Scopri di più</a>
+    <div class="mcards" id="mcards" hidden>
+        <article class="mcard c-start">
+          <img src="../img/pass-start.jpg" alt="StartPass" width="420" height="590" loading="lazy">
+          <h3>Fai il primo passo.</h3>
+          <p>Per chi vuole fare il primo passo nel mondo ISL, conoscere nuovi docenti ed esplorare diversi ambiti di lavoro.</p>
+          <ul><li><span class="mb">5X</span><div><b>5 workshop internazionali</b><small>Fino a 50 ore in totale</small></div></li><li><span class="mb">1X</span><div><b>1 spettacolo</b><small>Biglietto per due</small></div></li><li><span class="mb">25%</span><div><b>Vantaggio campus</b><small>Un ulteriore 25% di sconto su un campus ISL</small></div></li><li><span class="mb">KIT</span><div><b>ISL Community Kit</b><small>T-shirt, tote bag e quaderno dal design esclusivo</small></div></li></ul>
+          <p class="mperks">Iscrizione prioritaria · Accesso anticipato agli annunci · Vantaggi Community</p>
+        </article>
+        <article class="mcard c-stage">
+          <img src="../img/pass-stage.jpg" alt="StagePass" width="420" height="590" loading="lazy">
+          <h3>Vivi la stagione da dentro.</h3>
+          <p>Per chi vuole più workshop, più incontri e una stagione creativa più intensa.</p>
+          <ul><li><span class="mb">10X</span><div><b>10 workshop internazionali</b><small>Fino a 100 ore in totale</small></div></li><li><span class="mb">2X</span><div><b>2 spettacoli</b><small>Biglietti per due per ciascuno</small></div></li><li><span class="mb">50%</span><div><b>Vantaggio campus</b><small>Un ulteriore 50% di sconto su un campus ISL</small></div></li><li><span class="mb">KIT</span><div><b>ISL Community Kit</b><small>T-shirt, tote bag e quaderno dal design esclusivo</small></div></li></ul>
+          <p class="mperks">Iscrizione prioritaria · Priorità sui posti limitati · Accesso anticipato agli annunci</p>
+        </article>
+        <article class="mcard c-prem">
+          <img src="../img/pass-premium.jpg" alt="PremiumPass" width="420" height="590" loading="lazy">
+          <h3>Vivi l’esperienza completa.</h3>
+          <p>Dai workshop ai campus, dal palco alla Community: per chi vuole vivere tutta la stagione ISL.</p>
+          <ul><li><span class="mb">ALL</span><div><b>Tutti i workshop ISL</b><small>Accesso per tutta la stagione</small></div></li><li><span class="mb">1X</span><div><b>1 campus ISL</b><small>Partecipazione gratuita</small></div></li><li><span class="mb">5X</span><div><b>5 spettacoli</b><small>Biglietti per due per ciascuno</small></div></li><li><span class="mb">KIT</span><div><b>ISL Community Kit</b><small>T-shirt, tote bag e quaderno dal design esclusivo</small></div></li></ul>
+          <p class="mperks">Iscrizione prioritaria · Massima priorità in tutti i programmi · Accesso anticipato agli annunci</p>
+        </article>
+      <p class="mvalid">Valido per tutta la stagione 2026–2027. <a class="btn solid" href="https://wa.me/905304808292?text=I%20would%20like%20to%20know%20more%20about%20the%20ISL%20Community%20Pass" target="_blank" rel="noopener">Informazioni sulla membership</a></p>
     </div>
   </div>
 </section>
@@ -520,7 +590,7 @@ main{overflow-x:clip}
         <a href="workshops/">Workshop</a>
         <a href="camps/">Campus</a>
         <a href="#oyunlar">Produzioni</a>
-        <a href="#pass">Premium Pass</a>
+        <a href="#pass">Membership</a>
         <a href="#danismanlik">Studiare all’estero</a>
         <a href="#partner">Vajra Theatre</a>
         <a href="#sertifika">Verifica certificato</a>
@@ -605,6 +675,9 @@ main{overflow-x:clip}
       }
     });
   }).catch(() => {});
+  (()=>{const sec=document.getElementById('pass');if(!sec)return;const box=document.getElementById('mcards');const bts=sec.querySelectorAll('.mtoggle,.mdeck');
+    const set=o=>{sec.classList.toggle('open',o);box.hidden=!o;bts.forEach(b=>b.setAttribute('aria-expanded',o));if(o){box.querySelectorAll('.mcard').forEach(c=>{c.style.animation='none';c.offsetHeight;c.style.animation=''});setTimeout(()=>box.scrollIntoView({behavior:'smooth',block:'start'}),120)}};
+    bts.forEach(b=>b.addEventListener('click',()=>set(box.hidden)));})();
   const lbx = document.createElement('div'); lbx.className = 'lbx'; lbx.hidden = true; lbx.innerHTML = '<img alt="">'; document.body.appendChild(lbx);
   lbx.addEventListener('click', () => { lbx.hidden = true; });
   addEventListener('keydown', e => { if (e.key === 'Escape') lbx.hidden = true; });

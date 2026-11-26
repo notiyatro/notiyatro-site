@@ -334,6 +334,48 @@ main{overflow-x:clip}
 #list > li:last-child{border-bottom:0}
 #sezon{padding-bottom:72px}
 
+/* uyelik programi */
+.memb{background:#FFE42B;color:#000;border-top:0;overflow:hidden}
+.memb .mtop{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.mkick{margin:0 0 16px;font-weight:900;letter-spacing:.06em;font-size:14px}
+.memb h2{margin:0;font-size:clamp(40px,5.6vw,78px);line-height:1.04;letter-spacing:-.03em;text-transform:uppercase;font-weight:900}
+.mlede{margin:22px 0 0;font-size:19px;font-weight:700;line-height:1.5;max-width:520px}
+.mtiers{margin:18px 0 26px;font-weight:900;letter-spacing:.04em;font-size:15px}
+.memb .btn.solid{background:#000;color:#FFE42B;border-color:#000}
+.mtoggle .m-close,.memb.open .mtoggle .m-open{display:none}.memb.open .mtoggle .m-close{display:inline}
+.mdeck{position:relative;display:block;width:100%;max-width:560px;justify-self:center;aspect-ratio:1/0.92;border:0;background:none;padding:0;cursor:pointer}
+.mslogan{position:absolute;right:-2%;top:-2%;width:46%;height:auto;transform:rotate(-6deg);animation:mwig 3.2s ease-in-out infinite}
+.mstack{position:absolute;inset:16% 4% 0 4%;display:block}
+.mstack img{position:absolute;bottom:4%;width:36%;height:auto;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.28);transition:transform .7s cubic-bezier(.2,.9,.2,1.1)}
+.mstack .d1{left:6%;transform:rotate(-12deg);animation:mf1 4s ease-in-out infinite}
+.mstack .d2{left:32%;transform:rotate(-2deg) translateY(-6%);animation:mf2 4s ease-in-out infinite .4s;z-index:2}
+.mstack .d3{left:58%;transform:rotate(9deg);animation:mf3 4s ease-in-out infinite .8s;z-index:3}
+@keyframes mf1{0%,100%{transform:rotate(-12deg) translateY(0)}50%{transform:rotate(-15deg) translateY(-5%)}}
+@keyframes mf2{0%,100%{transform:rotate(-2deg) translateY(-6%)}50%{transform:rotate(1deg) translateY(-11%)}}
+@keyframes mf3{0%,100%{transform:rotate(9deg) translateY(0)}50%{transform:rotate(13deg) translateY(-6%)}}
+@keyframes mwig{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(-3deg) scale(1.04)}}
+.mdeck:hover .d1{transform:rotate(-18deg) translate(-8%,-4%)}.mdeck:hover .d3{transform:rotate(15deg) translate(8%,-4%)}
+.mtap{position:absolute;left:46%;bottom:-2%;font-size:38px;animation:mtap 1.6s ease-in-out infinite;z-index:5;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+@keyframes mtap{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-14px) scale(1.08)}}
+.memb.open .mtap{display:none}
+.mcards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.mcards[hidden]{display:none}
+.mcard{background:#fff;border:2px solid #000;border-radius:22px;padding:22px 22px 20px;display:flex;flex-direction:column;opacity:0;transform:translateY(30px) rotate(-1deg);animation:min .6s cubic-bezier(.2,.9,.2,1.1) forwards}
+.mcard.c-stage{animation-delay:.12s;transform:translateY(30px) rotate(1deg)}.mcard.c-prem{animation-delay:.24s;background:#000;color:#fff}
+@keyframes min{to{opacity:1;transform:none}}
+.mcard img{width:62%;height:auto;border-radius:14px;margin:-6px auto 14px;display:block;box-shadow:0 10px 24px rgba(0,0,0,.2);transform:rotate(-3deg)}
+.mcard h3{margin:0 0 8px;font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
+.mcard>p{margin:0 0 14px;font-size:15px;line-height:1.5;font-weight:600}
+.mcard ul{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:12px}
+.mcard li{display:flex;gap:12px;align-items:center}
+.mcard li b{display:block;font-size:16px}.mcard li small{display:block;font-size:13px;opacity:.75}
+.mb{flex:0 0 46px;height:46px;border-radius:50%;background:#000;color:#FFE42B;display:grid;place-items:center;font-weight:900;font-size:13px}
+.c-prem .mb{background:#FFE42B;color:#000}
+.mperks{margin:auto 0 0;padding-top:12px;border-top:1.5px dashed currentColor;font-size:13px;font-weight:800}
+.mvalid{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;margin:8px 0 0;font-weight:800}
+@media(max-width:900px){.memb .mtop{grid-template-columns:1fr}.mdeck{aspect-ratio:1/1.05;max-width:440px}.mslogan{width:52%;top:0}.mstack{inset:30% 2% 0 2%}.mstack img{width:38%}.mcards{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
+@media(prefers-reduced-motion:reduce){.mstack img,.mslogan,.mtap{animation:none!important}.mcard{animation:none;opacity:1;transform:none}}
+
 .pay-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:48px;align-items:start;margin-top:34px}
 .pay-sum{position:sticky;top:96px;background:#F6F4EA;border-radius:22px;padding:28px}
 .pay-sum .lbl{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6b6b6b;margin:0 0 6px}
@@ -411,7 +453,7 @@ main{overflow-x:clip}
       <a href="../workshops/">Workshops</a>
       <a href="../camps/">Camps</a>
       <a href="../#oyunlar">Produktionen</a>
-      <a href="../#pass">Premium Pass</a>
+      <a href="../#pass">Mitgliedschaft</a>
       <a href="../#danismanlik">Studium im Ausland</a>
       <a href="../#sertifika">Zertifikatsprüfung</a>
       <a href="../#iletisim">Kontakt</a>
@@ -473,7 +515,7 @@ main{overflow-x:clip}
         <a href="../workshops/">Workshops</a>
         <a href="../camps/">Camps</a>
         <a href="../#oyunlar">Produktionen</a>
-        <a href="../#pass">Premium Pass</a>
+        <a href="../#pass">Mitgliedschaft</a>
         <a href="../#danismanlik">Studium im Ausland</a>
         <a href="../#partner">Vajra Theatre</a>
         <a href="../#sertifika">Zertifikatsprüfung</a>
