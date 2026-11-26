@@ -10,6 +10,6 @@
     {d:'22–25 Temmuz', y:'2027 · Çeşmeköy', id:'isc-summer-2027', t:'International Stage Camp — Summer Edition', tags:['Kamp'], p:'Yaz kampı Çeşmeköy\'de. Eğitmenler yakında duyurulacak.',
      i:{when:'22–25 Temmuz 2027', where:'Çeşmeköy'}}
   ];
-  const L = {inc:'Dahil olanlar', out:'Dahil olmayanlar', tut:'Eğitmenler', when:'Tarih', time:'Saatler', where:'Yer', lang:'Dil', who:'Kimler için', fee:'Ücret', cap:'Kontenjan', btn:'Bilgi', soon:'Program, ücret ve kontenjan bilgileri yakında burada. Sorun için WhatsApp\'tan yazabilirsin.', about:'Program hakkında', payreg:'Kayıt ol ve öde', apply:'Başvur'};
+  const L = {inc:'Dahil olanlar', out:'Dahil olmayanlar', tut:'Eğitmenler', when:'Tarih', time:'Saatler', where:'Yer', lang:'Dil', who:'Kimler için', fee:'Ücret', cap:'Kontenjan', btn:'Bilgi', soon:'Program, ücret ve kontenjan bilgileri yakında burada. Sorun için WhatsApp\'tan yazabilirsin.', about:'Program hakkında', payreg:'Kayıt ol ve öde', apply:'Başvur', loc:'tr-TR', refund_t:'Programın başlangıcından {n} gün öncesine kadar ({d}) yapılan iptallerde ücretin tamamı iade edilir. Bu tarihten sonra iade yapılmaz; ayrıntılar katılım sözleşmesindedir.'};
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const keys = ['tut','when','time','where','lang','who','fee','inc','out','cap','refund'];

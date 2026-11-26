@@ -557,15 +557,20 @@ main{overflow-x:clip}
     {d:'22–25 Jul', y:'2027 · Çeşmeköy', id:'isc-summer-2027', t:'International Stage Camp — Summer Edition', tags:['Camp'], p:'The summer camp at Çeşmeköy. Tutors to be announced soon.',
      i:{when:'22–25 July 2027', where:'Çeşmeköy, Türkiye'}}
   ];
-  const L = {inc:'Included', out:'Not included', tut:'Tutors', when:'Dates', time:'Times', where:'Venue', lang:'Language', who:'Who it’s for', fee:'Fee', cap:'Places', btn:'Details', soon:'Schedule, fee and places will be published here soon. Questions? Message us on WhatsApp.', about:'About the programme', payreg:'Register and pay', apply:'Apply'};
+  const L = {inc:'Included', out:'Not included', tut:'Tutors', when:'Dates', time:'Times', where:'Venue', lang:'Language', who:'Who it’s for', fee:'Fee', cap:'Places', btn:'Details', soon:'Schedule, fee and places will be published here soon. Questions? Message us on WhatsApp.', about:'About the programme', payreg:'Register and pay', apply:'Apply', loc:'en-GB', refund_t:'Cancellations made up to {n} days before the start ({d}) receive a full refund. After that date no refunds are given; full terms are in the participation agreement.'};
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const keys = ['tut','when','time','where','lang','who','fee','inc','out','cap','refund'];
   const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
   const APPLY = 'apply/';
   const PAY = [];
   const PAYURL = 'payment/';
+  const PROG = {"pfs-2027-01": {"start": "2027-01-22", "type": "atolye"}, "isc-winter-2027": {"start": "2027-01-28", "type": "kamp"}, "central-2027-02": {"start": "2027-02-05", "type": "atolye"}, "frantic-2027-03": {"start": "2027-03-20", "type": "atolye"}, "isc-summer-2027": {"start": "2027-07-22", "type": "kamp"}};
   document.getElementById('list').innerHTML = season.map((s,n) => {
-    const i = s.i || {};
+    const i = {...(s.i || {})}, pg = PROG[s.id];
+    if (!i.refund && pg && pg.start) {
+      const n = pg.type === 'kamp' ? 60 : 45, d = new Date(new Date(pg.start + 'T00:00:00+03:00').getTime() - n * 864e5);
+      i.refund = L.refund_t.replace('{n}', n).replace('{d}', d.toLocaleDateString(L.loc, {day:'numeric', month:'long', year:'numeric', timeZone:'Europe/Istanbul'}));
+    }
     const rows = keys.filter(k => i[k]).map(k => `<div><dt>${esc(L[k])}</dt><dd>${esc(i[k])}</dd></div>`).join('');
     const full = i.fee && i.about;
     return `

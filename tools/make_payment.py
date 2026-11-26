@@ -9,6 +9,8 @@ PAID = [p['id'] for p in CAT if isinstance(p.get('price'), (int, float)) and p['
 if '--patch' in sys.argv:
     p = f'{ROOT}/index.html'; s = open(p).read()
     s2 = re.sub(r"const PAY = \[[^\]]*\];", "const PAY = " + json.dumps(PAID) + ";", s)
+    PROG = {p['id']: {'start': p.get('start'), 'type': p.get('type', 'atolye')} for p in CAT}
+    s2 = re.sub(r"const PROG = \{.*?\};\n", lambda m: "const PROG = " + json.dumps(PROG) + ";\n", s2, count=1)
     assert 'const PAY = ' in s2, 'PAY line missing in index.html'
     open(p, 'w').write(s2); print('patched PAY', PAID); sys.exit()
 
@@ -71,7 +73,7 @@ T = {
    bank_note='Açıklama alanına yukarıdaki metni, başvuru numaranla birlikte yazmayı unutma. Ödemen hesabımıza geçince kaydını kesinleştirip sana haber vereceğiz.', qr='Akbank ya da mobil bankacılık uygulamanla bu kodu okutarak da ödeme yapabilirsin.', qr_alt='Akbank ödeme QR kodu',
    bank_done='Ödemeyi yaptım', bank_reported='Ödeme bildirimin bize ulaştı. Hesabımıza geçtiğinde kaydını kesinleştirip sana haber vereceğiz.',
    bank_paid='Ödemen onaylandı, kaydın tamam. Görüşmek üzere!', card_h='ya da kartla öde', badlink='Bu ödeme linki geçersiz ya da başvurun henüz onaylanmamış.',
-   noiban='Banka bilgileri birazdan burada olacak. Şimdilik WhatsApp\'tan yazabilirsin.', bconsent='Devam etmek için sözleşmeyi onaylaman gerekiyor.'),
+   noiban='Banka bilgileri birazdan burada olacak. Şimdilik WhatsApp\'tan yazabilirsin.', ct_h='Katılım sözleşmesi', ct_need='Onaylayabilmek için sözleşmeyi sonuna kadar kaydırarak oku.', ct_done='Sözleşmenin tamamını okudun, şimdi onaylayabilirsin.', ct_note='', bconsent='Devam etmek için sözleşmeyi onaylaman gerekiyor.'),
  'en': dict(
    title='Payment — NO Tiyatro', kick='Secure payment', h1='Complete your registration',
    summary='Programme', total='Total', inst='Instalments', single='Single payment', x='instalments',
@@ -97,7 +99,7 @@ T = {
    bank_note='Please use the reference above, including your application number, for your transfer. Once the payment reaches our account, we will confirm your place and let you know.', qr='Turkish bank customers can also scan this code in their mobile banking app.', qr_alt='Akbank payment QR code',
    bank_done='I have made the payment', bank_reported='We have received your payment notice. Once it reaches our account, we will confirm your place and let you know.',
    bank_paid='Your payment is confirmed and you are registered. See you soon!', card_h='or pay by card', badlink='This payment link is invalid, or your application has not been approved yet.',
-   noiban='Bank details will appear here shortly. In the meantime, message us on WhatsApp.', bconsent='Please accept the agreement to continue.'),
+   noiban='Bank details will appear here shortly. In the meantime, message us on WhatsApp.', ct_h='Participation agreement', ct_need='Please scroll to the end of the agreement to be able to accept it.', ct_done='You have read the whole agreement and can now accept it.', ct_note='The agreement is in Turkish, the governing language of the contract.', bconsent='Please accept the agreement to continue.'),
 }
 
 CSS = '''
@@ -130,6 +132,12 @@ CSS = '''
 .minor{font-size:13px;color:#555;margin:-8px 0 20px;line-height:1.5}
 .consent small{color:#666}
 .bank{margin-bottom:34px}
+.ctwrap{margin:6px 0 16px}.ct-h{font-weight:900;font-size:17px;margin:0 0 6px}.ct-note{font-size:13px;color:#666;margin:0 0 8px}
+.ctbox{max-height:280px;overflow:auto;border:1.5px solid #bbb;border-radius:14px;padding:14px 18px;background:#fff;font-size:14px;line-height:1.6}
+.ctbox:focus{outline:3px solid var(--red);outline-offset:2px}
+.ctbox h2{font-size:15px;margin:16px 0 6px}.ctbox p,.ctbox li{margin:0 0 8px}.ctbox .lg-meta{font-weight:700;color:#444}.ctbox dl{margin:0 0 10px}.ctbox dl div{display:flex;gap:8px;flex-wrap:wrap}.ctbox dt{font-weight:800}.ctbox dd{margin:0}
+.ct-state{font-size:13px;font-weight:700;color:#9b2a18;margin:8px 0 0}.ct-state.ok{color:#16632b}
+.consent input:disabled+span{opacity:.55}
 .hello{font-size:18px;font-weight:700;margin:0 0 18px;line-height:1.5}
 .bh{font-size:22px;margin:0 0 14px}
 .ibanbox{margin:0 0 14px;background:#F6F4EA;border-radius:16px;padding:6px 18px}
@@ -163,6 +171,10 @@ def pay_page(lang):
     prefix = '../' if lang == 'tr' else '../'          # odeme/ ve en/payment/ ikisi de kendi dil kökünden bir seviye aşağıda
     root = '../' if lang == 'tr' else '../../'          # yasal sayfalar TR kökünde
     lang_href = '../en/payment/' if lang == 'tr' else '../../odeme/'
+    from legal_text import contract as _ct, PREINFO as _pre
+    def _fix(h): return h.replace('href="../', 'href="' + root + 'yasal/').replace('<a ', '<a target="_blank" ')
+    CT_ATOLYE = _fix(_ct('atolye') + '<h2>Ön Bilgilendirme Formu</h2>' + _pre)
+    CT_KAMP = _fix(_ct('kamp') + '<h2>Ön Bilgilendirme Formu</h2>' + _pre)
     cat = [dict(id=p['id'], t=p['title'][lang], d=p['date'][lang], price=p['price'], cur=p['currency'], max=p.get('maxInstallment', 1), type=p.get('type', 'atolye'), start=p.get('start')) for p in CAT]
     body = f'''<section class="band" aria-labelledby="h-pay">
   <div class="wrap">
@@ -199,6 +211,13 @@ def pay_page(lang):
         </dl>
         <div class="qr"><img src="{root}img/akbank-qr.png" alt="{x["qr_alt"]}" width="180" height="180" loading="lazy"><p>{x["qr"]}</p></div>
         <p class="bnote">{x["bank_note"]}</p>
+        <div class="ctwrap" id="ctwrap">
+          <p class="ct-h">{x["ct_h"]}</p>{('<p class="ct-note">' + x["ct_note"] + '</p>') if x["ct_note"] else ''}
+          <div class="ctbox" id="ctbox" tabindex="0" role="region" aria-label="{x["ct_h"]}"></div>
+          <p class="ct-state" id="ct-state">{x["ct_need"]}</p>
+        </div>
+        <template id="ct-atolye">{CT_ATOLYE}</template>
+        <template id="ct-kamp">{CT_KAMP}</template>
         <label class="consent"><input type="checkbox" id="b-consent"><span id="b-consent-t"></span></label>
         <div class="msg" id="m-bconsent" style="color:var(--red);font-weight:700;font-size:13px;margin:-12px 0 14px"></div>
         <button class="btn paybtn" id="b-done" type="button">{x["bank_done"]}</button>
@@ -252,7 +271,21 @@ def pay_page(lang):
     $('s-refund').textContent = ok ? T.refund_ok.replace('{d}', ds) : T.refund_no.replace('{n}', DAYS);
     $('s-refund').classList.toggle('no', !ok);
   };
-  let APP = null;
+  let APP = null, READ = false;
+  const gate = (prog) => {
+    const CT = prog && prog.type === 'kamp' ? 'kamp' : 'atolye';
+    $('ctbox').innerHTML = $('ct-' + CT).innerHTML;
+    const boxes = [$('b-consent'), $('f-consent')];
+    boxes.forEach(c => { c.disabled = true; c.checked = false; });
+    const check = () => {
+      const b = $('ctbox');
+      if (!READ && b.scrollTop + b.clientHeight >= b.scrollHeight - 12) {
+        READ = true; boxes.forEach(c => c.disabled = false);
+        $('ct-state').textContent = T.ct_done; $('ct-state').classList.add('ok');
+      }
+    };
+    $('ctbox').addEventListener('scroll', check); check();
+  };
   if (BT) {
     (async () => {
       let d = null;
@@ -266,7 +299,7 @@ def pay_page(lang):
       const amt = (d.priceText && d.priceText[LANG]) || (typeof prog.price === 'number' ? fmt(prog.price, prog.cur) : '');
       $('s-total').textContent = amt; refundLine(prog);
       $('b-hello').textContent = T.hello.replace('{n}', d.name.split(' ')[0]);
-      $('bank').hidden = false; legal($('b-consent-t'), prog);
+      $('bank').hidden = false; legal($('b-consent-t'), prog); gate(prog);
       if (d.iban) {
         $('b-name').textContent = d.ibanName; $('b-iban').textContent = d.iban.replace(/\\s+/g, '').replace(/(.{4})/g, '$1 ').trim();
         if (d.bank) $('b-bank').textContent = d.bank; else $('b-bank-row').hidden = true;
@@ -282,6 +315,7 @@ def pay_page(lang):
       }));
       $('b-consent').addEventListener('change', () => { $('m-bconsent').textContent = ''; });
       $('b-done').addEventListener('click', async () => {
+        if (!READ) { $('m-bconsent').textContent = T.ct_need; $('ctbox').focus(); return; }
         if (!$('b-consent').checked) { $('m-bconsent').textContent = T.bconsent; $('b-consent').focus(); return; }
         $('b-done').disabled = true;
         try { const r = await fetch('/api/application', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({b: BT})}); const j = await r.json(); setState(j.status || 'payment_reported'); }
@@ -297,6 +331,7 @@ def pay_page(lang):
     $('pay-wrap').hidden = false;
     $('s-title').textContent = p.t; $('s-date').textContent = p.d; $('s-total').textContent = fmt(p.price, p.cur);
     refundLine(p);
+    $('pay-form').insertBefore($('ctwrap'), $('f-consent').closest('label')); gate(p);
     CARD();
   }
   function CARD() {
@@ -333,7 +368,7 @@ def pay_page(lang):
       if (!m || +m[1] < 1 || +m[1] > 12) errs.exp = T.err.exp;
       else { const now = new Date(), y = 2000 + +m[2]; if (y < now.getFullYear() || (y === now.getFullYear() && +m[1] < now.getMonth() + 1)) errs.exp = T.err.expired; }
       if (!/^\\d{3,4}$/.test(v.cvv)) errs.cvv = T.err.cvv;
-      if (!$('f-consent').checked) errs.consent = T.err.consent;
+      if (!READ) errs.consent = T.ct_need; else if (!$('f-consent').checked) errs.consent = T.err.consent;
       ['name','email','phone','holder','cardno','exp','cvv','consent'].forEach(k => setErr(k, errs[k]));
       const first = Object.keys(errs)[0];
       if (first) { ($(fields[first]) || $('f-consent')).focus(); return; }
@@ -357,7 +392,7 @@ def pay_page(lang):
     addEventListener('pageshow', ev => { if (ev.persisted) { btn.disabled = false; btn.textContent = label; } });
   }
 }
-</script>''' % (json.dumps(cat, ensure_ascii=False), json.dumps(dict(hello=x['hello'], copy=x['copy'], copied=x['copied'], bank_reported=x['bank_reported'], bank_paid=x['bank_paid'], badlink=x['badlink'], noiban=x['noiban'], bconsent=x['bconsent'], err=x['err'], pay=x['pay'], paying=x['paying'], single=x['single'], x=x['x'], regmsg=x['regmsg'], consent=x['consent'].format(p=root, c='{c}', cn='{cn}'), cn=x['cn'], refund_ok=x['refund_ok'], refund_no=x['refund_no']), ensure_ascii=False), lang)
+</script>''' % (json.dumps(cat, ensure_ascii=False), json.dumps(dict(ct_need=x['ct_need'], ct_done=x['ct_done'], hello=x['hello'], copy=x['copy'], copied=x['copied'], bank_reported=x['bank_reported'], bank_paid=x['bank_paid'], badlink=x['badlink'], noiban=x['noiban'], bconsent=x['bconsent'], err=x['err'], pay=x['pay'], paying=x['paying'], single=x['single'], x=x['x'], regmsg=x['regmsg'], consent=x['consent'].format(p=root, c='{c}', cn='{cn}'), cn=x['cn'], refund_ok=x['refund_ok'], refund_no=x['refund_no']), ensure_ascii=False), lang)
     return shell(lang, prefix, lang_href, x['title'], CSS, body, js, noindex=True)
 
 

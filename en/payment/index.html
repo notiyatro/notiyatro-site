@@ -318,6 +318,12 @@ main{overflow-x:clip}
 .minor{font-size:13px;color:#555;margin:-8px 0 20px;line-height:1.5}
 .consent small{color:#666}
 .bank{margin-bottom:34px}
+.ctwrap{margin:6px 0 16px}.ct-h{font-weight:900;font-size:17px;margin:0 0 6px}.ct-note{font-size:13px;color:#666;margin:0 0 8px}
+.ctbox{max-height:280px;overflow:auto;border:1.5px solid #bbb;border-radius:14px;padding:14px 18px;background:#fff;font-size:14px;line-height:1.6}
+.ctbox:focus{outline:3px solid var(--red);outline-offset:2px}
+.ctbox h2{font-size:15px;margin:16px 0 6px}.ctbox p,.ctbox li{margin:0 0 8px}.ctbox .lg-meta{font-weight:700;color:#444}.ctbox dl{margin:0 0 10px}.ctbox dl div{display:flex;gap:8px;flex-wrap:wrap}.ctbox dt{font-weight:800}.ctbox dd{margin:0}
+.ct-state{font-size:13px;font-weight:700;color:#9b2a18;margin:8px 0 0}.ct-state.ok{color:#16632b}
+.consent input:disabled+span{opacity:.55}
 .hello{font-size:18px;font-weight:700;margin:0 0 18px;line-height:1.5}
 .bh{font-size:22px;margin:0 0 14px}
 .ibanbox{margin:0 0 14px;background:#F6F4EA;border-radius:16px;padding:6px 18px}
@@ -408,6 +414,161 @@ main{overflow-x:clip}
         </dl>
         <div class="qr"><img src="../../img/akbank-qr.png" alt="Akbank payment QR code" width="180" height="180" loading="lazy"><p>Turkish bank customers can also scan this code in their mobile banking app.</p></div>
         <p class="bnote">Please use the reference above, including your application number, for your transfer. Once the payment reaches our account, we will confirm your place and let you know.</p>
+        <div class="ctwrap" id="ctwrap">
+          <p class="ct-h">Participation agreement</p><p class="ct-note">The agreement is in Turkish, the governing language of the contract.</p>
+          <div class="ctbox" id="ctbox" tabindex="0" role="region" aria-label="Participation agreement"></div>
+          <p class="ct-state" id="ct-state">Please scroll to the end of the agreement to be able to accept it.</p>
+        </div>
+        <template id="ct-atolye">
+<p class="lg-meta">Mesafeli hizmet sözleşmesi · Kendi isteğinle iptalde iade süresi: <b>programdan 45 gün öncesine kadar</b></p>
+<p>No Yapım ve Organizasyon Limited Şirketi tarafından düzenlenen International Stage Lab. programları, uluslararası sanatçılar ile katılımcılar arasında kültürel ve sanatsal paylaşımı teşvik etmeyi amaçlayan eğitim ve etkileşim programlarıdır. İşbu sözleşme, katılımcının kayıt olduğu programa katılımına ilişkin hak ve yükümlülükleri düzenlemektedir.</p>
+<p>İşbu Atölye Katılım Sözleşmesi, Aydınlatma ve Açık Rıza Metni (“Sözleşme”), katılımcı ile organizasyonu gerçekleştiren No Yapım ve Organizasyon Limited Şirketi (“Organizasyon”) arasında akdedilmiştir. Katılımcı, notiyatro.com üzerindeki kayıt ve ödeme formunu doldurup işbu metni elektronik ortamda onaylamak suretiyle aşağıdaki hüküm ve şartları okuduğunu, anladığını ve kabul ettiğini beyan eder.</p>
+<h2>Organizasyon</h2>
+<dl class="lg-firm">
+<div><dt>Unvan</dt><dd>NO Yapım ve Organizasyon Limited Şirketi</dd></div>
+<div><dt>Adres</dt><dd>Hüseyinağa Mah., İstiklal Cad., Grand Pera No: 56/58 Kat 3 Daire 5, Beyoğlu, İstanbul, Türkiye</dd></div>
+<div><dt>Vergi dairesi / no</dt><dd>Beyoğlu / 6311925259</dd></div>
+<div><dt>E-posta</dt><dd><a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a></dd></div>
+<div><dt>Telefon / WhatsApp</dt><dd>+90 530 480 82 92</dd></div>
+</dl>
+<h2>Katılımcı</h2>
+<p>Katılımcının ad-soyad, e-posta ve telefon bilgileri ile kayıt olunan programın adı, tarihleri ve katılım bedeli, notiyatro.com ödeme sayfasında katılımcı tarafından girilen ve gösterilen bilgilerdir. Bu bilgiler sözleşmenin ayrılmaz parçasıdır.</p>
+<h2>1. Konu</h2>
+<p>İşbu sözleşmenin konusu, katılımcının ödeme sayfasında adı ve tarihleri belirtilen atölye programına katılımına ilişkin hak, yükümlülük ve koşulların düzenlenmesidir.</p>
+<h2>2. Genel katılım koşulları</h2>
+<p>2.1. Katılımcı, etkinlik süresince organizasyon tarafından belirlenen kurallara, çalışma disiplinine ve eğitmenlerin yönlendirmelerine uygun davranacağını kabul eder.</p>
+<p>2.2. Diğer katılımcıların güvenliğini, çalışma ortamını veya etkinliğin düzenini olumsuz etkileyen davranışlarda bulunulması halinde Organizasyon, herhangi bir tazminat yükümlülüğü doğmaksızın katılımcının etkinlikle ilişiğini sonlandırma hakkını saklı tutar.</p>
+<p>2.3. Katılımcı, etkinlik süresince üçüncü kişilerin haklarını ihlal edecek, ayrımcı, saldırgan veya hukuka aykırı davranışlarda bulunmayacağını kabul eder.</p>
+<h2>3. Program değişikliği, erteleme ve iptal</h2>
+<p>3.1. Organizasyon; eğitmenin sağlık durumu, ulaşım problemleri, vize süreçleri, doğal afet, savaş, salgın hastalık, pandemi, grev, resmi makam kararları, teknik aksaklıklar, mücbir sebepler veya Organizasyonun makul kontrolü dışında gelişen benzeri nedenlerle etkinliğin tarihini değiştirme, erteleme, çevrim içi formata dönüştürme veya iptal etme hakkını saklı tutar.</p>
+<p>3.2. Bu gibi durumlarda Organizasyonun sorumluluğu, katılımcı tarafından ödenmiş olan etkinlik katılım bedeli ile sınırlıdır.</p>
+<p>3.3. Katılımcı; uçak bileti, konaklama, transfer, vize, sigorta, araç kiralama veya üçüncü kişilerden alınan hizmetlerden kaynaklanan masraf, zarar veya kayıplardan Organizasyonun sorumlu olmadığını kabul eder.</p>
+<p>3.4. Organizasyon, gerekli gördüğü takdirde eğitmen, program içeriği, saatler veya etkinlik mekanında değişiklik yapabilir.</p>
+<h2>4. Ücret ve iade koşulları</h2>
+<p>4.1. Katılımcının kendi isteğiyle kayıt iptalinde bulunması halinde;</p>
+<ul><li>Etkinlik başlangıç tarihinden 45 gün veya daha önce yapılan iptallerde, ödenmiş katılım bedelinin tamamı iade edilir.</li>
+<li>Etkinlik başlangıç tarihine 45 günden daha az süre kala yapılan iptallerde ücret iadesi yapılmaz.</li></ul>
+<p>4.2. Organizasyon, tamamen kendi takdirine bağlı olarak katılımcıya kredi tanımlayabilir, kayıt hakkını erteleyebilir veya başka bir etkinlikte kullanım imkanı sunabilir.</p>
+<p>4.3. Katılımcının hastalık, kaza, aile bireyine refakat zorunluluğu, seyahat engeli veya kendi şahsından kaynaklanan diğer kişisel nedenlerle etkinliğe katılamaması ya da etkinliği yarıda bırakması halinde ücret iadesi talep edilemez. Organizasyon, tamamen kendi takdirine bağlı olarak katılımcıya başka bir etkinlikte kullanılmak üzere kredi tanımlayabilir veya kayıt hakkını erteleyebilir.</p>
+<p>4.4. Katılımcının kişisel sebeplerine ilişkin sağlık raporu, belge veya benzeri evrak sunulması Organizasyon açısından ücret iadesi yükümlülüğü doğurmaz.</p>
+<p>4.5. İptal talepleri <a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazılı olarak iletilir. İade, ödemenin yapıldığı karta, Tosla İşim (AKÖde Elektronik Para ve Ödeme Hizmetleri A.Ş.) altyapısı üzerinden yapılır; iadenin karta yansıma süresi kartı çıkaran bankaya bağlıdır.</p>
+<h2>5. Sağlık ve kişisel sorumluluk</h2>
+<p>5.1. Katılımcı, etkinliğe katılmasına engel teşkil eden fiziksel veya psikolojik bir sağlık sorunu bulunmadığını beyan eder.</p>
+<p>5.2. Katılımcı, atölye süresince gerçekleştireceği fiziksel çalışmaların kendi sorumluluğunda olduğunu kabul eder. Etkinlik sırasında meydana gelebilecek kişisel sağlık sorunları, yaralanmalar veya mevcut rahatsızlıkların ağırlaşması nedeniyle Organizasyonun herhangi bir hukuki veya cezai sorumluluğu bulunmadığını katılımcı kabul eder.</p>
+<p>5.3. Katılımcı, gerekli görmesi halinde sağlık sigortası yaptırmakla yükümlüdür.</p>
+<h2>6. Fotoğraf ve görüntü kullanım izni</h2>
+<p>6.1. Katılımcı, etkinlik kapsamında çekilen fotoğraf, ses ve video kayıtlarının; sosyal medya hesaplarında, internet sitelerinde, basılı ve dijital tanıtım materyallerinde, basın çalışmaları ve arşiv faaliyetlerinde herhangi bir süre sınırlaması olmaksızın kullanılabileceğini kabul eder.</p>
+<p>6.2. Katılımcı, söz konusu kullanım nedeniyle Organizasyondan herhangi bir ücret, telif veya sair hak talebinde bulunmayacağını kabul eder.</p>
+<h2>7. Mücbir sebep</h2>
+<p>Doğal afet, yangın, salgın hastalık, savaş, terör eylemleri, ulaşım engelleri, resmi makam kararları, grev, internet ve iletişim altyapısı sorunları ile tarafların kontrolü dışında gelişen benzeri durumlar mücbir sebep olarak kabul edilir. Mücbir sebep halinde Organizasyonun yükümlülükleri askıya alınır ve katılımcı Organizasyondan herhangi bir dolaylı zarar, kar kaybı veya ek masraf talebinde bulunamaz.</p>
+<h2>8. Kişisel verilerin korunması</h2>
+<p>Kişisel verilerin işlenmesine ilişkin bilgilendirme <a target="_blank" href="../../yasal/kvkk/">KVKK Aydınlatma Metni</a>'nde yer alır.</p>
+<h2>9. Açık rıza</h2>
+<p>Kişisel verilerin duyuru, bilgilendirme ve tanıtım amaçlarıyla işlenmesine ve gelecekte düzenlenecek etkinlikler hakkında bilgilendirme yapılmasına ilişkin açık rıza, ödeme sayfasında ayrı ve isteğe bağlı bir onay kutusuyla alınır. Bu onayın verilmemesi kayıt ve katılımı etkilemez; verilen onay her zaman <a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazılarak geri alınabilir.</p>
+<h2>10. Uygulanacak hukuk ve yetkili mahkeme</h2>
+<p>İşbu sözleşmeden doğabilecek uyuşmazlıklarda Türk Hukuku uygulanır. Tüketici mevzuatından kaynaklanan zorunlu yetki hükümleri saklı kalmak kaydıyla İstanbul Merkez (Çağlayan) Mahkemeleri ve İcra Daireleri yetkilidir.</p>
+<h2>11. Onay ve kabul</h2>
+<p>Katılımcı, ödeme sayfasındaki onay kutusunu işaretleyerek işbu Atölye Katılım Sözleşmesi'ni ve <a target="_blank" href="../../yasal/on-bilgilendirme/">Ön Bilgilendirme Formu</a>'nu okuduğunu, anladığını ve kabul ettiğini beyan eder. 18 yaşından küçük katılımcıların kaydı, yasal temsilcinin onayıyla yapılır; yasal temsilcinin adı ve soyadı Organizasyon tarafından ayrıca istenir.</p>
+<h2>Ön Bilgilendirme Formu</h2>
+<p class="lg-meta">Mesafeli olarak kurulan katılım sözleşmesinden önce okunması gereken bilgiler</p>
+<h2>1. Hizmet sağlayıcı</h2>
+<dl class="lg-firm">
+<div><dt>Unvan</dt><dd>NO Yapım ve Organizasyon Limited Şirketi</dd></div>
+<div><dt>Adres</dt><dd>Hüseyinağa Mah., İstiklal Cad., Grand Pera No: 56/58 Kat 3 Daire 5, Beyoğlu, İstanbul, Türkiye</dd></div>
+<div><dt>Vergi dairesi / no</dt><dd>Beyoğlu / 6311925259</dd></div>
+<div><dt>E-posta</dt><dd><a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a></dd></div>
+<div><dt>Telefon / WhatsApp</dt><dd>+90 530 480 82 92</dd></div>
+</dl>
+<h2>2. Hizmetin konusu ve temel nitelikleri</h2>
+<p>NO Tiyatro / International Stage Lab. kapsamında düzenlenen atölye veya kamp programına katılım hizmetidir. Programın adı, tarihleri, yeri ve eğitmenleri ilgili program sayfasında ve ödeme sayfasında gösterilir.</p>
+<h2>3. Toplam bedel ve ödeme</h2>
+<p>Katılım bedeli, vergiler dahil toplam tutar olarak ödeme sayfasında gösterilir. Ödeme kredi veya banka kartıyla, 3D Secure doğrulamasıyla, AKÖde Elektronik Para ve Ödeme Hizmetleri A.Ş.'nin Tosla İşim Sanal POS altyapısı üzerinden alınır. Kart bilgileri NO Yapım ve Organizasyon Ltd. Şti. tarafından görülmez ve saklanmaz. Taksit seçeneği sunulan programlarda taksit sayısı ödeme sayfasında seçilir.</p>
+<h2>4. Hizmetin ifası</h2>
+<p>Hizmet, programın ilan edilen tarihlerinde ve yerinde (ya da Organizasyonun duyurduğu çevrim içi formatta) ifa edilir. Kayıt onayı ve program bilgileri katılımcının verdiği e-posta adresine ve/veya telefon numarasına gönderilir.</p>
+<h2 id="iptal">5. İptal ve iade koşulları</h2>
+<ul>
+<li><b>Atölyeler:</b> Programın başlangıç tarihinden 45 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 45 günden daha az süre kala yapılan iptallerde iade yapılmaz.</li>
+<li><b>Kamplar:</b> Programın başlangıç tarihinden 60 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 60 günden daha az süre kala yapılan iptallerde iade yapılmaz.</li>
+</ul>
+<p>Ayrıntılar ve Organizasyon kaynaklı değişiklik, erteleme ve iptal halleri için <a target="_blank" href="../../yasal/atolye-sozlesmesi/">Atölye Katılım Sözleşmesi</a> ve <a target="_blank" href="../../yasal/kamp-sozlesmesi/">Kamp Katılım Sözleşmesi</a>'ne bakınız. İptal talepleri <a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazılı olarak iletilir. Cayma hakkına ilişkin hususlarda 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri saklıdır.</p>
+<h2>6. Şikâyet ve başvuru</h2>
+<p>Talep ve şikâyetler için <a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazabilirsiniz. Tüketiciler, ilgili mevzuatta belirlenen parasal sınırlar dahilinde Tüketici Hakem Heyetlerine veya Tüketici Mahkemelerine başvurabilir.</p>
+</template>
+        <template id="ct-kamp">
+<p class="lg-meta">Mesafeli hizmet sözleşmesi · Kendi isteğinle iptalde iade süresi: <b>programdan 60 gün öncesine kadar</b></p>
+<p>No Yapım ve Organizasyon Limited Şirketi tarafından düzenlenen International Stage Lab. programları, uluslararası sanatçılar ile katılımcılar arasında kültürel ve sanatsal paylaşımı teşvik etmeyi amaçlayan eğitim ve etkileşim programlarıdır. İşbu sözleşme, katılımcının kayıt olduğu programa katılımına ilişkin hak ve yükümlülükleri düzenlemektedir.</p>
+<p>İşbu Kamp Katılım Sözleşmesi, Aydınlatma ve Açık Rıza Metni (“Sözleşme”), katılımcı ile organizasyonu gerçekleştiren No Yapım ve Organizasyon Limited Şirketi (“Organizasyon”) arasında akdedilmiştir. Katılımcı, notiyatro.com üzerindeki kayıt ve ödeme formunu doldurup işbu metni elektronik ortamda onaylamak suretiyle aşağıdaki hüküm ve şartları okuduğunu, anladığını ve kabul ettiğini beyan eder.</p>
+<h2>Organizasyon</h2>
+<dl class="lg-firm">
+<div><dt>Unvan</dt><dd>NO Yapım ve Organizasyon Limited Şirketi</dd></div>
+<div><dt>Adres</dt><dd>Hüseyinağa Mah., İstiklal Cad., Grand Pera No: 56/58 Kat 3 Daire 5, Beyoğlu, İstanbul, Türkiye</dd></div>
+<div><dt>Vergi dairesi / no</dt><dd>Beyoğlu / 6311925259</dd></div>
+<div><dt>E-posta</dt><dd><a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a></dd></div>
+<div><dt>Telefon / WhatsApp</dt><dd>+90 530 480 82 92</dd></div>
+</dl>
+<h2>Katılımcı</h2>
+<p>Katılımcının ad-soyad, e-posta ve telefon bilgileri ile kayıt olunan programın adı, tarihleri ve katılım bedeli, notiyatro.com ödeme sayfasında katılımcı tarafından girilen ve gösterilen bilgilerdir. Bu bilgiler sözleşmenin ayrılmaz parçasıdır.</p>
+<h2>1. Konu</h2>
+<p>İşbu sözleşmenin konusu, katılımcının ödeme sayfasında adı ve tarihleri belirtilen kamp programına katılımına ilişkin hak, yükümlülük ve koşulların düzenlenmesidir.</p>
+<h2>2. Genel katılım koşulları</h2>
+<p>2.1. Katılımcı, etkinlik süresince organizasyon tarafından belirlenen kurallara, çalışma disiplinine ve eğitmenlerin yönlendirmelerine uygun davranacağını kabul eder.</p>
+<p>2.2. Diğer katılımcıların güvenliğini, çalışma ortamını veya etkinliğin düzenini olumsuz etkileyen davranışlarda bulunulması halinde Organizasyon, herhangi bir tazminat yükümlülüğü doğmaksızın katılımcının etkinlikle ilişiğini sonlandırma hakkını saklı tutar.</p>
+<p>2.3. Katılımcı, etkinlik süresince üçüncü kişilerin haklarını ihlal edecek, ayrımcı, saldırgan veya hukuka aykırı davranışlarda bulunmayacağını kabul eder.</p>
+<h2>3. Program değişikliği, erteleme ve iptal</h2>
+<p>3.1. Organizasyon; eğitmenin sağlık durumu, ulaşım problemleri, vize süreçleri, doğal afet, savaş, salgın hastalık, pandemi, grev, resmi makam kararları, teknik aksaklıklar, mücbir sebepler veya Organizasyonun makul kontrolü dışında gelişen benzeri nedenlerle etkinliğin tarihini değiştirme, erteleme, çevrim içi formata dönüştürme veya iptal etme hakkını saklı tutar.</p>
+<p>3.2. Bu gibi durumlarda Organizasyonun sorumluluğu, katılımcı tarafından ödenmiş olan etkinlik katılım bedeli ile sınırlıdır.</p>
+<p>3.3. Katılımcı; uçak bileti, konaklama, transfer, vize, sigorta, araç kiralama veya üçüncü kişilerden alınan hizmetlerden kaynaklanan masraf, zarar veya kayıplardan Organizasyonun sorumlu olmadığını kabul eder.</p>
+<p>3.4. Organizasyon, gerekli gördüğü takdirde eğitmen, program içeriği, saatler veya etkinlik mekanında değişiklik yapabilir.</p>
+<h2>4. Ücret ve iade koşulları</h2>
+<p>4.1. Katılımcının kendi isteğiyle kayıt iptalinde bulunması halinde;</p>
+<ul><li>Etkinlik başlangıç tarihinden 60 gün veya daha önce yapılan iptallerde, ödenmiş katılım bedelinin tamamı iade edilir.</li>
+<li>Etkinlik başlangıç tarihine 60 günden daha az süre kala yapılan iptallerde ücret iadesi yapılmaz.</li></ul>
+<p>4.2. Organizasyon, tamamen kendi takdirine bağlı olarak katılımcıya kredi tanımlayabilir, kayıt hakkını erteleyebilir veya başka bir etkinlikte kullanım imkanı sunabilir.</p>
+<p>4.3. Katılımcının hastalık, kaza, aile bireyine refakat zorunluluğu, seyahat engeli veya kendi şahsından kaynaklanan diğer kişisel nedenlerle etkinliğe katılamaması ya da etkinliği yarıda bırakması halinde ücret iadesi talep edilemez. Organizasyon, tamamen kendi takdirine bağlı olarak katılımcıya başka bir etkinlikte kullanılmak üzere kredi tanımlayabilir veya kayıt hakkını erteleyebilir.</p>
+<p>4.4. Katılımcının kişisel sebeplerine ilişkin sağlık raporu, belge veya benzeri evrak sunulması Organizasyon açısından ücret iadesi yükümlülüğü doğurmaz.</p>
+<p>4.5. İptal talepleri <a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazılı olarak iletilir. İade, ödemenin yapıldığı karta, Tosla İşim (AKÖde Elektronik Para ve Ödeme Hizmetleri A.Ş.) altyapısı üzerinden yapılır; iadenin karta yansıma süresi kartı çıkaran bankaya bağlıdır.</p>
+<h2>5. Sağlık ve kişisel sorumluluk</h2>
+<p>5.1. Katılımcı, etkinliğe katılmasına engel teşkil eden fiziksel veya psikolojik bir sağlık sorunu bulunmadığını beyan eder.</p>
+<p>5.2. Katılımcı, kamp süresince gerçekleştireceği fiziksel çalışmaların kendi sorumluluğunda olduğunu kabul eder. Etkinlik sırasında meydana gelebilecek kişisel sağlık sorunları, yaralanmalar veya mevcut rahatsızlıkların ağırlaşması nedeniyle Organizasyonun herhangi bir hukuki veya cezai sorumluluğu bulunmadığını katılımcı kabul eder.</p>
+<p>5.3. Katılımcı, gerekli görmesi halinde sağlık sigortası yaptırmakla yükümlüdür.</p>
+<h2>6. Fotoğraf ve görüntü kullanım izni</h2>
+<p>6.1. Katılımcı, etkinlik kapsamında çekilen fotoğraf, ses ve video kayıtlarının; sosyal medya hesaplarında, internet sitelerinde, basılı ve dijital tanıtım materyallerinde, basın çalışmaları ve arşiv faaliyetlerinde herhangi bir süre sınırlaması olmaksızın kullanılabileceğini kabul eder.</p>
+<p>6.2. Katılımcı, söz konusu kullanım nedeniyle Organizasyondan herhangi bir ücret, telif veya sair hak talebinde bulunmayacağını kabul eder.</p>
+<h2>7. Mücbir sebep</h2>
+<p>Doğal afet, yangın, salgın hastalık, savaş, terör eylemleri, ulaşım engelleri, resmi makam kararları, grev, internet ve iletişim altyapısı sorunları ile tarafların kontrolü dışında gelişen benzeri durumlar mücbir sebep olarak kabul edilir. Mücbir sebep halinde Organizasyonun yükümlülükleri askıya alınır ve katılımcı Organizasyondan herhangi bir dolaylı zarar, kar kaybı veya ek masraf talebinde bulunamaz.</p>
+<h2>8. Kişisel verilerin korunması</h2>
+<p>Kişisel verilerin işlenmesine ilişkin bilgilendirme <a target="_blank" href="../../yasal/kvkk/">KVKK Aydınlatma Metni</a>'nde yer alır.</p>
+<h2>9. Açık rıza</h2>
+<p>Kişisel verilerin duyuru, bilgilendirme ve tanıtım amaçlarıyla işlenmesine ve gelecekte düzenlenecek etkinlikler hakkında bilgilendirme yapılmasına ilişkin açık rıza, ödeme sayfasında ayrı ve isteğe bağlı bir onay kutusuyla alınır. Bu onayın verilmemesi kayıt ve katılımı etkilemez; verilen onay her zaman <a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazılarak geri alınabilir.</p>
+<h2>10. Uygulanacak hukuk ve yetkili mahkeme</h2>
+<p>İşbu sözleşmeden doğabilecek uyuşmazlıklarda Türk Hukuku uygulanır. Tüketici mevzuatından kaynaklanan zorunlu yetki hükümleri saklı kalmak kaydıyla İstanbul Merkez (Çağlayan) Mahkemeleri ve İcra Daireleri yetkilidir.</p>
+<h2>11. Onay ve kabul</h2>
+<p>Katılımcı, ödeme sayfasındaki onay kutusunu işaretleyerek işbu Kamp Katılım Sözleşmesi'ni ve <a target="_blank" href="../../yasal/on-bilgilendirme/">Ön Bilgilendirme Formu</a>'nu okuduğunu, anladığını ve kabul ettiğini beyan eder. 18 yaşından küçük katılımcıların kaydı, yasal temsilcinin onayıyla yapılır; yasal temsilcinin adı ve soyadı Organizasyon tarafından ayrıca istenir.</p>
+<h2>Ön Bilgilendirme Formu</h2>
+<p class="lg-meta">Mesafeli olarak kurulan katılım sözleşmesinden önce okunması gereken bilgiler</p>
+<h2>1. Hizmet sağlayıcı</h2>
+<dl class="lg-firm">
+<div><dt>Unvan</dt><dd>NO Yapım ve Organizasyon Limited Şirketi</dd></div>
+<div><dt>Adres</dt><dd>Hüseyinağa Mah., İstiklal Cad., Grand Pera No: 56/58 Kat 3 Daire 5, Beyoğlu, İstanbul, Türkiye</dd></div>
+<div><dt>Vergi dairesi / no</dt><dd>Beyoğlu / 6311925259</dd></div>
+<div><dt>E-posta</dt><dd><a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a></dd></div>
+<div><dt>Telefon / WhatsApp</dt><dd>+90 530 480 82 92</dd></div>
+</dl>
+<h2>2. Hizmetin konusu ve temel nitelikleri</h2>
+<p>NO Tiyatro / International Stage Lab. kapsamında düzenlenen atölye veya kamp programına katılım hizmetidir. Programın adı, tarihleri, yeri ve eğitmenleri ilgili program sayfasında ve ödeme sayfasında gösterilir.</p>
+<h2>3. Toplam bedel ve ödeme</h2>
+<p>Katılım bedeli, vergiler dahil toplam tutar olarak ödeme sayfasında gösterilir. Ödeme kredi veya banka kartıyla, 3D Secure doğrulamasıyla, AKÖde Elektronik Para ve Ödeme Hizmetleri A.Ş.'nin Tosla İşim Sanal POS altyapısı üzerinden alınır. Kart bilgileri NO Yapım ve Organizasyon Ltd. Şti. tarafından görülmez ve saklanmaz. Taksit seçeneği sunulan programlarda taksit sayısı ödeme sayfasında seçilir.</p>
+<h2>4. Hizmetin ifası</h2>
+<p>Hizmet, programın ilan edilen tarihlerinde ve yerinde (ya da Organizasyonun duyurduğu çevrim içi formatta) ifa edilir. Kayıt onayı ve program bilgileri katılımcının verdiği e-posta adresine ve/veya telefon numarasına gönderilir.</p>
+<h2 id="iptal">5. İptal ve iade koşulları</h2>
+<ul>
+<li><b>Atölyeler:</b> Programın başlangıç tarihinden 45 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 45 günden daha az süre kala yapılan iptallerde iade yapılmaz.</li>
+<li><b>Kamplar:</b> Programın başlangıç tarihinden 60 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 60 günden daha az süre kala yapılan iptallerde iade yapılmaz.</li>
+</ul>
+<p>Ayrıntılar ve Organizasyon kaynaklı değişiklik, erteleme ve iptal halleri için <a target="_blank" href="../../yasal/atolye-sozlesmesi/">Atölye Katılım Sözleşmesi</a> ve <a target="_blank" href="../../yasal/kamp-sozlesmesi/">Kamp Katılım Sözleşmesi</a>'ne bakınız. İptal talepleri <a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazılı olarak iletilir. Cayma hakkına ilişkin hususlarda 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri saklıdır.</p>
+<h2>6. Şikâyet ve başvuru</h2>
+<p>Talep ve şikâyetler için <a target="_blank" href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazabilirsiniz. Tüketiciler, ilgili mevzuatta belirlenen parasal sınırlar dahilinde Tüketici Hakem Heyetlerine veya Tüketici Mahkemelerine başvurabilir.</p>
+</template>
         <label class="consent"><input type="checkbox" id="b-consent"><span id="b-consent-t"></span></label>
         <div class="msg" id="m-bconsent" style="color:var(--red);font-weight:700;font-size:13px;margin:-12px 0 14px"></div>
         <button class="btn paybtn" id="b-done" type="button">I have made the payment</button>
@@ -491,7 +652,7 @@ main{overflow-x:clip}
 <script>{const h=document.getElementById('top'),m=document.getElementById('menu');m&&m.addEventListener('click',()=>{const o=h.classList.toggle('open');m.setAttribute('aria-expanded',o)})}</script>
 <script>
 {
-  const CAT = [{"id": "pfs-2027-01", "t": "Prague Film School — Acting for Film", "d": "22–24 January 2027 · DasDas Ataşehir, Istanbul", "price": null, "cur": "TRY", "max": 1, "type": "atolye", "start": "2027-01-22"}, {"id": "isc-winter-2027", "t": "International Stage Camp — Winter Edition", "d": "28–31 January 2027 · Narköy Ecological Hotel, Kandıra", "price": null, "cur": "TRY", "max": 1, "type": "kamp", "start": "2027-01-28"}, {"id": "central-2027-02", "t": "Royal Central School of Speech and Drama — Audition Bootcamp", "d": "5–7 February 2027 · Istanbul", "price": null, "cur": "TRY", "max": 1, "type": "atolye", "start": "2027-02-05"}, {"id": "frantic-2027-03", "t": "Frantic Assembly — Scott Graham", "d": "20–21 March 2027 · Istanbul", "price": null, "cur": "TRY", "max": 1, "type": "atolye", "start": "2027-03-20"}, {"id": "isc-summer-2027", "t": "International Stage Camp — Summer Edition", "d": "22–25 July 2027 · Çeşmeköy", "price": null, "cur": "TRY", "max": 1, "type": "kamp", "start": "2027-07-22"}], T = {"hello": "Hi {n}, your application has been approved. You can now complete your registration by paying below.", "copy": "Copy", "copied": "Copied", "bank_reported": "We have received your payment notice. Once it reaches our account, we will confirm your place and let you know.", "bank_paid": "Your payment is confirmed and you are registered. See you soon!", "badlink": "This payment link is invalid, or your application has not been approved yet.", "noiban": "Bank details will appear here shortly. In the meantime, message us on WhatsApp.", "bconsent": "Please accept the agreement to continue.", "err": {"name": "Please enter your full name.", "email": "Please enter a valid email address.", "phone": "Please enter your phone number.", "holder": "Please enter the name on the card.", "cardno": "This card number doesn’t look right.", "exp": "Enter the expiry date as MM/YY.", "expired": "This card has expired.", "cvv": "CVV must be 3 or 4 digits.", "consent": "Please accept the agreements to continue.", "not_configured": "Online payment isn’t active right now. Message us on WhatsApp to register.", "gateway": "The payment system isn’t responding. Please try again shortly or message us on WhatsApp.", "network": "We couldn’t connect. Check your internet connection and try again.", "program": "Online payment is not open for this programme."}, "pay": "Pay", "paying": "Redirecting you to your bank…", "single": "Single payment", "x": "instalments", "regmsg": "", "consent": "I have read and accept the <a href=\"../../yasal/{c}/\" target=\"_blank\">{cn}</a> and the <a href=\"../../yasal/on-bilgilendirme/\" target=\"_blank\">Pre-Information Form</a>, and I have read the <a href=\"../../yasal/kvkk/\" target=\"_blank\">Privacy Notice (KVKK)</a>. <small>(Documents in Turkish.)</small>", "cn": {"atolye": "Workshop Participation Agreement", "kamp": "Camp Participation Agreement"}, "refund_ok": "Cancel by {d} for a full refund.", "refund_no": "Fewer than {n} days remain before the programme, so this booking is non-refundable."}, LANG = 'en';
+  const CAT = [{"id": "pfs-2027-01", "t": "Prague Film School — Acting for Film", "d": "22–24 January 2027 · DasDas Ataşehir, Istanbul", "price": null, "cur": "TRY", "max": 1, "type": "atolye", "start": "2027-01-22"}, {"id": "isc-winter-2027", "t": "International Stage Camp — Winter Edition", "d": "28–31 January 2027 · Narköy Ecological Hotel, Kandıra", "price": null, "cur": "TRY", "max": 1, "type": "kamp", "start": "2027-01-28"}, {"id": "central-2027-02", "t": "Royal Central School of Speech and Drama — Audition Bootcamp", "d": "5–7 February 2027 · Istanbul", "price": null, "cur": "TRY", "max": 1, "type": "atolye", "start": "2027-02-05"}, {"id": "frantic-2027-03", "t": "Frantic Assembly — Scott Graham", "d": "20–21 March 2027 · Istanbul", "price": null, "cur": "TRY", "max": 1, "type": "atolye", "start": "2027-03-20"}, {"id": "isc-summer-2027", "t": "International Stage Camp — Summer Edition", "d": "22–25 July 2027 · Çeşmeköy", "price": null, "cur": "TRY", "max": 1, "type": "kamp", "start": "2027-07-22"}], T = {"ct_need": "Please scroll to the end of the agreement to be able to accept it.", "ct_done": "You have read the whole agreement and can now accept it.", "hello": "Hi {n}, your application has been approved. You can now complete your registration by paying below.", "copy": "Copy", "copied": "Copied", "bank_reported": "We have received your payment notice. Once it reaches our account, we will confirm your place and let you know.", "bank_paid": "Your payment is confirmed and you are registered. See you soon!", "badlink": "This payment link is invalid, or your application has not been approved yet.", "noiban": "Bank details will appear here shortly. In the meantime, message us on WhatsApp.", "bconsent": "Please accept the agreement to continue.", "err": {"name": "Please enter your full name.", "email": "Please enter a valid email address.", "phone": "Please enter your phone number.", "holder": "Please enter the name on the card.", "cardno": "This card number doesn’t look right.", "exp": "Enter the expiry date as MM/YY.", "expired": "This card has expired.", "cvv": "CVV must be 3 or 4 digits.", "consent": "Please accept the agreements to continue.", "not_configured": "Online payment isn’t active right now. Message us on WhatsApp to register.", "gateway": "The payment system isn’t responding. Please try again shortly or message us on WhatsApp.", "network": "We couldn’t connect. Check your internet connection and try again.", "program": "Online payment is not open for this programme."}, "pay": "Pay", "paying": "Redirecting you to your bank…", "single": "Single payment", "x": "instalments", "regmsg": "", "consent": "I have read and accept the <a href=\"../../yasal/{c}/\" target=\"_blank\">{cn}</a> and the <a href=\"../../yasal/on-bilgilendirme/\" target=\"_blank\">Pre-Information Form</a>, and I have read the <a href=\"../../yasal/kvkk/\" target=\"_blank\">Privacy Notice (KVKK)</a>. <small>(Documents in Turkish.)</small>", "cn": {"atolye": "Workshop Participation Agreement", "kamp": "Camp Participation Agreement"}, "refund_ok": "Cancel by {d} for a full refund.", "refund_no": "Fewer than {n} days remain before the programme, so this booking is non-refundable."}, LANG = 'en';
   const $ = id => document.getElementById(id);
   const fmt = (n, cur) => new Intl.NumberFormat(LANG === 'tr' ? 'tr-TR' : 'en-GB', {style:'currency', currency:cur, maximumFractionDigits:2}).format(n);
   const Q = new URLSearchParams(location.search), BT = Q.get('b');
@@ -506,7 +667,21 @@ main{overflow-x:clip}
     $('s-refund').textContent = ok ? T.refund_ok.replace('{d}', ds) : T.refund_no.replace('{n}', DAYS);
     $('s-refund').classList.toggle('no', !ok);
   };
-  let APP = null;
+  let APP = null, READ = false;
+  const gate = (prog) => {
+    const CT = prog && prog.type === 'kamp' ? 'kamp' : 'atolye';
+    $('ctbox').innerHTML = $('ct-' + CT).innerHTML;
+    const boxes = [$('b-consent'), $('f-consent')];
+    boxes.forEach(c => { c.disabled = true; c.checked = false; });
+    const check = () => {
+      const b = $('ctbox');
+      if (!READ && b.scrollTop + b.clientHeight >= b.scrollHeight - 12) {
+        READ = true; boxes.forEach(c => c.disabled = false);
+        $('ct-state').textContent = T.ct_done; $('ct-state').classList.add('ok');
+      }
+    };
+    $('ctbox').addEventListener('scroll', check); check();
+  };
   if (BT) {
     (async () => {
       let d = null;
@@ -520,7 +695,7 @@ main{overflow-x:clip}
       const amt = (d.priceText && d.priceText[LANG]) || (typeof prog.price === 'number' ? fmt(prog.price, prog.cur) : '');
       $('s-total').textContent = amt; refundLine(prog);
       $('b-hello').textContent = T.hello.replace('{n}', d.name.split(' ')[0]);
-      $('bank').hidden = false; legal($('b-consent-t'), prog);
+      $('bank').hidden = false; legal($('b-consent-t'), prog); gate(prog);
       if (d.iban) {
         $('b-name').textContent = d.ibanName; $('b-iban').textContent = d.iban.replace(/\s+/g, '').replace(/(.{4})/g, '$1 ').trim();
         if (d.bank) $('b-bank').textContent = d.bank; else $('b-bank-row').hidden = true;
@@ -536,6 +711,7 @@ main{overflow-x:clip}
       }));
       $('b-consent').addEventListener('change', () => { $('m-bconsent').textContent = ''; });
       $('b-done').addEventListener('click', async () => {
+        if (!READ) { $('m-bconsent').textContent = T.ct_need; $('ctbox').focus(); return; }
         if (!$('b-consent').checked) { $('m-bconsent').textContent = T.bconsent; $('b-consent').focus(); return; }
         $('b-done').disabled = true;
         try { const r = await fetch('/api/application', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({b: BT})}); const j = await r.json(); setState(j.status || 'payment_reported'); }
@@ -551,6 +727,7 @@ main{overflow-x:clip}
     $('pay-wrap').hidden = false;
     $('s-title').textContent = p.t; $('s-date').textContent = p.d; $('s-total').textContent = fmt(p.price, p.cur);
     refundLine(p);
+    $('pay-form').insertBefore($('ctwrap'), $('f-consent').closest('label')); gate(p);
     CARD();
   }
   function CARD() {
@@ -587,7 +764,7 @@ main{overflow-x:clip}
       if (!m || +m[1] < 1 || +m[1] > 12) errs.exp = T.err.exp;
       else { const now = new Date(), y = 2000 + +m[2]; if (y < now.getFullYear() || (y === now.getFullYear() && +m[1] < now.getMonth() + 1)) errs.exp = T.err.expired; }
       if (!/^\d{3,4}$/.test(v.cvv)) errs.cvv = T.err.cvv;
-      if (!$('f-consent').checked) errs.consent = T.err.consent;
+      if (!READ) errs.consent = T.ct_need; else if (!$('f-consent').checked) errs.consent = T.err.consent;
       ['name','email','phone','holder','cardno','exp','cvv','consent'].forEach(k => setErr(k, errs[k]));
       const first = Object.keys(errs)[0];
       if (first) { ($(fields[first]) || $('f-consent')).focus(); return; }
