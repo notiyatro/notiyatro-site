@@ -43,8 +43,8 @@ T=[
 ('<span>uluslararası kamp</span>','<span>international camps</span>'),
 
 ('2026–2027 sezonu','2026–2027 season'),
-('Uluslararası eğitmenlerle kısa yoğun atölyeler ve kamplar. Kontenjanlar sınırlı; çocuk ve yetişkin grupları ayrı açılabilir.','Short, intensive workshops and camps with international tutors. Places are limited; children’s and adult groups may run separately.'),
-('Tüm duyurular için kanala katıl','Join our channel for announcements'),
+('Dünyanın önde gelen drama okullarından ve sahnelerinden eğitmenlerle kısa, yoğun atölyeler ve kamplar. Her program sınırlı kontenjanla açılır; gençler ve yetişkinler için ayrı gruplar oluşturulabilir.','Short, intensive workshops and camps with tutors from the world’s leading drama schools and stages. Every programme opens with limited places; separate groups may be formed for young people and adults.'),
+('>WhatsApp kanalına katıl<','>Join our WhatsApp channel<'),
 ('Bu programlar International Stage Lab. tarafından, NO Tiyatro ve Vajra Theatre iş birliğiyle, ilgili okul ve sanatçıların eğitmenleriyle düzenlenir. Uluslararası atölyelerde başlangıca 45 gün, kamplarda 60 gün kala yapılan iptallerde iade yapılmaz; ayrıntılar kayıt sözleşmesindedir.',
  'These programmes are run by International Stage Lab., a collaboration between NO Tiyatro and Vajra Theatre, with tutors from the schools and artists named. Cancellations made less than 45 days before a workshop or 60 days before a camp are not refunded; full terms are in the registration contract.'),
 ('Bütün sezon tek bilet.','One ticket for the whole season.'),
