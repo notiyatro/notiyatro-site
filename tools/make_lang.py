@@ -22,6 +22,19 @@ def tables():
             for i, lg in enumerate(('de', 'ru')): out.setdefault(lg, ({}, {}))[0][k] = v[i]
         for k, v in getattr(m, 'SEG', {}).items():
             for i, lg in enumerate(('de', 'ru')): out.setdefault(lg, ({}, {}))[1][k] = v[i]
+    keys = json.load(open(f'{I18N}/keys.json'))
+    longk = list(load('tx_b').T.keys())
+    Q4 = ('fr', 'es', 'it', 'el')
+    for n in ('tx_q1', 'tx_q2'):
+        m = load(n)
+        for i, v in m.Q.items():
+            for j, lg in enumerate(Q4): out.setdefault(lg, ({}, {}))[0][keys[i]] = v[j]
+        for k, v in getattr(m, 'SEGQ', {}).items():
+            for j, lg in enumerate(Q4): out.setdefault(lg, ({}, {}))[1][k] = v[j]
+    m = load('tx_q3')
+    if m:
+        for i, v in m.L.items():
+            for j, lg in enumerate(Q4): out.setdefault(lg, ({}, {}))[0][longk[i]] = v[j]
     for lg in ('fr', 'es', 'it', 'el', 'de', 'ru'):
         m = load('tx_' + lg)
         if not m: continue
