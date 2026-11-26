@@ -1,5 +1,6 @@
 # New strings added after the first translation pass: EN -> {lang: text}.
 X = {
+'Productions': {'de': 'Produktionen', 'ru': 'Постановки', 'fr': 'Productions', 'es': 'Producciones', 'it': 'Produzioni', 'el': 'Παραγωγές'},
 'See you on stage': {'de': 'Wir sehen uns auf der Bühne', 'ru': 'Встретимся на сцене', 'fr': 'Rendez-vous sur scène', 'es': 'Nos vemos en el escenario', 'it': 'Ci vediamo in scena', 'el': 'Τα λέμε στη σκηνή'},
 'Follow us for workshops, camps and new announcements.': {'de': 'Folgen Sie uns für Workshops, Camps und neue Ankündigungen.', 'ru': 'Следите за нами, чтобы не пропустить мастер-классы, лагеря и новые анонсы.', 'fr': 'Suivez-nous pour les ateliers, les stages et les nouvelles annonces.', 'es': 'Síguenos para estar al día de talleres, campamentos y novedades.', 'it': 'Seguici per workshop, campus e nuovi annunci.', 'el': 'Ακολουθήστε μας για εργαστήρια, κατασκηνώσεις και νέες ανακοινώσεις.'},
 'Explore camps': {'de': 'Camps entdecken', 'ru': 'Смотреть лагеря', 'fr': 'Découvrir les stages', 'es': 'Ver los campamentos', 'it': 'Scopri i campus', 'el': 'Δείτε τις κατασκηνώσεις'},
