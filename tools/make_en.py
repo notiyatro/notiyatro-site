@@ -13,7 +13,7 @@ T=[
 ('<a href="atolyeler/">Atölyeler</a>','<a href="workshops/">Workshops</a>'),
 ('<a href="kamplar/">Kamplar</a>','<a href="kamplar/">Camps</a>'),
 ('>Tüm atölyeler: gelecek ve geçmiş<','>All workshops: upcoming and past<'),
-('<a href="#danismanlik">Yurt dışı eğitim</a>','<a href="#danismanlik">Study abroad</a>'),
+('<a href="#danismanlik">Yurt Dışı Eğitim</a>','<a href="#danismanlik">Study abroad</a>'),
 ('<a href="#sertifika">Sertifika doğrulama</a>','<a href="#sertifika">Certificate check</a>'),
 ('<a href="#iletisim">İletişim</a>','<a href="#iletisim">Contact</a>'),
 ('>Menü</button>','>Menu</button>'),
