@@ -38,7 +38,9 @@ def contract(kind):
 <h2>4. Ücret ve iade koşulları</h2>
 <p>4.1. Katılımcının kendi isteğiyle kayıt iptalinde bulunması halinde;</p>
 <ul><li>Etkinlik başlangıç tarihinden {days} gün veya daha önce yapılan iptallerde, ödenmiş katılım bedelinin tamamı iade edilir.</li>
-<li>Etkinlik başlangıç tarihine {days} günden daha az süre kala yapılan iptallerde ücret iadesi yapılmaz.</li></ul>
+<li>Etkinlik başlangıç tarihine {days} günden daha az süre kala yapılan iptallerde ücret iadesi yapılmaz.</li>
+<li>Etkinlik başlangıç tarihine {days} günden daha az süre kala kayıt yaptıran katılımcı için, kaydın kesinleştiği andan itibaren ücret iadesi hakkı doğmaz. Katılımcı, bu süre içinde kayıt yaptırdığını, iade yapılmayacağı konusunda ödeme öncesinde açıkça bilgilendirildiğini ve kaydını bu koşulu bilerek ve kabul ederek tamamladığını kabul, beyan ve taahhüt eder.</li></ul>
+<p>4.1.1. Katılım bedelini ödeyerek kaydını tamamlayan katılımcı, işbu maddede yer alan iptal ve iade koşullarının tamamını okuduğunu, anladığını ve kabul ettiğini beyan eder; kaydın tamamlanması, bu koşulların kabulü anlamına gelir.</p>
 <p>4.2. Organizasyon, tamamen kendi takdirine bağlı olarak katılımcıya kredi tanımlayabilir, kayıt hakkını erteleyebilir veya başka bir etkinlikte kullanım imkanı sunabilir.</p>
 <p>4.3. Katılımcının hastalık, kaza, aile bireyine refakat zorunluluğu, seyahat engeli veya kendi şahsından kaynaklanan diğer kişisel nedenlerle etkinliğe katılamaması ya da etkinliği yarıda bırakması halinde ücret iadesi talep edilemez. Organizasyon, tamamen kendi takdirine bağlı olarak katılımcıya başka bir etkinlikte kullanılmak üzere kredi tanımlayabilir veya kayıt hakkını erteleyebilir.</p>
 <p>4.4. Katılımcının kişisel sebeplerine ilişkin sağlık raporu, belge veya benzeri evrak sunulması Organizasyon açısından ücret iadesi yükümlülüğü doğurmaz.</p>
@@ -74,9 +76,10 @@ PREINFO = f'''
 <p>Hizmet, programın ilan edilen tarihlerinde ve yerinde (ya da Organizasyonun duyurduğu çevrim içi formatta) ifa edilir. Kayıt onayı ve program bilgileri katılımcının verdiği e-posta adresine ve/veya telefon numarasına gönderilir.</p>
 <h2 id="iptal">5. İptal ve iade koşulları</h2>
 <ul>
-<li><b>Atölyeler:</b> Programın başlangıç tarihinden 45 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 45 günden daha az süre kala yapılan iptallerde iade yapılmaz.</li>
-<li><b>Kamplar:</b> Programın başlangıç tarihinden 60 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 60 günden daha az süre kala yapılan iptallerde iade yapılmaz.</li>
+<li><b>Atölyeler:</b> Programın başlangıç tarihinden 45 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 45 günden daha az süre kala yapılan iptallerde iade yapılmaz. Başlangıca 45 günden daha az süre kala yapılan kayıtlarda iade hakkı bulunmamaktadır.</li>
+<li><b>Kamplar:</b> Programın başlangıç tarihinden 60 gün veya daha önce yapılan iptallerde ödenen bedelin tamamı iade edilir; 60 günden daha az süre kala yapılan iptallerde iade yapılmaz. Başlangıca 60 günden daha az süre kala yapılan kayıtlarda iade hakkı bulunmamaktadır.</li>
 </ul>
+<p>Ödemeyi yaparak kaydını tamamlayan katılımcı, iptal ve iade koşullarını okumuş ve kabul etmiş sayılır.</p>
 <p>Ayrıntılar ve Organizasyon kaynaklı değişiklik, erteleme ve iptal halleri için <a href="../atolye-sozlesmesi/">Atölye Katılım Sözleşmesi</a> ve <a href="../kamp-sozlesmesi/">Kamp Katılım Sözleşmesi</a>'ne bakınız. İptal talepleri <a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazılı olarak iletilir. Cayma hakkına ilişkin hususlarda 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri saklıdır.</p>
 <h2>6. Şikâyet ve başvuru</h2>
 <p>Talep ve şikâyetler için <a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazabilirsiniz. Tüketiciler, ilgili mevzuatta belirlenen parasal sınırlar dahilinde Tüketici Hakem Heyetlerine veya Tüketici Mahkemelerine başvurabilir.</p>
