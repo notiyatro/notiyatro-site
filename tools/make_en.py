@@ -21,7 +21,7 @@ T=[
 ('Sahnede, perdede ve hayatın içinde.','On stage, on screen and in life.'),
 ("2017'den bu yana NO Tiyatro, uluslararası drama okullarının ve sanatçılarının eğitmenleriyle atölyeler, kamplar ve yaz okulları düzenliyor; yapım şirketimiz NO Yapım ile tiyatro ve film prodüksiyonlarına imza atıyor. İstanbul'dan Avrupa'ya uzanan sezon programında sana uygun bir yer var.", 'Since 2017, NO Tiyatro has run workshops, camps and summer schools with tutors from international drama schools and artists, and through our production company NO Yapım we produce theatre and film. There is a place for you in a season that reaches from Istanbul to Europe.'),
 ('>Atölyeleri keşfet<','>Explore workshops<'),
-(">WhatsApp'tan yaz<",'>Message us on WhatsApp<'),
+(">Kampları keşfet<",'>Explore camps<'),
 ('aria-label="Atölyelerimizden kareler"','aria-label="Moments from our workshops"'),
 ('alt="Jasmin Vardimon dans atölyesinin katılımcıları siyah sahnede toplu fotoğrafta"','alt="Jasmin Vardimon dance workshop participants in a group photo on a black stage"'),
 ('>Jasmin Vardimon dans atölyesi · Ocak 2026<','>Jasmin Vardimon dance workshop · January 2026<'),
