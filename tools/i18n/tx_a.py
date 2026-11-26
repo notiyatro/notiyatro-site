@@ -105,9 +105,8 @@ T = {
 '28–31 Jan': ('28.–31. Jan.', '28–31 янв.'),
 'Camp': ('Camp', 'Лагерь'),
 'Featured': ('Highlight', 'Рекомендуем'),
-'The camp’s fifth edition: directing with **Max Webster** and acting with **Giles Terera**. Accommodation and three meals included, with Turkish interpretation in every workshop.':
- ('Die fünfte Ausgabe des Camps: Regie mit **Max Webster** und Schauspiel mit **Giles Terera**. Unterkunft und drei Mahlzeiten inklusive, Türkisch-Dolmetschen in jedem Workshop.',
-  'Пятый выпуск лагеря: режиссура с **Максом Вебстером** и актёрское мастерство с **Джайлсом Террерой**. Проживание и трёхразовое питание включены, на каждом занятии — перевод на турецкий.'),
+'Two giants of world theatre, in Türkiye for the first time: directing with **Max Webster**, director of Life of Pi (5 Olivier Awards in the West End, 3 Tony Awards on Broadway), and acting with Olivier Award winner **Giles Terera**, Aaron Burr in Hamilton.':
+ ('Zwei Größen des Welttheaters erstmals in der Türkei: Regie mit **Max Webster**, Regisseur von Life of Pi (5 Olivier Awards im West End, 3 Tony Awards am Broadway), und Schauspiel mit Olivier-Preisträger **Giles Terera**, dem Aaron Burr aus Hamilton.', 'Две звезды мирового театра впервые в Турции: режиссура с **Максом Вебстером**, постановщиком «Жизни Пи» (5 премий Olivier в Вест-Энде, 3 премии Tony на Бродвее), и актёрское мастерство с лауреатом премии Olivier **Джайлсом Террерой** — Аароном Бёрром из «Гамильтона».'),
 'Max Webster (directing), Giles Terera (acting)': ('Max Webster (Regie), Giles Terera (Schauspiel)', 'Макс Вебстер (режиссура), Джайлс Террера (актёрское мастерство)'),
 '28–31 January 2027 (4 days)': ('28.–31. Januar 2027 (4 Tage)', '28–31 января 2027 (4 дня)'),
 'Narköy Ecological Hotel, Kandıra / Kocaeli, Türkiye': ('Narköy Ökohotel, Kandıra / Kocaeli, Türkei', 'Эко-отель Narköy, Кандыра / Коджаэли, Турция'),
