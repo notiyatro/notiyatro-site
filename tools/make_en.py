@@ -63,7 +63,6 @@ T=[
 ('ISL programlarına git','See ISL programmes'),
 ("Oyunlarımızı gör","See our plays"),
 ('<li>Tiyatro</li><li>Film</li><li>Organizasyon</li><li>Marka iş birlikleri</li>','<li>Theatre</li><li>Film</li><li>Events</li><li>Brand partnerships</li>'),
-('>NO Yapım oyunları<','>NO Yapım plays<'),
 ('>Prodüksiyonlarımız<','>Our productions<'),
 ('NO çatısı altındaki yapım şirketimiz NO Yapım, tiyatro ve film prodüksiyonları üretir. Yapımcısı ya da yürütücü yapımcısı olduğu oyunlar:', 'NO Yapım, our production company under the NO umbrella, creates theatre and film productions. Plays it has produced or executive-produced:'),
 ('<dt>Yazar</dt>','<dt>Writer</dt>'),
