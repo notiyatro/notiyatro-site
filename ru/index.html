@@ -379,6 +379,15 @@ main{overflow-x:clip}
 .mvalid{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;margin:8px 0 0;font-weight:800}
 @media(max-width:900px){.memb .mtop{grid-template-columns:1fr}.mdeck{aspect-ratio:1/1.05;max-width:440px}.mslogan{font-size:26px;right:6%}.mstack{inset:30% 2% 0 2%}.mstack img{width:38%}.mcards{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
 @media(prefers-reduced-motion:reduce){.mstack img,.mslogan,.mtap{animation:none!important}.mcard{animation:none;opacity:1;transform:none}}
+
+.vcard{margin-top:18px;background:#fff;border:2px solid #000;border-radius:18px;padding:20px 22px;animation:min .5s ease forwards}
+.vok{margin:0;display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;color:#16632b}
+.vok span{width:28px;height:28px;border-radius:50%;background:#16632b;color:#fff;display:grid;place-items:center;font-size:16px}
+.vcode{margin:6px 0 14px;font-weight:800;letter-spacing:.04em;color:#555;font-size:14px}
+.vcard dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+.vcard dt{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#777}
+.vcard dd{margin:2px 0 0;font-weight:700;font-size:15px}
+@media(max-width:520px){.vcard dl{grid-template-columns:1fr}}
 </style>
 <style id="langs-css">.langs{position:relative}.langs summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:44px;min-height:42px;padding:0 10px;font-weight:800;font-size:14px;border-radius:999px}.langs summary::-webkit-details-marker{display:none}.langs summary::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}.langs summary:hover,.langs[open] summary{background:rgba(0,0,0,.06)}.langm{position:absolute;right:0;top:calc(100% + 6px);z-index:80;background:#fff;color:#000;border:1.5px solid #000;border-radius:14px;padding:6px;display:grid;min-width:150px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.langm a{padding:9px 12px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;color:inherit;white-space:nowrap}.langm a:hover{background:#F6F4EA}.langm a[aria-current]{background:#000;color:#fff}@media(max-width:600px){.langm{position:fixed;left:12px;right:12px;top:66px;grid-template-columns:1fr 1fr}}@media(max-width:420px){.langs summary{min-width:36px;padding:0 6px;font-size:12px}}</style><style id="wa-css">.wa-fab{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font:800 15px/1 Urbanist,system-ui,sans-serif;padding:0 20px 0 14px;height:56px;border-radius:999px;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .2s,box-shadow .2s}.wa-fab:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.28)}.wa-fab svg{width:30px;height:30px;flex:0 0 auto}.wa-fab .wa-dot{position:absolute;top:6px;left:40px;width:11px;height:11px;border-radius:50%;background:#b8ffcf;border:2px solid #25D366;animation:wap 1.8s ease-out infinite}@keyframes wap{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}@media(max-width:700px){.wa-fab{padding:0;width:56px;justify-content:center;right:14px;bottom:14px}.wa-fab span.wa-l{display:none}.wa-fab .wa-dot{left:36px}}@media(prefers-reduced-motion:reduce){.wa-fab .wa-dot{animation:none}}@media print{.wa-fab{display:none}}.wa-fab.wa-off{opacity:0;pointer-events:none;transform:translateY(12px)}.wa-fab{transition:opacity .25s,transform .25s,box-shadow .2s}</style></head>
 <body>
@@ -565,10 +574,11 @@ main{overflow-x:clip}
     <div>
       <form class="verify" id="verify" novalidate>
         <label for="code" style="position:absolute;left:-9999px">Код сертификата</label>
-        <input id="code" name="code" placeholder="напр. ISL-2026-GLB-0142" autocomplete="off">
+        <input id="code" name="code" placeholder="ISL-GLB-IST-2026-0000" autocomplete="off">
         <button class="btn solid" type="submit">Проверить</button>
       </form>
       <p id="vmsg" aria-live="polite"></p>
+      <div id="vres" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -730,13 +740,21 @@ main{overflow-x:clip}
     vlogo.closest('.pmark').addEventListener('click',replay);
   }
 
-  const msg = document.getElementById('vmsg');
-  document.getElementById('verify').addEventListener('submit', e => {
+  const msg = document.getElementById('vmsg'), vres = document.getElementById('vres');
+  const VT = {ok:'Действительный сертификат', name:'Имя и фамилия', prog:'Программа', focus:'Направление', group:'Группа', dates:'Даты', hours:'Всего часов', issued:'Дата выдачи', by:'Выдан', no:'Сертификат с таким кодом не найден. Проверьте код и попробуйте ещё раз.', wait:'Проверяем…', err:'Проверка сейчас недоступна. Попробуйте позже.', empty:'Введите код, указанный на сертификате.'};
+  document.getElementById('verify').addEventListener('submit', async e => {
     e.preventDefault();
     const v = document.getElementById('code').value.trim();
-    msg.textContent = v
-      ? 'Онлайн-проверка скоро заработает. Пока что отправьте код на hello@notiyatro.com.'
-      : 'Введите код, указанный на сертификате.';
+    vres.innerHTML = '';
+    if (!v) { msg.textContent = VT.empty; return; }
+    msg.textContent = VT.wait;
+    try {
+      const r = await fetch('/api/cert?code=' + encodeURIComponent(v)); const d = await r.json();
+      if (!d.valid) { msg.textContent = VT.no; return; }
+      msg.textContent = '';
+      const row = (k, val) => `<div><dt>${esc(k)}</dt><dd>${esc(val)}</dd></div>`;
+      vres.innerHTML = `<div class="vcard"><p class="vok"><span aria-hidden="true">✓</span>${esc(VT.ok)}</p><p class="vcode">${esc(d.code)}</p><dl>${row(VT.name, d.name)}${row(VT.prog, d.programme)}${row(VT.focus, d.focus)}${row(VT.group, d.group)}${row(VT.dates, d.dates)}${row(VT.hours, d.hours)}${row(VT.issued, d.issued)}${row(VT.by, d.by)}</dl></div>`;
+    } catch (_) { msg.textContent = VT.err; }
   });
 }
 </script>

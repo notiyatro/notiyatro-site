@@ -377,6 +377,15 @@ main{overflow-x:clip}
 @media(max-width:900px){.memb .mtop{grid-template-columns:1fr}.mdeck{aspect-ratio:1/1.05;max-width:440px}.mslogan{font-size:26px;right:6%}.mstack{inset:30% 2% 0 2%}.mstack img{width:38%}.mcards{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
 @media(prefers-reduced-motion:reduce){.mstack img,.mslogan,.mtap{animation:none!important}.mcard{animation:none;opacity:1;transform:none}}
 
+.vcard{margin-top:18px;background:#fff;border:2px solid #000;border-radius:18px;padding:20px 22px;animation:min .5s ease forwards}
+.vok{margin:0;display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;color:#16632b}
+.vok span{width:28px;height:28px;border-radius:50%;background:#16632b;color:#fff;display:grid;place-items:center;font-size:16px}
+.vcode{margin:6px 0 14px;font-weight:800;letter-spacing:.04em;color:#555;font-size:14px}
+.vcard dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+.vcard dt{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#777}
+.vcard dd{margin:2px 0 0;font-weight:700;font-size:15px}
+@media(max-width:520px){.vcard dl{grid-template-columns:1fr}}
+
 .pay-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:48px;align-items:start;margin-top:34px}
 .pay-sum{position:sticky;top:96px;background:#F6F4EA;border-radius:22px;padding:28px}
 .pay-sum .lbl{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6b6b6b;margin:0 0 6px}
@@ -477,7 +486,7 @@ main{overflow-x:clip}
       <p class="pay-alert" id="alert" role="alert" hidden></p>
       <div class="fgrid">
         <div class="fld full"><span class="lbl2" id="l-prog">Programme, für die Sie sich bewerben</span><p class="hint">Sie können mehrere auswählen; jede Bewerbung wird einzeln geprüft.</p><div class="plist2" id="a-program" role="group" aria-labelledby="l-prog" tabindex="-1"><label class="pchk"><input type="checkbox" name="prog" value="pfs-2027-01"><span><b>Prague Film School — Acting for Film</b><small>22.–24. Januar 2027 · DasDas Ataşehir, Istanbul</small></span></label><label class="pchk"><input type="checkbox" name="prog" value="isc-winter-2027"><span><b>International Stage Camp (ISC) — Winter Edition</b><small>28.–31. Januar 2027 · Narköy Ökohotel, Kandıra</small></span></label><label class="pchk"><input type="checkbox" name="prog" value="central-2027-02"><span><b>Royal Central School of Speech and Drama — Audition Bootcamp</b><small>5.–7. Februar 2027 · Istanbul</small></span></label><label class="pchk"><input type="checkbox" name="prog" value="frantic-2027-03"><span><b>Frantic Assembly — Scott Graham</b><small>20.–21. März 2027 · Istanbul</small></span></label><label class="pchk"><input type="checkbox" name="prog" value="isc-summer-2027"><span><b>International Stage Camp (ISC) — Summer Edition</b><small>22.–25. Juli 2027 · Çeşmeköy</small></span></label></div><div class="msg" id="m-program"></div></div>
-        <div class="fld full"><label for="a-name">Vor- und Nachname</label><input id="a-name" autocomplete="name"><div class="msg" id="m-name"></div></div>
+        <div class="fld full"><label for="a-name">Vollständiger Name</label><input id="a-name" autocomplete="name"><div class="msg" id="m-name"></div></div>
         <div class="fld half-m"><label for="a-birth">Geburtsdatum</label><input id="a-birth" type="date" min="1940-01-01" max="2015-12-31"><div class="msg" id="m-birth"></div></div>
         <div class="fld half-m"><label for="a-city">Wohnort</label><input id="a-city" autocomplete="address-level2"><div class="msg" id="m-city"></div></div>
         <div class="fld half-m"><label for="a-email">E-Mail</label><input id="a-email" type="email" autocomplete="email" inputmode="email"><div class="msg" id="m-email"></div></div>
