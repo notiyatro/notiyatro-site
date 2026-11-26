@@ -124,6 +124,7 @@ for a,b in T:
 # paths
 h=h.replace('src="img/','src="../img/')
 h=h.replace('href="yasal/','href="../yasal/')
+h=h.replace('data-full="img/','data-full="../img/')
 h=h.replace('href="atolyeler/"','href="workshops/"')
 h=h.replace('href="kamplar/"','href="camps/"')
 # leftover Turkish check (outside address & names)

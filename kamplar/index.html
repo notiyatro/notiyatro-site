@@ -284,12 +284,20 @@ main{overflow-x:clip}
 .season .iabout li{display:list-item;margin:0 0 6px;padding:0;border:0;line-height:1.55}
 .season .ifacts{align-content:start}
 .season .ifacts{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px;grid-column:1/-1}
-.season .iabout+.ifacts{grid-column:auto;grid-template-columns:1fr}
+.season .iabout+.iside .ifacts{grid-template-columns:1fr}
+.season .iside{grid-column:1/-1}.season .iabout+.iside{grid-column:auto}
+.season .igal{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
+.season .igimg{padding:0;border:0;background:none;cursor:zoom-in;border-radius:10px;overflow:hidden;display:block}
+.season .igimg img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .3s}
+.season .igimg:hover img{transform:scale(1.04)}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.88);display:grid;place-items:center;z-index:100;padding:4vw;cursor:zoom-out}
+.lbx img{max-width:100%;max-height:88vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lbx[hidden]{display:none}
 .season .ifacts dt{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#6b6b6b;margin-bottom:3px}
 .season .ifacts dd{margin:0;font-weight:600}
 .season .isoon{grid-column:1/-1;margin:0;font-size:14px;color:#555}
-@media(max-width:700px){.season .acts{justify-content:flex-start}.season .info{grid-template-columns:1fr;padding:18px}.season .ifacts{grid-template-columns:1fr 1fr}.season .iabout+.ifacts{grid-template-columns:1fr 1fr}}
-@media(max-width:380px){.season .ifacts,.season .iabout+.ifacts{grid-template-columns:1fr}}
+@media(max-width:700px){.season .acts{justify-content:flex-start}.season .info{grid-template-columns:1fr;padding:18px}.season .ifacts{grid-template-columns:1fr 1fr}.season .iabout+.iside .ifacts{grid-template-columns:1fr 1fr}}
+@media(max-width:380px){.season .ifacts,.season .iabout+.iside .ifacts{grid-template-columns:1fr}}
 @media(min-width:1101px){.foot{grid-template-columns:1.3fr 1fr 1fr 1.15fr 1.15fr;gap:28px}}
 @media(min-width:561px) and (max-width:1100px){.foot{grid-template-columns:1fr 1fr 1fr}}
 
