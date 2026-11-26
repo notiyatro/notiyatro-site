@@ -1,0 +1,24 @@
+# Site dosyaları dist/ klasörüne kopyalanıp yayınlanır; fonksiyon kaynakları, data/ ve node_modules yayına çıkmaz.
+[build]
+  command = "rm -rf dist && mkdir dist && cp -r index.html en atolyeler kamplar basvuru odeme yonetim yasal img dist/"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Yönetim paneli ve ödeme sonuçları arama motorlarında görünmesin
+[[headers]]
+  for = "/yonetim/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/odeme/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+[[headers]]
+  for = "/en/payment/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

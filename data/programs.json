@@ -1,0 +1,104 @@
+{
+ "_not": "Ödeme alınacak programlar. price boş (null) ise sitede Öde butonu çıkmaz, kayıt WhatsApp'tan devam eder. price TL ise 4500 gibi yaz (kuruş yok). currency: TRY veya EUR. maxInstallment: 1 = sadece tek çekim. type: atolye (iade süresi 45 gün) ya da kamp (60 gün). start: programın ilk günü (YYYY-AA-GG). priceText: sitede ve IBAN sayfasında gösterilen fiyat metni. open: false yapılırsa başvuru kapanır.",
+ "programs": [
+  {
+   "id": "pfs-2027-01",
+   "title": {
+    "tr": "Prague Film School — Acting for Film",
+    "en": "Prague Film School — Acting for Film"
+   },
+   "date": {
+    "tr": "22–24 Ocak 2027 · DasDas Ataşehir, İstanbul",
+    "en": "22–24 January 2027 · DasDas Ataşehir, Istanbul"
+   },
+   "price": null,
+   "currency": "TRY",
+   "maxInstallment": 1,
+   "type": "atolye",
+   "start": "2027-01-22",
+   "priceText": {
+    "tr": "22.000 TL + KDV",
+    "en": "22,000 TL + VAT"
+   },
+   "open": true
+  },
+  {
+   "id": "isc-winter-2027",
+   "title": {
+    "tr": "International Stage Camp — Winter Edition",
+    "en": "International Stage Camp — Winter Edition"
+   },
+   "date": {
+    "tr": "28–31 Ocak 2027 · Narköy Ekolojik Otel, Kandıra",
+    "en": "28–31 January 2027 · Narköy Ecological Hotel, Kandıra"
+   },
+   "price": null,
+   "currency": "TRY",
+   "maxInstallment": 1,
+   "type": "kamp",
+   "start": "2027-01-28",
+   "priceText": {
+    "tr": "32.000 TL + KDV",
+    "en": "32,000 TL + VAT"
+   },
+   "open": true
+  },
+  {
+   "id": "central-2027-02",
+   "title": {
+    "tr": "Royal Central School of Speech and Drama — Audition Bootcamp",
+    "en": "Royal Central School of Speech and Drama — Audition Bootcamp"
+   },
+   "date": {
+    "tr": "5–7 Şubat 2027 · İstanbul",
+    "en": "5–7 February 2027 · Istanbul"
+   },
+   "price": null,
+   "currency": "TRY",
+   "maxInstallment": 1,
+   "type": "atolye",
+   "start": "2027-02-05",
+   "priceText": {
+    "tr": "22.000 TL + KDV",
+    "en": "22,000 TL + VAT"
+   },
+   "open": true
+  },
+  {
+   "id": "frantic-2027-03",
+   "title": {
+    "tr": "Frantic Assembly — Scott Graham",
+    "en": "Frantic Assembly — Scott Graham"
+   },
+   "date": {
+    "tr": "20–21 Mart 2027 · İstanbul",
+    "en": "20–21 March 2027 · Istanbul"
+   },
+   "price": null,
+   "currency": "TRY",
+   "maxInstallment": 1,
+   "type": "atolye",
+   "start": "2027-03-20",
+   "priceText": null,
+   "open": true
+  },
+  {
+   "id": "isc-summer-2027",
+   "title": {
+    "tr": "International Stage Camp — Summer Edition",
+    "en": "International Stage Camp — Summer Edition"
+   },
+   "date": {
+    "tr": "22–25 Temmuz 2027 · Çeşmeköy",
+    "en": "22–25 July 2027 · Çeşmeköy"
+   },
+   "price": null,
+   "currency": "TRY",
+   "maxInstallment": 1,
+   "type": "kamp",
+   "start": "2027-07-22",
+   "priceText": null,
+   "open": true
+  }
+ ]
+}
