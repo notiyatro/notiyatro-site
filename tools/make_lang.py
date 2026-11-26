@@ -35,6 +35,9 @@ def tables():
     if m:
         for i, v in m.L.items():
             for j, lg in enumerate(Q4): out.setdefault(lg, ({}, {}))[0][longk[i]] = v[j]
+    mx = load('tx_x')
+    for k, v in (getattr(mx, 'X', {}) if mx else {}).items():
+        for lg, t in v.items(): out.setdefault(lg, ({}, {}))[0][k] = t
     for lg in ('fr', 'es', 'it', 'el', 'de', 'ru'):
         m = load('tx_' + lg)
         if not m: continue
