@@ -341,7 +341,7 @@ main{overflow-x:clip}
 .res .btn{margin:10px 10px 0 0}
 @media(max-width:900px){.pay-wrap{grid-template-columns:1fr;gap:28px}.pay-sum{position:static}}
 @media(max-width:480px){.fgrid{grid-template-columns:1fr 1fr}.fgrid .half-m{grid-column:1/-1}.pay-sum{padding:20px}}
-.apform{max-width:820px}.hint{font-size:13px;color:#666;margin:-4px 0 10px}.plist2{display:grid;gap:8px}.pchk{display:flex;gap:12px;align-items:flex-start;border:1.5px solid #ccc;border-radius:12px;padding:12px 14px;cursor:pointer}.pchk:has(input:checked){border-color:#000;background:#F6F4EA}.pchk input{width:20px;height:20px;margin-top:2px;accent-color:#000;flex:0 0 20px}.pchk span{display:grid;gap:2px}.pchk small{color:#666;font-weight:600}.fld .pchk{display:flex;font-size:15px;font-weight:600;margin:0}.fld .pchk input,.fld .radios input{width:20px;height:20px;min-height:0;padding:0;border-radius:4px;flex:0 0 20px}.fld .pchk b{font-weight:800}.aplist{margin:0 0 20px;padding-left:20px;line-height:1.8}.apform textarea{width:100%;box-sizing:border-box;border:1.5px solid #bdbdbd;border-radius:12px;padding:12px 14px;font:600 16px Urbanist,system-ui,sans-serif;resize:vertical}.apform textarea:focus{outline:none;border-color:#000;box-shadow:0 0 0 3px rgba(228,69,47,.25)}.lbl2{display:block;font-size:14px;font-weight:800;margin-bottom:8px}.radios{display:flex;gap:22px}.radios label{display:flex;gap:8px;align-items:center;font-weight:700;cursor:pointer}.radios input{width:20px;height:20px;accent-color:#000}.fld small{font-weight:600;color:#777}.apform .paybtn{margin-top:6px}</style>
+.apform{max-width:820px}.hint{font-size:13px;color:#666;margin:-4px 0 10px}.cvbox{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.fld label.cvbtn{display:inline-flex;align-items:center;margin:0;cursor:pointer;min-height:44px}.cvname{font-weight:600;color:#444;overflow-wrap:anywhere}.fld input.sr{position:absolute;width:1px;height:1px;min-height:0;padding:0;border:0;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}.cvbox:focus-within .cvbtn{outline:3px solid var(--red);outline-offset:2px}.copy{border:1.5px solid #000;background:#fff;border-radius:999px;padding:4px 12px;font:800 12px Urbanist,system-ui,sans-serif;cursor:pointer}.plist2{display:grid;gap:8px}.pchk{display:flex;gap:12px;align-items:flex-start;border:1.5px solid #ccc;border-radius:12px;padding:12px 14px;cursor:pointer}.pchk:has(input:checked){border-color:#000;background:#F6F4EA}.pchk input{width:20px;height:20px;margin-top:2px;accent-color:#000;flex:0 0 20px}.pchk span{display:grid;gap:2px}.pchk small{color:#666;font-weight:600}.fld .pchk{display:flex;font-size:15px;font-weight:600;margin:0}.fld .pchk input,.fld .radios input{width:20px;height:20px;min-height:0;padding:0;border-radius:4px;flex:0 0 20px}.fld .pchk b{font-weight:800}.aplist{margin:0 0 20px;padding-left:20px;line-height:1.8}.apform textarea{width:100%;box-sizing:border-box;border:1.5px solid #bdbdbd;border-radius:12px;padding:12px 14px;font:600 16px Urbanist,system-ui,sans-serif;resize:vertical}.apform textarea:focus{outline:none;border-color:#000;box-shadow:0 0 0 3px rgba(228,69,47,.25)}.lbl2{display:block;font-size:14px;font-weight:800;margin-bottom:8px}.radios{display:flex;gap:22px}.radios label{display:flex;gap:8px;align-items:center;font-weight:700;cursor:pointer}.radios input{width:20px;height:20px;accent-color:#000}.fld small{font-weight:600;color:#777}.apform .paybtn{margin-top:6px}</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -391,7 +391,8 @@ main{overflow-x:clip}
         <div class="fld half-m"><label for="a-english">Your English level</label><select id="a-english"><option value=""></option><option value="A1">A1 (Beginner)</option><option value="A2">A2 (Elementary)</option><option value="B1">B1 (Intermediate)</option><option value="B2">B2 (Upper intermediate)</option><option value="C1">C1 (Advanced)</option><option value="C2">C2 (Near native)</option></select><div class="msg" id="m-english"></div></div>
         <div class="fld full"><span class="lbl2" id="l-student">Are you currently a student?</span><div class="radios" role="radiogroup" aria-labelledby="l-student"><label><input type="radio" name="student" value="yes"> Yes</label><label><input type="radio" name="student" value="no"> No</label></div><div class="msg" id="m-student"></div></div>
         <div class="fld full"><label for="a-school">School / department you attend or graduated from</label><input id="a-school"><div class="msg" id="m-school"></div></div>
-        <div class="fld full"><label for="a-last">Most recent training or workshop you attended <small>(optional)</small></label><input id="a-last"></div>
+        <div class="fld full"><label for="a-last">Training programmes or workshops you have attended <small>(optional)</small></label><textarea id="a-last" rows="3"></textarea></div>
+        <div class="fld full"><span class="lbl2">CV <small>(optional)</small></span><div class="cvbox"><label class="btn ghost cvbtn" for="a-cv">Choose file</label><input type="file" id="a-cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" class="sr"><span id="cv-name" class="cvname">No file chosen</span><button type="button" id="cv-rm" class="copy" hidden>Remove</button></div><p class="hint" style="margin-top:6px">PDF or Word, up to 4 MB.</p><div class="msg" id="m-cv"></div></div>
         <div class="fld full"><label for="a-why">Why do you want to join this programme?</label><textarea id="a-why" rows="5"></textarea><div class="msg" id="m-why"></div></div>
         <input type="text" id="a-website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
       </div>
@@ -450,7 +451,7 @@ main{overflow-x:clip}
 <script>{const h=document.getElementById('top'),m=document.getElementById('menu');m&&m.addEventListener('click',()=>{const o=h.classList.toggle('open');m.setAttribute('aria-expanded',o)})}</script>
 <script>
 {
-  const X = {"err": {"program": "Please choose at least one programme.", "name": "Please enter your full name.", "birth": "Please select your date of birth.", "email": "Please enter a valid email address.", "phone": "Please enter your phone number.", "city": "Please enter your city.", "english": "Please select your English level.", "student": "Please choose an option.", "school": "Please enter your school or department.", "why": "Tell us in a few sentences why you want to join.", "kvkk": "Please accept the privacy notice to continue.", "gateway": "Something went wrong. Please try again."}, "sending": "Sending…", "ok_h": "We have received your application.", "ok_p": "Thank you, {n}! We will review your application and get back to you by email and WhatsApp soon.", "dup_s": "already applied", "fallback": "The application system cannot be reached right now. You can also apply using this form:", "fallback_btn": "Open the application form", "home": "Home"}, LANG = 'en', GFORM = 'https://docs.google.com/forms/d/14PzXPCxvlBrst-hDBj_JiiL5kZgiGx2zQC-7AHUgRWA/viewform';
+  const X = {"err": {"cv_type": "Please upload a PDF or Word file.", "cv_big": "The file must be 4 MB or smaller.", "cv_fail": "The CV could not be uploaded. Please try again.", "program": "Please choose at least one programme.", "name": "Please enter your full name.", "birth": "Please select your date of birth.", "email": "Please enter a valid email address.", "phone": "Please enter your phone number.", "city": "Please enter your city.", "english": "Please select your English level.", "student": "Please choose an option.", "school": "Please enter your school or department.", "why": "Tell us in a few sentences why you want to join.", "kvkk": "Please accept the privacy notice to continue.", "gateway": "Something went wrong. Please try again."}, "sending": "Sending…", "ok_h": "We have received your application.", "ok_p": "Thank you, {n}! We will review your application and get back to you by email and WhatsApp soon.", "dup_s": "already applied", "fallback": "The application system cannot be reached right now. You can also apply using this form:", "fallback_btn": "Open the application form", "home": "Home", "cv_none": "No file chosen", "cv_up": "Uploading…", "cv_ok": "Uploaded"}, LANG = 'en', GFORM = 'https://docs.google.com/forms/d/14PzXPCxvlBrst-hDBj_JiiL5kZgiGx2zQC-7AHUgRWA/viewform';
   const $ = id => document.getElementById(id);
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const pre = new URLSearchParams(location.search).get('p');
@@ -461,6 +462,20 @@ main{overflow-x:clip}
   Object.entries(F).filter(([k]) => k !== 'program').forEach(([k, id]) => $(id).addEventListener(id === 'a-kvkk' ? 'change' : 'input', () => setErr(k, '')));
   document.querySelectorAll('input[name=prog]').forEach(c => c.addEventListener('change', () => setErr('program', '')));
   document.querySelectorAll('input[name=student]').forEach(r => r.addEventListener('change', () => setErr('student', '')));
+  let CV = null, CVBUSY = null;
+  const cvIn = $('a-cv'), cvName = $('cv-name'), cvRm = $('cv-rm');
+  const cvReset = () => { CV = null; cvIn.value = ''; cvName.textContent = X.cv_none; cvRm.hidden = true; };
+  cvIn.addEventListener('change', () => {
+    const f = cvIn.files[0]; $('m-cv').textContent = ''; if (!f) return cvReset();
+    if (!/\.(pdf|docx?)$/i.test(f.name)) { $('m-cv').textContent = X.err.cv_type; return cvReset(); }
+    if (f.size > 4 * 1024 * 1024) { $('m-cv').textContent = X.err.cv_big; return cvReset(); }
+    cvName.textContent = f.name + ' · ' + X.cv_up; CV = null;
+    CVBUSY = fetch('/api/cv', {method:'POST', headers:{'Content-Type':'application/octet-stream', 'X-File-Name': encodeURIComponent(f.name)}, body: f})
+      .then(async r => { const d = await r.json().catch(() => ({})); if (!r.ok) throw new Error(d.error || 'fail'); CV = {key: d.key, name: f.name}; cvName.textContent = f.name + ' · ' + X.cv_ok; cvRm.hidden = false; })
+      .catch(e => { $('m-cv').textContent = e.message === 'type' ? X.err.cv_type : e.message === 'too_big' ? X.err.cv_big : X.err.cv_fail; cvReset(); })
+      .finally(() => { CVBUSY = null; });
+  });
+  cvRm.addEventListener('click', cvReset);
   const alertBox = m => { $('alert').innerHTML = m; $('alert').hidden = !m; if (m) $('alert').scrollIntoView({block:'center', behavior:'smooth'}); };
   $('apform').addEventListener('submit', async e => {
     e.preventDefault(); alertBox('');
@@ -484,6 +499,8 @@ main{overflow-x:clip}
     if (first) { (first === 'student' ? document.querySelector('input[name=student]') : first === 'program' ? document.querySelector('input[name=prog]') : $(F[first])).focus(); return; }
     const btn = $('a-send'), label = btn.textContent; btn.disabled = true; btn.textContent = X.sending;
     try {
+      if (CVBUSY) await CVBUSY;
+      if (CV) { v.cv = CV.key; v.cvName = CV.name; }
       const r = await fetch('/api/apply', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({...v, lang:LANG, kvkk:true, marketing:$('a-mkt').checked, website:$('a-website').value})});
       if (r.status === 404 || r.status >= 500) throw new TypeError('down');
       const d = await r.json();

@@ -365,25 +365,25 @@ A = {
  'tr': dict(title='Başvuru — NO Tiyatro', kick='International Stage Lab.', h1='Başvuru formu',
    lede='Başvurunu inceleyip en kısa sürede sana dönüş yapacağız. Başvurun onaylanınca ödeme linkin e-posta ve WhatsApp ile gelecek.',
    prog='Başvurmak istediğin programlar', prog_hint='Birden fazla program seçebilirsin; her biri ayrı değerlendirilir.', name='Ad soyad', birth='Doğum tarihi', email='E-posta', phone='Telefon (WhatsApp)', ig='Instagram kullanıcı adı', opt='isteğe bağlı', city='Yaşadığın şehir',
-   eng='İngilizce seviyen', student='Aktif öğrenci misin?', yes='Evet', no='Hayır', school='Okuduğun ya da mezun olduğun okul / bölüm', last='Son katıldığın eğitim ya da atölye', why='Bu programa neden katılmak istiyorsun?',
+   eng='İngilizce seviyen', student='Aktif öğrenci misin?', yes='Evet', no='Hayır', school='Okuduğun ya da mezun olduğun okul / bölüm', last='Katıldığın eğitim programları veya atölyeler', cv='CV', cv_hint='PDF ya da Word, en fazla 4 MB.', cv_btn='Dosya seç', cv_none='Dosya seçilmedi', cv_up='Yükleniyor…', cv_ok='Yüklendi', cv_rm='Kaldır', why='Bu programa neden katılmak istiyorsun?',
    kvkk='Kişisel verilerimin <a href="{r}yasal/kvkk/" target="_blank">KVKK Aydınlatma Metni</a> kapsamında başvurumun değerlendirilmesi için işlenmesini kabul ediyorum.',
    mkt='<b>İsteğe bağlı:</b> Gelecekteki atölye ve kamplar hakkında bilgilendirme almak istiyorum.', send='Başvuruyu gönder', sending='Gönderiliyor…',
    ok_h='Başvurun bize ulaştı.', ok_p='Teşekkürler {n}! Başvurunu inceleyip en kısa sürede e-posta ve WhatsApp üzerinden dönüş yapacağız.', dup_s='daha önce başvurmuşsun',
    dup_p='Bu programa daha önce başvurmuşsun (başvuru no: {id}). Sonuç e-posta ve WhatsApp ile gelecek.',
    fallback='Başvuru sistemine şu an ulaşılamıyor. Başvurunu bu formdan da yapabilirsin:', fallback_btn='Başvuru formunu aç', home='Ana sayfa',
    levels=['A1 (Başlangıç)','A2 (Temel)','B1 (Orta)','B2 (Orta üstü)','C1 (İleri)','C2 (Anadile yakın)'],
-   err=dict(program='En az bir program seç.', name='Adını ve soyadını yaz.', birth='Doğum tarihini seç.', email='Geçerli bir e-posta adresi yaz.', phone='Telefon numaranı yaz.', city='Şehrini yaz.', english='İngilizce seviyeni seç.', student='Bir seçenek işaretle.', school='Okulunu ya da bölümünü yaz.', why='Birkaç cümleyle neden katılmak istediğini anlat.', kvkk='Devam etmek için KVKK onayı gerekiyor.', gateway='Bir sorun oluştu. Lütfen tekrar dene.')),
+   err=dict(cv_type='Lütfen PDF ya da Word dosyası yükle.', cv_big='Dosya 4 MB’tan büyük olamaz.', cv_fail='CV yüklenemedi, tekrar dene.', program='En az bir program seç.', name='Adını ve soyadını yaz.', birth='Doğum tarihini seç.', email='Geçerli bir e-posta adresi yaz.', phone='Telefon numaranı yaz.', city='Şehrini yaz.', english='İngilizce seviyeni seç.', student='Bir seçenek işaretle.', school='Okulunu ya da bölümünü yaz.', why='Birkaç cümleyle neden katılmak istediğini anlat.', kvkk='Devam etmek için KVKK onayı gerekiyor.', gateway='Bir sorun oluştu. Lütfen tekrar dene.')),
  'en': dict(title='Application — NO Tiyatro', kick='International Stage Lab.', h1='Application form',
    lede='We will review your application and get back to you as soon as possible. Once approved, your payment link will arrive by email and WhatsApp.',
    prog='Programmes you are applying for', prog_hint='You can choose more than one; each is reviewed separately.', name='Full name', birth='Date of birth', email='Email', phone='Phone (WhatsApp)', ig='Instagram username', opt='optional', city='City you live in',
-   eng='Your English level', student='Are you currently a student?', yes='Yes', no='No', school='School / department you attend or graduated from', last='Most recent training or workshop you attended', why='Why do you want to join this programme?',
+   eng='Your English level', student='Are you currently a student?', yes='Yes', no='No', school='School / department you attend or graduated from', last='Training programmes or workshops you have attended', cv='CV', cv_hint='PDF or Word, up to 4 MB.', cv_btn='Choose file', cv_none='No file chosen', cv_up='Uploading…', cv_ok='Uploaded', cv_rm='Remove', why='Why do you want to join this programme?',
    kvkk='I agree to my personal data being processed to assess my application, as described in the <a href="{r}yasal/kvkk/" target="_blank">Privacy Notice (KVKK)</a> <small>(in Turkish)</small>.',
    mkt='<b>Optional:</b> I would like to receive information about future workshops and camps.', send='Submit application', sending='Sending…',
    ok_h='We have received your application.', ok_p='Thank you, {n}! We will review your application and get back to you by email and WhatsApp soon.', dup_s='already applied',
    dup_p='You have already applied for this programme (application no: {id}). We will let you know the outcome by email and WhatsApp.',
    fallback='The application system cannot be reached right now. You can also apply using this form:', fallback_btn='Open the application form', home='Home',
    levels=['A1 (Beginner)','A2 (Elementary)','B1 (Intermediate)','B2 (Upper intermediate)','C1 (Advanced)','C2 (Near native)'],
-   err=dict(program='Please choose at least one programme.', name='Please enter your full name.', birth='Please select your date of birth.', email='Please enter a valid email address.', phone='Please enter your phone number.', city='Please enter your city.', english='Please select your English level.', student='Please choose an option.', school='Please enter your school or department.', why='Tell us in a few sentences why you want to join.', kvkk='Please accept the privacy notice to continue.', gateway='Something went wrong. Please try again.')),
+   err=dict(cv_type='Please upload a PDF or Word file.', cv_big='The file must be 4 MB or smaller.', cv_fail='The CV could not be uploaded. Please try again.', program='Please choose at least one programme.', name='Please enter your full name.', birth='Please select your date of birth.', email='Please enter a valid email address.', phone='Please enter your phone number.', city='Please enter your city.', english='Please select your English level.', student='Please choose an option.', school='Please enter your school or department.', why='Tell us in a few sentences why you want to join.', kvkk='Please accept the privacy notice to continue.', gateway='Something went wrong. Please try again.')),
 }
 GFORM = 'https://docs.google.com/forms/d/14PzXPCxvlBrst-hDBj_JiiL5kZgiGx2zQC-7AHUgRWA/viewform'
 
@@ -412,7 +412,8 @@ def apply_page(lang):
         <div class="fld half-m"><label for="a-english">{x['eng']}</label><select id="a-english"><option value=""></option>{lv}</select><div class="msg" id="m-english"></div></div>
         <div class="fld full"><span class="lbl2" id="l-student">{x['student']}</span><div class="radios" role="radiogroup" aria-labelledby="l-student"><label><input type="radio" name="student" value="yes"> {x['yes']}</label><label><input type="radio" name="student" value="no"> {x['no']}</label></div><div class="msg" id="m-student"></div></div>
         <div class="fld full"><label for="a-school">{x['school']}</label><input id="a-school"><div class="msg" id="m-school"></div></div>
-        <div class="fld full"><label for="a-last">{x['last']} <small>({x['opt']})</small></label><input id="a-last"></div>
+        <div class="fld full"><label for="a-last">{x['last']} <small>({x['opt']})</small></label><textarea id="a-last" rows="3"></textarea></div>
+        <div class="fld full"><span class="lbl2">{x['cv']} <small>({x['opt']})</small></span><div class="cvbox"><label class="btn ghost cvbtn" for="a-cv">{x['cv_btn']}</label><input type="file" id="a-cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" class="sr"><span id="cv-name" class="cvname">{x['cv_none']}</span><button type="button" id="cv-rm" class="copy" hidden>{x['cv_rm']}</button></div><p class="hint" style="margin-top:6px">{x['cv_hint']}</p><div class="msg" id="m-cv"></div></div>
         <div class="fld full"><label for="a-why">{x['why']}</label><textarea id="a-why" rows="5"></textarea><div class="msg" id="m-why"></div></div>
         <input type="text" id="a-website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
       </div>
@@ -436,6 +437,20 @@ def apply_page(lang):
   Object.entries(F).filter(([k]) => k !== 'program').forEach(([k, id]) => $(id).addEventListener(id === 'a-kvkk' ? 'change' : 'input', () => setErr(k, '')));
   document.querySelectorAll('input[name=prog]').forEach(c => c.addEventListener('change', () => setErr('program', '')));
   document.querySelectorAll('input[name=student]').forEach(r => r.addEventListener('change', () => setErr('student', '')));
+  let CV = null, CVBUSY = null;
+  const cvIn = $('a-cv'), cvName = $('cv-name'), cvRm = $('cv-rm');
+  const cvReset = () => { CV = null; cvIn.value = ''; cvName.textContent = X.cv_none; cvRm.hidden = true; };
+  cvIn.addEventListener('change', () => {
+    const f = cvIn.files[0]; $('m-cv').textContent = ''; if (!f) return cvReset();
+    if (!/\\.(pdf|docx?)$/i.test(f.name)) { $('m-cv').textContent = X.err.cv_type; return cvReset(); }
+    if (f.size > 4 * 1024 * 1024) { $('m-cv').textContent = X.err.cv_big; return cvReset(); }
+    cvName.textContent = f.name + ' · ' + X.cv_up; CV = null;
+    CVBUSY = fetch('/api/cv', {method:'POST', headers:{'Content-Type':'application/octet-stream', 'X-File-Name': encodeURIComponent(f.name)}, body: f})
+      .then(async r => { const d = await r.json().catch(() => ({})); if (!r.ok) throw new Error(d.error || 'fail'); CV = {key: d.key, name: f.name}; cvName.textContent = f.name + ' · ' + X.cv_ok; cvRm.hidden = false; })
+      .catch(e => { $('m-cv').textContent = e.message === 'type' ? X.err.cv_type : e.message === 'too_big' ? X.err.cv_big : X.err.cv_fail; cvReset(); })
+      .finally(() => { CVBUSY = null; });
+  });
+  cvRm.addEventListener('click', cvReset);
   const alertBox = m => { $('alert').innerHTML = m; $('alert').hidden = !m; if (m) $('alert').scrollIntoView({block:'center', behavior:'smooth'}); };
   $('apform').addEventListener('submit', async e => {
     e.preventDefault(); alertBox('');
@@ -459,6 +474,8 @@ def apply_page(lang):
     if (first) { (first === 'student' ? document.querySelector('input[name=student]') : first === 'program' ? document.querySelector('input[name=prog]') : $(F[first])).focus(); return; }
     const btn = $('a-send'), label = btn.textContent; btn.disabled = true; btn.textContent = X.sending;
     try {
+      if (CVBUSY) await CVBUSY;
+      if (CV) { v.cv = CV.key; v.cvName = CV.name; }
       const r = await fetch('/api/apply', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({...v, lang:LANG, kvkk:true, marketing:$('a-mkt').checked, website:$('a-website').value})});
       if (r.status === 404 || r.status >= 500) throw new TypeError('down');
       const d = await r.json();
@@ -473,8 +490,8 @@ def apply_page(lang):
     }
   });
 }
-</script>""" % (json.dumps({k: x[k] for k in ['err','sending','ok_h','ok_p','dup_s','fallback','fallback_btn','home']}, ensure_ascii=False), lang, GFORM)
-    css = CSS + '.apform{max-width:820px}.hint{font-size:13px;color:#666;margin:-4px 0 10px}.plist2{display:grid;gap:8px}.pchk{display:flex;gap:12px;align-items:flex-start;border:1.5px solid #ccc;border-radius:12px;padding:12px 14px;cursor:pointer}.pchk:has(input:checked){border-color:#000;background:#F6F4EA}.pchk input{width:20px;height:20px;margin-top:2px;accent-color:#000;flex:0 0 20px}.pchk span{display:grid;gap:2px}.pchk small{color:#666;font-weight:600}.fld .pchk{display:flex;font-size:15px;font-weight:600;margin:0}.fld .pchk input,.fld .radios input{width:20px;height:20px;min-height:0;padding:0;border-radius:4px;flex:0 0 20px}.fld .pchk b{font-weight:800}.aplist{margin:0 0 20px;padding-left:20px;line-height:1.8}.apform textarea{width:100%;box-sizing:border-box;border:1.5px solid #bdbdbd;border-radius:12px;padding:12px 14px;font:600 16px Urbanist,system-ui,sans-serif;resize:vertical}.apform textarea:focus{outline:none;border-color:#000;box-shadow:0 0 0 3px rgba(228,69,47,.25)}.lbl2{display:block;font-size:14px;font-weight:800;margin-bottom:8px}.radios{display:flex;gap:22px}.radios label{display:flex;gap:8px;align-items:center;font-weight:700;cursor:pointer}.radios input{width:20px;height:20px;accent-color:#000}.fld small{font-weight:600;color:#777}.apform .paybtn{margin-top:6px}'
+</script>""" % (json.dumps({k: x[k] for k in ['err','sending','ok_h','ok_p','dup_s','fallback','fallback_btn','home','cv_none','cv_up','cv_ok']}, ensure_ascii=False), lang, GFORM)
+    css = CSS + '.apform{max-width:820px}.hint{font-size:13px;color:#666;margin:-4px 0 10px}.cvbox{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.fld label.cvbtn{display:inline-flex;align-items:center;margin:0;cursor:pointer;min-height:44px}.cvname{font-weight:600;color:#444;overflow-wrap:anywhere}.fld input.sr{position:absolute;width:1px;height:1px;min-height:0;padding:0;border:0;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}.cvbox:focus-within .cvbtn{outline:3px solid var(--red);outline-offset:2px}.copy{border:1.5px solid #000;background:#fff;border-radius:999px;padding:4px 12px;font:800 12px Urbanist,system-ui,sans-serif;cursor:pointer}.plist2{display:grid;gap:8px}.pchk{display:flex;gap:12px;align-items:flex-start;border:1.5px solid #ccc;border-radius:12px;padding:12px 14px;cursor:pointer}.pchk:has(input:checked){border-color:#000;background:#F6F4EA}.pchk input{width:20px;height:20px;margin-top:2px;accent-color:#000;flex:0 0 20px}.pchk span{display:grid;gap:2px}.pchk small{color:#666;font-weight:600}.fld .pchk{display:flex;font-size:15px;font-weight:600;margin:0}.fld .pchk input,.fld .radios input{width:20px;height:20px;min-height:0;padding:0;border-radius:4px;flex:0 0 20px}.fld .pchk b{font-weight:800}.aplist{margin:0 0 20px;padding-left:20px;line-height:1.8}.apform textarea{width:100%;box-sizing:border-box;border:1.5px solid #bdbdbd;border-radius:12px;padding:12px 14px;font:600 16px Urbanist,system-ui,sans-serif;resize:vertical}.apform textarea:focus{outline:none;border-color:#000;box-shadow:0 0 0 3px rgba(228,69,47,.25)}.lbl2{display:block;font-size:14px;font-weight:800;margin-bottom:8px}.radios{display:flex;gap:22px}.radios label{display:flex;gap:8px;align-items:center;font-weight:700;cursor:pointer}.radios input{width:20px;height:20px;accent-color:#000}.fld small{font-weight:600;color:#777}.apform .paybtn{margin-top:6px}'
     return shell(lang, '../', lang_href, x['title'], css, body, js)
 
 R = {
@@ -610,8 +627,9 @@ def admin_page():
     if (o.status === 'pending') acts.push(`<button class="btn solid" data-act="approve" data-id="${o.id}">Onayla</button>`, `<button class="btn ghost" data-act="reject" data-id="${o.id}">Reddet</button>`);
     if (o.status === 'approved' || o.status === 'payment_reported') acts.push(`<button class="btn solid" data-act="paid" data-id="${o.id}">Ödendi olarak işaretle</button>`);
     if (o.payLink && o.status !== 'paid' && o.status !== 'rejected') acts.push(`<a class="btn ghost" href="${waLink(o)}" target="_blank" rel="noopener">Ödeme linkini WhatsApp'tan gönder</a>`, `<button class="btn ghost" data-copy="${esc(o.payLink)}">Linki kopyala</button>`);
+    if (o.cv) acts.push(`<button class="btn ghost" data-cv="${esc(o.cv)}">CV'yi aç${o.cvName ? ' · ' + esc(o.cvName) : ''}</button>`);
     if (o.status === 'rejected' || o.status === 'approved') acts.push(`<button class="btn ghost" data-act="pending" data-id="${o.id}">Geri al</button>`);
-    const info = [['Doğum tarihi', o.birth ? `${o.birth} (${age(o.birth)} yaş)` : ''], ['Şehir', o.city], ['E-posta', `<a href="mailto:${esc(o.email)}">${esc(o.email)}</a>`, true], ['Telefon', `<a href="https://wa.me/${phoneWa(o.phone)}" target="_blank" rel="noopener">${esc(o.phone)}</a>`, true], ['Instagram', o.instagram], ['İngilizce', o.english], ['Öğrenci', o.student === 'yes' ? 'Evet' : o.student === 'no' ? 'Hayır' : ''], ['Okul / bölüm', o.school], ['Son eğitim', o.last], ['Bilgilendirme izni', o.marketing ? 'Evet' : 'Hayır']]
+    const info = [['Doğum tarihi', o.birth ? `${o.birth} (${age(o.birth)} yaş)` : ''], ['Şehir', o.city], ['E-posta', `<a href="mailto:${esc(o.email)}">${esc(o.email)}</a>`, true], ['Telefon', `<a href="https://wa.me/${phoneWa(o.phone)}" target="_blank" rel="noopener">${esc(o.phone)}</a>`, true], ['Instagram', o.instagram], ['İngilizce', o.english], ['Öğrenci', o.student === 'yes' ? 'Evet' : o.student === 'no' ? 'Hayır' : ''], ['Okul / bölüm', o.school], ['Katıldığı eğitimler', o.last], ['Bilgilendirme izni', o.marketing ? 'Evet' : 'Hayır']]
       .filter(r => r[1]).map(r => `<div><dt>${r[0]}</dt><dd>${r[2] ? r[1] : esc(r[1])}</dd></div>`).join('');
     const hist = (o.history || []).map(h => `${dt(h.at)} · ${AST[h.status] || h.status}${h.by === 'card' ? ' (kartla)' : ''}`).join('<br>');
     return `<details class="acard"${o.status === 'pending' ? ' open' : ''}><summary><span class="st ${o.status}">${AST[o.status] || o.status}</span><b>${esc(o.name)}</b><span class="ap">${esc(o.program)}</span><span class="ad">${dt(o.createdAt)} · ${esc(o.id)}</span></summary>
@@ -631,6 +649,13 @@ def admin_page():
     $('rows').innerHTML = ORDERS.map(o => `<tr><td>${esc(dt(o.createdAt))}</td><td>${esc(o.orderId)}${o.env === 'test' ? ' <small>(test)</small>' : ''}</td><td>${esc(o.program)}</td><td>${esc(o.name)}</td><td>${esc(o.email)}</td><td>${esc(o.phone)}</td><td>${esc(money(o.amount, o.currency))}</td><td><span class="st ${esc(o.status)}">${esc(OST[o.status] || o.status)}</span></td></tr>`).join('') || '<tr><td colspan="8">Kartlı ödeme yok.</td></tr>';
   }
   $('alist').addEventListener('click', async e => {
+    const cvb = e.target.closest('[data-cv]');
+    if (cvb) {
+      const w = window.open('', '_blank');
+      const r = await api('/api/admin/cv?key=' + encodeURIComponent(cvb.dataset.cv)).catch(() => null);
+      if (!r || !r.ok) { if (w) w.close(); alert('CV açılamadı.'); return; }
+      const url = URL.createObjectURL(await r.blob()); if (w) w.location = url; else location.href = url; return;
+    }
     const cp = e.target.closest('[data-copy]');
     if (cp) { try { await navigator.clipboard.writeText(cp.dataset.copy); cp.textContent = 'Kopyalandı'; setTimeout(() => cp.textContent = 'Linki kopyala', 1500); } catch {} return; }
     const b = e.target.closest('[data-act]'); if (!b) return;
@@ -656,7 +681,7 @@ def admin_page():
   $('reload').addEventListener('click', load);
   $('out').addEventListener('click', () => { pw = ''; try { sessionStorage.removeItem('no_adm'); } catch {} APPS = []; ORDERS = []; $('panel').hidden = true; $('login').hidden = false; $('pw').value = ''; });
   $('acsv').addEventListener('click', () => {
-    const cols = ['createdAt','id','status','program','name','birth','city','email','phone','instagram','english','student','school','last','why','marketing','approvedAt','paidAt'];
+    const cols = ['createdAt','id','status','program','name','birth','city','email','phone','instagram','english','student','school','last','why','cvName','marketing','approvedAt','paidAt'];
     const csv = [cols.join(';')].concat(filtered().map(o => cols.map(c => '"' + String(o[c] ?? '').replace(/"/g, '""').replace(/\r?\n/g, ' ') + '"').join(';'))).join('\r\n');
     const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + csv], {type:'text/csv'})); a.download = 'notiyatro-basvurular.csv'; a.click();
   });

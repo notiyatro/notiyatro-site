@@ -13,7 +13,8 @@ export default async (req) => {
   const f = {
     name: clean(b.name, 100), birth: clean(b.birth, 10), email: clean(b.email, 120).toLowerCase(), phone: clean(b.phone, 25),
     instagram: clean(b.instagram, 60), city: clean(b.city, 60), english: clean(b.english, 2), student: b.student === 'yes' ? 'yes' : b.student === 'no' ? 'no' : '',
-    school: clean(b.school, 200), last: clean(b.last, 300), why: clean(b.why, 2000),
+    school: clean(b.school, 200), last: clean(b.last, 1000), why: clean(b.why, 2000),
+    cv: /^\d{4}-\d{2}-\d{2}\/[a-f0-9]{24}\.(pdf|docx|doc)$/.test(String(b.cv || '')) ? String(b.cv) : '', cvName: clean(b.cvName, 80),
   };
   const lang = b.lang === 'en' ? 'en' : 'tr';
   const err = (k) => json(400, { error: k });

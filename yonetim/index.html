@@ -531,8 +531,9 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
     if (o.status === 'pending') acts.push(`<button class="btn solid" data-act="approve" data-id="${o.id}">Onayla</button>`, `<button class="btn ghost" data-act="reject" data-id="${o.id}">Reddet</button>`);
     if (o.status === 'approved' || o.status === 'payment_reported') acts.push(`<button class="btn solid" data-act="paid" data-id="${o.id}">Ödendi olarak işaretle</button>`);
     if (o.payLink && o.status !== 'paid' && o.status !== 'rejected') acts.push(`<a class="btn ghost" href="${waLink(o)}" target="_blank" rel="noopener">Ödeme linkini WhatsApp'tan gönder</a>`, `<button class="btn ghost" data-copy="${esc(o.payLink)}">Linki kopyala</button>`);
+    if (o.cv) acts.push(`<button class="btn ghost" data-cv="${esc(o.cv)}">CV'yi aç${o.cvName ? ' · ' + esc(o.cvName) : ''}</button>`);
     if (o.status === 'rejected' || o.status === 'approved') acts.push(`<button class="btn ghost" data-act="pending" data-id="${o.id}">Geri al</button>`);
-    const info = [['Doğum tarihi', o.birth ? `${o.birth} (${age(o.birth)} yaş)` : ''], ['Şehir', o.city], ['E-posta', `<a href="mailto:${esc(o.email)}">${esc(o.email)}</a>`, true], ['Telefon', `<a href="https://wa.me/${phoneWa(o.phone)}" target="_blank" rel="noopener">${esc(o.phone)}</a>`, true], ['Instagram', o.instagram], ['İngilizce', o.english], ['Öğrenci', o.student === 'yes' ? 'Evet' : o.student === 'no' ? 'Hayır' : ''], ['Okul / bölüm', o.school], ['Son eğitim', o.last], ['Bilgilendirme izni', o.marketing ? 'Evet' : 'Hayır']]
+    const info = [['Doğum tarihi', o.birth ? `${o.birth} (${age(o.birth)} yaş)` : ''], ['Şehir', o.city], ['E-posta', `<a href="mailto:${esc(o.email)}">${esc(o.email)}</a>`, true], ['Telefon', `<a href="https://wa.me/${phoneWa(o.phone)}" target="_blank" rel="noopener">${esc(o.phone)}</a>`, true], ['Instagram', o.instagram], ['İngilizce', o.english], ['Öğrenci', o.student === 'yes' ? 'Evet' : o.student === 'no' ? 'Hayır' : ''], ['Okul / bölüm', o.school], ['Katıldığı eğitimler', o.last], ['Bilgilendirme izni', o.marketing ? 'Evet' : 'Hayır']]
       .filter(r => r[1]).map(r => `<div><dt>${r[0]}</dt><dd>${r[2] ? r[1] : esc(r[1])}</dd></div>`).join('');
     const hist = (o.history || []).map(h => `${dt(h.at)} · ${AST[h.status] || h.status}${h.by === 'card' ? ' (kartla)' : ''}`).join('<br>');
     return `<details class="acard"${o.status === 'pending' ? ' open' : ''}><summary><span class="st ${o.status}">${AST[o.status] || o.status}</span><b>${esc(o.name)}</b><span class="ap">${esc(o.program)}</span><span class="ad">${dt(o.createdAt)} · ${esc(o.id)}</span></summary>
@@ -552,6 +553,13 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
     $('rows').innerHTML = ORDERS.map(o => `<tr><td>${esc(dt(o.createdAt))}</td><td>${esc(o.orderId)}${o.env === 'test' ? ' <small>(test)</small>' : ''}</td><td>${esc(o.program)}</td><td>${esc(o.name)}</td><td>${esc(o.email)}</td><td>${esc(o.phone)}</td><td>${esc(money(o.amount, o.currency))}</td><td><span class="st ${esc(o.status)}">${esc(OST[o.status] || o.status)}</span></td></tr>`).join('') || '<tr><td colspan="8">Kartlı ödeme yok.</td></tr>';
   }
   $('alist').addEventListener('click', async e => {
+    const cvb = e.target.closest('[data-cv]');
+    if (cvb) {
+      const w = window.open('', '_blank');
+      const r = await api('/api/admin/cv?key=' + encodeURIComponent(cvb.dataset.cv)).catch(() => null);
+      if (!r || !r.ok) { if (w) w.close(); alert('CV açılamadı.'); return; }
+      const url = URL.createObjectURL(await r.blob()); if (w) w.location = url; else location.href = url; return;
+    }
     const cp = e.target.closest('[data-copy]');
     if (cp) { try { await navigator.clipboard.writeText(cp.dataset.copy); cp.textContent = 'Kopyalandı'; setTimeout(() => cp.textContent = 'Linki kopyala', 1500); } catch {} return; }
     const b = e.target.closest('[data-act]'); if (!b) return;
@@ -577,7 +585,7 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
   $('reload').addEventListener('click', load);
   $('out').addEventListener('click', () => { pw = ''; try { sessionStorage.removeItem('no_adm'); } catch {} APPS = []; ORDERS = []; $('panel').hidden = true; $('login').hidden = false; $('pw').value = ''; });
   $('acsv').addEventListener('click', () => {
-    const cols = ['createdAt','id','status','program','name','birth','city','email','phone','instagram','english','student','school','last','why','marketing','approvedAt','paidAt'];
+    const cols = ['createdAt','id','status','program','name','birth','city','email','phone','instagram','english','student','school','last','why','cvName','marketing','approvedAt','paidAt'];
     const csv = [cols.join(';')].concat(filtered().map(o => cols.map(c => '"' + String(o[c] ?? '').replace(/"/g, '""').replace(/\r?\n/g, ' ') + '"').join(';'))).join('\r\n');
     const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + csv], {type:'text/csv'})); a.download = 'notiyatro-basvurular.csv'; a.click();
   });
