@@ -313,7 +313,8 @@ main{overflow-x:clip}
 @media(prefers-reduced-motion:reduce){.stb::before{animation:none!important}}
 .season .btn.dis{opacity:.45;cursor:not-allowed;pointer-events:none}
 .btn .ico{flex:0 0 auto;margin-right:8px;vertical-align:-4px}
-.season .igal{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
+.season .igal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:26px}
+@media(max-width:700px){.season .igal{grid-template-columns:1fr 1fr}}
 .season .igimg{padding:0;border:0;background:none;cursor:zoom-in;border-radius:10px;overflow:hidden;display:block}
 .season .igimg img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .3s}
 .season .igimg:hover img{transform:scale(1.04)}
@@ -620,8 +621,8 @@ main{overflow-x:clip}
         <a class="btn solid" data-ap="${s.id}" href="${APPLY}?p=${s.id}">${esc(L.apply)}</a>
       </div>
       <div class="info" id="inf${n}" hidden>
-        ${i.about ? `<div class="iabout"><h4>${esc(L.about)}</h4>${String(i.about).split('\n\n').map(x => x.startsWith('## ') ? `<h5>${md(x.slice(3))}</h5>` : x.startsWith('- ') ? `<ul>${x.split('\n').map(l => `<li>${md(l.replace(/^- /, ''))}</li>`).join('')}</ul>` : `<p>${md(x)}</p>`).join('')}</div>` : ''}
-        <div class="iside">${(i.tutors || []).length ? `<div class="iteam">${i.tutors.map(([f, n, r]) => `<button type="button" class="igimg itut" data-full="img/p/${f}.jpg" aria-label="${esc(n)}"><img src="img/p/${f}.jpg" alt="${esc(n)}" loading="lazy" width="600" height="800"><span><b>${esc(n)}</b>${esc(r)}</span></button>`).join('')}</div>` : ''}<dl class="ifacts">${rows}</dl>${(i.gallery || []).length ? `<div class="igal">${i.gallery.map(([f, a]) => `<button type="button" class="igimg" data-full="img/p/${f}.jpg" aria-label="${esc(a)}"><img src="img/p/${f}-t.jpg" alt="${esc(a)}" loading="lazy" width="480" height="360"></button>`).join('')}</div>` : ''}</div>
+        ${i.about ? `<div class="iabout"><h4>${esc(L.about)}</h4>${String(i.about).split('\n\n').map(x => x.startsWith('## ') ? `<h5>${md(x.slice(3))}</h5>` : x.startsWith('- ') ? `<ul>${x.split('\n').map(l => `<li>${md(l.replace(/^- /, ''))}</li>`).join('')}</ul>` : `<p>${md(x)}</p>`).join('')}${(i.gallery || []).length ? `<div class="igal">${i.gallery.map(([f, a]) => `<button type="button" class="igimg" data-full="img/p/${f}.jpg" aria-label="${esc(a)}"><img src="img/p/${f}-t.jpg" alt="${esc(a)}" loading="lazy" width="480" height="360"></button>`).join('')}</div>` : ''}</div>` : ''}
+        <div class="iside">${(i.tutors || []).length ? `<div class="iteam">${i.tutors.map(([f, n, r]) => `<button type="button" class="igimg itut" data-full="img/p/${f}.jpg" aria-label="${esc(n)}"><img src="img/p/${f}.jpg" alt="${esc(n)}" loading="lazy" width="600" height="800"><span><b>${esc(n)}</b>${esc(r)}</span></button>`).join('')}</div>` : ''}<dl class="ifacts">${rows}</dl></div>
         ${full ? '' : `<p class="isoon">${esc(L.soon)}</p>`}
       </div>
     </li>`;}).join('');
