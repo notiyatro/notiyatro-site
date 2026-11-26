@@ -8,7 +8,8 @@ export default async (req) => {
   if (req.method !== 'POST') return json(405, { error: 'method' });
   let b; try { b = await req.json(); } catch { return json(400, { error: 'bad_json' }); }
   if (clean(b.website, 50)) return json(200, { id: 'OK' }); // bot tuzağı
-  const p = program(clean(b.program, 60));
+  const ids = [...new Set((Array.isArray(b.programs) ? b.programs : [b.program]).map((x) => clean(x, 60)).filter(Boolean))].slice(0, 10);
+  const progs = ids.map(program);
   const f = {
     name: clean(b.name, 100), birth: clean(b.birth, 10), email: clean(b.email, 120).toLowerCase(), phone: clean(b.phone, 25),
     instagram: clean(b.instagram, 60), city: clean(b.city, 60), english: clean(b.english, 2), student: b.student === 'yes' ? 'yes' : b.student === 'no' ? 'no' : '',
@@ -16,7 +17,7 @@ export default async (req) => {
   };
   const lang = b.lang === 'en' ? 'en' : 'tr';
   const err = (k) => json(400, { error: k });
-  if (!p || p.open === false) return err('program');
+  if (!progs.length || progs.some((p) => !p || p.open === false)) return err('program');
   if (f.name.length < 3) return err('name');
   if (!/^\d{4}-\d{2}-\d{2}$/.test(f.birth)) return err('birth');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email)) return err('email');
@@ -29,16 +30,20 @@ export default async (req) => {
   if (b.kvkk !== true) return err('kvkk');
 
   const store = apps();
-  // aynı kişi aynı programa ikinci kez başvurmasın
   const { blobs } = await store.list();
-  for (const x of blobs) {
-    const a = await store.get(x.key, { type: 'json' });
-    if (a && a.email === f.email && a.programId === p.id && a.status !== 'rejected') return json(200, { id: a.id, duplicate: true });
+  const existing = (await Promise.all(blobs.map((x) => store.get(x.key, { type: 'json' })))).filter(Boolean);
+  const out = [];
+  for (const p of progs) {
+    // aynı kişi aynı programa ikinci kez başvurmasın
+    const dup = existing.find((a) => a.email === f.email && a.programId === p.id && a.status !== 'rejected');
+    if (dup) { out.push({ id: dup.id, program: p.title[lang], duplicate: true }); continue; }
+    const id = `B${timeSpan().slice(2, 8)}${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
+    const now = new Date().toISOString();
+    await store.setJSON(id, { id, programId: p.id, program: p.title.tr, lang, ...f, marketing: b.marketing === true, status: 'pending', history: [{ at: now, status: 'pending' }], createdAt: now });
+    out.push({ id, program: p.title[lang] });
   }
-  const id = `B${timeSpan().slice(2, 8)}${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
-  const app = { id, programId: p.id, program: p.title.tr, lang, ...f, marketing: b.marketing === true, status: 'pending', history: [{ at: new Date().toISOString(), status: 'pending' }], createdAt: new Date().toISOString() };
-  await store.setJSON(id, app);
-  await sendMail(process.env.ADMIN_EMAIL, `Yeni başvuru: ${f.name} — ${p.title.tr}`, `${f.name} (${f.email}, ${f.phone}) ${p.title.tr} için başvurdu.\nBaşvuru no: ${id}\nPanel: ${process.env.URL || ''}/yonetim/`);
-  return json(200, { id });
+  const fresh = out.filter((x) => !x.duplicate);
+  if (fresh.length) await sendMail(process.env.ADMIN_EMAIL, `Yeni başvuru: ${f.name} (${fresh.length} program)`, `${f.name} (${f.email}, ${f.phone}) başvurdu:\n${fresh.map((x) => `- ${x.program} (${x.id})`).join('\n')}\nPanel: ${process.env.URL || ''}/yonetim/`);
+  return json(200, { applications: out, id: out[0].id });
 };
 export const config = { path: '/api/apply' };

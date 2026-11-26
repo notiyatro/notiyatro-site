@@ -364,26 +364,26 @@ def pay_page(lang):
 A = {
  'tr': dict(title='Başvuru — NO Tiyatro', kick='International Stage Lab.', h1='Başvuru formu',
    lede='Başvurunu inceleyip en kısa sürede sana dönüş yapacağız. Başvurun onaylanınca ödeme linkin e-posta ve WhatsApp ile gelecek.',
-   prog='Başvurmak istediğin program', name='Ad soyad', birth='Doğum tarihi', email='E-posta', phone='Telefon (WhatsApp)', ig='Instagram kullanıcı adı', opt='isteğe bağlı', city='Yaşadığın şehir',
+   prog='Başvurmak istediğin programlar', prog_hint='Birden fazla program seçebilirsin; her biri ayrı değerlendirilir.', name='Ad soyad', birth='Doğum tarihi', email='E-posta', phone='Telefon (WhatsApp)', ig='Instagram kullanıcı adı', opt='isteğe bağlı', city='Yaşadığın şehir',
    eng='İngilizce seviyen', student='Aktif öğrenci misin?', yes='Evet', no='Hayır', school='Okuduğun ya da mezun olduğun okul / bölüm', last='Son katıldığın eğitim ya da atölye', why='Bu programa neden katılmak istiyorsun?',
    kvkk='Kişisel verilerimin <a href="{r}yasal/kvkk/" target="_blank">KVKK Aydınlatma Metni</a> kapsamında başvurumun değerlendirilmesi için işlenmesini kabul ediyorum.',
    mkt='<b>İsteğe bağlı:</b> Gelecekteki atölye ve kamplar hakkında bilgilendirme almak istiyorum.', send='Başvuruyu gönder', sending='Gönderiliyor…',
-   ok_h='Başvurun bize ulaştı.', ok_p='Teşekkürler {n}! Başvuru numaran: {id}. Başvurunu inceleyip en kısa sürede e-posta ve WhatsApp üzerinden dönüş yapacağız.',
+   ok_h='Başvurun bize ulaştı.', ok_p='Teşekkürler {n}! Başvurunu inceleyip en kısa sürede e-posta ve WhatsApp üzerinden dönüş yapacağız.', dup_s='daha önce başvurmuşsun',
    dup_p='Bu programa daha önce başvurmuşsun (başvuru no: {id}). Sonuç e-posta ve WhatsApp ile gelecek.',
    fallback='Başvuru sistemine şu an ulaşılamıyor. Başvurunu bu formdan da yapabilirsin:', fallback_btn='Başvuru formunu aç', home='Ana sayfa',
    levels=['A1 (Başlangıç)','A2 (Temel)','B1 (Orta)','B2 (Orta üstü)','C1 (İleri)','C2 (Anadile yakın)'],
-   err=dict(program='Bir program seç.', name='Adını ve soyadını yaz.', birth='Doğum tarihini seç.', email='Geçerli bir e-posta adresi yaz.', phone='Telefon numaranı yaz.', city='Şehrini yaz.', english='İngilizce seviyeni seç.', student='Bir seçenek işaretle.', school='Okulunu ya da bölümünü yaz.', why='Birkaç cümleyle neden katılmak istediğini anlat.', kvkk='Devam etmek için KVKK onayı gerekiyor.', gateway='Bir sorun oluştu. Lütfen tekrar dene.')),
+   err=dict(program='En az bir program seç.', name='Adını ve soyadını yaz.', birth='Doğum tarihini seç.', email='Geçerli bir e-posta adresi yaz.', phone='Telefon numaranı yaz.', city='Şehrini yaz.', english='İngilizce seviyeni seç.', student='Bir seçenek işaretle.', school='Okulunu ya da bölümünü yaz.', why='Birkaç cümleyle neden katılmak istediğini anlat.', kvkk='Devam etmek için KVKK onayı gerekiyor.', gateway='Bir sorun oluştu. Lütfen tekrar dene.')),
  'en': dict(title='Application — NO Tiyatro', kick='International Stage Lab.', h1='Application form',
    lede='We will review your application and get back to you as soon as possible. Once approved, your payment link will arrive by email and WhatsApp.',
-   prog='Programme you are applying for', name='Full name', birth='Date of birth', email='Email', phone='Phone (WhatsApp)', ig='Instagram username', opt='optional', city='City you live in',
+   prog='Programmes you are applying for', prog_hint='You can choose more than one; each is reviewed separately.', name='Full name', birth='Date of birth', email='Email', phone='Phone (WhatsApp)', ig='Instagram username', opt='optional', city='City you live in',
    eng='Your English level', student='Are you currently a student?', yes='Yes', no='No', school='School / department you attend or graduated from', last='Most recent training or workshop you attended', why='Why do you want to join this programme?',
    kvkk='I agree to my personal data being processed to assess my application, as described in the <a href="{r}yasal/kvkk/" target="_blank">Privacy Notice (KVKK)</a> <small>(in Turkish)</small>.',
    mkt='<b>Optional:</b> I would like to receive information about future workshops and camps.', send='Submit application', sending='Sending…',
-   ok_h='We have received your application.', ok_p='Thank you, {n}! Your application number is {id}. We will review it and get back to you by email and WhatsApp soon.',
+   ok_h='We have received your application.', ok_p='Thank you, {n}! We will review your application and get back to you by email and WhatsApp soon.', dup_s='already applied',
    dup_p='You have already applied for this programme (application no: {id}). We will let you know the outcome by email and WhatsApp.',
    fallback='The application system cannot be reached right now. You can also apply using this form:', fallback_btn='Open the application form', home='Home',
    levels=['A1 (Beginner)','A2 (Elementary)','B1 (Intermediate)','B2 (Upper intermediate)','C1 (Advanced)','C2 (Near native)'],
-   err=dict(program='Please choose a programme.', name='Please enter your full name.', birth='Please select your date of birth.', email='Please enter a valid email address.', phone='Please enter your phone number.', city='Please enter your city.', english='Please select your English level.', student='Please choose an option.', school='Please enter your school or department.', why='Tell us in a few sentences why you want to join.', kvkk='Please accept the privacy notice to continue.', gateway='Something went wrong. Please try again.')),
+   err=dict(program='Please choose at least one programme.', name='Please enter your full name.', birth='Please select your date of birth.', email='Please enter a valid email address.', phone='Please enter your phone number.', city='Please enter your city.', english='Please select your English level.', student='Please choose an option.', school='Please enter your school or department.', why='Tell us in a few sentences why you want to join.', kvkk='Please accept the privacy notice to continue.', gateway='Something went wrong. Please try again.')),
 }
 GFORM = 'https://docs.google.com/forms/d/14PzXPCxvlBrst-hDBj_JiiL5kZgiGx2zQC-7AHUgRWA/viewform'
 
@@ -391,7 +391,7 @@ def apply_page(lang):
     x = A[lang]; root = '../' if lang == 'tr' else '../../'
     lang_href = '../en/apply/' if lang == 'tr' else '../../basvuru/'
     progs = [p for p in CAT if p.get('open', True)]
-    opts = ''.join(f'<option value="{p["id"]}">{p["title"][lang]} · {p["date"][lang].split(" · ")[0]}</option>' for p in progs)
+    opts = ''.join(f'<label class="pchk"><input type="checkbox" name="prog" value="{p["id"]}"><span><b>{p["title"][lang]}</b><small>{p["date"][lang]}</small></span></label>' for p in progs)
     lv = ''.join(f'<option value="{l[:2]}">{l}</option>' for l in x['levels'])
     body = f"""<section class="band" aria-labelledby="h-ap">
   <div class="wrap">
@@ -402,7 +402,7 @@ def apply_page(lang):
     <form class="pay-form apform" id="apform" novalidate>
       <p class="pay-alert" id="alert" role="alert" hidden></p>
       <div class="fgrid">
-        <div class="fld full"><label for="a-program">{x['prog']}</label><select id="a-program"><option value=""></option>{opts}</select><div class="msg" id="m-program"></div></div>
+        <div class="fld full"><span class="lbl2" id="l-prog">{x['prog']}</span><p class="hint">{x['prog_hint']}</p><div class="plist2" id="a-program" role="group" aria-labelledby="l-prog" tabindex="-1">{opts}</div><div class="msg" id="m-program"></div></div>
         <div class="fld full"><label for="a-name">{x['name']}</label><input id="a-name" autocomplete="name"><div class="msg" id="m-name"></div></div>
         <div class="fld half-m"><label for="a-birth">{x['birth']}</label><input id="a-birth" type="date" min="1940-01-01" max="2015-12-31"><div class="msg" id="m-birth"></div></div>
         <div class="fld half-m"><label for="a-city">{x['city']}</label><input id="a-city" autocomplete="address-level2"><div class="msg" id="m-city"></div></div>
@@ -429,19 +429,21 @@ def apply_page(lang):
   const $ = id => document.getElementById(id);
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const pre = new URLSearchParams(location.search).get('p');
-  if (pre && [...$('a-program').options].some(o => o.value === pre)) $('a-program').value = pre;
+  document.querySelectorAll('input[name=prog]').forEach(c => { if (c.value === pre) c.checked = true; });
+  const picked = () => [...document.querySelectorAll('input[name=prog]:checked')].map(c => c.value);
   const F = {program:'a-program', name:'a-name', birth:'a-birth', city:'a-city', email:'a-email', phone:'a-phone', english:'a-english', school:'a-school', why:'a-why', kvkk:'a-kvkk'};
   const setErr = (k, m) => { const el = $(F[k]); if (el) el.setAttribute('aria-invalid', !!m); $('m-' + k).textContent = m || ''; };
-  Object.entries(F).forEach(([k, id]) => $(id).addEventListener(id === 'a-kvkk' ? 'change' : 'input', () => setErr(k, '')));
+  Object.entries(F).filter(([k]) => k !== 'program').forEach(([k, id]) => $(id).addEventListener(id === 'a-kvkk' ? 'change' : 'input', () => setErr(k, '')));
+  document.querySelectorAll('input[name=prog]').forEach(c => c.addEventListener('change', () => setErr('program', '')));
   document.querySelectorAll('input[name=student]').forEach(r => r.addEventListener('change', () => setErr('student', '')));
   const alertBox = m => { $('alert').innerHTML = m; $('alert').hidden = !m; if (m) $('alert').scrollIntoView({block:'center', behavior:'smooth'}); };
   $('apform').addEventListener('submit', async e => {
     e.preventDefault(); alertBox('');
     const st = document.querySelector('input[name=student]:checked');
-    const v = {program:$('a-program').value, name:$('a-name').value.trim(), birth:$('a-birth').value, city:$('a-city').value.trim(), email:$('a-email').value.trim(), phone:$('a-phone').value.trim(),
+    const v = {programs:picked(), name:$('a-name').value.trim(), birth:$('a-birth').value, city:$('a-city').value.trim(), email:$('a-email').value.trim(), phone:$('a-phone').value.trim(),
       instagram:$('a-ig').value.trim(), english:$('a-english').value, student: st ? st.value : '', school:$('a-school').value.trim(), last:$('a-last').value.trim(), why:$('a-why').value.trim()};
     const er = {};
-    if (!v.program) er.program = X.err.program;
+    if (!v.programs.length) er.program = X.err.program;
     if (v.name.length < 3) er.name = X.err.name;
     if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(v.birth)) er.birth = X.err.birth;
     if (v.city.length < 2) er.city = X.err.city;
@@ -454,7 +456,7 @@ def apply_page(lang):
     if (!$('a-kvkk').checked) er.kvkk = X.err.kvkk;
     ['program','name','birth','city','email','phone','english','student','school','why','kvkk'].forEach(k => setErr(k, er[k]));
     const first = Object.keys(er)[0];
-    if (first) { (first === 'student' ? document.querySelector('input[name=student]') : $(F[first])).focus(); return; }
+    if (first) { (first === 'student' ? document.querySelector('input[name=student]') : first === 'program' ? document.querySelector('input[name=prog]') : $(F[first])).focus(); return; }
     const btn = $('a-send'), label = btn.textContent; btn.disabled = true; btn.textContent = X.sending;
     try {
       const r = await fetch('/api/apply', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({...v, lang:LANG, kvkk:true, marketing:$('a-mkt').checked, website:$('a-website').value})});
@@ -463,7 +465,7 @@ def apply_page(lang):
       if (!r.ok) { const k = d.error in X.err ? d.error : 'gateway'; if (k in F || k === 'student') { setErr(k, X.err[k]); } else alertBox(esc(X.err[k])); btn.disabled = false; btn.textContent = label; return; }
       $('apform').hidden = true; document.querySelector('.lede').hidden = true;
       $('done').hidden = false;
-      $('done').innerHTML = `<div class="ic ok"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></div><h2>${esc(X.ok_h)}</h2><p class="lede" style="margin:14px 0 18px">${esc((d.duplicate ? X.dup_p : X.ok_p).replace('{n}', v.name.split(' ')[0]).replace('{id}', d.id))}</p><a class="btn solid" href="../">${esc(X.home)}</a>`;
+      $('done').innerHTML = `<div class="ic ok"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></div><h2>${esc(X.ok_h)}</h2><p class="lede" style="margin:14px 0 18px">${esc(X.ok_p.replace('{n}', v.name.split(' ')[0]))}</p><ul class="aplist">${(d.applications || []).map(a => `<li><b>${esc(a.program)}</b> · ${esc(a.id)}${a.duplicate ? ' <small>(' + esc(X.dup_s) + ')</small>' : ''}</li>`).join('')}</ul><a class="btn solid" href="../">${esc(X.home)}</a>`;
       $('done').scrollIntoView({block:'start', behavior:'smooth'});
     } catch {
       alertBox(esc(X.fallback) + ` <a href="${GFORM}" target="_blank" rel="noopener" style="color:inherit">${esc(X.fallback_btn)}</a>`);
@@ -471,8 +473,8 @@ def apply_page(lang):
     }
   });
 }
-</script>""" % (json.dumps({k: x[k] for k in ['err','sending','ok_h','ok_p','dup_p','fallback','fallback_btn','home']}, ensure_ascii=False), lang, GFORM)
-    css = CSS + '.apform{max-width:820px}.apform textarea{width:100%;box-sizing:border-box;border:1.5px solid #bdbdbd;border-radius:12px;padding:12px 14px;font:600 16px Urbanist,system-ui,sans-serif;resize:vertical}.apform textarea:focus{outline:none;border-color:#000;box-shadow:0 0 0 3px rgba(228,69,47,.25)}.lbl2{display:block;font-size:14px;font-weight:800;margin-bottom:8px}.radios{display:flex;gap:22px}.radios label{display:flex;gap:8px;align-items:center;font-weight:700;cursor:pointer}.radios input{width:20px;height:20px;accent-color:#000}.fld small{font-weight:600;color:#777}.apform .paybtn{margin-top:6px}'
+</script>""" % (json.dumps({k: x[k] for k in ['err','sending','ok_h','ok_p','dup_s','fallback','fallback_btn','home']}, ensure_ascii=False), lang, GFORM)
+    css = CSS + '.apform{max-width:820px}.hint{font-size:13px;color:#666;margin:-4px 0 10px}.plist2{display:grid;gap:8px}.pchk{display:flex;gap:12px;align-items:flex-start;border:1.5px solid #ccc;border-radius:12px;padding:12px 14px;cursor:pointer}.pchk:has(input:checked){border-color:#000;background:#F6F4EA}.pchk input{width:20px;height:20px;margin-top:2px;accent-color:#000;flex:0 0 20px}.pchk span{display:grid;gap:2px}.pchk small{color:#666;font-weight:600}.fld .pchk{display:flex;font-size:15px;font-weight:600;margin:0}.fld .pchk input,.fld .radios input{width:20px;height:20px;min-height:0;padding:0;border-radius:4px;flex:0 0 20px}.fld .pchk b{font-weight:800}.aplist{margin:0 0 20px;padding-left:20px;line-height:1.8}.apform textarea{width:100%;box-sizing:border-box;border:1.5px solid #bdbdbd;border-radius:12px;padding:12px 14px;font:600 16px Urbanist,system-ui,sans-serif;resize:vertical}.apform textarea:focus{outline:none;border-color:#000;box-shadow:0 0 0 3px rgba(228,69,47,.25)}.lbl2{display:block;font-size:14px;font-weight:800;margin-bottom:8px}.radios{display:flex;gap:22px}.radios label{display:flex;gap:8px;align-items:center;font-weight:700;cursor:pointer}.radios input{width:20px;height:20px;accent-color:#000}.fld small{font-weight:600;color:#777}.apform .paybtn{margin-top:6px}'
     return shell(lang, '../', lang_href, x['title'], css, body, js)
 
 R = {
