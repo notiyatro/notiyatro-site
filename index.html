@@ -337,6 +337,7 @@ main{overflow-x:clip}
 #list > li:last-child{border-bottom:0}
 #sezon{padding-bottom:72px}
 
+@font-face{font-family:"Permanent Marker";src:url(/img/fonts/permanent-marker.woff2) format("woff2");font-display:swap}
 /* uyelik programi */
 .memb{background:#FFE42B;color:#000;border-top:0;overflow:hidden}
 .memb .mtop{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
@@ -347,7 +348,7 @@ main{overflow-x:clip}
 .memb .btn.solid{background:#000;color:#FFE42B;border-color:#000}
 .mtoggle .m-close,.memb.open .mtoggle .m-open{display:none}.memb.open .mtoggle .m-close{display:inline}
 .mdeck{position:relative;display:block;width:100%;max-width:560px;justify-self:center;aspect-ratio:1/0.92;border:0;background:none;padding:0;cursor:pointer}
-.mslogan{position:absolute;right:-2%;top:-2%;width:46%;height:auto;transform:rotate(-6deg);animation:mwig 3.2s ease-in-out infinite}
+.mslogan{position:absolute;right:5%;top:2%;display:flex;flex-direction:column;align-items:flex-start;font-family:"Permanent Marker",cursive;font-size:clamp(24px,3vw,42px);line-height:1.02;text-transform:uppercase;color:#000;transform:rotate(-8deg);transform-origin:right top;animation:mwig 3.2s ease-in-out infinite;z-index:4;pointer-events:none}.mslogan span:last-of-type{margin-left:.5em}.mslogan svg{width:78%;height:.45em;margin:.12em 0 0 1.4em}
 .mstack{position:absolute;inset:16% 4% 0 4%;display:block}
 .mstack img{position:absolute;bottom:4%;width:36%;height:auto;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.28);transition:transform .7s cubic-bezier(.2,.9,.2,1.1)}
 .mstack .d1{left:6%;transform:rotate(-12deg);animation:mf1 4s ease-in-out infinite}
@@ -356,7 +357,7 @@ main{overflow-x:clip}
 @keyframes mf1{0%,100%{transform:rotate(-12deg) translateY(0)}50%{transform:rotate(-15deg) translateY(-5%)}}
 @keyframes mf2{0%,100%{transform:rotate(-2deg) translateY(-6%)}50%{transform:rotate(1deg) translateY(-11%)}}
 @keyframes mf3{0%,100%{transform:rotate(9deg) translateY(0)}50%{transform:rotate(13deg) translateY(-6%)}}
-@keyframes mwig{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(-3deg) scale(1.04)}}
+@keyframes mwig{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(-5deg) scale(1.04)}}
 .mdeck:hover .d1{transform:rotate(-18deg) translate(-8%,-4%)}.mdeck:hover .d3{transform:rotate(15deg) translate(8%,-4%)}
 .mtap{position:absolute;left:46%;bottom:-2%;font-size:38px;animation:mtap 1.6s ease-in-out infinite;z-index:5;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
 @keyframes mtap{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-14px) scale(1.08)}}
@@ -376,7 +377,7 @@ main{overflow-x:clip}
 .c-prem .mb{background:#FFE42B;color:#000}
 .mperks{margin:auto 0 0;padding-top:12px;border-top:1.5px dashed currentColor;font-size:13px;font-weight:800}
 .mvalid{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;margin:8px 0 0;font-weight:800}
-@media(max-width:900px){.memb .mtop{grid-template-columns:1fr}.mdeck{aspect-ratio:1/1.05;max-width:440px}.mslogan{width:52%;top:0}.mstack{inset:30% 2% 0 2%}.mstack img{width:38%}.mcards{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
+@media(max-width:900px){.memb .mtop{grid-template-columns:1fr}.mdeck{aspect-ratio:1/1.05;max-width:440px}.mslogan{font-size:26px;right:6%}.mstack{inset:30% 2% 0 2%}.mstack img{width:38%}.mcards{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
 @media(prefers-reduced-motion:reduce){.mstack img,.mslogan,.mtap{animation:none!important}.mcard{animation:none;opacity:1;transform:none}}
 </style>
 <style id="langs-css">.langs{position:relative}.langs summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:44px;min-height:42px;padding:0 10px;font-weight:800;font-size:14px;border-radius:999px}.langs summary::-webkit-details-marker{display:none}.langs summary::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}.langs summary:hover,.langs[open] summary{background:rgba(0,0,0,.06)}.langm{position:absolute;right:0;top:calc(100% + 6px);z-index:80;background:#fff;color:#000;border:1.5px solid #000;border-radius:14px;padding:6px;display:grid;min-width:150px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.langm a{padding:9px 12px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;color:inherit;white-space:nowrap}.langm a:hover{background:#F6F4EA}.langm a[aria-current]{background:#000;color:#fff}@media(max-width:600px){.langm{position:fixed;left:12px;right:12px;top:66px;grid-template-columns:1fr 1fr}}@media(max-width:420px){.langs summary{min-width:36px;padding:0 6px;font-size:12px}}</style><style id="wa-css">.wa-fab{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font:800 15px/1 Urbanist,system-ui,sans-serif;padding:0 20px 0 14px;height:56px;border-radius:999px;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .2s,box-shadow .2s}.wa-fab:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.28)}.wa-fab svg{width:30px;height:30px;flex:0 0 auto}.wa-fab .wa-dot{position:absolute;top:6px;left:40px;width:11px;height:11px;border-radius:50%;background:#b8ffcf;border:2px solid #25D366;animation:wap 1.8s ease-out infinite}@keyframes wap{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}@media(max-width:700px){.wa-fab{padding:0;width:56px;justify-content:center;right:14px;bottom:14px}.wa-fab span.wa-l{display:none}.wa-fab .wa-dot{left:36px}}@media(prefers-reduced-motion:reduce){.wa-fab .wa-dot{animation:none}}@media print{.wa-fab{display:none}}.wa-fab.wa-off{opacity:0;pointer-events:none;transform:translateY(12px)}.wa-fab{transition:opacity .25s,transform .25s,box-shadow .2s}</style></head>
@@ -520,7 +521,7 @@ main{overflow-x:clip}
         <button type="button" class="btn solid mtoggle" aria-expanded="false" aria-controls="mcards"><span class="m-open">Kartları keşfet</span><span class="m-close">Kartları gizle</span></button>
       </div>
       <button type="button" class="mdeck" aria-expanded="false" aria-controls="mcards" aria-label="Üyelik kartlarını göster">
-        <img class="mslogan" src="img/pass-slogan.png" alt="" width="480" height="200">
+        <span class="mslogan" lang="en" aria-hidden="true"><span>One season.</span><span>One community.</span><svg viewBox="0 0 300 24" preserveAspectRatio="none"><path d="M6 16 C 70 8, 150 6, 294 4 L 292 10 C 160 12, 80 16, 8 22 Z" fill="currentColor"/></svg></span>
         <span class="mstack">
           <img class="d1" src="img/pass-start.jpg" alt="" width="420" height="590">
           <img class="d2" src="img/pass-stage.jpg" alt="" width="420" height="590">
