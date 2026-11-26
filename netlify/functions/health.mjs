@@ -4,6 +4,7 @@ export default async () => {
   const body = {
     functions: 'ok',
     admin_password: !pw ? 'missing' : pw.length < 10 ? 'too_short' : pw.trim() !== pw ? 'has_spaces' : 'ok',
+    mail: process.env.SMTP_PASS ? 'set' : 'not_set',
     tosla: process.env.TOSLA_CLIENT_ID ? 'set' : 'not_set',
     time: new Date().toISOString(),
   };

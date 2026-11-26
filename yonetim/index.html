@@ -363,7 +363,7 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
 .adm-tabs .tab[aria-selected=true]{color:#000;border-bottom-color:var(--red)}
 .adm-tabs .n{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:999px;background:var(--red);color:#fff;font-size:12px;margin-left:6px;padding:0 6px}
 .adm-tabs .n:empty{display:none}
-.adm-stats .warn{background:#fff4d6;color:#7a5600;font-weight:700}
+.adm-stats .warn{background:#fff4d6;color:#7a5600;font-weight:700}.adm-stats .okm{background:#e7f4ea;color:#16632b;font-weight:700}
 .alist{display:grid;gap:12px}
 .acard{border:1.5px solid rgba(0,0,0,.15);border-radius:16px;padding:0;background:#fff}
 .acard summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:16px 18px}
@@ -537,13 +537,13 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
       .filter(r => r[1]).map(r => `<div><dt>${r[0]}</dt><dd>${r[2] ? r[1] : esc(r[1])}</dd></div>`).join('');
     const hist = (o.history || []).map(h => `${dt(h.at)} · ${AST[h.status] || h.status}${h.by === 'card' ? ' (kartla)' : ''}`).join('<br>');
     return `<details class="acard"${o.status === 'pending' ? ' open' : ''}><summary><span class="st ${o.status}">${AST[o.status] || o.status}</span><b>${esc(o.name)}</b><span class="ap">${esc(o.program)}</span><span class="ad">${dt(o.createdAt)} · ${esc(o.id)}</span></summary>
-      <div class="abody"><dl class="ainfo">${info}</dl><div class="awhy"><h4>Neden katılmak istiyor?</h4><p>${esc(o.why)}</p>${o.mailedAt ? `<p class="small">Onay e-postası gönderildi: ${dt(o.mailedAt)}</p>` : ''}<p class="small">${hist}</p></div></div>
+      <div class="abody"><dl class="ainfo">${info}</dl><div class="awhy"><h4>Neden katılmak istiyor?</h4><p>${esc(o.why)}</p>${(o.mails || []).length ? `<p class="small">Gönderilen e-postalar: ${o.mails.map(m => ({approve:'onay', reject:'ret', paid:'kayıt kesinleşti'}[m.type] || m.type) + ' (' + dt(m.at) + ')').join(', ')}</p>` : ''}<p class="small">${hist}</p></div></div>
       <div class="aacts">${acts.join('')}</div></details>`;
   }
   function renderApps() {
     const list = filtered(); const c = s => APPS.filter(o => o.status === s).length;
     $('n-apps').textContent = c('pending') || '';
-    $('astats').innerHTML = [['pending','Yeni'],['approved','Ödeme bekleniyor'],['payment_reported','Ödeme bildirildi'],['paid','Ödendi'],['rejected','Reddedildi']].map(([k, l]) => `<div><b>${c(k)}</b>${l}</div>`).join('') + (MAIL ? '' : '<div class="warn">Otomatik e-posta kapalı: onaydan sonra linki WhatsApp\'tan gönder.</div>');
+    $('astats').innerHTML = [['pending','Yeni'],['approved','Ödeme bekleniyor'],['payment_reported','Ödeme bildirildi'],['paid','Ödendi'],['rejected','Reddedildi']].map(([k, l]) => `<div><b>${c(k)}</b>${l}</div>`).join('') + (MAIL ? '<div class="okm">Otomatik e-posta açık · hello@notiyatro.com</div>' : '<div class="warn">Otomatik e-posta henüz kurulmadı: onaydan sonra linki WhatsApp\'tan gönder.</div>');
     $('alist').innerHTML = list.map(card).join('') || '<p>Başvuru yok.</p>';
   }
   function renderOrders() {
@@ -564,15 +564,15 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
     if (cp) { try { await navigator.clipboard.writeText(cp.dataset.copy); cp.textContent = 'Kopyalandı'; setTimeout(() => cp.textContent = 'Linki kopyala', 1500); } catch {} return; }
     const b = e.target.closest('[data-act]'); if (!b) return;
     const act = b.dataset.act;
-    if (act === 'reject' && !confirm('Bu başvuruyu reddetmek istediğine emin misin?')) return;
-    if (act === 'paid' && !confirm('Ödemenin hesaba geçtiğini kontrol ettin mi? Kayıt "Ödendi" olarak işaretlenecek.')) return;
+    if (act === 'reject' && !confirm(MAIL ? 'Başvuru reddedilecek ve kişiye nazik bir bilgilendirme e-postası gidecek. Devam edilsin mi?' : 'Bu başvuruyu reddetmek istediğine emin misin?')) return;
+    if (act === 'paid' && !confirm('Ödemenin hesaba geçtiğini kontrol ettin mi? Kayıt "Ödendi" olarak işaretlenecek' + (MAIL ? ' ve kişiye "kaydın kesinleşti" e-postası gidecek.' : '.'))) return;
     b.disabled = true;
     const r = await api('/api/admin/applications', {method:'POST', body: JSON.stringify({id: b.dataset.id, action: act})}).catch(() => null);
     if (!r || !r.ok) { alert('İşlem yapılamadı, tekrar dene.'); b.disabled = false; return; }
     const d = await r.json(); APPS = APPS.map(o => o.id === d.application.id ? d.application : o); renderApps();
     if (act === 'approve') {
       const o = d.application;
-      if (d.mailed) alert('Onaylandı. Ödeme linki ' + o.email + ' adresine e-postayla gönderildi. İstersen WhatsApp\'tan da gönderebilirsin.');
+      if (d.mailed) { if (confirm('Onaylandı. Ödeme linki ' + o.email + ' adresine hello@notiyatro.com\'dan e-postayla gönderildi. WhatsApp\'tan da göndermek ister misin?')) window.open(waLink(o), '_blank', 'noopener'); }
       else if (confirm('Onaylandı. Ödeme linkini şimdi WhatsApp\'tan göndermek ister misin?')) window.open(waLink(o), '_blank', 'noopener');
     }
   });

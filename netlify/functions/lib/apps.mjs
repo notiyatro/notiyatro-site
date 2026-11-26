@@ -28,16 +28,3 @@ export async function byToken(t) {
 export const siteUrl = (req) => process.env.URL || new URL(req.url).origin;
 export const payLink = (req, a) => `${siteUrl(req)}${a.lang === 'en' ? '/en/payment/' : '/odeme/'}?b=${a.token}`;
 
-// İsteğe bağlı e-posta (Resend). RESEND_API_KEY ve MAIL_FROM yoksa sessizce atlanır.
-export async function sendMail(to, subject, text) {
-  const key = process.env.RESEND_API_KEY, from = process.env.MAIL_FROM;
-  if (!key || !from || !to) return false;
-  try {
-    const r = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from, to: [to], subject, text, reply_to: process.env.ADMIN_EMAIL || undefined }),
-    });
-    return r.ok;
-  } catch { return false; }
-}

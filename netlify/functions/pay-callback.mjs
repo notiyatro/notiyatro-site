@@ -3,6 +3,8 @@
 import { config as tosla, verifyCallbackHash } from './lib/tosla.mjs';
 import { orders } from './lib/store.mjs';
 import { apps } from './lib/apps.mjs';
+import { sendMail } from './lib/mail.mjs';
+import { T } from './lib/templates.mjs';
 
 async function readBody(req) {
   const type = req.headers.get('content-type') || '';
@@ -51,6 +53,7 @@ export default async (req) => {
     if (a && a.status !== 'paid') {
       const now = new Date().toISOString();
       await apps().setJSON(a.id, { ...a, status: 'paid', paidAt: now, paidBy: 'card', orderId, history: [...(a.history || []), { at: now, status: 'paid', by: 'card' }] });
+      await sendMail(a.email, T.paid(a));
     }
   }
   if (!hashOk) console.error('callback hash mismatch', orderId);

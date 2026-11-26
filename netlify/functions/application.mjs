@@ -1,5 +1,7 @@
 // Onaylanan başvurunun ödeme sayfası için bilgi + "ödemeyi yaptım" bildirimi
-import { byToken, apps, program, json, sendMail } from './lib/apps.mjs';
+import { byToken, apps, program, json, siteUrl } from './lib/apps.mjs';
+import { sendMail } from './lib/mail.mjs';
+import { T } from './lib/templates.mjs';
 
 export default async (req) => {
   const url = new URL(req.url);
@@ -24,7 +26,7 @@ export default async (req) => {
     a.status = 'payment_reported'; a.reportedAt = new Date().toISOString();
     a.history = [...(a.history || []), { at: a.reportedAt, status: 'payment_reported' }];
     await apps().setJSON(a.id, a);
-    await sendMail(process.env.ADMIN_EMAIL, `Ödeme bildirimi: ${a.name} — ${a.program}`, `${a.name} havale/EFT yaptığını bildirdi. Başvuru no: ${a.id}. Hesabı kontrol edip panelden "Ödendi" olarak işaretle.`);
+    await sendMail(process.env.ADMIN_EMAIL || 'hello@notiyatro.com', T.adminReported(a, siteUrl(req)));
     return json(200, { status: a.status });
   }
   return json(405, { error: 'method' });

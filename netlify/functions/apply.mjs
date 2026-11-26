@@ -1,5 +1,7 @@
 // Başvuru formu gönderimi
-import { apps, program, json, clean, sendMail } from './lib/apps.mjs';
+import { apps, program, json, clean, siteUrl } from './lib/apps.mjs';
+import { sendMail } from './lib/mail.mjs';
+import { T } from './lib/templates.mjs';
 import { timeSpan } from './lib/tosla.mjs';
 
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -44,7 +46,10 @@ export default async (req) => {
     out.push({ id, program: p.title[lang] });
   }
   const fresh = out.filter((x) => !x.duplicate);
-  if (fresh.length) await sendMail(process.env.ADMIN_EMAIL, `Yeni başvuru: ${f.name} (${fresh.length} program)`, `${f.name} (${f.email}, ${f.phone}) başvurdu:\n${fresh.map((x) => `- ${x.program} (${x.id})`).join('\n')}\nPanel: ${process.env.URL || ''}/yonetim/`);
+  if (fresh.length) {
+    const a = { name: f.name, email: f.email, phone: f.phone, lang };
+    await Promise.all([sendMail(f.email, T.received(a, fresh)), sendMail(process.env.ADMIN_EMAIL || 'hello@notiyatro.com', T.adminNew(a, fresh, siteUrl(req)))]);
+  }
   return json(200, { applications: out, id: out[0].id });
 };
 export const config = { path: '/api/apply' };
