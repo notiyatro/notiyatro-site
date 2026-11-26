@@ -107,6 +107,8 @@ T=[
 # script
 (open('/home/claude/build/season_tr.txt').read(), open('/home/claude/build/season_en.txt').read()),
 ('<h4>Sözleşmeler</h4>','<h4>Terms</h4>'),
+('>Sahnede buluşalım<','>See you on stage<'),
+('>Atölyeler, kamplar ve yeni duyurular için bizi takip edin.<','>Follow us for workshops, camps and new announcements.<'),
 ('>Atölye Katılım Sözleşmesi</a>','>Workshop Participation Agreement</a>'),
 ('>Kamp Katılım Sözleşmesi</a>','>Camp Participation Agreement</a>'),
 ('>Ön Bilgilendirme Formu</a>','>Pre-Information Form</a>'),
