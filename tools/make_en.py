@@ -1,5 +1,6 @@
 import re,sys
-src=open('/home/claude/notiyatro/index.html').read()
+from langnorm import norm
+src=norm(open('/home/claude/notiyatro/index.html').read())
 h=src
 from urllib.parse import quote
 T=[

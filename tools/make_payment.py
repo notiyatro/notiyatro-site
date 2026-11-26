@@ -18,7 +18,8 @@ def part(src, start, end):
     i = src.index(start); j = src.index(end, i) + len(end); return src[i:j]
 
 def shell(lang, prefix, lang_href, title, css, body, js, noindex=False):
-    src = open(f'{ROOT}/index.html' if lang == 'tr' else f'{ROOT}/en/index.html').read()
+    from langnorm import norm
+    src = norm(open(f'{ROOT}/index.html' if lang == 'tr' else f'{ROOT}/en/index.html').read(), lang)
     head = src[:src.index('</head>')]
     head = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', head)
     head = re.sub(r'<link rel="alternate".*?\n', '', head)

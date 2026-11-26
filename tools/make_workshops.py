@@ -1,7 +1,8 @@
 import re, os, json, html as H
 ROOT='/home/claude/notiyatro'
-tr_idx=open(f'{ROOT}/index.html').read()
-en_idx=open(f'{ROOT}/en/index.html').read()
+from langnorm import norm
+tr_idx=norm(open(f'{ROOT}/index.html').read())
+en_idx=norm(open(f'{ROOT}/en/index.html').read(),'en')
 
 def part(src, start, end):
     i=src.index(start); j=src.index(end,i)+len(end); return src[i:j]

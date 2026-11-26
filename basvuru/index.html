@@ -384,7 +384,7 @@ main{overflow-x:clip}
 @media(max-width:900px){.pay-wrap{grid-template-columns:1fr;gap:28px}.pay-sum{position:static}}
 @media(max-width:480px){.fgrid{grid-template-columns:1fr 1fr}.fgrid .half-m{grid-column:1/-1}.pay-sum{padding:20px}}
 .apform{max-width:820px}.hint{font-size:13px;color:#666;margin:-4px 0 10px}.cvbox{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.fld label.cvbtn{display:inline-flex;align-items:center;margin:0;cursor:pointer;min-height:44px}.cvname{font-weight:600;color:#444;overflow-wrap:anywhere}.fld input.sr{position:absolute;width:1px;height:1px;min-height:0;padding:0;border:0;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}.cvbox:focus-within .cvbtn{outline:3px solid var(--red);outline-offset:2px}.copy{border:1.5px solid #000;background:#fff;border-radius:999px;padding:4px 12px;font:800 12px Urbanist,system-ui,sans-serif;cursor:pointer}.plist2{display:grid;gap:8px}.pchk{display:flex;gap:12px;align-items:flex-start;border:1.5px solid #ccc;border-radius:12px;padding:12px 14px;cursor:pointer}.pchk:has(input:checked){border-color:#000;background:#F6F4EA}.pchk input{width:20px;height:20px;margin-top:2px;accent-color:#000;flex:0 0 20px}.pchk span{display:grid;gap:2px}.pchk small{color:#666;font-weight:600}.pchk.off{opacity:.55;cursor:not-allowed}.ptag{justify-self:start;font-style:normal;font-size:12px;font-weight:800;padding:2px 9px;border-radius:999px;margin-top:4px;background:#fde9e6;color:#9b2a18}.ptag.few{background:#fff1d6;color:#8a5300}.fld .pchk{display:flex;font-size:15px;font-weight:600;margin:0}.fld .pchk input,.fld .radios input{width:20px;height:20px;min-height:0;padding:0;border-radius:4px;flex:0 0 20px}.fld .pchk b{font-weight:800}.aplist{margin:0 0 20px;padding-left:20px;line-height:1.8}.apform textarea{width:100%;box-sizing:border-box;border:1.5px solid #bdbdbd;border-radius:12px;padding:12px 14px;font:600 16px Urbanist,system-ui,sans-serif;resize:vertical}.apform textarea:focus{outline:none;border-color:#000;box-shadow:0 0 0 3px rgba(228,69,47,.25)}.lbl2{display:block;font-size:14px;font-weight:800;margin-bottom:8px}.radios{display:flex;gap:22px}.radios label{display:flex;gap:8px;align-items:center;font-weight:700;cursor:pointer}.radios input{width:20px;height:20px;accent-color:#000}.fld small{font-weight:600;color:#777}.apform .paybtn{margin-top:6px}</style>
-</head>
+<style id="langs-css">.langs{position:relative}.langs summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:44px;min-height:42px;padding:0 10px;font-weight:800;font-size:14px;border-radius:999px}.langs summary::-webkit-details-marker{display:none}.langs summary::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}.langs summary:hover,.langs[open] summary{background:rgba(0,0,0,.06)}.langm{position:absolute;right:0;top:calc(100% + 6px);z-index:80;background:#fff;color:#000;border:1.5px solid #000;border-radius:14px;padding:6px;display:grid;min-width:150px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.langm a{padding:9px 12px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;color:inherit;white-space:nowrap}.langm a:hover{background:#F6F4EA}.langm a[aria-current]{background:#000;color:#fff}@media(max-width:600px){.langm{position:fixed;left:12px;right:12px;top:66px;grid-template-columns:1fr 1fr}}@media(max-width:420px){.langs summary{min-width:36px;padding:0 6px;font-size:12px}}</style></head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -408,7 +408,7 @@ main{overflow-x:clip}
       <a class="btn solid" href="../#isl">ISL</a>
       <a class="btn ghost" href="../#no-yapim">NO Yapım</a>
       <a class="btn ghost" href="../#partner"><span class="lg">Vajra Theatre</span><span class="sm">Vajra</span></a>
-      <a class="lang" href="../en/apply/" hreflang="en" lang="en" aria-label="English version">EN</a>
+      <details class="langs"><summary aria-label="Language · Dil">TR</summary><div class="langm"><a href="/basvuru/" hreflang="tr" lang="tr" aria-current="page">Türkçe</a><a href="/en/apply/" hreflang="en" lang="en">English</a><a href="/de/apply/" hreflang="de" lang="de">Deutsch</a><a href="/ru/apply/" hreflang="ru" lang="ru">Русский</a></div></details>
     </div>
     <button class="menu" id="menu" aria-expanded="false" aria-controls="top">Menü</button>
   </div>
@@ -564,5 +564,5 @@ main{overflow-x:clip}
   });
 }
 </script>
-</body>
+<script id="langs-js">document.addEventListener("click",e=>{document.querySelectorAll("details.langs[open]").forEach(d=>{if(!d.contains(e.target))d.open=false})});addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll("details.langs[open]").forEach(d=>d.open=false)});</script></body>
 </html>

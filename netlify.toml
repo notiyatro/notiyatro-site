@@ -1,6 +1,6 @@
 # Site dosyaları dist/ klasörüne kopyalanıp yayınlanır; fonksiyon kaynakları, data/ ve node_modules yayına çıkmaz.
 [build]
-  command = "rm -rf dist && mkdir dist && cp -r index.html en atolyeler kamplar basvuru odeme yonetim yasal img dist/"
+  command = "rm -rf dist && mkdir dist && for d in index.html en de ru fr es it el atolyeler kamplar basvuru odeme yonetim yasal img; do if [ -e $d ]; then cp -r $d dist/; fi; done"
   publish = "dist"
   functions = "netlify/functions"
 

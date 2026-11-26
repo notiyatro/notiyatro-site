@@ -339,7 +339,7 @@ main{overflow-x:clip}
 .lg-date{color:#666;font-size:14px;margin-top:30px}
 @media(max-width:560px){.lg-firm div{grid-template-columns:1fr;gap:2px}}
 </style>
-</head>
+<style id="langs-css">.langs{position:relative}.langs summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:44px;min-height:42px;padding:0 10px;font-weight:800;font-size:14px;border-radius:999px}.langs summary::-webkit-details-marker{display:none}.langs summary::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}.langs summary:hover,.langs[open] summary{background:rgba(0,0,0,.06)}.langm{position:absolute;right:0;top:calc(100% + 6px);z-index:80;background:#fff;color:#000;border:1.5px solid #000;border-radius:14px;padding:6px;display:grid;min-width:150px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.langm a{padding:9px 12px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;color:inherit;white-space:nowrap}.langm a:hover{background:#F6F4EA}.langm a[aria-current]{background:#000;color:#fff}@media(max-width:600px){.langm{position:fixed;left:12px;right:12px;top:66px;grid-template-columns:1fr 1fr}}@media(max-width:420px){.langs summary{min-width:36px;padding:0 6px;font-size:12px}}</style></head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -363,7 +363,7 @@ main{overflow-x:clip}
       <a class="btn solid" href="../../#isl">ISL</a>
       <a class="btn ghost" href="../../#no-yapim">NO Yapım</a>
       <a class="btn ghost" href="../../#partner"><span class="lg">Vajra Theatre</span><span class="sm">Vajra</span></a>
-      <a class="lang" href="../../en/" hreflang="en" lang="en" aria-label="English version">EN</a>
+      <details class="langs"><summary aria-label="Language · Dil">TR</summary><div class="langm"><a href="/" hreflang="tr" lang="tr" aria-current="page">Türkçe</a><a href="/en/" hreflang="en" lang="en">English</a><a href="/de/" hreflang="de" lang="de">Deutsch</a><a href="/ru/" hreflang="ru" lang="ru">Русский</a></div></details>
     </div>
     <button class="menu" id="menu" aria-expanded="false" aria-controls="top">Menü</button>
   </div>
@@ -442,5 +442,5 @@ main{overflow-x:clip}
 </footer>
 <script>{const h=document.getElementById('top'),m=document.getElementById('menu');m&&m.addEventListener('click',()=>{const o=h.classList.toggle('open');m.setAttribute('aria-expanded',o)})}</script>
 
-</body>
+<script id="langs-js">document.addEventListener("click",e=>{document.querySelectorAll("details.langs[open]").forEach(d=>{if(!d.contains(e.target))d.open=false})});addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll("details.langs[open]").forEach(d=>d.open=false)});</script></body>
 </html>
