@@ -9,8 +9,9 @@ function wrap(lang, paras, button) {
 <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#fff;border-radius:16px;overflow:hidden">
 <tr><td style="background:#000;color:#D9D4B3;padding:20px 28px;font-size:22px;font-weight:800;letter-spacing:-.5px">n*tiyatro</td></tr>
 <tr><td style="padding:28px;font-size:16px;line-height:1.6">
-${paras.map((p) => `<p style="margin:0 0 16px">${p}</p>`).join('')}
+${paras.slice(0, -1).map((p) => `<p style="margin:0 0 16px">${p}</p>`).join('')}
 ${button ? `<p style="margin:24px 0"><a href="${esc(button.href)}" style="display:inline-block;background:#000;color:#fff;text-decoration:none;font-weight:700;padding:14px 24px;border-radius:999px">${esc(button.label)}</a></p><p style="margin:0 0 16px;font-size:13px;color:#666">${lang === 'en' ? 'If the button does not work, copy this link:' : 'Buton çalışmazsa bu linki kopyalayabilirsin:'}<br><a href="${esc(button.href)}" style="color:#666;word-break:break-all">${esc(button.href)}</a></p>` : ''}
+<p style="margin:8px 0 0">${paras[paras.length - 1]}</p>
 </td></tr>
 <tr><td style="padding:18px 28px;border-top:1px solid #eee;font-size:13px;color:#666">NO Tiyatro · International Stage Lab.<br>hello@notiyatro.com · WhatsApp ${WA}<br>Hüseyinağa Mah., İstiklal Cad., Grand Pera No: 56/58 Kat 3 Daire 5, Beyoğlu, İstanbul</td></tr>
 </table></td></tr></table></body></html>`;
