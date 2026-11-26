@@ -42,7 +42,7 @@ T = {
 # --- season
 '2026–2027 season': ('Saison 2026–2027', 'Сезон 2026–2027'),
 'Short, intensive workshops and camps with tutors from the world’s leading drama schools and stages. Every programme opens with limited places; separate groups may be formed for young people and adults.': ('Kurze, intensive Workshops und Camps mit Dozenten der weltweit führenden Schauspielschulen und Bühnen. Jedes Programm startet mit begrenzten Plätzen; für Jugendliche und Erwachsene können getrennte Gruppen gebildet werden.', 'Короткие интенсивные мастер-классы и лагеря с педагогами ведущих театральных школ и сцен мира. Количество мест в каждой программе ограничено; для молодёжи и взрослых могут формироваться отдельные группы.'),
-'Join our WhatsApp channel': ('Unserem WhatsApp-Kanal folgen', 'Подписаться на WhatsApp-канал'),
+'Join our WhatsApp channel for all announcements': ('Für alle Ankündigungen unserem WhatsApp-Kanal folgen', 'Подпишитесь на WhatsApp-канал со всеми анонсами'),
 'All workshops: upcoming and past': ('Alle Workshops: kommende und vergangene', 'Все мастер-классы: будущие и прошедшие'),
 'These programmes are run by International Stage Lab., a collaboration between NO Tiyatro and Vajra Theatre, with tutors from the schools and artists named. Cancellations made less than 45 days before a workshop or 60 days before a camp are not refunded; full terms are in the registration contract.':
  ('Diese Programme werden von International Stage Lab., einer Zusammenarbeit von NO Tiyatro und Vajra Theatre, mit Dozenten der genannten Schulen und Künstler durchgeführt. Bei Stornierungen weniger als 45 Tage vor einem Workshop bzw. 60 Tage vor einem Camp erfolgt keine Erstattung; die vollständigen Bedingungen stehen im Teilnahmevertrag.',
