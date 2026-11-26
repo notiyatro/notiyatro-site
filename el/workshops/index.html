@@ -467,7 +467,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
       :`<div class="wimg ph"><img src="${IMG}isl-logo.png" alt=""><span>${esc(T.ph)}</span></div>`;
     const x=w.s==='up'&&w.pid?ST[w.pid]:null;
     const stb=x?`<span class="stb ${x.state}">${esc(x.state==='few'&&x.left?SL.left.replace('{n}',x.left):SL[x.state])}</span>`:'';
-    const tags=`<div class="wtags">${stb}${w.tags.map((g,i)=>`<span class="tag${w.f&&i===1?' f':''}${i===0&&w.type==='kamp'?' camp':''}">${esc(g)}</span>`).join('')}</div>`;
+    const tags=`<div class="wtags">${stb}${w.tags.map((g,i)=>`<span class="tag${(w.f&&i===1)||['Resmî İş Birliği','Επίσημη συνεργασία','Offizielle Partnerschaft','Официальное партнёрство','Partenariat officiel','Colaboración oficial','Partnership ufficiale','Επίσημη συνεργασία'].includes(g)?' f':''}${i===0&&w.type==='kamp'?' camp':''}">${esc(g)}</span>`).join('')}</div>`;
     const msg="en"==='tr'?w.t+T.regmsg:"I'd like to register for "+w.t;
     const btn=w.s!=='up'?'':x&&(x.state==='full'||x.state==='closed')?`<span class="btn solid dis" aria-disabled="true">${esc(SL[x.state])}</span>`:`<a class="btn solid" href="../apply/?p=${w.pid}">${esc(T.reg)}</a>`;
     return `<article class="wcard">${img}${tags}<div class="when">${esc(w.d)}</div>${w.pl?`<div class="pl">${esc(w.pl)}</div>`:''}<h3>${esc(w.t)}</h3>${w.p?`<p>${esc(w.p)}</p>`:''}${w.tut?`<p class="tut"><b>${esc(T.tut)}:</b> ${esc(w.tut)}</p>`:''}${btn}</article>`;

@@ -602,6 +602,7 @@ main{overflow-x:clip}
   const PAY = ["pfs-2027-01", "isc-winter-2027", "central-2027-02"];
   const PAYURL = 'payment/';
   const PROG = {"pfs-2027-01": {"start": "2027-01-22", "type": "atolye"}, "isc-winter-2027": {"start": "2027-01-28", "type": "kamp"}, "central-2027-02": {"start": "2027-02-05", "type": "atolye"}, "frantic-2027-03": {"start": "2027-03-20", "type": "atolye"}, "isc-summer-2027": {"start": "2027-07-22", "type": "kamp"}};
+  const OFFICIAL = ['Resmî İş Birliği','Colaboración oficial','Offizielle Partnerschaft','Официальное партнёрство','Partenariat officiel','Colaboración oficial','Partnership ufficiale','Επίσημη συνεργασία'];
   document.getElementById('list').innerHTML = season.map((s,n) => {
     const i = s.i || {};
     const rows = keys.filter(k => i[k]).map(k => `<div><dt>${esc(L[k])}</dt><dd>${k === 'where' && i.addr ? `<details class="iaddr"><summary>${esc(i[k])}</summary><span>${esc(i.addr)}<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(i[k])}" target="_blank" rel="noopener">${esc(L.maplink)} ↗</a></span></details>` : esc(i[k])}${k === 'fee' && i.feenote ? `<small class="inote">${esc(i.feenote)}</small>` : ''}</dd></div>`).join('');
@@ -610,7 +611,7 @@ main{overflow-x:clip}
     <li>
       <div class="when">${esc(s.d)}<small>${esc(s.y)}</small></div>
       <div class="what">
-        <div>${s.id ? `<span class="stb" data-st="${s.id}" hidden></span>` : ''}${s.tags.map((g,j)=>`<span class="tag${s.f&&j===1?' f':''}${j===0&&/^isc-/.test(s.id||'')?' camp':''}">${esc(g)}</span>`).join('')}</div>
+        <div>${s.id ? `<span class="stb" data-st="${s.id}" hidden></span>` : ''}${s.tags.map((g,j)=>`<span class="tag${(s.f&&j===1)||OFFICIAL.includes(g)?' f':''}${j===0&&/^isc-/.test(s.id||'')?' camp':''}">${esc(g)}</span>`).join('')}</div>
         <h3>${esc(s.t)}</h3><p>${md(s.p)}</p>
       </div>
       <div class="acts">
