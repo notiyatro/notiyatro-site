@@ -5,8 +5,8 @@ import { orders } from './lib/store.mjs';
 const json = (status, body) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
 
 function authorized(req) {
-  const want = process.env.ADMIN_PASSWORD || '';
-  const got = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '');
+  const want = (process.env.ADMIN_PASSWORD || '').trim();
+  const got = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
   if (want.length < 10 || !got) return false;
   const a = crypto.createHash('sha256').update(want).digest();
   const b = crypto.createHash('sha256').update(got).digest();

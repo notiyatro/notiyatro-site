@@ -11,8 +11,8 @@ export const json = (status, body) => new Response(JSON.stringify(body), { statu
 export const clean = (v, max) => String(v ?? '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f<>]/g, '').trim().slice(0, max);
 
 export function authorized(req) {
-  const want = process.env.ADMIN_PASSWORD || '';
-  const got = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '');
+  const want = (process.env.ADMIN_PASSWORD || '').trim();
+  const got = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
   if (want.length < 10 || !got) return false;
   const a = crypto.createHash('sha256').update(want).digest();
   const b = crypto.createHash('sha256').update(got).digest();
