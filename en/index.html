@@ -562,7 +562,7 @@ main{overflow-x:clip}
   const keys = ['tut','when','time','where','lang','who','fee','inc','out','cap','refund'];
   const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
   const APPLY = 'apply/';
-  const PAY = [];
+  const PAY = ["pfs-2027-01", "isc-winter-2027", "central-2027-02"];
   const PAYURL = 'payment/';
   const PROG = {"pfs-2027-01": {"start": "2027-01-22", "type": "atolye"}, "isc-winter-2027": {"start": "2027-01-28", "type": "kamp"}, "central-2027-02": {"start": "2027-02-05", "type": "atolye"}, "frantic-2027-03": {"start": "2027-03-20", "type": "atolye"}, "isc-summer-2027": {"start": "2027-07-22", "type": "kamp"}};
   document.getElementById('list').innerHTML = season.map((s,n) => {

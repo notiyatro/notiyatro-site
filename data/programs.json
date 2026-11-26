@@ -1,5 +1,5 @@
 {
- "_not": "Ödeme alınacak programlar. price boş (null) ise sitede Öde butonu çıkmaz, kayıt WhatsApp'tan devam eder. price TL ise 4500 gibi yaz (kuruş yok). currency: TRY veya EUR. maxInstallment: 1 = sadece tek çekim. type: atolye (iade süresi 45 gün) ya da kamp (60 gün). start: programın ilk günü (YYYY-AA-GG). priceText: sitede ve IBAN sayfasında gösterilen fiyat metni. open: false yapılırsa başvuru kapanır.",
+ "_not": "Ödeme alınacak programlar. price boş (null) ise sitede Öde butonu çıkmaz, kayıt WhatsApp'tan devam eder. price TL ise 4500 gibi yaz (kuruş yok). currency: TRY veya EUR. maxInstallment: 1 = sadece tek çekim. type: atolye (iade süresi 45 gün) ya da kamp (60 gün). start: programın ilk günü (YYYY-AA-GG). priceText: sitede ve IBAN sayfasında gösterilen fiyat metni. open: false yapılırsa başvuru kapanır. net: KDV hariç fiyat, vat: KDV oranı (%), price: KDV dahil toplam (ödeme sayfasında gösterilir ve tahsil edilir).",
  "programs": [
   {
    "id": "pfs-2027-01",
@@ -11,7 +11,7 @@
     "tr": "22–24 Ocak 2027 · DasDas Ataşehir, İstanbul",
     "en": "22–24 January 2027 · DasDas Ataşehir, Istanbul"
    },
-   "price": null,
+   "price": 26400,
    "currency": "TRY",
    "maxInstallment": 1,
    "type": "atolye",
@@ -20,7 +20,9 @@
     "tr": "22.000 TL + KDV",
     "en": "22,000 TL + VAT"
    },
-   "open": true
+   "open": true,
+   "net": 22000,
+   "vat": 20
   },
   {
    "id": "isc-winter-2027",
@@ -32,7 +34,7 @@
     "tr": "28–31 Ocak 2027 · Narköy Ekolojik Otel, Kandıra",
     "en": "28–31 January 2027 · Narköy Ecological Hotel, Kandıra"
    },
-   "price": null,
+   "price": 38400,
    "currency": "TRY",
    "maxInstallment": 1,
    "type": "kamp",
@@ -41,7 +43,9 @@
     "tr": "32.000 TL + KDV",
     "en": "32,000 TL + VAT"
    },
-   "open": true
+   "open": true,
+   "net": 32000,
+   "vat": 20
   },
   {
    "id": "central-2027-02",
@@ -53,7 +57,7 @@
     "tr": "5–7 Şubat 2027 · İstanbul",
     "en": "5–7 February 2027 · Istanbul"
    },
-   "price": null,
+   "price": 26400,
    "currency": "TRY",
    "maxInstallment": 1,
    "type": "atolye",
@@ -62,7 +66,9 @@
     "tr": "22.000 TL + KDV",
     "en": "22,000 TL + VAT"
    },
-   "open": true
+   "open": true,
+   "net": 22000,
+   "vat": 20
   },
   {
    "id": "frantic-2027-03",

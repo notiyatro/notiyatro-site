@@ -13,6 +13,7 @@ export default async (req) => {
     return json(200, {
       id: a.id, name: a.name, status: a.status, programId: a.programId,
       title: p.title || { tr: a.program, en: a.program }, date: p.date || null, priceText: p.priceText || null,
+      price: typeof p.price === 'number' ? p.price : null, net: p.net ?? null, vat: p.vat ?? null, currency: p.currency || 'TRY',
       // Banka bilgileri: Netlify ortam değişkeniyle değiştirilebilir, yoksa aşağıdaki şirket hesabı kullanılır.
       iban: process.env.IBAN || 'TR32 0004 6001 9888 8000 1427 30', ibanName: process.env.IBAN_NAME || 'NO YAPIM VE ORGANİZASYON LTD. ŞTİ.', bank: process.env.IBAN_BANK || 'Akbank',
       desc: process.env.IBAN_DESC || 'Atölye Eğitim ve Organizasyon Hizmet Bedeli',

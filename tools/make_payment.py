@@ -73,7 +73,7 @@ T = {
    bank_note='Açıklama alanına yukarıdaki metni, başvuru numaranla birlikte yazmayı unutma. Ödemen hesabımıza geçince kaydını kesinleştirip sana haber vereceğiz.', qr='Akbank ya da mobil bankacılık uygulamanla bu kodu okutarak da ödeme yapabilirsin.', qr_alt='Akbank ödeme QR kodu',
    bank_done='Ödemeyi yaptım', bank_reported='Ödeme bildirimin bize ulaştı. Hesabımıza geçtiğinde kaydını kesinleştirip sana haber vereceğiz.',
    bank_paid='Ödemen onaylandı, kaydın tamam. Görüşmek üzere!', card_h='ya da kartla öde', badlink='Bu ödeme linki geçersiz ya da başvurun henüz onaylanmamış.',
-   noiban='Banka bilgileri birazdan burada olacak. Şimdilik WhatsApp\'tan yazabilirsin.', ct_h='Katılım sözleşmesi', ct_need='Onaylayabilmek için sözleşmeyi sonuna kadar kaydırarak oku.', ct_done='Sözleşmenin tamamını okudun, şimdi onaylayabilirsin.', ct_note='', bconsent='Devam etmek için sözleşmeyi onaylaman gerekiyor.'),
+   noiban='Banka bilgileri birazdan burada olacak. Şimdilik WhatsApp\'tan yazabilirsin.', vat='{net} + %{r} KDV ({v}) dahil', vat_in='KDV dahil', ct_h='Katılım sözleşmesi', ct_need='Onaylayabilmek için sözleşmeyi sonuna kadar kaydırarak oku.', ct_done='Sözleşmenin tamamını okudun, şimdi onaylayabilirsin.', ct_note='', bconsent='Devam etmek için sözleşmeyi onaylaman gerekiyor.'),
  'en': dict(
    title='Payment — NO Tiyatro', kick='Secure payment', h1='Complete your registration',
    summary='Programme', total='Total', inst='Instalments', single='Single payment', x='instalments',
@@ -99,7 +99,7 @@ T = {
    bank_note='Please use the reference above, including your application number, for your transfer. Once the payment reaches our account, we will confirm your place and let you know.', qr='Turkish bank customers can also scan this code in their mobile banking app.', qr_alt='Akbank payment QR code',
    bank_done='I have made the payment', bank_reported='We have received your payment notice. Once it reaches our account, we will confirm your place and let you know.',
    bank_paid='Your payment is confirmed and you are registered. See you soon!', card_h='or pay by card', badlink='This payment link is invalid, or your application has not been approved yet.',
-   noiban='Bank details will appear here shortly. In the meantime, message us on WhatsApp.', ct_h='Participation agreement', ct_need='Please scroll to the end of the agreement to be able to accept it.', ct_done='You have read the whole agreement and can now accept it.', ct_note='The agreement is in Turkish, the governing language of the contract.', bconsent='Please accept the agreement to continue.'),
+   noiban='Bank details will appear here shortly. In the meantime, message us on WhatsApp.', vat='Includes {net} + {r}% VAT ({v})', vat_in='VAT included', ct_h='Participation agreement', ct_need='Please scroll to the end of the agreement to be able to accept it.', ct_done='You have read the whole agreement and can now accept it.', ct_note='The agreement is in Turkish, the governing language of the contract.', bconsent='Please accept the agreement to continue.'),
 }
 
 CSS = '''
@@ -127,6 +127,7 @@ CSS = '''
 .consent a{color:inherit;font-weight:800}
 .paybtn{width:100%;justify-content:center;min-height:56px;font-size:18px;background:#000;color:#fff;border-color:#000;cursor:pointer}
 .paybtn[disabled]{opacity:.6;cursor:progress}
+.vatl{font-size:13px;color:#555;text-align:right;margin:4px 0 0}.vatl:empty{display:none}
 .refund{font-size:14px;font-weight:700;margin:12px 0 0;color:#333}
 .refund.no{color:#9b2a18}
 .minor{font-size:13px;color:#555;margin:-8px 0 20px;line-height:1.5}
@@ -195,6 +196,7 @@ def pay_page(lang):
           <select id="inst"></select>
         </div>
         <div class="tot"><span>{x["total"]}</span><b id="s-total"></b></div>
+        <p class="vatl" id="s-vat"></p>
         <p class="refund" id="s-refund"></p>
         <p class="sec">{LOCK}<span>{x["secure"]}</span></p>
       </aside>
@@ -258,7 +260,7 @@ def pay_page(lang):
 {
   const CAT = %s, T = %s, LANG = '%s';
   const $ = id => document.getElementById(id);
-  const fmt = (n, cur) => new Intl.NumberFormat(LANG === 'tr' ? 'tr-TR' : 'en-GB', {style:'currency', currency:cur, maximumFractionDigits:2}).format(n);
+  const fmt = (n, cur) => cur === 'TRY' || !cur ? new Intl.NumberFormat(LANG === 'tr' ? 'tr-TR' : 'en-GB', {minimumFractionDigits: n %% 1 ? 2 : 0, maximumFractionDigits: 2}).format(n) + ' TL' : new Intl.NumberFormat(LANG === 'tr' ? 'tr-TR' : 'en-GB', {style:'currency', currency:cur, maximumFractionDigits:2}).format(n);
   const Q = new URLSearchParams(location.search), BT = Q.get('b');
   let p = CAT.find(c => c.id === Q.get('p') && typeof c.price === 'number' && c.price > 0);
   const anyP = CAT.find(c => c.id === Q.get('p'));
@@ -296,14 +298,15 @@ def pay_page(lang):
       $('pay-wrap').hidden = false;
       $('s-title').textContent = (d.title && d.title[LANG]) || prog.t || '';
       $('s-date').textContent = (d.date && d.date[LANG]) || prog.d || '';
-      const amt = (d.priceText && d.priceText[LANG]) || (typeof prog.price === 'number' ? fmt(prog.price, prog.cur) : '');
+      const amt = typeof d.price === 'number' ? fmt(d.price, d.currency) : ((d.priceText && d.priceText[LANG]) || '');
       $('s-total').textContent = amt; refundLine(prog);
+      if (typeof d.price === 'number' && d.net) $('s-vat').textContent = T.vat.replace('{net}', fmt(d.net, d.currency)).replace('{r}', d.vat).replace('{v}', fmt(d.price - d.net, d.currency));
       $('b-hello').textContent = T.hello.replace('{n}', d.name.split(' ')[0]);
       $('bank').hidden = false; legal($('b-consent-t'), prog); gate(prog);
       if (d.iban) {
         $('b-name').textContent = d.ibanName; $('b-iban').textContent = d.iban.replace(/\\s+/g, '').replace(/(.{4})/g, '$1 ').trim();
         if (d.bank) $('b-bank').textContent = d.bank; else $('b-bank-row').hidden = true;
-        $('b-ref').textContent = (d.desc || '') + ' – ' + d.id; $('b-amt').textContent = amt;
+        $('b-ref').textContent = (d.desc || '') + ' – ' + d.id; $('b-amt').textContent = amt + ($('s-vat').textContent ? ' (' + T.vat_in + ')' : '');
       } else { document.querySelector('.ibanbox').hidden = true; $('b-done').hidden = true; document.querySelector('.bank .consent').hidden = true; $('b-state').hidden = false; $('b-state').textContent = T.noiban; }
       const setState = st => {
         if (st === 'payment_reported') { $('b-done').hidden = true; $('b-state').hidden = false; $('b-state').textContent = T.bank_reported; }
@@ -392,7 +395,7 @@ def pay_page(lang):
     addEventListener('pageshow', ev => { if (ev.persisted) { btn.disabled = false; btn.textContent = label; } });
   }
 }
-</script>''' % (json.dumps(cat, ensure_ascii=False), json.dumps(dict(ct_need=x['ct_need'], ct_done=x['ct_done'], hello=x['hello'], copy=x['copy'], copied=x['copied'], bank_reported=x['bank_reported'], bank_paid=x['bank_paid'], badlink=x['badlink'], noiban=x['noiban'], bconsent=x['bconsent'], err=x['err'], pay=x['pay'], paying=x['paying'], single=x['single'], x=x['x'], regmsg=x['regmsg'], consent=x['consent'].format(p=root, c='{c}', cn='{cn}'), cn=x['cn'], refund_ok=x['refund_ok'], refund_no=x['refund_no']), ensure_ascii=False), lang)
+</script>''' % (json.dumps(cat, ensure_ascii=False), json.dumps(dict(vat=x['vat'], vat_in=x['vat_in'], ct_need=x['ct_need'], ct_done=x['ct_done'], hello=x['hello'], copy=x['copy'], copied=x['copied'], bank_reported=x['bank_reported'], bank_paid=x['bank_paid'], badlink=x['badlink'], noiban=x['noiban'], bconsent=x['bconsent'], err=x['err'], pay=x['pay'], paying=x['paying'], single=x['single'], x=x['x'], regmsg=x['regmsg'], consent=x['consent'].format(p=root, c='{c}', cn='{cn}'), cn=x['cn'], refund_ok=x['refund_ok'], refund_no=x['refund_no']), ensure_ascii=False), lang)
     return shell(lang, prefix, lang_href, x['title'], CSS, body, js, noindex=True)
 
 

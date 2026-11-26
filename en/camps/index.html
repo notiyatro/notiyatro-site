@@ -413,7 +413,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
   const H={"up": "upcoming", "past": "past"}, KIND="kamp";
   const ALIAS={"gelecek": "up", "upcoming": "up", "siradaki": "up", "gecmis": "past", "past": "past"};
   {const h=location.hash.slice(1); if(KIND==='atolye'&&(h==='kamplar'||h==='camps')) location.replace('../'+(h==='kamplar'?'kamplar':'camps')+'/');}
-  const PAY=[], PAYU='../payment/', PR="Register and pay";
+  const PAY=["pfs-2027-01", "isc-winter-2027", "central-2027-02"], PAYU='../payment/', PR="Register and pay";
   const IMG='../../img/', WA='https://wa.me/905304808292?text=';
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fromHash=()=>ALIAS[location.hash.slice(1)]||'up';
