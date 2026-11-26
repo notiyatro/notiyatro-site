@@ -95,6 +95,19 @@ def switcher(cur, key, langs):
     links = ''.join(f'<a href="{eq.get(l, eq["*"]).format(l=l)}" hreflang="{l}" lang="{l}"{" aria-current=\"page\"" if l == cur else ""}>{NAMES[l]}</a>' for l in langs)
     return f'<details class="langs"><summary aria-label="Language · Dil">{cur.upper()}</summary><div class="langm">{links}</div></details>'
 
+
+WA_NUM = '905304808292'
+WA_TX = {'tr': ('WhatsApp’tan yazın', 'Merhaba, notiyatro.com’dan yazıyorum.'), 'en': ('Chat on WhatsApp', 'Hello, I’m writing from notiyatro.com.'),
+         'de': ('Auf WhatsApp schreiben', 'Hallo, ich schreibe über notiyatro.com.'), 'ru': ('Написать в WhatsApp', 'Здравствуйте, пишу с сайта notiyatro.com.'),
+         'fr': ('Écrire sur WhatsApp', 'Bonjour, je vous écris depuis notiyatro.com.'), 'es': ('Escríbenos por WhatsApp', 'Hola, os escribo desde notiyatro.com.'),
+         'it': ('Scrivici su WhatsApp', 'Ciao, vi scrivo da notiyatro.com.'), 'el': ('Μιλήστε μας στο WhatsApp', 'Γεια σας, σας γράφω από το notiyatro.com.')}
+WA_CSS = '<style id="wa-css">.wa-fab{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font:800 15px/1 Urbanist,system-ui,sans-serif;padding:0 20px 0 14px;height:56px;border-radius:999px;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .2s,box-shadow .2s}.wa-fab:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.28)}.wa-fab svg{width:30px;height:30px;flex:0 0 auto}.wa-fab .wa-dot{position:absolute;top:6px;left:40px;width:11px;height:11px;border-radius:50%;background:#b8ffcf;border:2px solid #25D366;animation:wap 1.8s ease-out infinite}@keyframes wap{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}@media(max-width:700px){.wa-fab{padding:0;width:56px;justify-content:center;right:14px;bottom:14px}.wa-fab span.wa-l{display:none}.wa-fab .wa-dot{left:36px}}@media(prefers-reduced-motion:reduce){.wa-fab .wa-dot{animation:none}}@media print{.wa-fab{display:none}}.wa-fab.wa-off{opacity:0;pointer-events:none;transform:translateY(12px)}.wa-fab{transition:opacity .25s,transform .25s,box-shadow .2s}</style>'
+WA_SVG = '<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.6l-.4-.3-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.7-5.8C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.4 16 26.4zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.2 1.3 3.4c.2.2 2.3 3.5 5.6 4.9 2.8 1.1 3.3.9 3.9.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>'
+from urllib.parse import quote
+def wa_fab(cur):
+    lab, msg = WA_TX.get(cur, WA_TX['en'])
+    return f'<a class="wa-fab" id="wa-fab" href="https://wa.me/{WA_NUM}?text={quote(msg)}" target="_blank" rel="noopener" aria-label="{lab}">{WA_SVG}<span class="wa-dot" aria-hidden="true"></span><span class="wa-l">{lab}</span></a><script id="wa-js">(()=>{{const f=document.getElementById("wa-fab"),s=document.querySelector(".slider");if(!f||!s)return;const u=()=>{{const r=s.getBoundingClientRect();f.classList.toggle("wa-off",r.bottom>innerHeight-90&&r.top<innerHeight)}};u();addEventListener("scroll",u,{{passive:true}});addEventListener("resize",u)}})()</script>'
+
 def place_switchers(langs):
     files = [f for f in glob.glob(f'{ROOT}/**/index.html', recursive=True) if '/node_modules/' not in f and '/tools/' not in f and '/dist/' not in f]
     n = 0
@@ -104,9 +117,13 @@ def place_switchers(langs):
         h = open(f).read()
         sw = switcher(cur, key, langs)
         h2 = re.sub(r'<a class="lang"[^>]*>[^<]*</a>|<details class="langs">.*?</details>', lambda m: sw, h, flags=re.S)
-        if h2 == h and sw not in h: continue
         h2 = re.sub(r'<style id="langs-css">.*?</style>', '', h2, flags=re.S).replace('</head>', SWITCH_CSS + '</head>', 1)
         h2 = re.sub(r'<script id="langs-js">.*?</script>', '', h2, flags=re.S).replace('</body>', SWITCH_JS + '</body>', 1)
+        h2 = re.sub(r'<style id="wa-css">.*?</style>', '', h2, flags=re.S)
+        h2 = re.sub(r'<a class="wa-fab" id="wa-fab".*?</a>', '', h2, flags=re.S)
+        h2 = re.sub(r'<script id="wa-js">.*?</script>', '', h2, flags=re.S)
+        if not rel.startswith('yonetim'):
+            h2 = h2.replace('</head>', WA_CSS + '</head>', 1).replace('</body>', wa_fab(cur) + '</body>', 1)
         if h2 != h: open(f, 'w').write(h2); n += 1
     return n
 
