@@ -410,7 +410,7 @@ A = {
    dup_p='Bu programa daha önce başvurmuşsun (başvuru no: {id}). Sonuç e-posta ve WhatsApp ile gelecek.',
    fallback='Başvuru sistemine şu an ulaşılamıyor. Başvurunu bu formdan da yapabilirsin:', fallback_btn='Başvuru formunu aç', home='Ana sayfa',
    levels=['A1 (Başlangıç)','A2 (Temel)','B1 (Orta)','B2 (Orta üstü)','C1 (İleri)','C2 (Anadile yakın)'],
-   err=dict(cv_type='Lütfen PDF ya da Word dosyası yükle.', cv_big='Dosya 4 MB’tan büyük olamaz.', cv_fail='CV yüklenemedi, tekrar dene.', program='En az bir program seç.', name='Adını ve soyadını yaz.', birth='Doğum tarihini seç.', email='Geçerli bir e-posta adresi yaz.', phone='Telefon numaranı yaz.', city='Şehrini yaz.', english='İngilizce seviyeni seç.', student='Bir seçenek işaretle.', school='Okulunu ya da bölümünü yaz.', why='Birkaç cümleyle neden katılmak istediğini anlat.', kvkk='Devam etmek için KVKK onayı gerekiyor.', gateway='Bir sorun oluştu. Lütfen tekrar dene.')),
+   err=dict(full='Seçtiğin programlardan birinin kontenjanı doldu. Lütfen seçimini güncelle.', full_tag='Kontenjan doldu', few_tag='Son yerler', cv_type='Lütfen PDF ya da Word dosyası yükle.', cv_big='Dosya 4 MB’tan büyük olamaz.', cv_fail='CV yüklenemedi, tekrar dene.', program='En az bir program seç.', name='Adını ve soyadını yaz.', birth='Doğum tarihini seç.', email='Geçerli bir e-posta adresi yaz.', phone='Telefon numaranı yaz.', city='Şehrini yaz.', english='İngilizce seviyeni seç.', student='Bir seçenek işaretle.', school='Okulunu ya da bölümünü yaz.', why='Birkaç cümleyle neden katılmak istediğini anlat.', kvkk='Devam etmek için KVKK onayı gerekiyor.', gateway='Bir sorun oluştu. Lütfen tekrar dene.')),
  'en': dict(title='Application — NO Tiyatro', kick='International Stage Lab.', h1='Application form',
    lede='We will review your application and get back to you as soon as possible. Once approved, your payment link will arrive by email and WhatsApp.',
    prog='Programmes you are applying for', prog_hint='You can choose more than one; each is reviewed separately.', name='Full name', birth='Date of birth', email='Email', phone='Phone (WhatsApp)', ig='Instagram username', opt='optional', city='City you live in',
@@ -421,7 +421,7 @@ A = {
    dup_p='You have already applied for this programme (application no: {id}). We will let you know the outcome by email and WhatsApp.',
    fallback='The application system cannot be reached right now. You can also apply using this form:', fallback_btn='Open the application form', home='Home',
    levels=['A1 (Beginner)','A2 (Elementary)','B1 (Intermediate)','B2 (Upper intermediate)','C1 (Advanced)','C2 (Near native)'],
-   err=dict(cv_type='Please upload a PDF or Word file.', cv_big='The file must be 4 MB or smaller.', cv_fail='The CV could not be uploaded. Please try again.', program='Please choose at least one programme.', name='Please enter your full name.', birth='Please select your date of birth.', email='Please enter a valid email address.', phone='Please enter your phone number.', city='Please enter your city.', english='Please select your English level.', student='Please choose an option.', school='Please enter your school or department.', why='Tell us in a few sentences why you want to join.', kvkk='Please accept the privacy notice to continue.', gateway='Something went wrong. Please try again.')),
+   err=dict(full='One of the programmes you selected is now full. Please update your selection.', full_tag='Fully booked', few_tag='Last places', cv_type='Please upload a PDF or Word file.', cv_big='The file must be 4 MB or smaller.', cv_fail='The CV could not be uploaded. Please try again.', program='Please choose at least one programme.', name='Please enter your full name.', birth='Please select your date of birth.', email='Please enter a valid email address.', phone='Please enter your phone number.', city='Please enter your city.', english='Please select your English level.', student='Please choose an option.', school='Please enter your school or department.', why='Tell us in a few sentences why you want to join.', kvkk='Please accept the privacy notice to continue.', gateway='Something went wrong. Please try again.')),
 }
 GFORM = 'https://docs.google.com/forms/d/14PzXPCxvlBrst-hDBj_JiiL5kZgiGx2zQC-7AHUgRWA/viewform'
 
@@ -469,6 +469,12 @@ def apply_page(lang):
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const pre = new URLSearchParams(location.search).get('p');
   document.querySelectorAll('input[name=prog]').forEach(c => { if (c.value === pre) c.checked = true; });
+  fetch('/api/status').then(r => r.ok ? r.json() : {}).then(st => document.querySelectorAll('input[name=prog]').forEach(c => {
+    const v = (st[c.value] || {}).state; if (v !== 'full' && v !== 'closed' && v !== 'few') return;
+    const sm = c.closest('.pchk').querySelector('small'); const t = document.createElement('em'); t.className = 'ptag ' + v;
+    t.textContent = v === 'few' ? X.err.few_tag : X.err.full_tag; sm.after(t);
+    if (v !== 'few') { c.checked = false; c.disabled = true; c.closest('.pchk').classList.add('off'); }
+  })).catch(() => {});
   const picked = () => [...document.querySelectorAll('input[name=prog]:checked')].map(c => c.value);
   const F = {program:'a-program', name:'a-name', birth:'a-birth', city:'a-city', email:'a-email', phone:'a-phone', english:'a-english', school:'a-school', why:'a-why', kvkk:'a-kvkk'};
   const setErr = (k, m) => { const el = $(F[k]); if (el) el.setAttribute('aria-invalid', !!m); $('m-' + k).textContent = m || ''; };
@@ -529,7 +535,7 @@ def apply_page(lang):
   });
 }
 </script>""" % (json.dumps({k: x[k] for k in ['err','sending','ok_h','ok_p','dup_s','fallback','fallback_btn','home','cv_none','cv_up','cv_ok']}, ensure_ascii=False), lang, GFORM)
-    css = CSS + '.apform{max-width:820px}.hint{font-size:13px;color:#666;margin:-4px 0 10px}.cvbox{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.fld label.cvbtn{display:inline-flex;align-items:center;margin:0;cursor:pointer;min-height:44px}.cvname{font-weight:600;color:#444;overflow-wrap:anywhere}.fld input.sr{position:absolute;width:1px;height:1px;min-height:0;padding:0;border:0;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}.cvbox:focus-within .cvbtn{outline:3px solid var(--red);outline-offset:2px}.copy{border:1.5px solid #000;background:#fff;border-radius:999px;padding:4px 12px;font:800 12px Urbanist,system-ui,sans-serif;cursor:pointer}.plist2{display:grid;gap:8px}.pchk{display:flex;gap:12px;align-items:flex-start;border:1.5px solid #ccc;border-radius:12px;padding:12px 14px;cursor:pointer}.pchk:has(input:checked){border-color:#000;background:#F6F4EA}.pchk input{width:20px;height:20px;margin-top:2px;accent-color:#000;flex:0 0 20px}.pchk span{display:grid;gap:2px}.pchk small{color:#666;font-weight:600}.fld .pchk{display:flex;font-size:15px;font-weight:600;margin:0}.fld .pchk input,.fld .radios input{width:20px;height:20px;min-height:0;padding:0;border-radius:4px;flex:0 0 20px}.fld .pchk b{font-weight:800}.aplist{margin:0 0 20px;padding-left:20px;line-height:1.8}.apform textarea{width:100%;box-sizing:border-box;border:1.5px solid #bdbdbd;border-radius:12px;padding:12px 14px;font:600 16px Urbanist,system-ui,sans-serif;resize:vertical}.apform textarea:focus{outline:none;border-color:#000;box-shadow:0 0 0 3px rgba(228,69,47,.25)}.lbl2{display:block;font-size:14px;font-weight:800;margin-bottom:8px}.radios{display:flex;gap:22px}.radios label{display:flex;gap:8px;align-items:center;font-weight:700;cursor:pointer}.radios input{width:20px;height:20px;accent-color:#000}.fld small{font-weight:600;color:#777}.apform .paybtn{margin-top:6px}'
+    css = CSS + '.apform{max-width:820px}.hint{font-size:13px;color:#666;margin:-4px 0 10px}.cvbox{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.fld label.cvbtn{display:inline-flex;align-items:center;margin:0;cursor:pointer;min-height:44px}.cvname{font-weight:600;color:#444;overflow-wrap:anywhere}.fld input.sr{position:absolute;width:1px;height:1px;min-height:0;padding:0;border:0;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}.cvbox:focus-within .cvbtn{outline:3px solid var(--red);outline-offset:2px}.copy{border:1.5px solid #000;background:#fff;border-radius:999px;padding:4px 12px;font:800 12px Urbanist,system-ui,sans-serif;cursor:pointer}.plist2{display:grid;gap:8px}.pchk{display:flex;gap:12px;align-items:flex-start;border:1.5px solid #ccc;border-radius:12px;padding:12px 14px;cursor:pointer}.pchk:has(input:checked){border-color:#000;background:#F6F4EA}.pchk input{width:20px;height:20px;margin-top:2px;accent-color:#000;flex:0 0 20px}.pchk span{display:grid;gap:2px}.pchk small{color:#666;font-weight:600}.pchk.off{opacity:.55;cursor:not-allowed}.ptag{justify-self:start;font-style:normal;font-size:12px;font-weight:800;padding:2px 9px;border-radius:999px;margin-top:4px;background:#fde9e6;color:#9b2a18}.ptag.few{background:#fff1d6;color:#8a5300}.fld .pchk{display:flex;font-size:15px;font-weight:600;margin:0}.fld .pchk input,.fld .radios input{width:20px;height:20px;min-height:0;padding:0;border-radius:4px;flex:0 0 20px}.fld .pchk b{font-weight:800}.aplist{margin:0 0 20px;padding-left:20px;line-height:1.8}.apform textarea{width:100%;box-sizing:border-box;border:1.5px solid #bdbdbd;border-radius:12px;padding:12px 14px;font:600 16px Urbanist,system-ui,sans-serif;resize:vertical}.apform textarea:focus{outline:none;border-color:#000;box-shadow:0 0 0 3px rgba(228,69,47,.25)}.lbl2{display:block;font-size:14px;font-weight:800;margin-bottom:8px}.radios{display:flex;gap:22px}.radios label{display:flex;gap:8px;align-items:center;font-weight:700;cursor:pointer}.radios input{width:20px;height:20px;accent-color:#000}.fld small{font-weight:600;color:#777}.apform .paybtn{margin-top:6px}'
     return shell(lang, '../', lang_href, x['title'], css, body, js)
 
 R = {
@@ -601,6 +607,7 @@ def admin_page():
       <div class="tabs adm-tabs" role="tablist">
         <button class="tab" role="tab" data-v="apps" aria-selected="true">Başvurular <span class="n" id="n-apps"></span></button>
         <button class="tab" role="tab" data-v="orders" aria-selected="false">Kartlı ödemeler <span class="n" id="n-orders"></span></button>
+        <button class="tab" role="tab" data-v="cap" aria-selected="false">Kontenjan</button>
       </div>
       <div id="v-apps">
         <div class="adm-bar">
@@ -613,6 +620,10 @@ def admin_page():
         </div>
         <div class="adm-stats" id="astats"></div>
         <div id="alist" class="alist"></div>
+      </div>
+      <div id="v-cap" hidden>
+        <p class="caphelp">Sitedeki etiket kendiliğinden değişir: ödenen + onaylanıp ödeme bekleyen başvurular ve buraya yazdığın "site dışı kayıt" sayısı kontenjandan düşülür. Kalan yer kontenjanın %20'sinin altına inince <b>Son yerler</b>, hiç yer kalmayınca <b>Kontenjan doldu</b> yazar ve başvuru formu o program için kapanır. İstersen durumu elle de sabitleyebilirsin.</p>
+        <div id="caplist" class="caplist"></div>
       </div>
       <div id="v-orders" hidden>
         <div class="adm-stats" id="stats"></div>
@@ -712,8 +723,26 @@ def admin_page():
   });
   document.querySelectorAll('.adm-tabs .tab').forEach(t => t.addEventListener('click', () => {
     document.querySelectorAll('.adm-tabs .tab').forEach(x => x.setAttribute('aria-selected', x === t));
-    $('v-apps').hidden = t.dataset.v !== 'apps'; $('v-orders').hidden = t.dataset.v !== 'orders';
+    $('v-apps').hidden = t.dataset.v !== 'apps'; $('v-orders').hidden = t.dataset.v !== 'orders'; $('v-cap').hidden = t.dataset.v !== 'cap'; if (t.dataset.v === 'cap') loadCap();
   }));
+  const CST = {open:'Kayıtlar devam ediyor', few:'Son yerler', full:'Kontenjan doldu', closed:'Kayıtlar kapandı'};
+  const MODE = {auto:'Otomatik', open:'Kayıtlar devam ediyor', few:'Son yerler', full:'Kontenjan doldu', closed:'Kayıtlar kapandı'};
+  async function loadCap(d) {
+    if (!d) { const r = await api('/api/admin/status').catch(() => null); if (!r || !r.ok) { $('caplist').innerHTML = '<p>Yüklenemedi.</p>'; return; } d = await r.json(); }
+    $('caplist').innerHTML = d.programs.map(p => `<form class="capc" data-id="${esc(p.id)}">
+      <div class="caph"><b>${esc(p.title)}</b><span class="cst ${p.state}">${CST[p.state]}${p.left != null ? ' · ' + p.left + ' yer' : ''}</span></div>
+      <p class="capn">${p.cap ? `${p.taken} / ${p.cap} dolu` : 'Kontenjan girilmedi'} · ${p.paid} ödendi · ${p.held} ödeme bekliyor · ${p.offline} site dışı</p>
+      <div class="capf"><label>Toplam kontenjan<input name="capacity" type="number" min="0" value="${p.cap || 0}"></label>
+      <label>Site dışı kayıt<input name="offline" type="number" min="0" value="${p.offline || 0}"></label>
+      <label>Sitede görünen durum<select name="mode">${Object.entries(MODE).map(([k, l]) => `<option value="${k}"${k === p.mode ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
+      <button class="btn solid" type="submit">Kaydet</button></div></form>`).join('');
+  }
+  $('caplist').addEventListener('submit', async e => {
+    e.preventDefault(); const f = e.target, b = f.querySelector('button'); b.disabled = true; b.textContent = 'Kaydediliyor';
+    const r = await api('/api/admin/status', {method:'POST', body: JSON.stringify({id: f.dataset.id, capacity: f.capacity.value, offline: f.offline.value, mode: f.mode.value})}).catch(() => null);
+    if (!r || !r.ok) { alert('Kaydedilemedi.'); b.disabled = false; b.textContent = 'Kaydet'; return; }
+    loadCap(await r.json());
+  });
   $('login').addEventListener('submit', e => { e.preventDefault(); pw = $('pw').value; try { sessionStorage.setItem('no_adm', pw); } catch {} $('lerr').hidden = true; load(); });
   ['ast', 'apr'].forEach(id => $(id).addEventListener('change', renderApps)); $('aq').addEventListener('input', renderApps);
   $('reload').addEventListener('click', load);
@@ -728,6 +757,16 @@ def admin_page():
 }
 </script>"""
     css = ADMIN_CSS + """
+.caphelp{font-size:14px;color:#444;line-height:1.55;max-width:760px;margin:18px 0}
+.caplist{display:grid;gap:12px}
+.capc{border:1.5px solid #ddd;border-radius:14px;padding:16px 18px;background:#fff}
+.caph{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.cst{font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;background:#e7f4ea;color:#16632b}.cst.few{background:#fff1d6;color:#8a5300}.cst.full{background:#fde9e6;color:#9b2a18}.cst.closed{background:#eee;color:#555}
+.capn{font-size:13px;color:#666;margin:6px 0 12px}
+.capf{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.capf label{display:grid;gap:4px;font-size:12px;font-weight:800;color:#555}
+.capf input,.capf select{font:600 15px Urbanist,system-ui,sans-serif;padding:8px 10px;border:1.5px solid #bbb;border-radius:10px;min-width:0;width:130px}
+.capf select{width:auto}
 .adm-tabs{display:flex;gap:6px;border-bottom:2px solid #000;margin:28px 0 0}
 .adm-tabs .tab{appearance:none;background:none;border:0;font:800 17px Urbanist,system-ui,sans-serif;padding:12px 16px;cursor:pointer;color:#666;border-bottom:4px solid transparent;margin-bottom:-2px}
 .adm-tabs .tab[aria-selected=true]{color:#000;border-bottom-color:var(--red)}

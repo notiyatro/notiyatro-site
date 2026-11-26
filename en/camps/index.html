@@ -300,6 +300,15 @@ main{overflow-x:clip}
 .season .iaddr span{display:block;margin-top:8px;padding:9px 12px;background:rgba(0,0,0,.04);border-radius:8px;font-size:13px;font-weight:500;line-height:1.5}
 .season .iaddr a{display:inline-block;margin-top:4px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .season .iaddr span a{display:block}
+.stb{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.02em;padding:4px 11px 4px 9px;border-radius:999px;margin:0 6px 6px 0;vertical-align:middle;background:#e7f4ea;color:#16632b}
+.stb::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.stb.open::before{animation:stp 1.8s ease-out infinite}
+.stb.few{background:#fff1d6;color:#8a5300}.stb.few::before{animation:stp 1.2s ease-out infinite}
+.stb.full{background:#fde9e6;color:#9b2a18}.stb.closed{background:#eee;color:#555}
+.stb[hidden]{display:none}
+@keyframes stp{0%{box-shadow:0 0 0 0 currentColor}70%{box-shadow:0 0 0 6px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media(prefers-reduced-motion:reduce){.stb::before{animation:none!important}}
+.season .btn.dis{opacity:.45;cursor:not-allowed;pointer-events:none}
 .season .igal{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
 .season .igimg{padding:0;border:0;background:none;cursor:zoom-in;border-radius:10px;overflow:hidden;display:block}
 .season .igimg img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .3s}
@@ -337,6 +346,10 @@ main{overflow-x:clip}
 .wcard p{font-size:15px;color:#444;margin-bottom:14px}
 .wcard .btn{align-self:flex-start;margin-top:auto}
 .wtags{margin-bottom:6px}
+.stb{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;padding:4px 11px 4px 9px;border-radius:999px;margin:0 6px 6px 0;vertical-align:middle;background:#e7f4ea;color:#16632b}
+.stb::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.stb.few{background:#fff1d6;color:#8a5300}.stb.full{background:#fde9e6;color:#9b2a18}.stb.closed{background:#eee;color:#555}
+.btn.dis{opacity:.45;cursor:not-allowed;pointer-events:none}
 .wcard p.tut{font-size:14px;color:#333}
 .wempty{padding:40px 0;color:#666}
 .wnote{font-size:14px;color:#666;margin-top:34px}
@@ -440,6 +453,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
   const ALIAS={"gelecek": "up", "upcoming": "up", "siradaki": "up", "gecmis": "past", "past": "past"};
   {const h=location.hash.slice(1); if(KIND==='atolye'&&(h==='kamplar'||h==='camps')) location.replace('../'+(h==='kamplar'?'kamplar':'camps')+'/');}
   const PAY=["pfs-2027-01", "isc-winter-2027", "central-2027-02"], PAYU='../payment/', PR="Register and pay";
+  let ST={}; const SL={"open": "Registration open", "few": "Last places", "left": "Last {n} places", "full": "Fully booked", "closed": "Registration closed"};
   const IMG='../../img/', WA='https://wa.me/905304808292?text=';
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fromHash=()=>ALIAS[location.hash.slice(1)]||'up';
@@ -448,9 +462,11 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
   const card=w=>{
     const img=w.img?`<div class="wimg"><img src="${IMG}${w.img}.jpg" alt="${esc(w.t)}" loading="lazy"></div>`
       :`<div class="wimg ph"><img src="${IMG}isl-logo.png" alt=""><span>${esc(T.ph)}</span></div>`;
-    const tags=`<div class="wtags">${w.tags.map((g,i)=>`<span class="tag${w.f&&i===1?' f':''}">${esc(g)}</span>`).join('')}</div>`;
+    const x=w.s==='up'&&w.pid?ST[w.pid]:null;
+    const stb=x?`<span class="stb ${x.state}">${esc(x.state==='few'&&x.left?SL.left.replace('{n}',x.left):SL[x.state])}</span>`:'';
+    const tags=`<div class="wtags">${stb}${w.tags.map((g,i)=>`<span class="tag${w.f&&i===1?' f':''}">${esc(g)}</span>`).join('')}</div>`;
     const msg="en"==='tr'?w.t+T.regmsg:"I'd like to register for "+w.t;
-    const btn=w.s!=='up'?'':`<a class="btn solid" href="../apply/?p=${w.pid}">${esc(T.reg)}</a>`;
+    const btn=w.s!=='up'?'':x&&(x.state==='full'||x.state==='closed')?`<span class="btn solid dis" aria-disabled="true">${esc(SL[x.state])}</span>`:`<a class="btn solid" href="../apply/?p=${w.pid}">${esc(T.reg)}</a>`;
     return `<article class="wcard">${img}${tags}<div class="when">${esc(w.d)}</div>${w.pl?`<div class="pl">${esc(w.pl)}</div>`:''}<h3>${esc(w.t)}</h3>${w.p?`<p>${esc(w.p)}</p>`:''}${w.tut?`<p class="tut"><b>${esc(T.tut)}:</b> ${esc(w.tut)}</p>`:''}${btn}</article>`;
   };
   const render=()=>{
@@ -464,6 +480,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
   });
   addEventListener('hashchange',()=>{tab=fromHash();render()});
   render();
+  fetch('/api/status').then(r=>r.ok?r.json():{}).then(d=>{ST=d;render()}).catch(()=>{});
   const header=document.getElementById('top'),menu=document.getElementById('menu');
   menu.addEventListener('click',()=>{const o=header.classList.toggle('open');menu.setAttribute('aria-expanded',o)});
 }

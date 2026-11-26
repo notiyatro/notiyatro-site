@@ -300,6 +300,15 @@ main{overflow-x:clip}
 .season .iaddr span{display:block;margin-top:8px;padding:9px 12px;background:rgba(0,0,0,.04);border-radius:8px;font-size:13px;font-weight:500;line-height:1.5}
 .season .iaddr a{display:inline-block;margin-top:4px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .season .iaddr span a{display:block}
+.stb{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.02em;padding:4px 11px 4px 9px;border-radius:999px;margin:0 6px 6px 0;vertical-align:middle;background:#e7f4ea;color:#16632b}
+.stb::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.stb.open::before{animation:stp 1.8s ease-out infinite}
+.stb.few{background:#fff1d6;color:#8a5300}.stb.few::before{animation:stp 1.2s ease-out infinite}
+.stb.full{background:#fde9e6;color:#9b2a18}.stb.closed{background:#eee;color:#555}
+.stb[hidden]{display:none}
+@keyframes stp{0%{box-shadow:0 0 0 0 currentColor}70%{box-shadow:0 0 0 6px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media(prefers-reduced-motion:reduce){.stb::before{animation:none!important}}
+.season .btn.dis{opacity:.45;cursor:not-allowed;pointer-events:none}
 .season .igal{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
 .season .igimg{padding:0;border:0;background:none;cursor:zoom-in;border-radius:10px;overflow:hidden;display:block}
 .season .igimg img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .3s}
@@ -391,6 +400,16 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
 .st{display:inline-block;border-radius:999px;padding:2px 10px;font-weight:800;font-size:12px}
 .st.paid{background:#e7f4ea;color:#16632b}.st.pending{background:#f1f1f1;color:#555}.st.failed,.st.hash_error{background:#fde9e6;color:#9b2a18}
 
+.caphelp{font-size:14px;color:#444;line-height:1.55;max-width:760px;margin:18px 0}
+.caplist{display:grid;gap:12px}
+.capc{border:1.5px solid #ddd;border-radius:14px;padding:16px 18px;background:#fff}
+.caph{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.cst{font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;background:#e7f4ea;color:#16632b}.cst.few{background:#fff1d6;color:#8a5300}.cst.full{background:#fde9e6;color:#9b2a18}.cst.closed{background:#eee;color:#555}
+.capn{font-size:13px;color:#666;margin:6px 0 12px}
+.capf{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.capf label{display:grid;gap:4px;font-size:12px;font-weight:800;color:#555}
+.capf input,.capf select{font:600 15px Urbanist,system-ui,sans-serif;padding:8px 10px;border:1.5px solid #bbb;border-radius:10px;min-width:0;width:130px}
+.capf select{width:auto}
 .adm-tabs{display:flex;gap:6px;border-bottom:2px solid #000;margin:28px 0 0}
 .adm-tabs .tab{appearance:none;background:none;border:0;font:800 17px Urbanist,system-ui,sans-serif;padding:12px 16px;cursor:pointer;color:#666;border-bottom:4px solid transparent;margin-bottom:-2px}
 .adm-tabs .tab[aria-selected=true]{color:#000;border-bottom-color:var(--red)}
@@ -454,6 +473,7 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
       <div class="tabs adm-tabs" role="tablist">
         <button class="tab" role="tab" data-v="apps" aria-selected="true">Başvurular <span class="n" id="n-apps"></span></button>
         <button class="tab" role="tab" data-v="orders" aria-selected="false">Kartlı ödemeler <span class="n" id="n-orders"></span></button>
+        <button class="tab" role="tab" data-v="cap" aria-selected="false">Kontenjan</button>
       </div>
       <div id="v-apps">
         <div class="adm-bar">
@@ -466,6 +486,10 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
         </div>
         <div class="adm-stats" id="astats"></div>
         <div id="alist" class="alist"></div>
+      </div>
+      <div id="v-cap" hidden>
+        <p class="caphelp">Sitedeki etiket kendiliğinden değişir: ödenen + onaylanıp ödeme bekleyen başvurular ve buraya yazdığın "site dışı kayıt" sayısı kontenjandan düşülür. Kalan yer kontenjanın %20'sinin altına inince <b>Son yerler</b>, hiç yer kalmayınca <b>Kontenjan doldu</b> yazar ve başvuru formu o program için kapanır. İstersen durumu elle de sabitleyebilirsin.</p>
+        <div id="caplist" class="caplist"></div>
       </div>
       <div id="v-orders" hidden>
         <div class="adm-stats" id="stats"></div>
@@ -611,8 +635,26 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
   });
   document.querySelectorAll('.adm-tabs .tab').forEach(t => t.addEventListener('click', () => {
     document.querySelectorAll('.adm-tabs .tab').forEach(x => x.setAttribute('aria-selected', x === t));
-    $('v-apps').hidden = t.dataset.v !== 'apps'; $('v-orders').hidden = t.dataset.v !== 'orders';
+    $('v-apps').hidden = t.dataset.v !== 'apps'; $('v-orders').hidden = t.dataset.v !== 'orders'; $('v-cap').hidden = t.dataset.v !== 'cap'; if (t.dataset.v === 'cap') loadCap();
   }));
+  const CST = {open:'Kayıtlar devam ediyor', few:'Son yerler', full:'Kontenjan doldu', closed:'Kayıtlar kapandı'};
+  const MODE = {auto:'Otomatik', open:'Kayıtlar devam ediyor', few:'Son yerler', full:'Kontenjan doldu', closed:'Kayıtlar kapandı'};
+  async function loadCap(d) {
+    if (!d) { const r = await api('/api/admin/status').catch(() => null); if (!r || !r.ok) { $('caplist').innerHTML = '<p>Yüklenemedi.</p>'; return; } d = await r.json(); }
+    $('caplist').innerHTML = d.programs.map(p => `<form class="capc" data-id="${esc(p.id)}">
+      <div class="caph"><b>${esc(p.title)}</b><span class="cst ${p.state}">${CST[p.state]}${p.left != null ? ' · ' + p.left + ' yer' : ''}</span></div>
+      <p class="capn">${p.cap ? `${p.taken} / ${p.cap} dolu` : 'Kontenjan girilmedi'} · ${p.paid} ödendi · ${p.held} ödeme bekliyor · ${p.offline} site dışı</p>
+      <div class="capf"><label>Toplam kontenjan<input name="capacity" type="number" min="0" value="${p.cap || 0}"></label>
+      <label>Site dışı kayıt<input name="offline" type="number" min="0" value="${p.offline || 0}"></label>
+      <label>Sitede görünen durum<select name="mode">${Object.entries(MODE).map(([k, l]) => `<option value="${k}"${k === p.mode ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
+      <button class="btn solid" type="submit">Kaydet</button></div></form>`).join('');
+  }
+  $('caplist').addEventListener('submit', async e => {
+    e.preventDefault(); const f = e.target, b = f.querySelector('button'); b.disabled = true; b.textContent = 'Kaydediliyor';
+    const r = await api('/api/admin/status', {method:'POST', body: JSON.stringify({id: f.dataset.id, capacity: f.capacity.value, offline: f.offline.value, mode: f.mode.value})}).catch(() => null);
+    if (!r || !r.ok) { alert('Kaydedilemedi.'); b.disabled = false; b.textContent = 'Kaydet'; return; }
+    loadCap(await r.json());
+  });
   $('login').addEventListener('submit', e => { e.preventDefault(); pw = $('pw').value; try { sessionStorage.setItem('no_adm', pw); } catch {} $('lerr').hidden = true; load(); });
   ['ast', 'apr'].forEach(id => $(id).addEventListener('change', renderApps)); $('aq').addEventListener('input', renderApps);
   $('reload').addEventListener('click', load);

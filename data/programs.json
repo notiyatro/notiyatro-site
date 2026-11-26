@@ -1,5 +1,5 @@
 {
- "_not": "Ödeme alınacak programlar. price boş (null) ise sitede Öde butonu çıkmaz, kayıt WhatsApp'tan devam eder. price TL ise 4500 gibi yaz (kuruş yok). currency: TRY veya EUR. maxInstallment: 1 = sadece tek çekim. type: atolye (iade süresi 45 gün) ya da kamp (60 gün). start: programın ilk günü (YYYY-AA-GG). priceText: sitede ve IBAN sayfasında gösterilen fiyat metni. open: false yapılırsa başvuru kapanır. net: KDV hariç fiyat, vat: KDV oranı (%), price: KDV dahil toplam (ödeme sayfasında gösterilir ve tahsil edilir).",
+ "_not": "Ödeme alınacak programlar. price boş (null) ise sitede Öde butonu çıkmaz, kayıt WhatsApp'tan devam eder. price TL ise 4500 gibi yaz (kuruş yok). currency: TRY veya EUR. maxInstallment: 1 = sadece tek çekim. type: atolye (iade süresi 45 gün) ya da kamp (60 gün). start: programın ilk günü (YYYY-AA-GG). priceText: sitede ve IBAN sayfasında gösterilen fiyat metni. open: false yapılırsa başvuru kapanır. net: KDV hariç fiyat, vat: KDV oranı (%), price: KDV dahil toplam (ödeme sayfasında gösterilir ve tahsil edilir). capacity: toplam kontenjan (0 = sınırsız/bilinmiyor; panelden de değiştirilebilir).",
  "programs": [
   {
    "id": "pfs-2027-01",
@@ -22,7 +22,8 @@
    },
    "open": true,
    "net": 22000,
-   "vat": 20
+   "vat": 20,
+   "capacity": 36
   },
   {
    "id": "isc-winter-2027",
@@ -45,7 +46,8 @@
    },
    "open": true,
    "net": 32000,
-   "vat": 20
+   "vat": 20,
+   "capacity": 0
   },
   {
    "id": "central-2027-02",
@@ -68,7 +70,8 @@
    },
    "open": true,
    "net": 22000,
-   "vat": 20
+   "vat": 20,
+   "capacity": 18
   },
   {
    "id": "frantic-2027-03",
@@ -86,7 +89,8 @@
    "type": "atolye",
    "start": "2027-03-20",
    "priceText": null,
-   "open": true
+   "open": true,
+   "capacity": 0
   },
   {
    "id": "isc-summer-2027",
@@ -104,7 +108,8 @@
    "type": "kamp",
    "start": "2027-07-22",
    "priceText": null,
-   "open": true
+   "open": true,
+   "capacity": 0
   }
  ]
 }

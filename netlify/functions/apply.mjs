@@ -1,5 +1,6 @@
 // Başvuru formu gönderimi
 import { apps, program, json, clean, siteUrl } from './lib/apps.mjs';
+import { computeStatus } from './lib/status.mjs';
 import { sendMail } from './lib/mail.mjs';
 import { T } from './lib/templates.mjs';
 import { timeSpan } from './lib/tosla.mjs';
@@ -21,6 +22,8 @@ export default async (req) => {
   const lang = b.lang === 'en' ? 'en' : 'tr';
   const err = (k) => json(400, { error: k });
   if (!progs.length || progs.some((p) => !p || p.open === false)) return err('program');
+  const st = await computeStatus().catch(() => ({}));
+  if (progs.some((p) => ['full', 'closed'].includes(st[p.id]?.state))) return err('full');
   if (f.name.length < 3) return err('name');
   if (!/^\d{4}-\d{2}-\d{2}$/.test(f.birth)) return err('birth');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email)) return err('email');

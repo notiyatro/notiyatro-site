@@ -112,6 +112,10 @@ def build(lang, kind):
 .wcard p{font-size:15px;color:#444;margin-bottom:14px}
 .wcard .btn{align-self:flex-start;margin-top:auto}
 .wtags{margin-bottom:6px}
+.stb{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;padding:4px 11px 4px 9px;border-radius:999px;margin:0 6px 6px 0;vertical-align:middle;background:#e7f4ea;color:#16632b}
+.stb::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.stb.few{background:#fff1d6;color:#8a5300}.stb.full{background:#fde9e6;color:#9b2a18}.stb.closed{background:#eee;color:#555}
+.btn.dis{opacity:.45;cursor:not-allowed;pointer-events:none}
 .wcard p.tut{font-size:14px;color:#333}
 .wempty{padding:40px 0;color:#666}
 .wnote{font-size:14px;color:#666;margin-top:34px}
@@ -130,6 +134,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
   const ALIAS={json.dumps({'gelecek':'up','upcoming':'up','siradaki':'up','gecmis':'past','past':'past'})};
   {{const h=location.hash.slice(1); if(KIND==='atolye'&&(h==='kamplar'||h==='camps')) location.replace('../'+(h==='kamplar'?'kamplar':'camps')+'/');}}
   const PAY={json.dumps(PAID)}, PAYU='{'../odeme/' if lang=='tr' else '../payment/'}', PR={json.dumps('Kayıt ol ve öde' if lang=='tr' else 'Register and pay')};
+  let ST={{}}; const SL={json.dumps(dict(open='Kayıtlar devam ediyor',few='Son yerler',left='Son {n} yer',full='Kontenjan doldu',closed='Kayıtlar kapandı') if lang=='tr' else dict(open='Registration open',few='Last places',left='Last {n} places',full='Fully booked',closed='Registration closed'),ensure_ascii=False)};
   const IMG='{imgp}', WA='https://wa.me/{WA}?text=';
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c]));
   const fromHash=()=>ALIAS[location.hash.slice(1)]||'up';
@@ -138,9 +143,11 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
   const card=w=>{{
     const img=w.img?`<div class="wimg"><img src="${{IMG}}${{w.img}}.jpg" alt="${{esc(w.t)}}" loading="lazy"></div>`
       :`<div class="wimg ph"><img src="${{IMG}}isl-logo.png" alt=""><span>${{esc(T.ph)}}</span></div>`;
-    const tags=`<div class="wtags">${{w.tags.map((g,i)=>`<span class="tag${{w.f&&i===1?' f':''}}">${{esc(g)}}</span>`).join('')}}</div>`;
+    const x=w.s==='up'&&w.pid?ST[w.pid]:null;
+    const stb=x?`<span class="stb ${{x.state}}">${{esc(x.state==='few'&&x.left?SL.left.replace('{{n}}',x.left):SL[x.state])}}</span>`:'';
+    const tags=`<div class="wtags">${{stb}}${{w.tags.map((g,i)=>`<span class="tag${{w.f&&i===1?' f':''}}">${{esc(g)}}</span>`).join('')}}</div>`;
     const msg={json.dumps(lang)}==='tr'?w.t+T.regmsg:"I'd like to register for "+w.t;
-    const btn=w.s!=='up'?'':`<a class="btn solid" href="{'../basvuru/' if lang=='tr' else '../apply/'}?p=${{w.pid}}">${{esc(T.reg)}}</a>`;
+    const btn=w.s!=='up'?'':x&&(x.state==='full'||x.state==='closed')?`<span class="btn solid dis" aria-disabled="true">${{esc(SL[x.state])}}</span>`:`<a class="btn solid" href="{'../basvuru/' if lang=='tr' else '../apply/'}?p=${{w.pid}}">${{esc(T.reg)}}</a>`;
     return `<article class="wcard">${{img}}${{tags}}<div class="when">${{esc(w.d)}}</div>${{w.pl?`<div class="pl">${{esc(w.pl)}}</div>`:''}}<h3>${{esc(w.t)}}</h3>${{w.p?`<p>${{esc(w.p)}}</p>`:''}}${{w.tut?`<p class="tut"><b>${{esc(T.tut)}}:</b> ${{esc(w.tut)}}</p>`:''}}${{btn}}</article>`;
   }};
   const render=()=>{{
@@ -154,6 +161,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
   }});
   addEventListener('hashchange',()=>{{tab=fromHash();render()}});
   render();
+  fetch('/api/status').then(r=>r.ok?r.json():{{}}).then(d=>{{ST=d;render()}}).catch(()=>{{}});
   const header=document.getElementById('top'),menu=document.getElementById('menu');
   menu.addEventListener('click',()=>{{const o=header.classList.toggle('open');menu.setAttribute('aria-expanded',o)}});
 }}

@@ -302,6 +302,15 @@ main{overflow-x:clip}
 .season .iaddr span{display:block;margin-top:8px;padding:9px 12px;background:rgba(0,0,0,.04);border-radius:8px;font-size:13px;font-weight:500;line-height:1.5}
 .season .iaddr a{display:inline-block;margin-top:4px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .season .iaddr span a{display:block}
+.stb{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.02em;padding:4px 11px 4px 9px;border-radius:999px;margin:0 6px 6px 0;vertical-align:middle;background:#e7f4ea;color:#16632b}
+.stb::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.stb.open::before{animation:stp 1.8s ease-out infinite}
+.stb.few{background:#fff1d6;color:#8a5300}.stb.few::before{animation:stp 1.2s ease-out infinite}
+.stb.full{background:#fde9e6;color:#9b2a18}.stb.closed{background:#eee;color:#555}
+.stb[hidden]{display:none}
+@keyframes stp{0%{box-shadow:0 0 0 0 currentColor}70%{box-shadow:0 0 0 6px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media(prefers-reduced-motion:reduce){.stb::before{animation:none!important}}
+.season .btn.dis{opacity:.45;cursor:not-allowed;pointer-events:none}
 .season .igal{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
 .season .igimg{padding:0;border:0;background:none;cursor:zoom-in;border-radius:10px;overflow:hidden;display:block}
 .season .igimg img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .3s}
@@ -583,7 +592,7 @@ main{overflow-x:clip}
     {d:'22–25 Jul', y:'2027 · Çeşmeköy', id:'isc-summer-2027', t:'International Stage Camp — Summer Edition', tags:['Camp'], p:'The summer camp at Çeşmeköy. Tutors to be announced soon.',
      i:{when:'22–25 July 2027', where:'Çeşmeköy, Türkiye'}}
   ];
-  const L = {inc:'Included', out:'Not included', refund:'Cancellation & refunds', tut:'Tutors', when:'Dates', time:'Times', where:'Venue', lang:'Language', who:'Who it’s for', fee:'Fee', cap:'Places', btn:'Details', soon:'Schedule, fee and places will be published here soon. Questions? Message us on WhatsApp.', about:'About the programme', payreg:'Register and pay', apply:'Apply', maplink:'Open in Google Maps', loc:'en-GB', refund_t:'Cancellations made up to {n} days before the start ({d}) receive a full refund. After that date no refunds are given; full terms are in the participation agreement.'};
+  const L = {inc:'Included', out:'Not included', refund:'Cancellation & refunds', tut:'Tutors', when:'Dates', time:'Times', where:'Venue', lang:'Language', who:'Who it’s for', fee:'Fee', cap:'Places', btn:'Details', soon:'Schedule, fee and places will be published here soon. Questions? Message us on WhatsApp.', about:'About the programme', payreg:'Register and pay', apply:'Apply', maplink:'Open in Google Maps', st_open:'Registration open', st_few:'Last places', st_left:'Last {n} places', st_full:'Fully booked', st_closed:'Registration closed', loc:'en-GB', refund_t:'Cancellations made up to {n} days before the start ({d}) receive a full refund. After that date no refunds are given; full terms are in the participation agreement.'};
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const keys = ['tut','when','time','where','lang','who','fee','inc','out','cap','refund'];
   const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
@@ -599,12 +608,12 @@ main{overflow-x:clip}
     <li>
       <div class="when">${esc(s.d)}<small>${esc(s.y)}</small></div>
       <div class="what">
-        <div>${s.tags.map((g,j)=>`<span class="tag${s.f&&j===1?' f':''}">${esc(g)}</span>`).join('')}</div>
+        <div>${s.id ? `<span class="stb" data-st="${s.id}" hidden></span>` : ''}${s.tags.map((g,j)=>`<span class="tag${s.f&&j===1?' f':''}">${esc(g)}</span>`).join('')}</div>
         <h3>${esc(s.t)}</h3><p>${md(s.p)}</p>
       </div>
       <div class="acts">
         <button type="button" class="btn ghost infobtn" aria-expanded="false" aria-controls="inf${n}">${esc(L.btn)}<span class="chev" aria-hidden="true"></span></button>
-        <a class="btn solid" href="${APPLY}?p=${s.id}">${esc(L.apply)}</a>
+        <a class="btn solid" data-ap="${s.id}" href="${APPLY}?p=${s.id}">${esc(L.apply)}</a>
       </div>
       <div class="info" id="inf${n}" hidden>
         ${i.about ? `<div class="iabout"><h4>${esc(L.about)}</h4>${String(i.about).split('\n\n').map(x => x.startsWith('## ') ? `<h5>${md(x.slice(3))}</h5>` : x.startsWith('- ') ? `<ul>${x.split('\n').map(l => `<li>${md(l.replace(/^- /, ''))}</li>`).join('')}</ul>` : `<p>${md(x)}</p>`).join('')}</div>` : ''}
@@ -612,6 +621,17 @@ main{overflow-x:clip}
         ${full ? '' : `<p class="isoon">${esc(L.soon)}</p>`}
       </div>
     </li>`;}).join('');
+  fetch('/api/status').then(r => r.ok ? r.json() : {}).then(st => {
+    document.querySelectorAll('.stb[data-st]').forEach(b => {
+      const x = st[b.dataset.st]; if (!x) return;
+      b.className = 'stb ' + x.state; b.hidden = false;
+      b.textContent = x.state === 'few' ? (x.left ? L.st_left.replace('{n}', x.left) : L.st_few) : L['st_' + x.state];
+      if (x.state === 'full' || x.state === 'closed') {
+        const a = document.querySelector(`[data-ap="${b.dataset.st}"]`);
+        if (a) a.outerHTML = `<span class="btn solid dis" aria-disabled="true">${esc(L['st_' + x.state])}</span>`;
+      }
+    });
+  }).catch(() => {});
   const lbx = document.createElement('div'); lbx.className = 'lbx'; lbx.hidden = true; lbx.innerHTML = '<img alt="">'; document.body.appendChild(lbx);
   lbx.addEventListener('click', () => { lbx.hidden = true; });
   addEventListener('keydown', e => { if (e.key === 'Escape') lbx.hidden = true; });

@@ -299,6 +299,15 @@ main{overflow-x:clip}
 .season .iaddr span{display:block;margin-top:8px;padding:9px 12px;background:rgba(0,0,0,.04);border-radius:8px;font-size:13px;font-weight:500;line-height:1.5}
 .season .iaddr a{display:inline-block;margin-top:4px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .season .iaddr span a{display:block}
+.stb{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.02em;padding:4px 11px 4px 9px;border-radius:999px;margin:0 6px 6px 0;vertical-align:middle;background:#e7f4ea;color:#16632b}
+.stb::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.stb.open::before{animation:stp 1.8s ease-out infinite}
+.stb.few{background:#fff1d6;color:#8a5300}.stb.few::before{animation:stp 1.2s ease-out infinite}
+.stb.full{background:#fde9e6;color:#9b2a18}.stb.closed{background:#eee;color:#555}
+.stb[hidden]{display:none}
+@keyframes stp{0%{box-shadow:0 0 0 0 currentColor}70%{box-shadow:0 0 0 6px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media(prefers-reduced-motion:reduce){.stb::before{animation:none!important}}
+.season .btn.dis{opacity:.45;cursor:not-allowed;pointer-events:none}
 .season .igal{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
 .season .igimg{padding:0;border:0;background:none;cursor:zoom-in;border-radius:10px;overflow:hidden;display:block}
 .season .igimg img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .3s}
