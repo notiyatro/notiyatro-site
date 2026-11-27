@@ -403,7 +403,7 @@ main{overflow-x:clip}
 .shop .scart{background:transparent!important;border:2px solid #F3EFD8!important;color:#F3EFD8!important;opacity:1}.shop .scart:hover{background:#F3EFD8!important;color:#000!important}
 .scart{display:inline-flex;align-items:center;gap:8px}
 .scount{min-width:24px;height:24px;border-radius:999px;background:var(--red);color:#fff;font-size:13px;display:grid;place-items:center;padding:0 6px}
-.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .pcard{background:#111;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
 .pimg{position:relative}.pimg img{display:block;width:100%;height:auto;aspect-ratio:1}
 .ptest{position:absolute;top:10px;left:10px;background:#000;box-shadow:0 0 0 1.5px #fff;color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px}
@@ -415,7 +415,7 @@ main{overflow-x:clip}
 .psize select{background:#000;color:var(--c);border:1px solid var(--c);border-radius:8px;padding:5px 6px;font:700 13px Urbanist,sans-serif}
 .padd{width:100%;justify-content:center}
 .padd.ok{background:#16632b!important;border-color:#16632b!important;color:#fff!important}
-@media(max-width:1100px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1000px){.pgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.pgrid{grid-template-columns:1fr 1fr;gap:12px}.pcard h3{font-size:15px}.padd{font-size:14px;padding:10px 8px;white-space:nowrap}.pbuy{margin:auto 10px 12px}.pcard h3,.pcard>p{margin-left:10px;margin-right:10px}}
 .sdrawer{position:fixed;inset:0;z-index:120}.sdrawer[hidden]{display:none}
 .sback{position:absolute;inset:0;background:rgba(0,0,0,.55)}
@@ -473,6 +473,7 @@ main{overflow-x:clip}
       <a class="btn ghost" href="#partner"><span class="lg">Vajra Theatre</span><span class="sm">Vajra</span></a>
       
     </div>
+    
     
     
     
@@ -643,35 +644,29 @@ main{overflow-x:clip}
       <button type="button" class="btn ghost scart" aria-label="Abrir el carrito"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 4h2l2.4 11h10.2L20 7H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.6" fill="currentColor"/><circle cx="17" cy="19" r="1.6" fill="currentColor"/></svg><span>Carrito</span><span class="scount">0</span></button>
     </div>
     <div class="pgrid">
-      <article class="pcard" data-id="isl-tshirt" data-price="650">
-        <div class="pimg"><img src="../img/shop/tshirt.jpg" alt="ISL Community T-shirt" width="600" height="600" loading="lazy"><span class="ptest">Producto de prueba</span></div>
-        <h3>ISL Community T-shirt</h3>
-        <p>Algodón, corte unisex. Estampado ISL Community en la parte delantera.</p>
-        <div class="pbuy"><b class="pprice">650 TL</b><label class="psize"><span>Talla</span><select><option>S</option><option>M</option><option>L</option><option>XL</option></select></label><button type="button" class="btn solid padd">Añadir al carrito</button></div>
+      <article class="pcard" data-id="canta-vanya" data-price="499">
+        <div class="pimg"><img src="../img/shop/canta-vanya.jpg" alt="Bolsa Tío Vania" width="800" height="800" loading="lazy"></div>
+        <h3>Bolsa Tío Vania</h3>
+        <p>Bolsa de lona negra. Un collage de Tío Vania de Chéjov con la frase «¡Viviremos, tío Vania!» (texto en turco).</p>
+        <div class="pbuy"><b class="pprice">499 TL</b><button type="button" class="btn solid padd">Añadir al carrito</button></div>
       </article>
-      <article class="pcard" data-id="isl-tote" data-price="350">
-        <div class="pimg"><img src="../img/shop/tote.jpg" alt="ISL Tote Bag" width="600" height="600" loading="lazy"><span class="ptest">Producto de prueba</span></div>
-        <h3>ISL Tote Bag</h3>
-        <p>Lona gruesa; una bolsa amplia para días de ensayo y taller.</p>
-        <div class="pbuy"><b class="pprice">350 TL</b><button type="button" class="btn solid padd">Añadir al carrito</button></div>
+      <article class="pcard" data-id="canta-romeo" data-price="499">
+        <div class="pimg"><img src="../img/shop/canta-romeo.jpg" alt="Bolsa Romeo y Julieta" width="800" height="800" loading="lazy"></div>
+        <h3>Bolsa Romeo y Julieta</h3>
+        <p>Bolsa de lona negra. El diálogo entre Benvolio y Romeo sobre el olvido (texto en turco).</p>
+        <div class="pbuy"><b class="pprice">499 TL</b><button type="button" class="btn solid padd">Añadir al carrito</button></div>
       </article>
-      <article class="pcard" data-id="isl-notebook" data-price="250">
-        <div class="pimg"><img src="../img/shop/notebook.jpg" alt="ISL Defter" width="600" height="600" loading="lazy"><span class="ptest">Producto de prueba</span></div>
-        <h3>Cuaderno ISL</h3>
-        <p>A5, sin líneas; para tus notas e ideas escénicas.</p>
-        <div class="pbuy"><b class="pprice">250 TL</b><button type="button" class="btn solid padd">Añadir al carrito</button></div>
+      <article class="pcard" data-id="canta-yara" data-price="499">
+        <div class="pimg"><img src="../img/shop/canta-yara.jpg" alt="Bolsa «Se burla de las cicatrices»" width="800" height="800" loading="lazy"></div>
+        <h3>Bolsa «Se burla de las cicatrices»</h3>
+        <p>Bolsa de lona negra. De Romeo y Julieta: «Se burla de las cicatrices quien nunca sintió una herida» (texto en turco).</p>
+        <div class="pbuy"><b class="pprice">499 TL</b><button type="button" class="btn solid padd">Añadir al carrito</button></div>
       </article>
-      <article class="pcard" data-id="no-mug" data-price="300">
-        <div class="pimg"><img src="../img/shop/mug.jpg" alt="n* Kupa" width="600" height="600" loading="lazy"><span class="ptest">Producto de prueba</span></div>
-        <h3>Taza n*</h3>
-        <p>Cerámica, 330 ml. Un café antes del ensayo.</p>
-        <div class="pbuy"><b class="pprice">300 TL</b><button type="button" class="btn solid padd">Añadir al carrito</button></div>
-      </article>
-      <article class="pcard" data-id="no-stickers" data-price="120">
-        <div class="pimg"><img src="../img/shop/stickers.jpg" alt="NO Tiyatro Sticker Seti" width="600" height="600" loading="lazy"><span class="ptest">Producto de prueba</span></div>
-        <h3>Set de pegatinas NO Tiyatro</h3>
-        <p>8 piezas; diseños NO e ISL.</p>
-        <div class="pbuy"><b class="pprice">120 TL</b><button type="button" class="btn solid padd">Añadir al carrito</button></div>
+      <article class="pcard" data-id="canta-godot" data-price="499">
+        <div class="pimg"><img src="../img/shop/canta-godot.jpg" alt="Bolsa Esperando a Godot" width="800" height="800" loading="lazy"></div>
+        <h3>Bolsa Esperando a Godot</h3>
+        <p>Bolsa de lona negra. Estragon y Vladimir: «Esperamos a Godot» (texto en turco).</p>
+        <div class="pbuy"><b class="pprice">499 TL</b><button type="button" class="btn solid padd">Añadir al carrito</button></div>
       </article>
     </div>
   </div>

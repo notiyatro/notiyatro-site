@@ -2,48 +2,35 @@
  "_not": "Hediyeler bölümü ürünleri. price: KDV dahil TL. test: true ise sitede 'Test ürün' etiketi görünür. active: false yaparsan ürün satıştan kalkar.",
  "products": [
   {
-   "id": "isl-tshirt",
-   "name": "ISL Community T-shirt",
-   "price": 650,
-   "sizes": [
-    "S",
-    "M",
-    "L",
-    "XL"
-   ],
-   "test": true,
+   "id": "canta-vanya",
+   "name": "Vanya Dayı Çanta",
+   "price": 499,
+   "sizes": [],
+   "test": false,
    "active": true
   },
   {
-   "id": "isl-tote",
-   "name": "ISL Tote Bag",
-   "price": 350,
+   "id": "canta-romeo",
+   "name": "Romeo ve Juliet Çanta",
+   "price": 499,
    "sizes": [],
-   "test": true,
+   "test": false,
    "active": true
   },
   {
-   "id": "isl-notebook",
-   "name": "ISL Defter",
-   "price": 250,
+   "id": "canta-yara",
+   "name": "Yarayla Alay Eder Çanta",
+   "price": 499,
    "sizes": [],
-   "test": true,
+   "test": false,
    "active": true
   },
   {
-   "id": "no-mug",
-   "name": "n* Kupa",
-   "price": 300,
+   "id": "canta-godot",
+   "name": "Godot’yu Beklerken Çanta",
+   "price": 499,
    "sizes": [],
-   "test": true,
-   "active": true
-  },
-  {
-   "id": "no-stickers",
-   "name": "NO Tiyatro Sticker Seti",
-   "price": 120,
-   "sizes": [],
-   "test": true,
+   "test": false,
    "active": true
   }
  ],
