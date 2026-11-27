@@ -4,6 +4,7 @@
 import { config as tosla, post, signed, CURRENCY, timeSpan } from './lib/tosla.mjs';
 import { orders } from './lib/store.mjs';
 import { sendMail } from './lib/mail.mjs';
+import { customerMail } from './lib/shopmail.mjs';
 import data from '../../data/products.json' with { type: 'json' };
 
 const json = (s, b) => new Response(JSON.stringify(b), { status: s, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
@@ -49,7 +50,7 @@ export default async (req) => {
   const rows = items.map((i) => `<tr><td>${i.qty}× ${esc(i.name)}${i.size ? ' (' + esc(i.size) + ')' : ''}</td><td align="right">${tl(i.line)}</td></tr>`).join('');
   const html = `<p><b>Yeni dükkân siparişi ${orderId}</b></p><table cellpadding="4">${rows}<tr><td>Kargo</td><td align="right">${shipFee ? tl(shipFee) : '-'}</td></tr><tr><td><b>Toplam</b></td><td align="right"><b>${tl(total)}</b></td></tr></table><p>${esc(name)} · ${esc(email)} · ${esc(phone)}<br>${delivery === 'pickup' ? 'Atölyede elden teslim' : (delivery === 'ist' ? 'Kargo (İstanbul içi): ' : 'Kargo (şehir dışı): ') + esc(address) + ', ' + esc(city)}</p><p>Kartla ödeme henüz açık değil; müşteriyle iletişime geçin.</p>`;
   await sendMail(process.env.ADMIN_EMAIL || 'hello@notiyatro.com', { subject: `Hediye siparişi ${orderId} · ${tl(total)}`, html }).catch(() => {});
-  await sendMail(email, { subject: `NO Tiyatro · Siparişin alındı (${orderId})`, html: `<p>Merhaba ${esc(name)},</p><p>Siparişini aldık. Ödeme ve teslimat için kısa süre içinde seninle iletişime geçeceğiz.</p><table cellpadding="4">${rows}<tr><td>Kargo</td><td align="right">${shipFee ? tl(shipFee) : '-'}</td></tr><tr><td><b>Toplam</b></td><td align="right"><b>${tl(total)}</b></td></tr></table><p>NO Tiyatro & Vajra Theatre</p>` }).catch(() => {});
+  await sendMail(email, customerMail('received', { ...base, status: 'awaiting_payment' })).catch(() => {});
   return json(200, { orderId, mode: 'manual' });
 };
 export const config = { path: '/api/shop-order' };
