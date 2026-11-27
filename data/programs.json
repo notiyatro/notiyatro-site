@@ -71,7 +71,8 @@
    "open": true,
    "net": 22000,
    "vat": 20,
-   "capacity": 36
+   "capacity": 36,
+   "pre": true
   },
   {
    "id": "frantic-2027-03",
