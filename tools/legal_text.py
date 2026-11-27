@@ -85,17 +85,91 @@ PREINFO = f'''
 <p>Talep ve şikâyetler için <a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine yazabilirsiniz. Tüketiciler, ilgili mevzuatta belirlenen parasal sınırlar dahilinde Tüketici Hakem Heyetlerine veya Tüketici Mahkemelerine başvurabilir.</p>
 '''
 
+RETURN_ADDR = 'NO Yapım ve Organizasyon Ltd. Şti., Hüseyinağa Mah., İstiklal Cad., Grand Pera No: 56/58 Kat 3 Daire 5, 34435 Beyoğlu / İstanbul'
+
+PRODUCT_PREINFO = f'''
+<p class="lg-meta">notiyatro.com Hediyeler üzerinden yapılan ürün siparişlerinde, sözleşme kurulmadan önce alıcıya sunulan bilgiler (6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği uyarınca)</p>
+<h2>1. Satıcı</h2>
+{SELLER}
+<h2>2. Ürünün temel nitelikleri</h2>
+<p>Siparişe konu ürünlerin adı, temel özellikleri, beden/adet bilgisi ve birim fiyatları notiyatro.com Hediyeler bölümünde ve sipariş özetinde gösterilir. Ürün görselleri temsilidir; renk tonları ekran ayarlarına göre farklı görünebilir.</p>
+<h2>3. Fiyat, kargo ve ödeme</h2>
+<ul>
+<li>Ürün fiyatlarına KDV dahildir; kargo ücreti fiyata dahil değildir ve sipariş özetinde ayrıca gösterilir.</li>
+<li>Kargo ücreti: <b>İstanbul içi 120 TL</b>, <b>İstanbul dışı (Türkiye geneli) 190 TL</b>. Atölyede elden teslimde kargo ücreti alınmaz.</li>
+<li>Ödenecek toplam tutar (ürün bedeli + kargo, vergiler dahil) ödeme onayından önce gösterilir.</li>
+<li>Ödeme kredi veya banka kartıyla, 3D Secure doğrulamasıyla, AKÖde Elektronik Para ve Ödeme Hizmetleri A.Ş.'nin Tosla İşim Sanal POS altyapısı üzerinden alınır. Kart bilgileri satıcı tarafından görülmez ve saklanmaz. Kartla ödeme açık değilken verilen siparişlerde ödeme yöntemi alıcıyla ayrıca kararlaştırılır; ödeme alınmadan ürün gönderilmez.</li>
+</ul>
+<h2>4. Teslimat</h2>
+<ul>
+<li>Ürünler, ödemenin onaylanmasından sonra genellikle 5 iş günü içinde kargoya verilir. Teslimat, yasal azami süre olan 30 günü aşmaz; bu süre içinde teslim edilemeyen siparişlerde alıcı bilgilendirilir ve dilerse sözleşmeyi feshederek ödediği tutarın tamamını geri alabilir.</li>
+<li>Ürün, alıcının sipariş sırasında bildirdiği adrese kargo firması aracılığıyla gönderilir. Teslimat yalnızca Türkiye içi adreslere yapılır.</li>
+<li>Elden teslim seçildiğinde ürün, alıcıya bildirilen atölye gününde ve yerinde teslim edilir.</li>
+<li>Alıcı, teslim sırasında paketi kontrol etmeli; hasarlı veya ezik paketleri kargo görevlisine tutanak tutturarak teslim almalı ya da teslim almamalıdır. Tutanak tutulmadan teslim alınan paketlerde hasarın kargodan kaynaklandığının ispatı güçleşebilir; bu durum alıcının ayıplı mal hükümlerinden doğan haklarını ortadan kaldırmaz.</li>
+</ul>
+<h2 id="cayma">5. Cayma hakkı</h2>
+<ul>
+<li>Alıcı, ürünü teslim aldığı tarihten itibaren <b>14 gün</b> içinde herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin sözleşmeden cayma hakkına sahiptir. Birden fazla ürünün ayrı ayrı teslim edildiği siparişlerde süre, son ürünün teslim alındığı gün başlar.</li>
+<li>Cayma bildirimi, süre dolmadan <a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine e-posta ile veya aşağıdaki iade adresine yazılı olarak yapılır. Bildirimde ad-soyad, sipariş numarası ve iade edilecek ürünler belirtilmelidir.</li>
+<li>Alıcı, cayma bildiriminden itibaren <b>10 gün</b> içinde ürünü, faturası ve (varsa) ambalajıyla birlikte iade adresine göndermelidir.</li>
+<li><b>İade adresi:</b> {RETURN_ADDR}</li>
+<li>İade kargo ücreti: Ürün, satıcının cayma bildirimine yanıt olarak e-posta ile bildirdiği anlaşmalı kargo firması ve iade kodu ile gönderildiğinde iade kargo ücreti alıcıdan alınmaz. Alıcının başka bir kargo firması seçmesi halinde iade gönderim masrafı alıcıya aittir.</li>
+<li>Satıcı, cayma bildiriminin kendisine ulaştığı tarihten itibaren <b>14 gün</b> içinde, ilk teslimat için alınan kargo ücreti dahil tahsil edilen tüm ödemeleri, ödemenin yapıldığı yöntemle ve alıcıya herhangi bir masraf yüklemeksizin iade eder. Satıcı, ürün kendisine ulaşana veya alıcı ürünü gönderdiğini ispatlayana kadar iadeyi bekletebilir. Karta yapılan iadelerin hesaba yansıma süresi kartı çıkaran bankaya bağlıdır.</li>
+<li>Alıcı, cayma süresi içinde ürünü olağan kullanımı dışında kullanması nedeniyle üründe meydana gelen değişiklik ve bozulmalardan sorumludur.</li>
+</ul>
+<h2>6. Cayma hakkının kullanılamayacağı haller</h2>
+<p>Mesafeli Sözleşmeler Yönetmeliği'nin 15. maddesi uyarınca; alıcının istekleri veya kişisel ihtiyaçları doğrultusunda hazırlanan (isim baskılı, kişiye özel tasarlanan vb.) ürünlerde ve teslimden sonra ambalajı açılmış, iadesi sağlık ve hijyen açısından uygun olmayan ürünlerde cayma hakkı kullanılamaz. Bu kapsamdaki ürünler, ürün sayfasında ayrıca belirtilir.</p>
+<h2>7. Ayıplı ürün ve garanti</h2>
+<p>Teslim edilen ürünün ayıplı olması halinde alıcı, 6502 sayılı Kanun'un 11. maddesi uyarınca sözleşmeden dönme, ayıp oranında bedel indirimi, ücretsiz onarım veya ayıpsız bir misli ile değişim haklarından birini kullanabilir. Ayıplı ürünlerde iade kargo masrafı satıcıya aittir. Satıcı, kanunda öngörülen süreler içinde ürünlerin ayıbından sorumludur. Bildirimler <a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine, mümkünse ayıbı gösteren fotoğrafla birlikte yapılır.</p>
+<h2>8. Fatura ve sözleşmenin saklanması</h2>
+<p>Siparişe ilişkin fatura elektronik ortamda (e-arşiv) düzenlenerek alıcının e-posta adresine gönderilir. Sipariş özeti ve işbu metinler alıcının e-posta adresine iletilir; ayrıca notiyatro.com/yasal adresinde her zaman erişilebilir durumdadır.</p>
+<h2>9. Şikâyet ve uyuşmazlık</h2>
+<p>Talep ve şikâyetler için <a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine veya +90 530 480 82 92 numaralı WhatsApp hattına başvurabilirsiniz. Alıcı, Ticaret Bakanlığı'nca her yıl ilan edilen parasal sınırlar dahilinde yerleşim yerindeki veya işlemin yapıldığı yerdeki Tüketici Hakem Heyeti'ne, bu sınırları aşan uyuşmazlıklarda Tüketici Mahkemesi'ne başvurabilir. Başvurular e-Devlet üzerinden TÜBİS (Tüketici Bilgi Sistemi) aracılığıyla da yapılabilir.</p>
+'''
+
+SALES_CONTRACT = f'''
+<p class="lg-meta">Mesafeli satış sözleşmesi · Ürün siparişleri · Cayma süresi: <b>teslimden itibaren 14 gün</b></p>
+<h2>1. Taraflar</h2>
+<p><b>Satıcı:</b></p>
+{SELLER}
+<p><b>Alıcı:</b> notiyatro.com Hediyeler sipariş formunda ad-soyad, e-posta, telefon ve teslimat adresi bilgilerini giren kişidir. Bu bilgiler ile sipariş özeti (ürünler, adet, beden, birim fiyatlar, kargo ücreti ve toplam tutar) işbu sözleşmenin ayrılmaz parçasıdır.</p>
+<h2>2. Konu</h2>
+<p>İşbu sözleşmenin konusu, alıcının notiyatro.com üzerinden elektronik ortamda sipariş verdiği ürünlerin satışı ve teslimine ilişkin olarak tarafların 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri uyarınca hak ve yükümlülüklerinin belirlenmesidir.</p>
+<h2>3. Sözleşmenin kurulması</h2>
+<p>Sözleşme, alıcının sipariş formundaki onay kutusunu işaretleyerek siparişi tamamlaması ve ödemenin onaylanmasıyla kurulur. Alıcı, sözleşmeden önce <a href="../urun-on-bilgilendirme/">Ürün Satışı Ön Bilgilendirme Formu</a>'nu okuduğunu, satıcının unvanı, ürünlerin temel nitelikleri, vergiler dahil toplam fiyat, kargo ücreti, ödeme ve teslimat bilgileri ile cayma hakkı konusunda bilgilendirildiğini kabul eder.</p>
+<h2>4. Fiyat ve ödeme</h2>
+<p>Ürün fiyatlarına KDV dahildir. Kargo ücreti İstanbul içi teslimatlarda 120 TL, İstanbul dışı teslimatlarda 190 TL olup sipariş özetinde ayrıca gösterilir; atölyede elden teslimde kargo ücreti alınmaz. Ödeme, Tosla İşim Sanal POS altyapısı üzerinden kredi veya banka kartıyla alınır. Kartın bankası tarafından ödemenin sonradan reddedilmesi veya iptal edilmesi halinde satıcının teslim yükümlülüğü sona erer.</p>
+<h2>5. Teslimat</h2>
+<p>5.1. Ürünler ödemenin onayından sonra genellikle 5 iş günü içinde kargoya verilir; teslimat yasal azami süre olan 30 günü aşmaz. Satıcı, ürünün teslim edilemeyeceğini anlarsa alıcıyı bilgilendirir ve alıcının talebi halinde tahsil edilen tüm ödemeleri 14 gün içinde iade eder.</p>
+<p>5.2. Ürün, alıcının bildirdiği adrese veya alıcının belirttiği kişiye teslim edilir. Hatalı ya da eksik adres bildirilmesinden kaynaklanan gecikmelerden satıcı sorumlu değildir; bu durumda doğan ek kargo masrafı alıcıya aittir.</p>
+<p>5.3. Ürünün kargo firmasına teslimine kadar oluşan kayıp ve hasarlardan satıcı sorumludur. Alıcı, teslim sırasında hasarlı görünen paketleri kargo görevlisine tutanak tutturarak teslim almalıdır.</p>
+<h2>6. Cayma hakkı</h2>
+<p>6.1. Alıcı, ürünü teslim aldığı tarihten itibaren 14 gün içinde gerekçe göstermeksizin ve cezai şart ödemeksizin sözleşmeden cayabilir. Cayma bildirimi <a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine veya iade adresine yazılı olarak yapılır.</p>
+<p>6.2. Alıcı, cayma bildiriminden itibaren 10 gün içinde ürünü faturası ve ambalajıyla birlikte şu adrese gönderir: <b>{RETURN_ADDR}</b>.</p>
+<p>6.3. Satıcının bildirdiği anlaşmalı kargo firması ve iade kodu ile yapılan iadelerde iade kargo ücreti alıcıdan alınmaz; alıcının başka bir kargo firması kullanması halinde iade masrafı alıcıya aittir.</p>
+<p>6.4. Satıcı, cayma bildiriminin kendisine ulaşmasından itibaren 14 gün içinde ilk teslimat kargo ücreti dahil tahsil ettiği tüm bedeli ödemenin yapıldığı karta veya yönteme iade eder. Satıcı, ürün kendisine ulaşana ya da alıcı ürünü gönderdiğini ispatlayana kadar iadeyi bekletebilir.</p>
+<p>6.5. Alıcının istekleri doğrultusunda kişiselleştirilen ürünlerde ve teslimden sonra ambalajı açılmış, sağlık ve hijyen açısından iadesi uygun olmayan ürünlerde cayma hakkı kullanılamaz.</p>
+<h2>7. Ayıplı ürün</h2>
+<p>Ayıplı ürün teslimi halinde alıcı, 6502 sayılı Kanun'un 11. maddesindeki seçimlik haklarını (sözleşmeden dönme, bedel indirimi, ücretsiz onarım, ayıpsız misli ile değişim) kullanabilir. Ayıplı ürünlerin iade kargo masrafı satıcıya aittir.</p>
+<h2>8. Kişisel veriler</h2>
+<p>Alıcının kişisel verileri <a href="../kvkk/">KVKK Aydınlatma Metni</a>'nde açıklanan amaçlarla ve siparişin teslimi için kargo firmasıyla paylaşılarak işlenir.</p>
+<h2>9. Uyuşmazlık</h2>
+<p>İşbu sözleşmeden doğan uyuşmazlıklarda Türk Hukuku uygulanır. Ticaret Bakanlığı'nca ilan edilen parasal sınırlar dahilinde Tüketici Hakem Heyetleri, bu sınırların üzerindeki uyuşmazlıklarda Tüketici Mahkemeleri yetkilidir. Alıcı, başvurusunu kendi yerleşim yerindeki merciye yapabilir.</p>
+<h2>10. Yürürlük</h2>
+<p>Alıcı, siparişi tamamlamadan önce sipariş formundaki onay kutusunu işaretleyerek işbu sözleşmenin tüm hükümlerini okuduğunu, anladığını ve kabul ettiğini beyan eder. Sözleşme, siparişin onaylanmasıyla yürürlüğe girer ve bir örneği sipariş özetiyle birlikte alıcının e-posta adresine gönderilir.</p>
+'''
+
 KVKK = f'''
 <p class="lg-meta">6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında aydınlatma metni</p>
 <h2>Veri sorumlusu</h2>
 {SELLER}
 <h2>İşlenen kişisel veriler</h2>
-<ul><li>Ad-soyad, telefon numarası, e-posta adresi</li><li>Fatura bilgileri</li><li>Kayıt olunan program, ödeme tutarı ve ödeme durumu (kart bilgileri hariç)</li><li>Etkinlik sırasında alınan görsel ve işitsel kayıtlar</li><li>Katılım bilgileri</li></ul>
+<ul><li>Ad-soyad, telefon numarası, e-posta adresi</li><li>Fatura bilgileri ve ürün siparişlerinde teslimat adresi</li><li>Kayıt olunan program, ödeme tutarı ve ödeme durumu (kart bilgileri hariç)</li><li>Etkinlik sırasında alınan görsel ve işitsel kayıtlar</li><li>Katılım bilgileri</li></ul>
 <p>Kart numarası, son kullanma tarihi ve güvenlik kodu NO Yapım ve Organizasyon Ltd. Şti. tarafından işlenmez; bu bilgiler doğrudan ödeme kuruluşuna iletilir.</p>
 <h2>İşleme amaçları</h2>
-<ul><li>Etkinlik organizasyonunun yürütülmesi ve kaydın oluşturulması</li><li>Katılımcı ile iletişim kurulması</li><li>Ödemenin alınması, iade ve faturalandırma süreçlerinin yürütülmesi</li><li>Hukuki yükümlülüklerin yerine getirilmesi</li><li>Açık rıza verilmesi halinde, gelecekte düzenlenecek etkinlikler hakkında bilgilendirme yapılması</li></ul>
+<ul><li>Etkinlik organizasyonunun yürütülmesi ve kaydın oluşturulması</li><li>Katılımcı ile iletişim kurulması</li><li>Ödemenin alınması, iade ve faturalandırma süreçlerinin yürütülmesi</li><li>Hediye siparişlerinin hazırlanması, kargoya verilmesi ve teslim edilmesi</li><li>Hukuki yükümlülüklerin yerine getirilmesi</li><li>Açık rıza verilmesi halinde, gelecekte düzenlenecek etkinlikler hakkında bilgilendirme yapılması</li></ul>
 <h2>Aktarım</h2>
-<p>Kişisel veriler; ödeme işlemleri için AKÖde Elektronik Para ve Ödeme Hizmetleri A.Ş.'ye (Tosla İşim), muhasebe ve faturalandırma için hizmet alınan mali müşavirlik ve e-fatura sağlayıcılarına, internet sitesinin ve kayıt sisteminin barındırılması için hizmet alınan barındırma sağlayıcısına ve yasal zorunluluk halinde yetkili kamu kurumlarına, yukarıdaki amaçlarla sınırlı olarak aktarılabilir.</p>
+<p>Kişisel veriler; ödeme işlemleri için AKÖde Elektronik Para ve Ödeme Hizmetleri A.Ş.'ye (Tosla İşim), ürün siparişlerinin teslimi için kargo firmalarına, muhasebe ve faturalandırma için hizmet alınan mali müşavirlik ve e-fatura sağlayıcılarına, internet sitesinin ve kayıt sisteminin barındırılması için hizmet alınan barındırma sağlayıcısına ve yasal zorunluluk halinde yetkili kamu kurumlarına, yukarıdaki amaçlarla sınırlı olarak aktarılabilir.</p>
 <h2>Toplama yöntemi ve hukuki sebep</h2>
 <p>Veriler, notiyatro.com üzerindeki kayıt ve ödeme formu, e-posta ve WhatsApp yoluyla elektronik ortamda toplanır. Hukuki sebepler: sözleşmenin kurulması ve ifası (KVKK m. 5/2-c), hukuki yükümlülük (m. 5/2-ç), meşru menfaat (m. 5/2-f) ve tanıtım ile bilgilendirme amaçları bakımından açık rıza (m. 5/1).</p>
 <h2>Haklarınız</h2>
@@ -106,5 +180,7 @@ PAGES = {
     'atolye-sozlesmesi': ('Atölye Katılım Sözleşmesi', lambda: contract('atolye')),
     'kamp-sozlesmesi': ('Kamp Katılım Sözleşmesi', lambda: contract('kamp')),
     'on-bilgilendirme': ('Ön Bilgilendirme Formu', lambda: PREINFO),
+    'mesafeli-satis-sozlesmesi': ('Mesafeli Satış Sözleşmesi (Ürünler)', lambda: SALES_CONTRACT),
+    'urun-on-bilgilendirme': ('Ürün Satışı Ön Bilgilendirme Formu', lambda: PRODUCT_PREINFO),
     'kvkk': ('KVKK Aydınlatma Metni', lambda: KVKK),
 }

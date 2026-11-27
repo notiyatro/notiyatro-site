@@ -544,13 +544,13 @@ R = {
    ok_h='Ödemen alındı, kaydın tamam.', ok_p='Teşekkürler! Kayıt bilgilerini ve programın detaylarını e-posta ve WhatsApp üzerinden göndereceğiz. Sorun olursa sipariş numaranla bize yazabilirsin.',
    fail_h='Ödeme tamamlanamadı.', fail_p='Kartından ücret çekilmedi. Kart bilgilerini kontrol edip tekrar deneyebilir ya da WhatsApp\'tan bize yazabilirsin.',
    err_h='Ödemenin sonucunu doğrulayamadık.', err_p='Kartından çekim yapıldıysa merak etme, kontrol edip sana dönüş yapacağız. Sipariş numaranla WhatsApp\'tan yazabilirsin.',
-   shop_h='Ödemen alındı, siparişin hazırlanıyor.', shop_p='Teşekkürler! Sipariş özetini e-postana gönderdik. Kargo ya da teslim bilgisi için seninle iletişime geçeceğiz.', shop_b='Dükkâna dön',
+   shop_h='Ödemen alındı, siparişin hazırlanıyor.', shop_p='Teşekkürler! Sipariş özetini e-postana gönderdik. Kargo ya da teslim bilgisi için seninle iletişime geçeceğiz.', shop_b='Hediyelere dön',
    ord='Sipariş no', home='Ana sayfaya dön', ws='Tüm atölyeler', wsh='atolyeler/', retry='Tekrar dene', wa='WhatsApp\'tan yaz'),
  'en': dict(title='Payment result — NO Tiyatro',
    ok_h='Payment received — you’re registered.', ok_p='Thank you! We’ll send your registration details and the programme information by email and WhatsApp. If anything comes up, message us with your order number.',
    fail_h='The payment didn’t go through.', fail_p='Your card was not charged. Check your card details and try again, or message us on WhatsApp.',
    err_h='We couldn’t confirm the payment result.', err_p='If your card was charged, don’t worry — we’ll check and get back to you. Message us on WhatsApp with your order number.',
-   shop_h='Payment received — your order is being prepared.', shop_p='Thank you! We’ve emailed you an order summary and will contact you about delivery or collection.', shop_b='Back to the shop',
+   shop_h='Payment received — your order is being prepared.', shop_p='Thank you! We’ve emailed you an order summary and will contact you about delivery or collection.', shop_b='Back to gifts',
    ord='Order no', home='Back to home', ws='All workshops', wsh='workshops/', retry='Try again', wa='Message us on WhatsApp'),
 }
 
@@ -610,7 +610,7 @@ def admin_page():
     <div id="panel" hidden>
       <div class="tabs adm-tabs" role="tablist">
         <button class="tab" role="tab" data-v="apps" aria-selected="true">Başvurular <span class="n" id="n-apps"></span></button>
-        <button class="tab" role="tab" data-v="orders" aria-selected="false">Kartlı ödemeler · Dükkân <span class="n" id="n-orders"></span></button>
+        <button class="tab" role="tab" data-v="orders" aria-selected="false">Kartlı ödemeler · Hediyeler <span class="n" id="n-orders"></span></button>
         <button class="tab" role="tab" data-v="cap" aria-selected="false">Kontenjan</button>
       </div>
       <div id="v-apps">
@@ -641,7 +641,7 @@ def admin_page():
 {
   const $ = id => document.getElementById(id);
   const AST = {pending:'Yeni başvuru', approved:'Onaylandı · ödeme bekleniyor', payment_reported:'Ödeme bildirildi', paid:'Ödendi', rejected:'Reddedildi'};
-  const OST = {paid:'Ödendi', pending:'Bekliyor', awaiting_payment:'Dükkân · ödeme bekliyor', failed:'Başarısız', hash_error:'Doğrulanamadı'};
+  const OST = {paid:'Ödendi', pending:'Bekliyor', awaiting_payment:'Hediye · ödeme bekliyor', failed:'Başarısız', hash_error:'Doğrulanamadı'};
   const ENG = {A1:'A1', A2:'A2', B1:'B1', B2:'B2', C1:'C1', C2:'C2'};
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const money = (n, c) => new Intl.NumberFormat('tr-TR', {style:'currency', currency:c || 'TRY'}).format(n);
@@ -813,7 +813,7 @@ LEGAL_CSS = '''
 def legal_page(slug):
     title, fn = LEGAL[slug]
     nav = ''.join(f'<a href="../{k}/"' + (' aria-current="page"' if k == slug else '') + f'>{v[0]}</a>' for k, v in LEGAL.items())
-    body = f'<section class="band"><div class="wrap lg"><p class="kick2">NO Tiyatro · Yasal</p><h1>{title}</h1>{fn()}<p class="lg-date">Son güncelleme: 26 Kasım 2026</p><nav class="lg-nav" aria-label="Yasal metinler">{nav}</nav></div></section>'
+    body = f'<section class="band"><div class="wrap lg"><p class="kick2">NO Tiyatro · Yasal</p><h1>{title}</h1>{fn()}<p class="lg-date">Son güncelleme: 27 Kasım 2026</p><nav class="lg-nav" aria-label="Yasal metinler">{nav}</nav></div></section>'
     return shell('tr', '../../', '../../en/', f'{title} — NO Tiyatro', LEGAL_CSS, body, '')
 
 out = {
@@ -828,7 +828,7 @@ out = {
 for k in LEGAL: out[f'yasal/{k}/index.html'] = legal_page(k)
 _items = ''.join(f'<li><a href="{k}/">{v[0]}</a></li>' for k, v in LEGAL.items())
 out['yasal/index.html'] = shell('tr', '../', '../en/', 'Sözleşmeler ve yasal metinler — NO Tiyatro', LEGAL_CSS + '.lg-list{list-style:none;padding:0;display:grid;gap:10px;margin:26px 0}.lg-list a{display:block;border:1.5px solid #000;border-radius:16px;padding:18px 20px;font-size:18px;text-decoration:none}.lg-list a:hover{background:#F6F4EA}',
-  f'<section class="band"><div class="wrap lg"><p class="kick2">NO Tiyatro · Yasal</p><h1>Sözleşmeler ve yasal metinler</h1><p>notiyatro.com üzerinden yapılan atölye ve kamp kayıtlarında geçerli mesafeli hizmet sözleşmeleri, ön bilgilendirme formu, iptal-iade koşulları ve kişisel verilerin korunmasına ilişkin metinler.</p><ul class="lg-list">{_items}</ul>{__import__("legal_text").SELLER}</div></section>', '')
+  f'<section class="band"><div class="wrap lg"><p class="kick2">NO Tiyatro · Yasal</p><h1>Sözleşmeler ve yasal metinler</h1><p>notiyatro.com üzerinden yapılan atölye ve kamp kayıtlarında geçerli mesafeli hizmet sözleşmeleri, Hediyeler bölümündeki ürün siparişlerinde geçerli mesafeli satış sözleşmesi, ön bilgilendirme formları, iptal, cayma ve iade koşulları ile kişisel verilerin korunmasına ilişkin metinler.</p><ul class="lg-list">{_items}</ul>{__import__("legal_text").SELLER}</div></section>', '')
 for path, html in out.items():
     full = f'{ROOT}/{path}'; os.makedirs(os.path.dirname(full), exist_ok=True); open(full, 'w').write(html)
 print('pages ok; priced programmes:', PAID or 'none')

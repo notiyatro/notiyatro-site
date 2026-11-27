@@ -2,6 +2,7 @@
 import re
 def norm(h, lang='tr'):
     a = '<a class="lang" href="en/" hreflang="en" lang="en" aria-label="English version">EN</a>' if lang == 'tr' else '<a class="lang" href="../" hreflang="tr" lang="tr" aria-label="Türkçe sürüm">TR</a>'
+    h = re.sub(r'<div class="hright">.*?</details></div>', '<details class="langs"></details>', h, flags=re.S)
     h = re.sub(r'<a class="hcart" id="hcart".*?</a>', '', h, flags=re.S)
     h = re.sub(r'<style id="hcart-css">.*?</style>', '', h, flags=re.S)
     h = re.sub(r'<script id="hcart-js">.*?</script>', '', h, flags=re.S)

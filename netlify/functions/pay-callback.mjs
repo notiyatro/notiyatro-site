@@ -58,8 +58,8 @@ export default async (req) => {
   }
   if (paid && order.type === 'shop' && order.status !== 'paid') {
     const list = (order.items || []).map((i) => `${i.qty}× ${i.name}${i.size ? ' (' + i.size + ')' : ''}`).join('<br>');
-    await sendMail(order.email, { subject: `NO Tiyatro · Ödemen alındı (${orderId})`, html: `<p>Merhaba ${order.name},</p><p>Ödemen başarıyla alındı. Siparişin hazırlanıyor.</p><p>${list}</p><p><b>Toplam: ${order.amount} TL</b></p><p>NO Tiyatro & Vajra Theatre</p>` });
-    await sendMail(process.env.ADMIN_EMAIL || 'hello@notiyatro.com', { subject: `Dükkân: kartla ödendi ${orderId} · ${order.amount} TL`, html: `<p>${list}</p><p>${order.name} · ${order.email} · ${order.phone}<br>${order.delivery === 'ship' ? 'Kargo: ' + order.address + ', ' + order.city : 'Atölyede elden teslim'}</p>` });
+    await sendMail(order.email, { subject: `NO Tiyatro · Ödemen alındı (${orderId})`, html: `<p>Merhaba ${order.name},</p><p>Ödemen başarıyla alındı. Siparişin hazırlanıyor.</p><p>${list}</p><p>Kargo: ${order.shipping ? order.shipping + ' TL' : '-'}<br><b>Toplam: ${order.amount} TL</b></p><p>NO Tiyatro & Vajra Theatre</p>` });
+    await sendMail(process.env.ADMIN_EMAIL || 'hello@notiyatro.com', { subject: `Hediye siparişi: kartla ödendi ${orderId} · ${order.amount} TL`, html: `<p>${list}</p><p>${order.name} · ${order.email} · ${order.phone}<br>${order.delivery === 'pickup' ? 'Atölyede elden teslim' : 'Kargo (' + (order.delivery === 'ist' ? 'İstanbul içi' : 'şehir dışı') + ', ' + order.shipping + ' TL): ' + order.address + ', ' + order.city}</p>` });
   }
   if (!hashOk) console.error('callback hash mismatch', orderId);
   return go(lang, paid || order.status === 'paid' ? 'ok' : 'fail', orderId, order.programId);
