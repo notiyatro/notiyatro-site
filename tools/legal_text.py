@@ -103,7 +103,7 @@ PRODUCT_PREINFO = f'''
 <h2>4. Teslimat</h2>
 <ul>
 <li>Ürünler, ödemenin onaylanmasından sonra genellikle 5 iş günü içinde kargoya verilir. Teslimat, yasal azami süre olan 30 günü aşmaz; bu süre içinde teslim edilemeyen siparişlerde alıcı bilgilendirilir ve dilerse sözleşmeyi feshederek ödediği tutarın tamamını geri alabilir.</li>
-<li>Ürün, alıcının sipariş sırasında bildirdiği adrese kargo firması aracılığıyla gönderilir. Teslimat yalnızca Türkiye içi adreslere yapılır.</li>
+<li>Ürün, alıcının sipariş sırasında bildirdiği adrese <b>Yurtiçi Kargo</b> ile gönderilir; kargo takip numarası alıcının e-posta adresine iletilir. Teslimat yalnızca Türkiye içi adreslere yapılır.</li>
 <li>Elden teslim seçildiğinde ürün, alıcıya bildirilen atölye gününde ve yerinde teslim edilir.</li>
 <li>Alıcı, teslim sırasında paketi kontrol etmeli; hasarlı veya ezik paketleri kargo görevlisine tutanak tutturarak teslim almalı ya da teslim almamalıdır. Tutanak tutulmadan teslim alınan paketlerde hasarın kargodan kaynaklandığının ispatı güçleşebilir; bu durum alıcının ayıplı mal hükümlerinden doğan haklarını ortadan kaldırmaz.</li>
 </ul>
@@ -113,7 +113,7 @@ PRODUCT_PREINFO = f'''
 <li>Cayma bildirimi, süre dolmadan <a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine e-posta ile veya aşağıdaki iade adresine yazılı olarak yapılır. Bildirimde ad-soyad, sipariş numarası ve iade edilecek ürünler belirtilmelidir.</li>
 <li>Alıcı, cayma bildiriminden itibaren <b>10 gün</b> içinde ürünü, faturası ve (varsa) ambalajıyla birlikte iade adresine göndermelidir.</li>
 <li><b>İade adresi:</b> {RETURN_ADDR}</li>
-<li>İade kargo ücreti: Ürün, satıcının cayma bildirimine yanıt olarak e-posta ile bildirdiği anlaşmalı kargo firması ve iade kodu ile gönderildiğinde iade kargo ücreti alıcıdan alınmaz. Alıcının başka bir kargo firması seçmesi halinde iade gönderim masrafı alıcıya aittir.</li>
+<li><b>İade için anlaşmalı kargo firması: Yurtiçi Kargo.</b> Ürün, satıcının cayma bildirimine yanıt olarak e-posta ile ilettiği iade kodu ile herhangi bir Yurtiçi Kargo şubesinden gönderildiğinde iade kargo ücreti alıcıdan alınmaz. Alıcının başka bir kargo firması kullanması halinde iade gönderim masrafı alıcıya aittir.</li>
 <li>Satıcı, cayma bildiriminin kendisine ulaştığı tarihten itibaren <b>14 gün</b> içinde, ilk teslimat için alınan kargo ücreti dahil tahsil edilen tüm ödemeleri, ödemenin yapıldığı yöntemle ve alıcıya herhangi bir masraf yüklemeksizin iade eder. Satıcı, ürün kendisine ulaşana veya alıcı ürünü gönderdiğini ispatlayana kadar iadeyi bekletebilir. Karta yapılan iadelerin hesaba yansıma süresi kartı çıkaran bankaya bağlıdır.</li>
 <li>Alıcı, cayma süresi içinde ürünü olağan kullanımı dışında kullanması nedeniyle üründe meydana gelen değişiklik ve bozulmalardan sorumludur.</li>
 </ul>
@@ -141,12 +141,12 @@ SALES_CONTRACT = f'''
 <p>Ürün fiyatlarına KDV dahildir. Kargo ücreti İstanbul içi teslimatlarda 120 TL, İstanbul dışı teslimatlarda 190 TL olup sipariş özetinde ayrıca gösterilir; atölyede elden teslimde kargo ücreti alınmaz. Ödeme, Tosla İşim Sanal POS altyapısı üzerinden kredi veya banka kartıyla alınır. Kartın bankası tarafından ödemenin sonradan reddedilmesi veya iptal edilmesi halinde satıcının teslim yükümlülüğü sona erer.</p>
 <h2>5. Teslimat</h2>
 <p>5.1. Ürünler ödemenin onayından sonra genellikle 5 iş günü içinde kargoya verilir; teslimat yasal azami süre olan 30 günü aşmaz. Satıcı, ürünün teslim edilemeyeceğini anlarsa alıcıyı bilgilendirir ve alıcının talebi halinde tahsil edilen tüm ödemeleri 14 gün içinde iade eder.</p>
-<p>5.2. Ürün, alıcının bildirdiği adrese veya alıcının belirttiği kişiye teslim edilir. Hatalı ya da eksik adres bildirilmesinden kaynaklanan gecikmelerden satıcı sorumlu değildir; bu durumda doğan ek kargo masrafı alıcıya aittir.</p>
+<p>5.2. Ürün, Yurtiçi Kargo aracılığıyla alıcının bildirdiği adrese veya alıcının belirttiği kişiye teslim edilir. Hatalı ya da eksik adres bildirilmesinden kaynaklanan gecikmelerden satıcı sorumlu değildir; bu durumda doğan ek kargo masrafı alıcıya aittir.</p>
 <p>5.3. Ürünün kargo firmasına teslimine kadar oluşan kayıp ve hasarlardan satıcı sorumludur. Alıcı, teslim sırasında hasarlı görünen paketleri kargo görevlisine tutanak tutturarak teslim almalıdır.</p>
 <h2>6. Cayma hakkı</h2>
 <p>6.1. Alıcı, ürünü teslim aldığı tarihten itibaren 14 gün içinde gerekçe göstermeksizin ve cezai şart ödemeksizin sözleşmeden cayabilir. Cayma bildirimi <a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a> adresine veya iade adresine yazılı olarak yapılır.</p>
 <p>6.2. Alıcı, cayma bildiriminden itibaren 10 gün içinde ürünü faturası ve ambalajıyla birlikte şu adrese gönderir: <b>{RETURN_ADDR}</b>.</p>
-<p>6.3. Satıcının bildirdiği anlaşmalı kargo firması ve iade kodu ile yapılan iadelerde iade kargo ücreti alıcıdan alınmaz; alıcının başka bir kargo firması kullanması halinde iade masrafı alıcıya aittir.</p>
+<p>6.3. İadeler için satıcının anlaşmalı kargo firması <b>Yurtiçi Kargo</b>'dur. Satıcının e-posta ile ilettiği iade kodu ile Yurtiçi Kargo üzerinden yapılan iadelerde iade kargo ücreti alıcıdan alınmaz; alıcının başka bir kargo firması kullanması halinde iade masrafı alıcıya aittir.</p>
 <p>6.4. Satıcı, cayma bildiriminin kendisine ulaşmasından itibaren 14 gün içinde ilk teslimat kargo ücreti dahil tahsil ettiği tüm bedeli ödemenin yapıldığı karta veya yönteme iade eder. Satıcı, ürün kendisine ulaşana ya da alıcı ürünü gönderdiğini ispatlayana kadar iadeyi bekletebilir.</p>
 <p>6.5. Alıcının istekleri doğrultusunda kişiselleştirilen ürünlerde ve teslimden sonra ambalajı açılmış, sağlık ve hijyen açısından iadesi uygun olmayan ürünlerde cayma hakkı kullanılamaz.</p>
 <h2>7. Ayıplı ürün</h2>

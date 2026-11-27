@@ -173,6 +173,7 @@ T=[
 ('<h4>Sözleşmeler</h4>','<h4>Terms</h4>'),
 ('>Atölye Katılım Sözleşmesi</a>','>Workshop Participation Agreement</a>'),
 ('>Kamp Katılım Sözleşmesi</a>','>Camp Participation Agreement</a>'),
+('>Mesafeli Satış Sözleşmesi</a>','>Distance Sales Contract</a>'),('>Ürün Satışı Ön Bilgilendirme</a>','>Product Pre-Information Form</a>'),('>Cayma Hakkı ve İade</a>','>Right of Withdrawal & Returns</a>'),
 ('>Ön Bilgilendirme Formu</a>','>Pre-Information Form</a>'),
 ('>İptal ve İade Koşulları</a>','>Cancellation &amp; Refunds</a>'),
 ('>KVKK Aydınlatma Metni</a>','>Privacy Notice (KVKK)</a>'),
