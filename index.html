@@ -388,6 +388,62 @@ main{overflow-x:clip}
 .vcard dt{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#777}
 .vcard dd{margin:2px 0 0;font-weight:700;font-size:15px}
 @media(max-width:520px){.vcard dl{grid-template-columns:1fr}}
+
+.shop{background:#000;color:var(--c)}
+.shopw{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+.shopstar{width:clamp(120px,16vw,200px);height:auto;color:var(--c)}
+.shopk{margin:0 0 10px;font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.shop h2{margin:0;color:var(--c)}
+.shop .lede{color:var(--c2);margin:14px 0 24px;max-width:560px}
+.shop .btn.solid{background:var(--c);color:#000;border-color:var(--c)}
+@media(max-width:700px){.shopw{grid-template-columns:1fr;gap:24px}.shopstar{width:110px}}
+
+.shophead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.shophead .lede{margin:14px 0 0}
+.shop .scart{background:transparent!important;border:2px solid #F3EFD8!important;color:#F3EFD8!important;opacity:1}.shop .scart:hover{background:#F3EFD8!important;color:#000!important}
+.scart{display:inline-flex;align-items:center;gap:8px}
+.scount{min-width:24px;height:24px;border-radius:999px;background:var(--red);color:#fff;font-size:13px;display:grid;place-items:center;padding:0 6px}
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.pcard{background:#111;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.pimg{position:relative}.pimg img{display:block;width:100%;height:auto;aspect-ratio:1}
+.ptest{position:absolute;top:10px;left:10px;background:#000;box-shadow:0 0 0 1.5px #fff;color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px}
+.pcard h3{margin:14px 14px 6px;font-size:17px;color:var(--c)}
+.pcard>p{margin:0 14px 12px;font-size:13.5px;line-height:1.45;color:var(--c2)}
+.pbuy{margin:auto 14px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pprice{font-size:18px;color:var(--c);margin-right:auto}
+.psize{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--c2)}
+.psize select{background:#000;color:var(--c);border:1px solid var(--c);border-radius:8px;padding:5px 6px;font:700 13px Urbanist,sans-serif}
+.padd{width:100%;justify-content:center}
+.padd.ok{background:#16632b!important;border-color:#16632b!important;color:#fff!important}
+@media(max-width:1100px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.pgrid{grid-template-columns:1fr 1fr;gap:12px}.pcard h3{font-size:15px}.padd{font-size:14px;padding:10px 8px;white-space:nowrap}.pbuy{margin:auto 10px 12px}.pcard h3,.pcard>p{margin-left:10px;margin-right:10px}}
+.sdrawer{position:fixed;inset:0;z-index:120}.sdrawer[hidden]{display:none}
+.sback{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.spanel{position:absolute;right:0;top:0;bottom:0;width:min(440px,100%);background:#fff;color:#000;overflow:auto;padding:22px;box-shadow:-20px 0 60px rgba(0,0,0,.3);animation:sin .3s ease}
+@keyframes sin{from{transform:translateX(30px);opacity:0}}
+.sph{display:flex;justify-content:space-between;align-items:center}.sph h3{margin:0;font-size:24px}
+.sx{border:0;background:none;font-size:32px;line-height:1;cursor:pointer}
+.slist{margin:14px 0}
+.sline{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #eee}
+.sline img{width:56px;height:56px;border-radius:10px}
+.sline b{display:block;font-size:14px}.sline small{color:#666}
+.sqty{display:flex;align-items:center;gap:6px;margin-top:4px}
+.sqty button{width:26px;height:26px;border-radius:50%;border:1.5px solid #000;background:#fff;font-weight:900;cursor:pointer}
+.srm{border:0;background:none;color:#999;font-size:12px;cursor:pointer;text-decoration:underline}
+.sempty{color:#666}
+.stotal{display:flex;justify-content:space-between;align-items:baseline;font-size:18px;padding:12px 0;border-top:2px solid #000}
+.stotal small{font-size:12px;color:#666;font-weight:600}
+.sform{display:grid;gap:10px;margin-top:8px}
+.sform label{display:grid;gap:4px;font-size:13px;font-weight:700}
+.sform input:not([type=radio]):not([type=checkbox]){border:1.5px solid #bbb;border-radius:10px;padding:10px 12px;font:600 15px Urbanist,sans-serif}
+.sform fieldset{border:0;padding:0;margin:4px 0;display:grid;gap:6px}.sform legend{font-size:13px;font-weight:800;margin-bottom:4px}
+.sradio,.scons{display:flex!important;gap:8px;align-items:center;font-weight:600!important}
+.scons{flex-wrap:wrap;font-size:13px}.scons a{color:#000}
+.s2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.serr{color:#b3261e;font-weight:700;min-height:1em;margin:0}
+.ssub{justify-content:center}.ssub .s-card,.sform.card .ssub .s-man{display:none}.sform.card .ssub .s-card{display:inline}
+.sdone{text-align:center;padding:30px 10px}.sok{width:60px;height:60px;border-radius:50%;background:#16632b;color:#fff;display:grid;place-items:center;font-size:30px;margin:0 auto 10px}
+.sid{color:#666;font-size:13px}
 </style>
 <style id="langs-css">.langs{position:relative}.langs summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:44px;min-height:42px;padding:0 10px;font-weight:800;font-size:14px;border-radius:999px}.langs summary::-webkit-details-marker{display:none}.langs summary::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}.langs summary:hover,.langs[open] summary{background:rgba(0,0,0,.06)}.langm{position:absolute;right:0;top:calc(100% + 6px);z-index:80;background:#fff;color:#000;border:1.5px solid #000;border-radius:14px;padding:6px;display:grid;min-width:150px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.langm a{padding:9px 12px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;color:inherit;white-space:nowrap}.langm a:hover{background:#F6F4EA}.langm a[aria-current]{background:#000;color:#fff}@media(max-width:600px){.langm{position:fixed;left:12px;right:12px;top:66px;grid-template-columns:1fr 1fr}}@media(max-width:420px){.langs summary{min-width:36px;padding:0 6px;font-size:12px}}</style><style id="wa-css">.wa-fab{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font:800 15px/1 Urbanist,system-ui,sans-serif;padding:0 20px 0 14px;height:56px;border-radius:999px;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .2s,box-shadow .2s}.wa-fab:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.28)}.wa-fab svg{width:30px;height:30px;flex:0 0 auto}.wa-fab .wa-dot{position:absolute;top:6px;left:40px;width:11px;height:11px;border-radius:50%;background:#b8ffcf;border:2px solid #25D366;animation:wap 1.8s ease-out infinite}@keyframes wap{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}@media(max-width:700px){.wa-fab{padding:0;width:56px;justify-content:center;right:14px;bottom:14px}.wa-fab span.wa-l{display:none}.wa-fab .wa-dot{left:36px}}@media(prefers-reduced-motion:reduce){.wa-fab .wa-dot{animation:none}}@media print{.wa-fab{display:none}}.wa-fab.wa-off{opacity:0;pointer-events:none;transform:translateY(12px)}.wa-fab{transition:opacity .25s,transform .25s,box-shadow .2s}</style></head>
 <body>
@@ -408,6 +464,7 @@ main{overflow-x:clip}
       <a href="kamplar/">Kamplar</a>
       <a href="#oyunlar">Prodüksiyonlar</a>
       <a href="#pass">Üyelik Programı</a>
+      <a href="#dukkan">Dükkân</a>
       <a href="#danismanlik">Yurt Dışı Eğitim</a>
       <a href="#sertifika">Sertifika doğrulama</a>
       <a href="#iletisim">İletişim</a>
@@ -565,6 +622,78 @@ main{overflow-x:clip}
     </div>
   </div>
 </section>
+<section class="band shop" id="dukkan" aria-labelledby="h-shop">
+  <div class="wrap">
+    <div class="shophead">
+      <div>
+        <p class="shopk">NO × ISL</p>
+        <h2 id="h-shop">Dükkân</h2>
+        <p class="lede">NO Tiyatro ve International Stage Lab. için özel tasarlanan ürünler.</p>
+      </div>
+      <button type="button" class="btn ghost scart" aria-label="Sepeti aç"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 4h2l2.4 11h10.2L20 7H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.6" fill="currentColor"/><circle cx="17" cy="19" r="1.6" fill="currentColor"/></svg><span>Sepet</span><span class="scount">0</span></button>
+    </div>
+    <div class="pgrid">
+      <article class="pcard" data-id="isl-tshirt" data-price="650">
+        <div class="pimg"><img src="img/shop/tshirt.jpg" alt="ISL Community T-shirt" width="600" height="600" loading="lazy"><span class="ptest">Test ürün</span></div>
+        <h3>ISL Community T-shirt</h3>
+        <p>Pamuklu, unisex kesim. Ön yüzde ISL Community baskısı.</p>
+        <div class="pbuy"><b class="pprice">650 TL</b><label class="psize"><span>Beden</span><select><option>S</option><option>M</option><option>L</option><option>XL</option></select></label><button type="button" class="btn solid padd">Sepete ekle</button></div>
+      </article>
+      <article class="pcard" data-id="isl-tote" data-price="350">
+        <div class="pimg"><img src="img/shop/tote.jpg" alt="ISL Tote Bag" width="600" height="600" loading="lazy"><span class="ptest">Test ürün</span></div>
+        <h3>ISL Tote Bag</h3>
+        <p>Kalın kanvas; prova ve atölye günleri için geniş çanta.</p>
+        <div class="pbuy"><b class="pprice">350 TL</b><button type="button" class="btn solid padd">Sepete ekle</button></div>
+      </article>
+      <article class="pcard" data-id="isl-notebook" data-price="250">
+        <div class="pimg"><img src="img/shop/notebook.jpg" alt="ISL Defter" width="600" height="600" loading="lazy"><span class="ptest">Test ürün</span></div>
+        <h3>ISL Defter</h3>
+        <p>A5, çizgisiz; notların ve sahne fikirlerin için.</p>
+        <div class="pbuy"><b class="pprice">250 TL</b><button type="button" class="btn solid padd">Sepete ekle</button></div>
+      </article>
+      <article class="pcard" data-id="no-mug" data-price="300">
+        <div class="pimg"><img src="img/shop/mug.jpg" alt="n* Kupa" width="600" height="600" loading="lazy"><span class="ptest">Test ürün</span></div>
+        <h3>n* Kupa</h3>
+        <p>Seramik, 330 ml. Provadan önce bir kahve.</p>
+        <div class="pbuy"><b class="pprice">300 TL</b><button type="button" class="btn solid padd">Sepete ekle</button></div>
+      </article>
+      <article class="pcard" data-id="no-stickers" data-price="120">
+        <div class="pimg"><img src="img/shop/stickers.jpg" alt="NO Tiyatro Sticker Seti" width="600" height="600" loading="lazy"><span class="ptest">Test ürün</span></div>
+        <h3>NO Tiyatro Sticker Seti</h3>
+        <p>8 parça; NO ve ISL tasarımları.</p>
+        <div class="pbuy"><b class="pprice">120 TL</b><button type="button" class="btn solid padd">Sepete ekle</button></div>
+      </article>
+    </div>
+  </div>
+  <div class="sdrawer" id="sdrawer" hidden>
+    <div class="sback" data-close></div>
+    <div class="spanel" role="dialog" aria-modal="true" aria-labelledby="h-cart">
+      <div class="sph"><h3 id="h-cart">Sepet</h3><button type="button" class="sx" data-close aria-label="Kapat">×</button></div>
+      <div class="slist" id="slist"></div>
+      <p class="sempty" id="sempty">Sepetin boş.</p>
+      <div class="stotal" id="stotal"><span><span>Toplam</span> <small>KDV dahil</small></span><b id="ssum">0 TL</b></div>
+      <form class="sform" id="sform" novalidate>
+        <label><span>Ad Soyad</span><input name="name" autocomplete="name" required></label>
+        <label><span>E-posta</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span>Telefon</span><input name="phone" type="tel" autocomplete="tel" required></label>
+        <fieldset><legend>Teslimat</legend>
+          <label class="sradio"><input type="radio" name="delivery" value="ship" checked> <span>Kargo ile gönderim</span></label>
+          <label class="sradio"><input type="radio" name="delivery" value="pickup"> <span>Atölyede elden teslim</span></label>
+        </fieldset>
+        <div class="sship"><label><span>Adres</span><input name="address" autocomplete="street-address"></label><label><span>İl / İlçe</span><input name="city" autocomplete="address-level2"></label></div>
+        <div class="scard" hidden>
+          <label><span>Kart üzerindeki isim</span><input name="holder" autocomplete="cc-name"></label>
+          <label><span>Kart numarası</span><input name="cardno" inputmode="numeric" autocomplete="cc-number" maxlength="23"></label>
+          <div class="s2"><label><span>Son kullanma (AA/YY)</span><input name="exp" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="12/29"></label><label><span>CVV</span><input name="cvv" inputmode="numeric" autocomplete="cc-csc" maxlength="4"></label></div>
+        </div>
+        <label class="scons"><input type="checkbox" name="consent"> <span>Satış koşullarını okudum, kabul ediyorum.</span> <a href="yasal/on-bilgilendirme/" target="_blank">Koşulları oku</a></label>
+        <p class="serr" id="serr" aria-live="polite"></p>
+        <button type="submit" class="btn solid ssub"><span class="s-man">Siparişi tamamla</span><span class="s-card">Kartla öde</span></button>
+      </form>
+      <div class="sdone" id="sdone" hidden><p class="sok">✓</p><h4>Siparişin alındı!</h4><p>Kartla ödeme çok yakında açılıyor. Ödeme ve teslimat için seninle kısa süre içinde iletişime geçeceğiz.</p><p class="sid"></p></div>
+    </div>
+  </div>
+</section>
 <section class="band cream" id="sertifika" aria-labelledby="h-ser">
   <div class="wrap split">
     <div>
@@ -602,6 +731,7 @@ main{overflow-x:clip}
         <a href="kamplar/">Kamplar</a>
         <a href="#oyunlar">Prodüksiyonlar</a>
         <a href="#pass">Üyelik Programı</a>
+        <a href="#dukkan">Dükkân</a>
         <a href="#danismanlik">Yurt Dışı Eğitim</a>
         <a href="#partner">Vajra Theatre</a>
         <a href="#sertifika">Sertifika doğrulama</a>
@@ -689,6 +819,27 @@ main{overflow-x:clip}
   (()=>{const sec=document.getElementById('pass');if(!sec)return;const box=document.getElementById('mcards');const bts=sec.querySelectorAll('.mtoggle,.mdeck');
     const set=o=>{sec.classList.toggle('open',o);box.hidden=!o;bts.forEach(b=>b.setAttribute('aria-expanded',o));if(o){box.querySelectorAll('.mcard').forEach(c=>{c.style.animation='none';c.offsetHeight;c.style.animation=''});setTimeout(()=>box.scrollIntoView({behavior:'smooth',block:'start'}),120)}};
     bts.forEach(b=>b.addEventListener('click',()=>set(box.hidden)));})();
+  (()=>{const sec=document.getElementById('dukkan');if(!sec)return;const dr=document.getElementById('sdrawer'),list=document.getElementById('slist'),cnt=sec.querySelector('.scount'),sum=document.getElementById('ssum'),form=document.getElementById('sform'),err=document.getElementById('serr'),done=document.getElementById('sdone'),empty=document.getElementById('sempty'),tot=document.getElementById('stotal');
+    const ST={err:'Lütfen tüm alanları doldur ve koşulları onayla.',fail:'Bir sorun oluştu. Lütfen tekrar dene.',wait:'İşleniyor…',added:'Eklendi',rm:'Kaldır'};
+    const info=id=>{const c=sec.querySelector(`.pcard[data-id="${id}"]`);return{name:c.querySelector('h3').textContent,img:c.querySelector('img').getAttribute('src'),price:+c.dataset.price}};
+    let cart=[];try{cart=JSON.parse(localStorage.getItem('no-cart')||'[]').filter(x=>sec.querySelector(`.pcard[data-id="${x.id}"]`))}catch(_){cart=[]}
+    const save=()=>{try{localStorage.setItem('no-cart',JSON.stringify(cart))}catch(_){}};
+    const tl=n=>n.toLocaleString('tr-TR')+' TL';
+    const render=()=>{const n=cart.reduce((a,x)=>a+x.qty,0);cnt.textContent=n;empty.hidden=!!cart.length;tot.hidden=!cart.length;form.hidden=!cart.length;
+      list.innerHTML=cart.map((x,k)=>{const p=info(x.id);return `<div class="sline"><img src="${p.img}" alt=""><div><b>${esc(p.name)}${x.size?' · '+esc(x.size):''}</b><small>${tl(p.price)}</small><div class="sqty"><button type="button" data-q="${k}" data-d="-1" aria-label="-">−</button><span>${x.qty}</span><button type="button" data-q="${k}" data-d="1" aria-label="+">+</button><button type="button" class="srm" data-r="${k}">${esc(ST.rm)}</button></div></div><b>${tl(p.price*x.qty)}</b></div>`}).join('');
+      sum.textContent=tl(cart.reduce((a,x)=>a+info(x.id).price*x.qty,0));save()};
+    const open=()=>{done.hidden=true;render();dr.hidden=false;document.body.style.overflow='hidden'};const close=()=>{dr.hidden=true;document.body.style.overflow=''};
+    sec.querySelectorAll('.padd').forEach(b=>b.addEventListener('click',()=>{const c=b.closest('.pcard'),id=c.dataset.id,sel=c.querySelector('select'),size=sel?sel.value:'';const f=cart.find(x=>x.id===id&&x.size===size);f?f.qty=Math.min(10,f.qty+1):cart.push({id,size,qty:1});render();const t=b.textContent;b.classList.add('ok');b.textContent=ST.added;setTimeout(()=>{b.classList.remove('ok');b.textContent=t},1200)}));
+    sec.querySelector('.scart').addEventListener('click',open);dr.querySelectorAll('[data-close]').forEach(x=>x.addEventListener('click',close));addEventListener('keydown',e=>{if(e.key==='Escape'&&!dr.hidden)close()});
+    list.addEventListener('click',e=>{const q=e.target.closest('[data-q]'),r=e.target.closest('[data-r]');if(q){const x=cart[+q.dataset.q];x.qty=Math.max(1,Math.min(10,x.qty+(+q.dataset.d)))}if(r)cart.splice(+r.dataset.r,1);render()});
+    const ship=form.querySelector('.sship');form.querySelectorAll('[name=delivery]').forEach(r=>r.addEventListener('change',()=>{ship.hidden=form.delivery.value!=='ship'}));
+    let card=false;fetch('/api/health').then(r=>r.json()).then(h=>{card=h.tosla==='set';form.classList.toggle('card',card);form.querySelector('.scard').hidden=!card}).catch(()=>{});
+    form.addEventListener('submit',async e=>{e.preventDefault();err.textContent='';const v=Object.fromEntries(new FormData(form));const ok=v.name&&v.email&&v.phone&&form.consent.checked&&(v.delivery!=='ship'||(v.address&&v.city))&&(!card||(v.holder&&v.cardno&&v.exp&&v.cvv));if(!ok){err.textContent=ST.err;return}
+      const btn=form.querySelector('.ssub'),lab=btn.innerHTML;btn.disabled=true;btn.textContent=ST.wait;
+      try{const r=await fetch('/api/shop-order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:cart,name:v.name,email:v.email,phone:v.phone,delivery:v.delivery,address:v.address,city:v.city,consent:true,card,lang:document.documentElement.lang})});const d=await r.json();if(!r.ok)throw 0;
+        if(d.sessionId){const f=document.createElement('form');f.method='POST';f.action=d.gateway;const add=(k,val)=>{const i=document.createElement('input');i.type='hidden';i.name=k;i.value=val;f.appendChild(i)};add('ThreeDSessionId',d.sessionId);add('CardHolderName',v.holder);add('CardNo',v.cardno.replace(/\D/g,''));add('ExpireDate',v.exp);add('Cvv',v.cvv);document.body.appendChild(f);cart=[];save();f.submit();return}
+        cart=[];render();form.hidden=true;tot.hidden=true;empty.hidden=true;done.hidden=false;done.querySelector('.sid').textContent=d.orderId}catch(_){err.textContent=ST.fail}finally{btn.disabled=false;btn.innerHTML=lab}});
+    render();})();
   const lbx = document.createElement('div'); lbx.className = 'lbx'; lbx.hidden = true; lbx.innerHTML = '<img alt="">'; document.body.appendChild(lbx);
   lbx.addEventListener('click', () => { lbx.hidden = true; });
   addEventListener('keydown', e => { if (e.key === 'Escape') lbx.hidden = true; });

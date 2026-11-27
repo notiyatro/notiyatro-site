@@ -544,11 +544,13 @@ R = {
    ok_h='Ödemen alındı, kaydın tamam.', ok_p='Teşekkürler! Kayıt bilgilerini ve programın detaylarını e-posta ve WhatsApp üzerinden göndereceğiz. Sorun olursa sipariş numaranla bize yazabilirsin.',
    fail_h='Ödeme tamamlanamadı.', fail_p='Kartından ücret çekilmedi. Kart bilgilerini kontrol edip tekrar deneyebilir ya da WhatsApp\'tan bize yazabilirsin.',
    err_h='Ödemenin sonucunu doğrulayamadık.', err_p='Kartından çekim yapıldıysa merak etme, kontrol edip sana dönüş yapacağız. Sipariş numaranla WhatsApp\'tan yazabilirsin.',
+   shop_h='Ödemen alındı, siparişin hazırlanıyor.', shop_p='Teşekkürler! Sipariş özetini e-postana gönderdik. Kargo ya da teslim bilgisi için seninle iletişime geçeceğiz.', shop_b='Dükkâna dön',
    ord='Sipariş no', home='Ana sayfaya dön', ws='Tüm atölyeler', wsh='atolyeler/', retry='Tekrar dene', wa='WhatsApp\'tan yaz'),
  'en': dict(title='Payment result — NO Tiyatro',
    ok_h='Payment received — you’re registered.', ok_p='Thank you! We’ll send your registration details and the programme information by email and WhatsApp. If anything comes up, message us with your order number.',
    fail_h='The payment didn’t go through.', fail_p='Your card was not charged. Check your card details and try again, or message us on WhatsApp.',
    err_h='We couldn’t confirm the payment result.', err_p='If your card was charged, don’t worry — we’ll check and get back to you. Message us on WhatsApp with your order number.',
+   shop_h='Payment received — your order is being prepared.', shop_p='Thank you! We’ve emailed you an order summary and will contact you about delivery or collection.', shop_b='Back to the shop',
    ord='Order no', home='Back to home', ws='All workshops', wsh='workshops/', retry='Try again', wa='Message us on WhatsApp'),
 }
 
@@ -563,7 +565,8 @@ def result_page(lang):
 {
   const X = %s, q = new URLSearchParams(location.search), st = q.get('status'), ord = (q.get('order') || '').replace(/[^A-Za-z0-9-]/g, ''), prog = (q.get('p') || '').replace(/[^a-z0-9-]/g, '');
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const k = st === 'ok' ? 'ok' : st === 'fail' ? 'fail' : 'err';
+  const k = st === 'ok' ? 'ok' : st === 'fail' ? 'fail' : 'err', shop = /^SH/.test(ord);
+  if (shop && k === 'ok') { X.ok_h = X.shop_h; X.ok_p = X.shop_p; X.ws = X.shop_b; X.wsh = '#dukkan'; }
   const icon = k === 'ok' ? '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>'
                           : '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 7v6M12 17h.01"/></svg>';
   const wa = 'https://wa.me/905304808292?text=' + encodeURIComponent((X.ord + ': ' + (ord || '-')));
@@ -607,7 +610,7 @@ def admin_page():
     <div id="panel" hidden>
       <div class="tabs adm-tabs" role="tablist">
         <button class="tab" role="tab" data-v="apps" aria-selected="true">Başvurular <span class="n" id="n-apps"></span></button>
-        <button class="tab" role="tab" data-v="orders" aria-selected="false">Kartlı ödemeler <span class="n" id="n-orders"></span></button>
+        <button class="tab" role="tab" data-v="orders" aria-selected="false">Kartlı ödemeler · Dükkân <span class="n" id="n-orders"></span></button>
         <button class="tab" role="tab" data-v="cap" aria-selected="false">Kontenjan</button>
       </div>
       <div id="v-apps">
@@ -638,7 +641,7 @@ def admin_page():
 {
   const $ = id => document.getElementById(id);
   const AST = {pending:'Yeni başvuru', approved:'Onaylandı · ödeme bekleniyor', payment_reported:'Ödeme bildirildi', paid:'Ödendi', rejected:'Reddedildi'};
-  const OST = {paid:'Ödendi', pending:'Bekliyor', failed:'Başarısız', hash_error:'Doğrulanamadı'};
+  const OST = {paid:'Ödendi', pending:'Bekliyor', awaiting_payment:'Dükkân · ödeme bekliyor', failed:'Başarısız', hash_error:'Doğrulanamadı'};
   const ENG = {A1:'A1', A2:'A2', B1:'B1', B2:'B2', C1:'C1', C2:'C2'};
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const money = (n, c) => new Intl.NumberFormat('tr-TR', {style:'currency', currency:c || 'TRY'}).format(n);

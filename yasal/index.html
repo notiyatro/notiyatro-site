@@ -386,6 +386,62 @@ main{overflow-x:clip}
 .vcard dd{margin:2px 0 0;font-weight:700;font-size:15px}
 @media(max-width:520px){.vcard dl{grid-template-columns:1fr}}
 
+.shop{background:#000;color:var(--c)}
+.shopw{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+.shopstar{width:clamp(120px,16vw,200px);height:auto;color:var(--c)}
+.shopk{margin:0 0 10px;font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.shop h2{margin:0;color:var(--c)}
+.shop .lede{color:var(--c2);margin:14px 0 24px;max-width:560px}
+.shop .btn.solid{background:var(--c);color:#000;border-color:var(--c)}
+@media(max-width:700px){.shopw{grid-template-columns:1fr;gap:24px}.shopstar{width:110px}}
+
+.shophead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.shophead .lede{margin:14px 0 0}
+.shop .scart{background:transparent!important;border:2px solid #F3EFD8!important;color:#F3EFD8!important;opacity:1}.shop .scart:hover{background:#F3EFD8!important;color:#000!important}
+.scart{display:inline-flex;align-items:center;gap:8px}
+.scount{min-width:24px;height:24px;border-radius:999px;background:var(--red);color:#fff;font-size:13px;display:grid;place-items:center;padding:0 6px}
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.pcard{background:#111;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.pimg{position:relative}.pimg img{display:block;width:100%;height:auto;aspect-ratio:1}
+.ptest{position:absolute;top:10px;left:10px;background:#000;box-shadow:0 0 0 1.5px #fff;color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px}
+.pcard h3{margin:14px 14px 6px;font-size:17px;color:var(--c)}
+.pcard>p{margin:0 14px 12px;font-size:13.5px;line-height:1.45;color:var(--c2)}
+.pbuy{margin:auto 14px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pprice{font-size:18px;color:var(--c);margin-right:auto}
+.psize{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--c2)}
+.psize select{background:#000;color:var(--c);border:1px solid var(--c);border-radius:8px;padding:5px 6px;font:700 13px Urbanist,sans-serif}
+.padd{width:100%;justify-content:center}
+.padd.ok{background:#16632b!important;border-color:#16632b!important;color:#fff!important}
+@media(max-width:1100px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.pgrid{grid-template-columns:1fr 1fr;gap:12px}.pcard h3{font-size:15px}.padd{font-size:14px;padding:10px 8px;white-space:nowrap}.pbuy{margin:auto 10px 12px}.pcard h3,.pcard>p{margin-left:10px;margin-right:10px}}
+.sdrawer{position:fixed;inset:0;z-index:120}.sdrawer[hidden]{display:none}
+.sback{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.spanel{position:absolute;right:0;top:0;bottom:0;width:min(440px,100%);background:#fff;color:#000;overflow:auto;padding:22px;box-shadow:-20px 0 60px rgba(0,0,0,.3);animation:sin .3s ease}
+@keyframes sin{from{transform:translateX(30px);opacity:0}}
+.sph{display:flex;justify-content:space-between;align-items:center}.sph h3{margin:0;font-size:24px}
+.sx{border:0;background:none;font-size:32px;line-height:1;cursor:pointer}
+.slist{margin:14px 0}
+.sline{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #eee}
+.sline img{width:56px;height:56px;border-radius:10px}
+.sline b{display:block;font-size:14px}.sline small{color:#666}
+.sqty{display:flex;align-items:center;gap:6px;margin-top:4px}
+.sqty button{width:26px;height:26px;border-radius:50%;border:1.5px solid #000;background:#fff;font-weight:900;cursor:pointer}
+.srm{border:0;background:none;color:#999;font-size:12px;cursor:pointer;text-decoration:underline}
+.sempty{color:#666}
+.stotal{display:flex;justify-content:space-between;align-items:baseline;font-size:18px;padding:12px 0;border-top:2px solid #000}
+.stotal small{font-size:12px;color:#666;font-weight:600}
+.sform{display:grid;gap:10px;margin-top:8px}
+.sform label{display:grid;gap:4px;font-size:13px;font-weight:700}
+.sform input:not([type=radio]):not([type=checkbox]){border:1.5px solid #bbb;border-radius:10px;padding:10px 12px;font:600 15px Urbanist,sans-serif}
+.sform fieldset{border:0;padding:0;margin:4px 0;display:grid;gap:6px}.sform legend{font-size:13px;font-weight:800;margin-bottom:4px}
+.sradio,.scons{display:flex!important;gap:8px;align-items:center;font-weight:600!important}
+.scons{flex-wrap:wrap;font-size:13px}.scons a{color:#000}
+.s2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.serr{color:#b3261e;font-weight:700;min-height:1em;margin:0}
+.ssub{justify-content:center}.ssub .s-card,.sform.card .ssub .s-man{display:none}.sform.card .ssub .s-card{display:inline}
+.sdone{text-align:center;padding:30px 10px}.sok{width:60px;height:60px;border-radius:50%;background:#16632b;color:#fff;display:grid;place-items:center;font-size:30px;margin:0 auto 10px}
+.sid{color:#666;font-size:13px}
+
 .lg{max-width:780px}
 .lg h1{margin-bottom:10px}
 .lg .lg-meta{color:#555;font-weight:700;margin:0 0 26px}
@@ -419,6 +475,7 @@ main{overflow-x:clip}
       <a href="../kamplar/">Kamplar</a>
       <a href="../#oyunlar">Prodüksiyonlar</a>
       <a href="../#pass">Üyelik Programı</a>
+      <a href="../#dukkan">Dükkân</a>
       <a href="../#danismanlik">Yurt Dışı Eğitim</a>
       <a href="../#sertifika">Sertifika doğrulama</a>
       <a href="../#iletisim">İletişim</a>
@@ -457,6 +514,7 @@ main{overflow-x:clip}
         <a href="../kamplar/">Kamplar</a>
         <a href="../#oyunlar">Prodüksiyonlar</a>
         <a href="../#pass">Üyelik Programı</a>
+        <a href="../#dukkan">Dükkân</a>
         <a href="../#danismanlik">Yurt Dışı Eğitim</a>
         <a href="../#partner">Vajra Theatre</a>
         <a href="../#sertifika">Sertifika doğrulama</a>
