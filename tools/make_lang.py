@@ -96,6 +96,14 @@ def switcher(cur, key, langs):
     return f'<details class="langs"><summary aria-label="Language · Dil">{cur.upper()}</summary><div class="langm">{links}</div></details>'
 
 
+CART_TX = {'tr':'Sepet','en':'Cart','de':'Warenkorb','ru':'Корзина','fr':'Panier','es':'Carrito','it':'Carrello','el':'Καλάθι'}
+CART_CSS = '<style id="hcart-css">.hcart{position:relative;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;color:inherit;text-decoration:none}.hcart:hover{background:rgba(0,0,0,.06)}.hcart svg{width:22px;height:22px}.hcart b{position:absolute;top:2px;right:0;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#E4452F;color:#fff;font:800 11px/18px Urbanist,system-ui,sans-serif;text-align:center;transform:scale(0);transition:transform .2s}.hcart.has b{transform:scale(1)}.hcart.pop b{animation:hcp .4s}@keyframes hcp{50%{transform:scale(1.35)}}@media(max-width:420px){.hcart{width:36px}}</style>'
+CART_JS = '<script id="hcart-js">(()=>{const a=document.getElementById("hcart");if(!a)return;const b=a.querySelector("b");let last=-1;const u=()=>{let n=0;try{n=JSON.parse(localStorage.getItem("no-cart")||"[]").reduce((s,x)=>s+(+x.qty||0),0)}catch(_){}b.textContent=n;a.classList.toggle("has",n>0);if(last>=0&&n>last){a.classList.remove("pop");void a.offsetWidth;a.classList.add("pop")}last=n};u();addEventListener("cart",u);addEventListener("storage",u);a.addEventListener("click",e=>{const s=document.querySelector("#dukkan .scart");if(s){e.preventDefault();s.click()}})})()</script>'
+def cart_link(cur):
+    home = EQUIV['home'].get(cur, EQUIV['home']['*']).format(l=cur)
+    lab = CART_TX.get(cur, 'Cart')
+    return f'<a class="hcart" id="hcart" href="{home}#sepet" aria-label="{lab}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11h10.2L20 7H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.6" fill="currentColor"/><circle cx="17" cy="19" r="1.6" fill="currentColor"/></svg><b>0</b></a>'
+
 WA_NUM = '905304808292'
 WA_TX = {'tr': ('WhatsApp Canlı Destek', 'Merhaba, atölyeleriniz ve kamplarınız hakkında bilgi almak istiyorum.'), 'en': ('WhatsApp Live Support', 'Hello, I’d like some information about your workshops and camps.'),
          'de': ('WhatsApp Live-Support', 'Hallo, ich hätte gerne Informationen zu Ihren Workshops und Camps.'), 'ru': ('Онлайн-поддержка WhatsApp', 'Здравствуйте, я хотел(а) бы узнать о ваших мастер-классах и лагерях.'),
@@ -116,7 +124,12 @@ def place_switchers(langs):
         cur, key = page_of(rel)
         h = open(f).read()
         sw = switcher(cur, key, langs)
-        h2 = re.sub(r'<a class="lang"[^>]*>[^<]*</a>|<details class="langs">.*?</details>', lambda m: sw, h, flags=re.S)
+        h2 = re.sub(r'<a class="hcart" id="hcart".*?</a>', '', h, flags=re.S)
+        if not rel.startswith('yonetim'): sw = sw + cart_link(cur)
+        h2 = re.sub(r'<a class="lang"[^>]*>[^<]*</a>|<details class="langs">.*?</details>', lambda m: sw, h2, flags=re.S)
+        h2 = re.sub(r'<style id="hcart-css">.*?</style>', '', h2, flags=re.S)
+        h2 = re.sub(r'<script id="hcart-js">.*?</script>', '', h2, flags=re.S)
+        if not rel.startswith('yonetim'): h2 = h2.replace('</head>', CART_CSS + '</head>', 1).replace('</body>', CART_JS + '</body>', 1)
         h2 = re.sub(r'<style id="langs-css">.*?</style>', '', h2, flags=re.S).replace('</head>', SWITCH_CSS + '</head>', 1)
         h2 = re.sub(r'<script id="langs-js">.*?</script>', '', h2, flags=re.S).replace('</body>', SWITCH_JS + '</body>', 1)
         h2 = re.sub(r'<style id="wa-css">.*?</style>', '', h2, flags=re.S)
