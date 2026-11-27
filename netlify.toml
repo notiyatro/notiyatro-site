@@ -1,6 +1,6 @@
 # Site dosyaları dist/ klasörüne kopyalanıp yayınlanır; fonksiyon kaynakları, data/ ve node_modules yayına çıkmaz.
 [build]
-  command = "rm -rf dist && mkdir dist && for d in index.html en de ru fr es it el atolyeler kamplar basvuru odeme yonetim yasal img; do if [ -e $d ]; then cp -r $d dist/; fi; done"
+  command = "rm -rf dist && mkdir dist && for d in index.html en de ru fr es it el atolyeler kamplar basvuru odeme yonetim yasal img favicon.svg favicon.ico apple-touch-icon.png sitemap.xml robots.txt; do if [ -e $d ]; then cp -r $d dist/; fi; done"
   publish = "dist"
   functions = "netlify/functions"
 
