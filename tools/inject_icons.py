@@ -1,7 +1,7 @@
 # Tüm sayfalara NO favicon bağlantılarını ekler (idempotent).
 import pathlib,re
 ROOT=pathlib.Path('/home/claude/notiyatro')
-TAG='<link rel="icon" href="/favicon.svg" type="image/svg+xml" id="noicon"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#000000">'
+TAG='<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" id="noicon"><link rel="icon" href="/favicon.ico?v=2" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2"><meta name="theme-color" content="#000000">'
 n=0
 for p in ROOT.rglob('*.html'):
     if 'node_modules' in p.parts: continue
