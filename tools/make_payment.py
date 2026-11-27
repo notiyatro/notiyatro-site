@@ -566,7 +566,7 @@ def result_page(lang):
   const X = %s, q = new URLSearchParams(location.search), st = q.get('status'), ord = (q.get('order') || '').replace(/[^A-Za-z0-9-]/g, ''), prog = (q.get('p') || '').replace(/[^a-z0-9-]/g, '');
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const k = st === 'ok' ? 'ok' : st === 'fail' ? 'fail' : 'err', shop = /^SH/.test(ord);
-  if (shop && k === 'ok') { X.ok_h = X.shop_h; X.ok_p = X.shop_p; X.ws = X.shop_b; X.wsh = '#dukkan'; }
+  if (shop && k === 'ok') { X.ok_h = X.shop_h; X.ok_p = X.shop_p; X.ws = X.shop_b; X.wsh = '#hediyeler'; }
   const icon = k === 'ok' ? '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>'
                           : '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 7v6M12 17h.01"/></svg>';
   const wa = 'https://wa.me/905304808292?text=' + encodeURIComponent((X.ord + ': ' + (ord || '-')));
