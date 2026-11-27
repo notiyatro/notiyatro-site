@@ -7,6 +7,8 @@ def norm(h, lang='tr'):
     h = re.sub(r'<style id="hcart-css">.*?</style>', '', h, flags=re.S)
     h = re.sub(r'<style id="ddm-css">.*?</style>', '', h, flags=re.S)
     h = re.sub(r'<style id="pay-css">.*?</style>', '', h, flags=re.S)
+    h = re.sub(r'<style id="navfit-css">.*?</style>', '', h, flags=re.S)
+    h = re.sub(r'<script id="navfit-js">.*?</script>', '', h, flags=re.S)
     h = re.sub(r'<script id="price-js">.*?</script>', '', h, flags=re.S)
     h = re.sub(r'<div class="paylogos" id="paylogos">.*?</div>', '', h, flags=re.S)
     h = re.sub(r'<script id="ddm-js">.*?</script>', '', h, flags=re.S)

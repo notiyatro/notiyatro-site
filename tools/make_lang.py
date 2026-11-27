@@ -155,6 +155,21 @@ def price_js(cur, root):
       'const run=()=>{document.querySelectorAll("a[href*=\\"?p=\\"],[data-ap]").forEach(a=>{const id=a.dataset.ap||new URL(a.href,location.href).searchParams.get("p");if(!N[id])return;const box=a.parentElement;if(box.querySelector(":scope > .prc"))return;if(box.classList.contains("acts"))return;{const r=document.createElement("div");r.className="prcrow";r.appendChild(chip(id));a.before(r);r.appendChild(a)}})};'
       'run();new MutationObserver(run).observe(document.body,{childList:true,subtree:true})})()</script>')
 
+# ---- header auto-fit: tighten, then collapse to the Menu button when nav items do not fit (long languages)
+NAVFIT_CSS = ('<style id="navfit-css">@media(min-width:1500px){header .bar{max-width:1680px}}@media(min-width:1301px){header .bar>*,.portals>*,.hright>*{flex-shrink:0}nav.main{flex-shrink:0}nav.main>a,nav.main>.dd{flex-shrink:0}nav.main>a,nav.main>.dd>a{white-space:nowrap}'
+  'header.nv-tight nav.main{gap:0}header.nv-tight nav.main>a,header.nv-tight nav.main>.dd>a{padding:10px 7px;font-size:14px}'
+  'header.nv-compact nav.main{display:none}header.nv-compact .menu{display:block;margin-inline-start:6px}'
+  'header.nv-compact.open nav.main{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#fff;padding:8px max(5vw,18px) 18px;border-bottom:1px solid var(--lineK,#ddd)}'
+  'header.nv-compact.open nav.main>a,header.nv-compact.open nav.main>.dd>a{font-size:18px;padding:14px 4px;border-bottom:1px solid var(--lineK,#ddd)}}</style>')
+NAVFIT_JS = ('<script id="navfit-js">(()=>{const h=document.querySelector("header"),nav=h&&h.querySelector("nav.main");if(!nav)return;const bar=nav.parentElement;'
+  'const vis=e=>e&&e.offsetWidth&&getComputedStyle(e).display!=="none";'
+  'const fits=()=>{if(!vis(nav))return true;const kids=[...nav.children].filter(vis);if(!kids.length)return true;const last=kids[kids.length-1].getBoundingClientRect().right;'
+  'let nx=nav.nextElementSibling;while(nx&&!vis(nx))nx=nx.nextElementSibling;const lim=nx?nx.getBoundingClientRect().left:bar.getBoundingClientRect().right;'
+  'const tail=[...bar.children].filter(vis).pop();const br=bar.getBoundingClientRect().right;'
+  'const squeezed=[...bar.querySelectorAll("a,button")].some(e=>vis(e)&&!e.closest(".ddp")&&e.scrollWidth>e.clientWidth+1);return !squeezed&&last<=lim-6&&(!tail||tail.getBoundingClientRect().right<=br+1)&&bar.scrollWidth<=bar.clientWidth+1};'
+  'const fit=()=>{h.classList.remove("nv-tight","nv-compact");if(innerWidth<=1300||fits())return;h.classList.add("nv-tight");if(fits())return;h.classList.remove("nv-tight");h.classList.add("nv-compact")};'
+  'let t;addEventListener("resize",()=>{clearTimeout(t);t=setTimeout(fit,80)});if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);fit();setTimeout(fit,400)})()</script>')
+
 WA_NUM = '905304808292'
 WA_TX = {'tr': ('WhatsApp Canlı Destek', 'Merhaba, atölyeleriniz ve kamplarınız hakkında bilgi almak istiyorum.'), 'en': ('WhatsApp Live Support', 'Hello, I’d like some information about your workshops and camps.'),
          'de': ('WhatsApp Live-Support', 'Hallo, ich hätte gerne Informationen zu Ihren Workshops und Camps.'), 'ru': ('Онлайн-поддержка WhatsApp', 'Здравствуйте, я хотел(а) бы узнать о ваших мастер-классах и лагерях.'),
@@ -186,6 +201,9 @@ def place_switchers(langs):
         h2 = re.sub(r'<style id="hcart-css">.*?</style>', '', h2, flags=re.S)
         h2 = re.sub(r'<script id="hcart-js">.*?</script>', '', h2, flags=re.S)
         if not rel.startswith('yonetim'): h2 = h2.replace('</head>', CART_CSS + '</head>', 1).replace('</body>', CART_JS + '</body>', 1)
+        h2 = re.sub(r'<style id="navfit-css">.*?</style>', '', h2, flags=re.S)
+        h2 = re.sub(r'<script id="navfit-js">.*?</script>', '', h2, flags=re.S)
+        if not rel.startswith('yonetim') and '<nav class="main"' in h2: h2 = h2.replace('</head>', NAVFIT_CSS + '</head>', 1).replace('</body>', NAVFIT_JS + '</body>', 1)
         h2 = re.sub(r'<style id="pay-css">.*?</style>', '', h2, flags=re.S)
         h2 = re.sub(r'<script id="price-js">.*?</script>', '', h2, flags=re.S)
         h2 = re.sub(r'<div class="paylogos" id="paylogos">.*?</div>', '', h2, flags=re.S)
