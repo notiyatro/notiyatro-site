@@ -39,6 +39,7 @@ export default async (req) => {
   const base = { orderId, type: 'shop', program: `Hediyeler: ${summary} · ${delivery === 'pickup' ? 'Elden teslim' : (delivery === 'ist' ? 'Kargo İstanbul içi: ' : 'Kargo şehir dışı: ') + address + ', ' + city}`, items, subtotal, shipping: shipFee, amount: total, currency: 'TRY', installment: 1, name, email, phone, delivery, address, city, lang, createdAt: new Date().toISOString() };
 
   let c = null; try { c = tosla(); } catch { c = null; }
+  if (c && b.card !== true) return json(409, { error: 'card_required' });
   if (c && b.card === true) {
     const origin = process.env.URL || new URL(req.url).origin;
     const res = await post(c, 'threeDPayment', signed(c, { callbackUrl: `${origin}/api/pay-callback`, orderId, amount: Math.round(total * 100), currency: CURRENCY.TRY, installmentCount: 0 })).catch((e) => ({ Code: -1, Message: String(e) }));

@@ -1,5 +1,6 @@
 # New strings added after the first translation pass: EN -> {lang: text}.
 X = {
+'Enter your card details to complete the payment.': {'de': 'Bitte gib deine Kartendaten ein, um die Zahlung abzuschließen.', 'ru': 'Введите данные карты, чтобы завершить оплату.', 'fr': 'Saisissez vos coordonnées bancaires pour finaliser le paiement.', 'es': 'Introduce los datos de tu tarjeta para completar el pago.', 'it': 'Inserisci i dati della carta per completare il pagamento.', 'el': 'Εισαγάγετε τα στοιχεία της κάρτας σας για να ολοκληρώσετε την πληρωμή.'},
 'Close-up view': {'de': 'Nahansicht', 'ru': 'Крупный план', 'fr': 'Vue rapprochée', 'es': 'Vista de cerca', 'it': 'Vista ravvicinata', 'el': 'Κοντινή προβολή'},
 'Click the image to zoom in': {'de': 'Zum Vergrößern auf das Bild klicken', 'ru': 'Нажмите на изображение, чтобы увеличить', 'fr': 'Cliquez sur l’image pour zoomer', 'es': 'Haz clic en la imagen para ampliar', 'it': 'Clicca sull’immagine per ingrandire', 'el': 'Κάντε κλικ στην εικόνα για μεγέθυνση'},
 'Bag': {'de': 'Tasche', 'ru': 'Сумка', 'fr': 'Sac', 'es': 'Bolsa', 'it': 'Borsa', 'el': 'Τσάντα'},

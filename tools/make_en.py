@@ -53,6 +53,7 @@ T=[
 ('aria-label="Sepeti aç"','aria-label="Open cart"'),
 ('aria-label="Kapat"','aria-label="Close"'),
 ('>Hediyeler<','>Gifts<'),
+("'Ödemeyi tamamlamak için kart bilgilerini gir.'","'Enter your card details to complete the payment.'"),
 ('aria-label="Vanya Dayı Çanta"','aria-label="Uncle Vanya Tote Bag"'),
 ('aria-label="Romeo ve Juliet Çanta"','aria-label="Romeo and Juliet Tote Bag"'),
 ('aria-label="Yarayla Alay Eder Çanta"','aria-label="“He Jests at Scars” Tote Bag"'),
