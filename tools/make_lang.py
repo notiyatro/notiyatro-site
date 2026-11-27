@@ -138,6 +138,23 @@ def dd_js(cur, root):
       'document.addEventListener("click",e=>{if(!e.target.closest(".dd"))nav.querySelectorAll(".dd.open").forEach(x=>{x.classList.remove("open");x.firstChild.setAttribute("aria-expanded","false")})});'
       'addEventListener("keydown",e=>{if(e.key==="Escape")nav.querySelectorAll(".dd.open").forEach(x=>{x.classList.remove("open");x.firstChild.setAttribute("aria-expanded","false")})})})()</script>')
 
+# ---- card logos (Visa, Mastercard, Troy) in every footer + price chips on programme lists
+PAY_TX = {'tr':'Güvenli ödeme · 3D Secure','en':'Secure payment · 3D Secure','de':'Sichere Zahlung · 3D Secure','ru':'Безопасная оплата · 3D Secure','fr':'Paiement sécurisé · 3D Secure','es':'Pago seguro · 3D Secure','it':'Pagamento sicuro · 3D Secure','el':'Ασφαλής πληρωμή · 3D Secure'}
+PAY_LOGOS = ('<span class="pl visa" aria-label="Visa"><svg viewBox="0 0 64 22" aria-hidden="true"><text x="32" y="17" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-style="italic" font-size="19" fill="#1A1F71" letter-spacing="1">VISA</text></svg></span>'
+  '<span class="pl mc" aria-label="Mastercard"><svg viewBox="0 0 40 24" aria-hidden="true"><circle cx="15" cy="12" r="10" fill="#EB001B"/><circle cx="25" cy="12" r="10" fill="#F79E1B"/><path d="M20 3.3a10 10 0 0 1 0 17.4a10 10 0 0 1 0-17.4z" fill="#FF5F00"/></svg></span>'
+  '<span class="pl troy" aria-label="Troy"><svg viewBox="0 0 60 22" aria-hidden="true"><text x="30" y="17" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="18" fill="#00264D">tr<tspan fill="#00B6C8">o</tspan>y</text></svg></span>')
+PAY_CSS = '<style id="pay-css">.paylogos{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:18px auto 0;padding:14px max(5vw,18px) 4px;max-width:1240px;font-size:12px;opacity:.85}.paylogos .pl{display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:6px;height:30px;padding:0 8px;box-shadow:0 0 0 1px rgba(0,0,0,.12)}.paylogos .pl svg{height:20px;width:auto}.paylogos .pl.mc svg{height:22px}.paylogos small{font-weight:700;letter-spacing:.02em}.prcrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.prcrow .prc{margin-right:0}.prc{display:inline-flex;align-items:center;font-weight:800;font-size:14px;white-space:nowrap;margin-right:auto}.prc small{font-weight:600;opacity:.7;margin-left:4px;font-size:12px}</style>'
+VAT_W = {'tr':'KDV','en':'VAT','de':'MwSt.','ru':'НДС','fr':'TVA','es':'IVA','it':'IVA','el':'ΦΠΑ'}
+def price_js(cur, root):
+    import json as _j
+    progs = _j.load(open(f'{root}/data/programs.json'))['programs']
+    data = {p['id']: p['net'] for p in progs if p.get('net') and p.get('open', True)}
+    loc = 'tr-TR' if cur == 'tr' else LOCALE.get(cur, 'en-GB')
+    return ('<script id="price-js">(()=>{const N=' + _j.dumps(data) + ',V=' + _j.dumps(VAT_W.get(cur, 'VAT'), ensure_ascii=False) + ',LC=' + _j.dumps(loc) + ';'
+      'const f=n=>n.toLocaleString(LC)+" TL";const chip=id=>{const s=document.createElement("span");s.className="prc";s.innerHTML=f(N[id])+"<small>+ "+V+"</small>";return s};'
+      'const run=()=>{document.querySelectorAll("a[href*=\\"?p=\\"],[data-ap]").forEach(a=>{const id=a.dataset.ap||new URL(a.href,location.href).searchParams.get("p");if(!N[id])return;const box=a.parentElement;if(box.querySelector(":scope > .prc"))return;if(box.classList.contains("acts"))box.insertBefore(chip(id),box.firstChild);else{const r=document.createElement("div");r.className="prcrow";r.appendChild(chip(id));a.before(r);r.appendChild(a)}})};'
+      'run();new MutationObserver(run).observe(document.body,{childList:true,subtree:true})})()</script>')
+
 WA_NUM = '905304808292'
 WA_TX = {'tr': ('WhatsApp Canlı Destek', 'Merhaba, atölyeleriniz ve kamplarınız hakkında bilgi almak istiyorum.'), 'en': ('WhatsApp Live Support', 'Hello, I’d like some information about your workshops and camps.'),
          'de': ('WhatsApp Live-Support', 'Hallo, ich hätte gerne Informationen zu Ihren Workshops und Camps.'), 'ru': ('Онлайн-поддержка WhatsApp', 'Здравствуйте, я хотел(а) бы узнать о ваших мастер-классах и лагерях.'),
@@ -169,6 +186,13 @@ def place_switchers(langs):
         h2 = re.sub(r'<style id="hcart-css">.*?</style>', '', h2, flags=re.S)
         h2 = re.sub(r'<script id="hcart-js">.*?</script>', '', h2, flags=re.S)
         if not rel.startswith('yonetim'): h2 = h2.replace('</head>', CART_CSS + '</head>', 1).replace('</body>', CART_JS + '</body>', 1)
+        h2 = re.sub(r'<style id="pay-css">.*?</style>', '', h2, flags=re.S)
+        h2 = re.sub(r'<script id="price-js">.*?</script>', '', h2, flags=re.S)
+        h2 = re.sub(r'<div class="paylogos" id="paylogos">.*?</div>', '', h2, flags=re.S)
+        if not rel.startswith('yonetim'):
+            h2 = h2.replace('</head>', PAY_CSS + '</head>', 1)
+            if '</footer>' in h2: h2 = h2.replace('</footer>', '<div class="paylogos" id="paylogos">' + PAY_LOGOS + '<small>' + PAY_TX.get(cur, PAY_TX['en']) + '</small></div></footer>', 1)
+            h2 = h2.replace('</body>', price_js(cur, ROOT) + '</body>', 1)
         h2 = re.sub(r'<style id="ddm-css">.*?</style>', '', h2, flags=re.S)
         h2 = re.sub(r'<script id="ddm-js">.*?</script>', '', h2, flags=re.S)
         if not rel.startswith('yonetim') and '<nav class="main"' in h2: h2 = h2.replace('</head>', DD_CSS + '</head>', 1).replace('</body>', dd_js(cur, ROOT) + '</body>', 1)
