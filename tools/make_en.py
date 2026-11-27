@@ -50,7 +50,7 @@ T=[
 ('>Kart numarası<','>Card number<'),
 ('>Son kullanma (AA/YY)<','>Expiry (MM/YY)<'),
 ('>Ön bilgilendirme formunu ve mesafeli satış sözleşmesini okudum, kabul ediyorum.<','>I have read and accept the pre-information form and the distance sales contract.<'),
-('>Ön bilgilendirme<','>Pre-information<'),('>Sözleşme<','>Contract<'),('>14 gün içinde koşulsuz iade<','>Free returns within 14 days<'),
+('>Ön bilgilendirme<','>Pre-information<'),('>Sözleşme<','>Contract<'),
 
 ('>Siparişi tamamla<','>Complete order<'),
 ('>Kartla öde<','>Pay by card<'),
