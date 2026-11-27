@@ -25,7 +25,7 @@ items=[
  dict(s='past',type='kamp',d_tr='31 Temmuz – 3 Ağustos 2025',d_en='31 Jul – 3 Aug 2025',t_tr='International Stage Camp — Ephesus Edition (I)',t_en='International Stage Camp — Ephesus Edition (I)',place_tr='Ephesus Retreat, Selçuk / İzmir',place_en='Ephesus Retreat, Selçuk / İzmir',tags_tr=['Kamp','1. edisyon'],tags_en=['Camp','1st edition'],p_tr='ISC’nin ilk edisyonu: yaratım, doğa ve disiplinlerarası üretim ekseninde dört gün.',p_en='ISC’s first edition: four days of creation, nature and interdisciplinary work.',tut='Omar Elerian, Carmen Nasr, Alex Murphy',img='w/isc-ephesus1'),
  # past workshops 2026
  dict(s='past',type='atolye',d_tr='20–22 Kasım 2026',d_en='20–22 Nov 2026',t_tr='Shakespeare’s Globe',t_en='Shakespeare’s Globe',place_tr='İstanbul',place_en='Istanbul',tags_tr=['Oyunculuk','Hareket','Shakespeare'],tags_en=['Acting','Movement','Shakespeare'],p_tr='Shakespeare’s Globe × International Stage Lab. Çocuk ve yetişkin grupları.',p_en='Shakespeare’s Globe × International Stage Lab. Children’s and adult groups.',tut='Oliver Lynes, Kate Webster, Jonathan Woolf',img=''),
- dict(s='past',type='atolye',d_tr='10–16 Ağustos 2026',d_en='10–16 Aug 2026',t_tr='Prag Film Okulu ile Yaz Okulu',t_en='Summer School with Prague Film School',place_tr='',place_en='',tags_tr=['Yaz okulu','Film'],tags_en=['Summer school','Film'],p_tr='Fikir aşamasından çekim ve kurguya uzanan yoğun bir üretim süreci.',p_en='An intensive production process from idea to shoot and edit.',tut='Diego Fandos, Kaveh Daneshmand',img='w/pfs'),
+ dict(s='past',type='atolye',d_tr='10–16 Ağustos 2026',d_en='10–16 Aug 2026',t_tr='Prag Film Okulu ile Yaz Okulu',t_en='Summer School with Prague Film School',place_tr='',place_en='',tags_tr=['Yaz okulu','Film'],tags_en=['Summer school','Film'],p_tr='Fikir aşamasından çekim ve kurguya uzanan yoğun bir üretim süreci.',p_en='An intensive production process from idea to shoot and edit.',tut='Diego Fandos, Kaveh Daneshmand',img='w/pfs',gal=['w/pfs-g3','w/pfs-g4','w/pfs-g1','w/pfs-g2']),
  dict(s='past',type='atolye',d_tr='4–7 Ağustos 2026',d_en='4–7 Aug 2026',t_tr='LAMDA — Auditioning: Monologue Bootcamp',t_en='LAMDA — Auditioning: Monologue Bootcamp',place_tr='',place_en='',tags_tr=['Seçme hazırlığı'],tags_en=['Audition prep'],p_tr='Seçme süreçlerine hazırlık, monolog çalışması ve self-tape teknikleri.',p_en='Audition preparation, monologue work and self-tape techniques.',tut='Eric Stroud, Katie Meekison',img='w/lamda'),
  dict(s='past',type='atolye',d_tr='27–28 Haziran 2026',d_en='27–28 Jun 2026',t_tr='Anouk van Dijk — Mekânın Görünmez Yakınlığı',t_en='Anouk van Dijk — Intimacy of Space',place_tr='',place_en='',tags_tr=['Countertechnique'],tags_en=['Countertechnique'],p_tr='Uluslararası koreograf ve yönetmen Anouk van Dijk, Countertechnique’e dayanan atölyesinde bedenin mekân tarafından nasıl şekillendiğini ve bedenler arasındaki ilişkileri araştırdı.',p_en='Choreographer and director Anouk van Dijk explored how space shapes the body and the relationships between bodies, drawing on Countertechnique.',tut='Anouk van Dijk',img='w/anouk'),
  dict(s='past',type='atolye',d_tr='20–21 Haziran 2026',d_en='20–21 Jun 2026',t_tr='Constanza Macras — Metin ve Hareket Üzerinden Doğaçlama',t_en='Constanza Macras — Improvisation Through Text and Movement',place_tr='',place_en='',tags_tr=['Doğaçlama'],tags_en=['Improvisation'],p_tr='Berlin merkezli DorkyPark’ın kurucusu, The Favourite ve Poor Things’in koreografı Constanza Macras ilk kez Türkiye’deydi; metin ve hareket üzerinden doğaçlama çalışıldı.',p_en='Constanza Macras, founder of Berlin’s DorkyPark and choreographer for The Favourite and Poor Things, came to Türkiye for the first time to work on improvisation through text and movement.',tut='Constanza Macras',img='w/macras'),
@@ -47,7 +47,7 @@ items=[
 ]
 
 L={'tr':dict(back='Ana sayfa',home='../',lang_label='EN',lang_aria='English version',lang_code='en',reg='Başvur',regmsg=' programına kayıt olmak istiyorum',tut='Eğitmenler',
-   empty='Bu sekmede henüz program yok.',ph='Görsel yakında',up_h='siradaki',past_h='gecmis',
+   empty='Bu sekmede henüz program yok.',ph='Görsel yakında',close='Kapat',photos='Fotoğraflar',up_h='siradaki',past_h='gecmis',
    atolye=dict(slug='atolyeler',title='Atölyeler — NO Tiyatro',kick='International Stage Lab.',h1='Atölyeler',
      lede='Uluslararası drama okullarının ve sanatçılarının eğitmenleriyle yoğun atölyeler. Sıradaki atölyelere kayıt olabilir, geçmiş atölyelerimize göz atabilirsin.',
      up='Sıradaki atölyeler',past='Geçmiş atölyeler',lang_href='../en/workshops/'),
@@ -55,7 +55,7 @@ L={'tr':dict(back='Ana sayfa',home='../',lang_label='EN',lang_aria='English vers
      lede='Birkaç gün boyunca uluslararası eğitmenlerle birlikte çalışıp birlikte yaşadığımız International Stage Camp edisyonları. Sıradaki kamplara kayıt olabilir, geçmiş kamplarımıza göz atabilirsin.',
      up='Sıradaki kamplar',past='Geçmiş kamplar',lang_href='../en/camps/')),
  'en':dict(back='Home',home='../',lang_label='TR',lang_aria='Türkçe sürüm',lang_code='tr',reg='Apply',regmsg='',tut='Tutors',
-   empty='No programmes in this tab yet.',ph='Image coming soon',up_h='upcoming',past_h='past',
+   empty='No programmes in this tab yet.',ph='Image coming soon',close='Close',photos='Photos',up_h='upcoming',past_h='past',
    atolye=dict(slug='workshops',title='Workshops — NO Tiyatro',kick='International Stage Lab.',h1='Workshops',
      lede='Intensive workshops with tutors from international drama schools and artists. Register for upcoming workshops or browse our past ones.',
      up='Upcoming workshops',past='Past workshops',lang_href='../../atolyeler/'),
@@ -89,7 +89,7 @@ def build(lang, kind):
     # active nav
     header=header.replace(f'<a href="../{x["slug"]}/">',f'<a href="../{x["slug"]}/" aria-current="page">',1)
     imgp='../img/' if lang=='tr' else '../../img/'
-    data=[dict(pid=it.get('pid',''),s=it['s'],type=it['type'],d=it['d_'+lang],t=it['t_'+lang],pl=it['place_'+lang],tags=it['tags_'+lang],p=it['p_'+lang],tut=it['tut'],img=it['img'],f=it.get('f',False)) for it in items]
+    data=[dict(pid=it.get('pid',''),s=it['s'],type=it['type'],d=it['d_'+lang],t=it['t_'+lang],pl=it['place_'+lang],tags=it['tags_'+lang],p=it['p_'+lang],tut=it['tut'],img=it['img'],gal=it.get('gal',[]),f=it.get('f',False)) for it in items]
     css='''
 .whero{padding-bottom:12px}
 .tabs{display:flex;gap:6px;border-bottom:2px solid #000;margin-top:34px;flex-wrap:wrap}
@@ -105,6 +105,8 @@ def build(lang, kind):
 .wimg{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#111;margin-bottom:16px;position:relative}
 .wimg img{width:100%;height:100%;object-fit:cover;display:block}
 .wimg.ph{display:grid;place-items:center}
+.wgal{cursor:zoom-in}.wgal img{transition:transform .4s}.wgal:hover img{transform:scale(1.03)}.gcount{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:5px;background:rgba(0,0,0,.72);color:#fff;font-size:12px;font-weight:700;padding:5px 9px;border-radius:999px}
+.glb{position:fixed;inset:0;z-index:9999;background:rgba(10,10,10,.94);display:grid;place-items:center}.glb[hidden]{display:none}.glb img{max-width:92vw;max-height:84vh;object-fit:contain;border-radius:8px}.glb button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:30px;line-height:1;cursor:pointer;display:grid;place-items:center}.glb button:hover{background:rgba(255,255,255,.24)}.glb .gx{top:18px;right:18px}.glb .gp{left:18px;top:50%;transform:translateY(-50%)}.glb .gn{right:18px;top:50%;transform:translateY(-50%)}.glb .gi{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#bbb;font-size:13px;font-weight:700}
 .wimg.ph img{width:48%;height:auto;object-fit:contain;opacity:.9}
 .wimg.ph span{position:absolute;bottom:12px;left:14px;color:#888;font-size:12px;font-weight:700}
 .wcard .when{font-weight:900;font-size:16px;color:var(--red)}
@@ -131,7 +133,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
     js=f'''<script>
 {{
   const D={json.dumps(data,ensure_ascii=False)};
-  const T={json.dumps(dict(reg=x['reg'],regmsg=x['regmsg'],empty=x['empty'],ph=x['ph'],tut=x['tut']),ensure_ascii=False)};
+  const T={json.dumps(dict(reg=x['reg'],regmsg=x['regmsg'],empty=x['empty'],ph=x['ph'],tut=x['tut'],close=x['close'],photos=x['photos']),ensure_ascii=False)};
   const H={json.dumps(dict(up=x['up_h'],past=x['past_h']))}, KIND={json.dumps(kind)};
   const ALIAS={json.dumps({'gelecek':'up','upcoming':'up','siradaki':'up','gecmis':'past','past':'past'})};
   {{const h=location.hash.slice(1); if(KIND==='atolye'&&(h==='kamplar'||h==='camps')) location.replace('../'+(h==='kamplar'?'kamplar':'camps')+'/');}}
@@ -143,7 +145,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
   let tab=fromHash();
   const grid=document.getElementById('wgrid');
   const card=w=>{{
-    const img=w.img?`<div class="wimg"><img src="${{IMG}}${{w.img}}.jpg" alt="${{esc(w.t)}}" loading="lazy"></div>`
+    const G=w.img?[w.img,...(w.gal||[])]:[];const img=w.img?`<div class="wimg${{G.length>1?' wgal':''}}"${{G.length>1?` role="button" tabindex="0" aria-label="${{esc(T.photos)}}: ${{esc(w.t)}}" data-g="${{G.join('|')}}"`:''}}><img src="${{IMG}}${{w.img}}.jpg" alt="${{esc(w.t)}}" loading="lazy">${{G.length>1?`<span class="gcount"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M4 5h3l2-2h6l2 2h3a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm8 3.5A4.5 4.5 0 1 0 12 17.5 4.5 4.5 0 0 0 12 8.5Zm0 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z"/></svg>${{G.length}}</span>`:''}}</div>`
       :`<div class="wimg ph"><img src="${{IMG}}isl-logo.png" alt=""><span>${{esc(T.ph)}}</span></div>`;
     const x=w.s==='up'&&w.pid?ST[w.pid]:null;
     const stb=x?`<span class="stb ${{x.state}}">${{esc(x.state==='few'&&x.left?SL.left.replace('{{n}}',x.left):SL[x.state])}}</span>`:'';
@@ -163,6 +165,17 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
   }});
   addEventListener('hashchange',()=>{{tab=fromHash();render()}});
   render();
+  const lb=document.createElement('div');lb.className='glb';lb.hidden=true;lb.innerHTML=`<button class="gx" aria-label="${{esc(T.close)}}">×</button><button class="gp" aria-label="‹">‹</button><img alt=""><button class="gn" aria-label="›">›</button><div class="gi"></div>`;document.body.appendChild(lb);
+  let GL=[],GI=0,GT='';const gimg=lb.querySelector('img'),gi=lb.querySelector('.gi');
+  const show=()=>{{gimg.src=IMG+GL[GI]+'.jpg';gimg.alt=GT;gi.textContent=(GI+1)+' / '+GL.length}};
+  const open=(el)=>{{GL=el.dataset.g.split('|');GI=0;GT=el.querySelector('img').alt;show();lb.hidden=false;document.body.style.overflow='hidden';lb.querySelector('.gx').focus()}};
+  const close=()=>{{lb.hidden=true;document.body.style.overflow=''}};
+  const step=d=>{{GI=(GI+d+GL.length)%GL.length;show()}};
+  grid.addEventListener('click',e=>{{const el=e.target.closest('.wgal');if(el)open(el)}});
+  grid.addEventListener('keydown',e=>{{const el=e.target.closest('.wgal');if(el&&(e.key==='Enter'||e.key===' ')){{e.preventDefault();open(el)}}}});
+  lb.addEventListener('click',e=>{{if(e.target===lb||e.target.classList.contains('gx'))close();else if(e.target.classList.contains('gp'))step(-1);else if(e.target.classList.contains('gn'))step(1)}});
+  addEventListener('keydown',e=>{{if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)}});
+  let sx=null;lb.addEventListener('touchstart',e=>{{sx=e.touches[0].clientX}},{{passive:true}});lb.addEventListener('touchend',e=>{{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)step(dx<0?1:-1);sx=null}});
   fetch('/api/status').then(r=>r.ok?r.json():{{}}).then(d=>{{ST=d;render()}}).catch(()=>{{}});
   const header=document.getElementById('top'),menu=document.getElementById('menu');
   menu.addEventListener('click',()=>{{const o=header.classList.toggle('open');menu.setAttribute('aria-expanded',o)}});

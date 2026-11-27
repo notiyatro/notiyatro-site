@@ -1,5 +1,6 @@
 # New strings added after the first translation pass: EN -> {lang: text}.
 X = {
+'Photos': {'de': 'Fotos', 'ru': 'Фотографии', 'fr': 'Photos', 'es': 'Fotos', 'it': 'Foto', 'el': 'Φωτογραφίες'},
 'Acting': {'de': 'Schauspiel', 'ru': 'Актёрское мастерство', 'fr': 'Jeu d’acteur', 'es': 'Interpretación', 'it': 'Recitazione', 'el': 'Υποκριτική'},
 'Please enter a valid email address.': {'de': 'Bitte gib eine gültige E-Mail-Adresse ein.', 'ru': 'Пожалуйста, введите действительный адрес электронной почты.', 'fr': 'Veuillez saisir une adresse e-mail valide.', 'es': 'Introduce una dirección de correo electrónico válida.', 'it': 'Inserisci un indirizzo email valido.', 'el': 'Εισαγάγετε μια έγκυρη διεύθυνση email.'},
 'Please enter a valid phone number.': {'de': 'Bitte gib eine gültige Telefonnummer ein.', 'ru': 'Пожалуйста, введите действительный номер телефона.', 'fr': 'Veuillez saisir un numéro de téléphone valide.', 'es': 'Introduce un número de teléfono válido.', 'it': 'Inserisci un numero di telefono valido.', 'el': 'Εισαγάγετε έναν έγκυρο αριθμό τηλεφώνου.'},
