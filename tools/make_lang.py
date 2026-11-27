@@ -124,12 +124,21 @@ def dd_js(cur, root):
         up = _r.search(r'data-tab="up"[^>]*>([^<]+)', h).group(1).strip()
         past = _r.search(r'data-tab="past"[^>]*>([^<]+)', h).group(1).strip()
         menu[kind] = [[up, '/' + path + '#' + hs[0]], [past, '/' + path + '#' + hs[1]]]
+    home = f'{root}/index.html' if cur == 'tr' else f'{root}/{cur}/index.html'
+    hh = open(home).read(); base = '/' if cur == 'tr' else f'/{cur}/'
+    pm = []
+    for k, nm in (('start', 'StartPass'), ('stage', 'StagePass'), ('prem', 'PremiumPass')):
+        m = _r.search(r'id="pass-' + k + r'".*?<li>.*?<b>([^<]+)</b>', hh, _r.S)
+        pm.append([nm, m.group(1).strip() if m else '', base + '#pass-' + k])
+    allt = _r.search(r'class="m-open">([^<]+)<', hh)
+    pm.append([allt.group(1).strip() if allt else 'Start / Stage / Premium', '', base + '#pass-all', 1])
+    menu['pass'] = pm
     return ('<script id="ddm-js">(()=>{const M=' + _j.dumps(menu, ensure_ascii=False) + ';'
       'const nav=document.querySelector("nav.main");if(!nav)return;'
       'const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\\"":"&quot;"}[c]));'
-      'const kindOf=a=>{const h=a.getAttribute("href")||"";return /(atolyeler|workshops)\\/?$/.test(h)?"atolye":/(kamplar|camps)\\/?$/.test(h)?"kamp":null};'
+      'const kindOf=a=>{const h=a.getAttribute("href")||"";return /(atolyeler|workshops)\\/?$/.test(h)?"atolye":/(kamplar|camps)\\/?$/.test(h)?"kamp":/#pass$/.test(h)?"pass":null};'
       '[...nav.querySelectorAll(":scope > a")].forEach(a=>{const k=kindOf(a);if(!k)return;const w=document.createElement("div");w.className="dd";a.replaceWith(w);w.appendChild(a);a.setAttribute("aria-haspopup","true");a.setAttribute("aria-expanded","false");'
-      'const pn=document.createElement("div");pn.className="ddp";pn.innerHTML=M[k].map(([t,u])=>`<a href="${u}">${esc(t)}</a>`).join("");w.appendChild(pn);'
+      'const pn=document.createElement("div");pn.className="ddp";pn.innerHTML=M[k].map(x=>{const[t,s,u,al]=x.length===2?[x[0],"",x[1],0]:x;return`<a href="${u}"${al?" class=\\"ddall\\"":""}>${esc(t)}${s?`<small>${esc(s)}</small>`:""}</a>`}).join("");w.appendChild(pn);'
       'const set=o=>{nav.querySelectorAll(".dd.open").forEach(x=>{if(x!==w){x.classList.remove("open");x.firstChild.setAttribute("aria-expanded","false")}});w.classList.toggle("open",o);a.setAttribute("aria-expanded",String(o))};'
       'const fine=matchMedia("(hover:hover) and (pointer:fine)");let tm,hv=0;'
       'a.addEventListener("click",e=>{e.preventDefault();nav.classList.toggle("ddcol",getComputedStyle(nav).flexDirection==="column");set(Date.now()-hv<700?true:!w.classList.contains("open"))});'

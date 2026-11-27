@@ -5,7 +5,6 @@ h=src
 from urllib.parse import quote
 T=[
 ('<html lang="tr">','<html lang="en">'),
-('content="NO Tiyatro — uluslararası tiyatro atölyeleri, kamplar, yaz okulları, International Stage Lab. ve NO Yapım."','content="NO Tiyatro — international theatre workshops, camps and summer schools, International Stage Lab. and NO Yapım."'),
 ('<a class="lang" href="en/" hreflang="en" lang="en" aria-label="English version">EN</a>','<a class="lang" href="../" hreflang="tr" lang="tr" aria-label="Türkçe sürüm">TR</a>'),
 ('<span><a href="en/" hreflang="en" lang="en">English</a> · notiyatro.com</span>','<span><a href="../" hreflang="tr" lang="tr">Türkçe</a> · notiyatro.com</span>'),
 ('aria-label="NO Tiyatro ana sayfa"','aria-label="NO Tiyatro home"'),
