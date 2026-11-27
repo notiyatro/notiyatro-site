@@ -152,7 +152,7 @@ def price_js(cur, root):
     loc = 'tr-TR' if cur == 'tr' else LOCALE.get(cur, 'en-GB')
     return ('<script id="price-js">(()=>{const N=' + _j.dumps(data) + ',V=' + _j.dumps(VAT_W.get(cur, 'VAT'), ensure_ascii=False) + ',LC=' + _j.dumps(loc) + ';'
       'const f=n=>n.toLocaleString(LC)+" TL";const chip=id=>{const s=document.createElement("span");s.className="prc";s.innerHTML=f(N[id])+"<small>+ "+V+"</small>";return s};'
-      'const run=()=>{document.querySelectorAll("a[href*=\\"?p=\\"],[data-ap]").forEach(a=>{const id=a.dataset.ap||new URL(a.href,location.href).searchParams.get("p");if(!N[id])return;const box=a.parentElement;if(box.querySelector(":scope > .prc"))return;if(box.classList.contains("acts"))box.insertBefore(chip(id),box.firstChild);else{const r=document.createElement("div");r.className="prcrow";r.appendChild(chip(id));a.before(r);r.appendChild(a)}})};'
+      'const run=()=>{document.querySelectorAll("a[href*=\\"?p=\\"],[data-ap]").forEach(a=>{const id=a.dataset.ap||new URL(a.href,location.href).searchParams.get("p");if(!N[id])return;const box=a.parentElement;if(box.querySelector(":scope > .prc"))return;if(box.classList.contains("acts"))return;{const r=document.createElement("div");r.className="prcrow";r.appendChild(chip(id));a.before(r);r.appendChild(a)}})};'
       'run();new MutationObserver(run).observe(document.body,{childList:true,subtree:true})})()</script>')
 
 WA_NUM = '905304808292'
