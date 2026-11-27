@@ -1,5 +1,15 @@
 # New strings added after the first translation pass: EN -> {lang: text}.
 X = {
+'Product details': {'de': 'Produktdetails', 'ru': 'Характеристики', 'fr': 'Caractéristiques', 'es': 'Características', 'it': 'Caratteristiche', 'el': 'Χαρακτηριστικά'},
+'Size:': {'de': 'Größe:', 'ru': 'Размер:', 'fr': 'Dimensions :', 'es': 'Medidas:', 'it': 'Misure:', 'el': 'Διαστάσεις:'},
+'Handle length:': {'de': 'Henkellänge:', 'ru': 'Длина ручек:', 'fr': 'Longueur des anses :', 'es': 'Largo de asas:', 'it': 'Lunghezza manici:', 'el': 'Μήκος λαβών:'},
+'Fabric:': {'de': 'Stoff:', 'ru': 'Ткань:', 'fr': 'Tissu :', 'es': 'Tejido:', 'it': 'Tessuto:', 'el': 'Ύφασμα:'},
+'Print:': {'de': 'Druck:', 'ru': 'Печать:', 'fr': 'Impression :', 'es': 'Estampado:', 'it': 'Stampa:', 'el': 'Τύπωμα:'},
+'Care:': {'de': 'Pflege:', 'ru': 'Уход:', 'fr': 'Entretien :', 'es': 'Cuidado:', 'it': 'Cura:', 'el': 'Φροντίδα:'},
+' 100% cotton black canvas, 320 g (±10 g)': {'de': ' 100 % Baumwolle, schwarzes Canvas, 320 g (±10 g)', 'ru': ' 100% хлопок, чёрный канвас, 320 г (±10 г)', 'fr': ' toile noire 100 % coton, 320 g (±10 g)', 'es': ' lona negra 100 % algodón, 320 g (±10 g)', 'it': ' tela nera 100% cotone, 320 g (±10 g)', 'el': ' μαύρος καμβάς 100% βαμβάκι, 320 γρ. (±10 γρ.)'},
+' NO Tiyatro collage design on the front': {'de': ' NO-Tiyatro-Collage auf der Vorderseite', 'ru': ' коллаж NO Tiyatro на лицевой стороне', 'fr': ' collage NO Tiyatro sur le devant', 'es': ' collage de NO Tiyatro en la parte delantera', 'it': ' collage NO Tiyatro sul davanti', 'el': ' κολάζ NO Tiyatro στην μπροστινή πλευρά'},
+' Not machine washable; clean by wiping with a damp cloth.': {'de': ' Nicht waschbar; mit einem feuchten Tuch abwischen.', 'ru': ' Не подлежит стирке; протирать влажной тканью.', 'fr': ' Non lavable ; nettoyer avec un chiffon humide.', 'es': ' No apta para lavado; limpiar con un paño húmedo.', 'it': ' Non lavabile; pulire con un panno umido.', 'el': ' Δεν πλένεται· καθαρίζεται με υγρό πανί.'},
+'Hand-sewn; small size variations may occur.': {'de': 'Handgenäht; kleine Größenabweichungen sind möglich.', 'ru': 'Ручной пошив; возможны небольшие отклонения в размере.', 'fr': 'Cousu main ; de légères variations de taille sont possibles.', 'es': 'Cosida a mano; puede haber pequeñas variaciones de tamaño.', 'it': 'Cucita a mano; possibili piccole variazioni di misura.', 'el': 'Χειροποίητη ραφή· μπορεί να υπάρχουν μικρές αποκλίσεις στις διαστάσεις.'},
 'Uncle Vanya Tote Bag': {'de': 'Onkel-Wanja-Tasche', 'ru': 'Сумка «Дядя Ваня»', 'fr': 'Tote bag Oncle Vania', 'es': 'Bolsa Tío Vania', 'it': 'Borsa Zio Vanja', 'el': 'Τσάντα Θείος Βάνιας'},
 'Romeo and Juliet Tote Bag': {'de': 'Romeo-und-Julia-Tasche', 'ru': 'Сумка «Ромео и Джульетта»', 'fr': 'Tote bag Roméo et Juliette', 'es': 'Bolsa Romeo y Julieta', 'it': 'Borsa Romeo e Giulietta', 'el': 'Τσάντα Ρωμαίος και Ιουλιέτα'},
 '“He Jests at Scars” Tote Bag': {'de': 'Tasche „Der Narben lacht“', 'ru': 'Сумка «Над шрамами смеётся»', 'fr': 'Tote bag « Il se rit des cicatrices »', 'es': 'Bolsa «Se burla de las cicatrices»', 'it': 'Borsa «Ride delle cicatrici»', 'el': 'Τσάντα «Γελά με τις ουλές»'},

@@ -408,13 +408,14 @@ main{overflow-x:clip}
 .pcard h3{margin:14px 14px 6px;font-size:17px;color:var(--c)}
 .pcard>p{margin:0 14px 12px;font-size:13.5px;line-height:1.45;color:var(--c2)}
 .pbuy{margin:auto 14px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pspec{margin:0 14px 12px;font-size:13px;color:var(--c2)}.pspec summary{cursor:pointer;font-weight:800;color:var(--c);list-style:none;display:flex;align-items:center;gap:6px}.pspec summary::-webkit-details-marker{display:none}.pspec summary::after{content:'+';font-size:16px;line-height:1}.pspec[open] summary::after{content:'−'}.pspec ul{margin:8px 0 0;padding-left:16px;line-height:1.5}.pspec b{color:var(--c)}
 .pprice{font-size:18px;color:var(--c);margin-right:auto}
 .psize{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--c2)}
 .psize select{background:#000;color:var(--c);border:1px solid var(--c);border-radius:8px;padding:5px 6px;font:700 13px Urbanist,sans-serif}
 .padd{width:100%;justify-content:center}
 .padd.ok{background:#16632b!important;border-color:#16632b!important;color:#fff!important}
 @media(max-width:1000px){.pgrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){.pgrid{grid-template-columns:1fr 1fr;gap:12px}.pcard h3{font-size:15px}.padd{font-size:14px;padding:10px 8px;white-space:nowrap}.pbuy{margin:auto 10px 12px}.pcard h3,.pcard>p{margin-left:10px;margin-right:10px}}
+@media(max-width:700px){.pspec{margin-left:10px;margin-right:10px}.pgrid{grid-template-columns:1fr 1fr;gap:12px}.pcard h3{font-size:15px}.padd{font-size:14px;padding:10px 8px;white-space:nowrap}.pbuy{margin:auto 10px 12px}.pcard h3,.pcard>p{margin-left:10px;margin-right:10px}}
 .sdrawer{position:fixed;inset:0;z-index:120}.sdrawer[hidden]{display:none}
 .sback{position:absolute;inset:0;background:rgba(0,0,0,.55)}
 .spanel{position:absolute;right:0;top:0;bottom:0;width:min(440px,100%);background:#fff;color:#000;overflow:auto;padding:22px;box-shadow:-20px 0 60px rgba(0,0,0,.3);animation:sin .3s ease}
@@ -503,6 +504,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
       <a class="btn ghost" href="../#partner"><span class="lg">Vajra Theatre</span><span class="sm">Vajra</span></a>
       
     </div>
+    
     
     
     
