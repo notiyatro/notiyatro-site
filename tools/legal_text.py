@@ -8,6 +8,7 @@ SELLER = '''<dl class="lg-firm">
 <div><dt>Unvan</dt><dd>NO Yapım ve Organizasyon Limited Şirketi</dd></div>
 <div><dt>Adres</dt><dd>Hüseyinağa Mah., İstiklal Cad., Grand Pera No: 56/58 Kat 3 Daire 5, Beyoğlu, İstanbul, Türkiye</dd></div>
 <div><dt>Vergi dairesi / no</dt><dd>Beyoğlu / 6311925259</dd></div>
+<div><dt>MERSİS no</dt><dd>0631192525900001</dd></div>
 <div><dt>E-posta</dt><dd><a href="mailto:hello@notiyatro.com">hello@notiyatro.com</a></dd></div>
 <div><dt>Telefon / WhatsApp</dt><dd>+90 530 480 82 92</dd></div>
 </dl>'''
