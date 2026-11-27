@@ -83,14 +83,19 @@
     "tr": "20–21 Mart 2027 · İstanbul",
     "en": "20–21 March 2027 · Istanbul"
    },
-   "price": null,
+   "price": 12000,
    "currency": "TRY",
    "maxInstallment": 1,
    "type": "atolye",
    "start": "2027-03-20",
-   "priceText": null,
+   "priceText": {
+    "tr": "10.000 TL + KDV",
+    "en": "10,000 TL + VAT"
+   },
    "open": true,
-   "capacity": 0
+   "capacity": 0,
+   "net": 10000,
+   "vat": 20
   },
   {
    "id": "isc-summer-2027",

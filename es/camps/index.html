@@ -532,6 +532,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
     
     
     
+    
     <div class="hright"><a class="hshop" href="/es/#hediyeler">Regalos</a><a class="hcart" id="hcart" href="/es/#sepet" aria-label="Carrito"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11h10.2L20 7H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.6" fill="currentColor"/><circle cx="17" cy="19" r="1.6" fill="currentColor"/></svg><b>0</b></a><details class="langs"><summary aria-label="Language · Dil">ES</summary><div class="langm"><a href="/kamplar/" hreflang="tr" lang="tr">Türkçe</a><a href="/en/camps/" hreflang="en" lang="en">English</a><a href="/de/camps/" hreflang="de" lang="de">Deutsch</a><a href="/ru/camps/" hreflang="ru" lang="ru">Русский</a><a href="/fr/camps/" hreflang="fr" lang="fr">Français</a><a href="/es/camps/" hreflang="es" lang="es" aria-current="page">Español</a><a href="/it/camps/" hreflang="it" lang="it">Italiano</a><a href="/el/camps/" hreflang="el" lang="el">Ελληνικά</a></div></details></div>
     <button class="menu" id="menu" aria-expanded="false" aria-controls="top">Menú</button>
   </div>
@@ -607,7 +608,7 @@ nav.main a[aria-current=page]{background:rgba(0,0,0,.06)}
   const H={"up": "upcoming", "past": "past"}, KIND="kamp";
   const ALIAS={"gelecek": "up", "upcoming": "up", "siradaki": "up", "gecmis": "past", "past": "past"};
   {const h=location.hash.slice(1); if(KIND==='atolye'&&(h==='kamplar'||h==='camps')) location.replace('../'+(h==='kamplar'?'kamplar':'camps')+'/');}
-  const PAY=["pfs-2027-01", "isc-winter-2027", "central-2027-02"], PAYU='../../en/payment/', PR="Inscribirse y pagar";
+  const PAY=["pfs-2027-01", "isc-winter-2027", "central-2027-02", "frantic-2027-03"], PAYU='../../en/payment/', PR="Inscribirse y pagar";
   let ST={}; const SL={"open": "Inscripciones abiertas", "few": "Últimas plazas", "left": "Últimas {n} plazas", "full": "Completo", "closed": "Inscripciones cerradas"};
   const IMG='../../img/', WA='https://wa.me/905304808292?text=';
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
