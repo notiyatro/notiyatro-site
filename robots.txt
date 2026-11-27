@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /yonetim/
+Disallow: /odeme/
+Disallow: /en/payment/
+Disallow: /api/
+
+Sitemap: https://notiyatro.com/sitemap.xml
