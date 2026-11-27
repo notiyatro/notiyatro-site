@@ -45,6 +45,7 @@ def head_block(g,l):
     h+=[f'<link rel="alternate" hreflang="{x}" href="{B+url(g,x)}">' for x in L]
     h.append(f'<link rel="alternate" hreflang="x-default" href="{B+url(g,"en")}">')
     h+=['<meta property="og:type" content="website">','<meta property="og:site_name" content="NO Tiyatro">',f'<meta property="og:title" content="{t}">',f'<meta property="og:description" content="{d}">',f'<meta property="og:url" content="{u}">',f'<meta property="og:image" content="{B}/img/og.jpg">',f'<meta property="og:locale" content="{LOC[l]}">','<meta name="twitter:card" content="summary_large_image">']
+    if g=='home': h.append('<meta name="google-site-verification" content="fZKrwklzg0ekoGaotFFNFeYJ6wz2b6-S5sfIWJVeofY">')
     if g=='home': h.append('<script type="application/ld+json">'+json.dumps(ORG,ensure_ascii=False)+'</script>')
     return '<!--seo-->'+''.join(h)+'<!--/seo-->'
 n=0
