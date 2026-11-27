@@ -71,7 +71,7 @@
    "open": true,
    "net": 22000,
    "vat": 20,
-   "capacity": 18
+   "capacity": 36
   },
   {
    "id": "frantic-2027-03",
@@ -109,7 +109,8 @@
    "start": "2027-07-22",
    "priceText": null,
    "open": true,
-   "capacity": 0
+   "capacity": 0,
+   "pre": true
   }
  ]
 }

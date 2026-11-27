@@ -4,7 +4,7 @@ import data from '../../../data/programs.json' with { type: 'json' };
 import { apps } from './apps.mjs';
 
 export const settings = () => getStore({ name: 'settings', consistency: 'strong' });
-export const MODES = ['auto', 'open', 'few', 'full', 'closed'];
+export const MODES = ['auto', 'pre', 'open', 'few', 'full', 'closed'];
 const HOLD = ['approved', 'payment_reported', 'paid'];
 
 export async function readCfg() { return (await settings().get('capacity', { type: 'json' })) || {}; }
@@ -28,6 +28,7 @@ export async function computeStatus() {
     let state = 'open';
     if (p.open === false) state = 'closed';
     else if (mode !== 'auto') state = mode;
+    else if (p.pre === true) state = 'pre';
     else if (cap && left === 0) state = 'full';
     else if (cap && left <= Math.max(3, Math.ceil(cap * 0.2))) state = 'few';
     out[p.id] = { state, left: state === 'few' && mode === 'auto' ? left : null, cap, paid, held, offline, taken, mode };

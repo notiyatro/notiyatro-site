@@ -730,7 +730,7 @@ def admin_page():
     $('v-apps').hidden = t.dataset.v !== 'apps'; $('v-orders').hidden = t.dataset.v !== 'orders'; $('v-cap').hidden = t.dataset.v !== 'cap'; if (t.dataset.v === 'cap') loadCap();
   }));
   const CST = {open:'Kayıtlar devam ediyor', few:'Son yerler', full:'Kontenjan doldu', closed:'Kayıtlar kapandı'};
-  const MODE = {auto:'Otomatik', open:'Kayıtlar devam ediyor', few:'Son yerler', full:'Kontenjan doldu', closed:'Kayıtlar kapandı'};
+  const MODE = {auto:'Otomatik', pre:'Ön kayıt açık', open:'Kayıtlar devam ediyor', few:'Son yerler', full:'Kontenjan doldu', closed:'Kayıtlar kapandı'};
   async function loadCap(d) {
     if (!d) { const r = await api('/api/admin/status').catch(() => null); if (!r || !r.ok) { $('caplist').innerHTML = '<p>Yüklenemedi.</p>'; return; } d = await r.json(); }
     $('caplist').innerHTML = d.programs.map(p => `<form class="capc" data-id="${esc(p.id)}">
