@@ -400,6 +400,24 @@ main{overflow-x:clip}
 .shop .btn.solid{background:var(--c);color:#000;border-color:var(--c)}
 @media(max-width:700px){.shopw{grid-template-columns:1fr;gap:24px}.shopstar{width:110px}}
 
+
+.pzoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;position:relative}
+.pzoom img{display:block;width:100%;height:auto;aspect-ratio:1;transition:transform .35s ease}
+.pzoom:hover img{transform:scale(1.04)}.pimg{overflow:hidden}
+.pzi{position:absolute;right:10px;bottom:10px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.72);color:#fff;display:grid;place-items:center;transition:transform .2s}
+.pzoom:hover .pzi{transform:scale(1.1)}
+.pviewer{position:fixed;inset:0;z-index:130;background:rgba(10,10,10,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:56px 16px 18px}
+.pviewer[hidden]{display:none}
+.pvx{position:absolute;top:10px;right:14px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:30px;line-height:1;cursor:pointer}
+.pvstage{width:min(92vw,1100px);height:calc(100vh - 230px);overflow:hidden;display:grid;place-items:center;border-radius:14px;cursor:zoom-in;touch-action:pan-x pan-y}
+.pvstage img{max-width:100%;max-height:calc(100vh - 230px);object-fit:contain;user-select:none;-webkit-user-drag:none}
+.pvstage.z{overflow:auto;display:block;cursor:zoom-out}
+.pvstage.z img{max-width:none;max-height:none;width:230%}
+.pvhint{margin:0;color:#aaa;font-size:13px}
+.pvthumbs{display:flex;gap:10px}
+.pvthumbs button{border:2px solid transparent;border-radius:12px;background:#1d1d1d;padding:4px;cursor:pointer;color:#ddd;font:700 12px Urbanist,sans-serif;display:flex;flex-direction:column;align-items:center;gap:4px}
+.pvthumbs button.on{border-color:#F3EFD8;color:#fff}
+.pvthumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px}
 .shophead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
 .shophead .lede{margin:14px 0 0}
 .shop .scart{background:transparent!important;border:2px solid #F3EFD8!important;color:#F3EFD8!important;opacity:1}.shop .scart:hover{background:#F3EFD8!important;color:#000!important}
@@ -582,6 +600,9 @@ table.adm th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-s
       <a class="btn ghost" href="../#partner"><span class="lg">Vajra Theatre</span><span class="sm">Vajra</span></a>
       
     </div>
+    
+    
+    
     
     
     

@@ -402,6 +402,24 @@ main{overflow-x:clip}
 .shop .btn.solid{background:var(--c);color:#000;border-color:var(--c)}
 @media(max-width:700px){.shopw{grid-template-columns:1fr;gap:24px}.shopstar{width:110px}}
 
+
+.pzoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;position:relative}
+.pzoom img{display:block;width:100%;height:auto;aspect-ratio:1;transition:transform .35s ease}
+.pzoom:hover img{transform:scale(1.04)}.pimg{overflow:hidden}
+.pzi{position:absolute;right:10px;bottom:10px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.72);color:#fff;display:grid;place-items:center;transition:transform .2s}
+.pzoom:hover .pzi{transform:scale(1.1)}
+.pviewer{position:fixed;inset:0;z-index:130;background:rgba(10,10,10,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:56px 16px 18px}
+.pviewer[hidden]{display:none}
+.pvx{position:absolute;top:10px;right:14px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:30px;line-height:1;cursor:pointer}
+.pvstage{width:min(92vw,1100px);height:calc(100vh - 230px);overflow:hidden;display:grid;place-items:center;border-radius:14px;cursor:zoom-in;touch-action:pan-x pan-y}
+.pvstage img{max-width:100%;max-height:calc(100vh - 230px);object-fit:contain;user-select:none;-webkit-user-drag:none}
+.pvstage.z{overflow:auto;display:block;cursor:zoom-out}
+.pvstage.z img{max-width:none;max-height:none;width:230%}
+.pvhint{margin:0;color:#aaa;font-size:13px}
+.pvthumbs{display:flex;gap:10px}
+.pvthumbs button{border:2px solid transparent;border-radius:12px;background:#1d1d1d;padding:4px;cursor:pointer;color:#ddd;font:700 12px Urbanist,sans-serif;display:flex;flex-direction:column;align-items:center;gap:4px}
+.pvthumbs button.on{border-color:#F3EFD8;color:#fff}
+.pvthumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px}
 .shophead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
 .shophead .lede{margin:14px 0 0}
 .shop .scart{background:transparent!important;border:2px solid #F3EFD8!important;color:#F3EFD8!important;opacity:1}.shop .scart:hover{background:#F3EFD8!important;color:#000!important}
@@ -481,6 +499,9 @@ main{overflow-x:clip}
       <a class="btn ghost" href="#partner"><span class="lg">Vajra Theatre</span><span class="sm">Vajra</span></a>
       
     </div>
+    
+    
+    
     
     
     
@@ -693,34 +714,40 @@ main{overflow-x:clip}
     </div>
     <div class="pgrid">
       <article class="pcard" data-id="canta-vanya" data-price="499">
-        <div class="pimg"><img src="../img/shop/canta-vanya.jpg" alt="Uncle Vanya Tote Bag" width="800" height="800" loading="lazy"></div>
+        <div class="pimg"><button type="button" class="pzoom" data-k="vanya" aria-label="Uncle Vanya Tote Bag"><img src="../img/shop/canta-vanya.jpg" alt="Uncle Vanya Tote Bag" width="800" height="800" loading="lazy"><span class="pzi" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 16l5 5M11 8v6M8 11h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></button></div>
         <h3>Uncle Vanya Tote Bag</h3>
         <p>Black canvas tote. A collage from Chekhov’s Uncle Vanya with the line “We shall live, Uncle Vanya!” (printed in Turkish).</p>
         <details class="pspec"><summary>Product details</summary><ul><li><b>Size:</b> 35 × 40 cm (±1 cm)</li><li><b>Handle length:</b> 70 cm</li><li><b>Fabric:</b> 100% cotton black canvas, 320 g (±10 g)</li><li><b>Print:</b> NO Tiyatro collage design on the front</li><li><b>Care:</b> Not machine washable; clean by wiping with a damp cloth.</li><li>Hand-sewn; small size variations may occur.</li></ul></details>
         <div class="pbuy"><b class="pprice">499 TL</b><button type="button" class="btn solid padd">Add to cart</button></div>
       </article>
       <article class="pcard" data-id="canta-romeo" data-price="499">
-        <div class="pimg"><img src="../img/shop/canta-romeo.jpg" alt="Romeo and Juliet Tote Bag" width="800" height="800" loading="lazy"></div>
+        <div class="pimg"><button type="button" class="pzoom" data-k="romeo" aria-label="Romeo and Juliet Tote Bag"><img src="../img/shop/canta-romeo.jpg" alt="Romeo and Juliet Tote Bag" width="800" height="800" loading="lazy"><span class="pzi" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 16l5 5M11 8v6M8 11h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></button></div>
         <h3>Romeo and Juliet Tote Bag</h3>
         <p>Black canvas tote. Benvolio and Romeo’s exchange on forgetting (printed in Turkish).</p>
         <details class="pspec"><summary>Product details</summary><ul><li><b>Size:</b> 35 × 40 cm (±1 cm)</li><li><b>Handle length:</b> 70 cm</li><li><b>Fabric:</b> 100% cotton black canvas, 320 g (±10 g)</li><li><b>Print:</b> NO Tiyatro collage design on the front</li><li><b>Care:</b> Not machine washable; clean by wiping with a damp cloth.</li><li>Hand-sewn; small size variations may occur.</li></ul></details>
         <div class="pbuy"><b class="pprice">499 TL</b><button type="button" class="btn solid padd">Add to cart</button></div>
       </article>
       <article class="pcard" data-id="canta-yara" data-price="499">
-        <div class="pimg"><img src="../img/shop/canta-yara.jpg" alt="“He Jests at Scars” Tote Bag" width="800" height="800" loading="lazy"></div>
+        <div class="pimg"><button type="button" class="pzoom" data-k="yara" aria-label="“He Jests at Scars” Tote Bag"><img src="../img/shop/canta-yara.jpg" alt="“He Jests at Scars” Tote Bag" width="800" height="800" loading="lazy"><span class="pzi" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 16l5 5M11 8v6M8 11h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></button></div>
         <h3>“He Jests at Scars” Tote Bag</h3>
         <p>Black canvas tote. From Romeo and Juliet: “He jests at scars that never felt a wound” (printed in Turkish).</p>
         <details class="pspec"><summary>Product details</summary><ul><li><b>Size:</b> 35 × 40 cm (±1 cm)</li><li><b>Handle length:</b> 70 cm</li><li><b>Fabric:</b> 100% cotton black canvas, 320 g (±10 g)</li><li><b>Print:</b> NO Tiyatro collage design on the front</li><li><b>Care:</b> Not machine washable; clean by wiping with a damp cloth.</li><li>Hand-sewn; small size variations may occur.</li></ul></details>
         <div class="pbuy"><b class="pprice">499 TL</b><button type="button" class="btn solid padd">Add to cart</button></div>
       </article>
       <article class="pcard" data-id="canta-godot" data-price="499">
-        <div class="pimg"><img src="../img/shop/canta-godot.jpg" alt="Waiting for Godot Tote Bag" width="800" height="800" loading="lazy"></div>
+        <div class="pimg"><button type="button" class="pzoom" data-k="godot" aria-label="Waiting for Godot Tote Bag"><img src="../img/shop/canta-godot.jpg" alt="Waiting for Godot Tote Bag" width="800" height="800" loading="lazy"><span class="pzi" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 16l5 5M11 8v6M8 11h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></button></div>
         <h3>Waiting for Godot Tote Bag</h3>
         <p>Black canvas tote. Estragon and Vladimir: “We’re waiting for Godot” (printed in Turkish).</p>
         <details class="pspec"><summary>Product details</summary><ul><li><b>Size:</b> 35 × 40 cm (±1 cm)</li><li><b>Handle length:</b> 70 cm</li><li><b>Fabric:</b> 100% cotton black canvas, 320 g (±10 g)</li><li><b>Print:</b> NO Tiyatro collage design on the front</li><li><b>Care:</b> Not machine washable; clean by wiping with a damp cloth.</li><li>Hand-sewn; small size variations may occur.</li></ul></details>
         <div class="pbuy"><b class="pprice">499 TL</b><button type="button" class="btn solid padd">Add to cart</button></div>
       </article>
     </div>
+  </div>
+  <div class="pviewer" id="pviewer" hidden role="dialog" aria-modal="true" aria-label="Close-up view">
+    <button type="button" class="pvx" aria-label="Close">×</button>
+    <div class="pvstage" id="pvstage"><img id="pvimg" alt=""></div>
+    <p class="pvhint">Click the image to zoom in</p>
+    <div class="pvthumbs"><button type="button" data-v="lg" class="on"><img alt=""><span>Bag</span></button><button type="button" data-v="tasarim"><img alt=""><span>Design</span></button></div>
   </div>
   <div class="sdrawer" id="sdrawer" hidden>
     <div class="sback" data-close></div>
@@ -909,6 +936,19 @@ main{overflow-x:clip}
         if(d.sessionId){const f=document.createElement('form');f.method='POST';f.action=d.gateway;const add=(k,val)=>{const i=document.createElement('input');i.type='hidden';i.name=k;i.value=val;f.appendChild(i)};add('ThreeDSessionId',d.sessionId);add('CardHolderName',v.holder);add('CardNo',v.cardno.replace(/\D/g,''));add('ExpireDate',v.exp);add('Cvv',v.cvv);document.body.appendChild(f);cart=[];save();f.submit();return}
         cart=[];render();form.hidden=true;tot.hidden=true;empty.hidden=true;done.hidden=false;done.querySelector('.sid').textContent=d.orderId}catch(_){err.textContent=ST.fail}finally{btn.disabled=false;btn.innerHTML=lab}});
     render();if(location.hash==='#sepet'){sec.scrollIntoView();open()}else if(location.hash==='#dukkan'||location.hash==='#hediyeler'){sec.scrollIntoView();addEventListener('load',()=>sec.scrollIntoView())}})();
+  (()=>{const v=document.getElementById('pviewer');if(!v)return;const st=document.getElementById('pvstage'),im=document.getElementById('pvimg'),th=v.querySelectorAll('.pvthumbs button');let k='',view='lg',last=null;
+    const show=w=>{view=w;st.classList.remove('z');im.src=`/img/shop/canta-${k}-${w}.jpg`;th.forEach(b=>b.classList.toggle('on',b.dataset.v===w))};
+    const open=(btn)=>{k=btn.dataset.k;last=btn;im.alt=btn.getAttribute('aria-label');th.forEach(b=>{b.querySelector('img').src=`/img/shop/canta-${k}-${b.dataset.v}.jpg`});show('lg');v.hidden=false;document.body.style.overflow='hidden';v.querySelector('.pvx').focus()};
+    const close=()=>{v.hidden=true;document.body.style.overflow='';if(last)last.focus()};
+    document.querySelectorAll('.pzoom').forEach(b=>b.addEventListener('click',()=>open(b)));
+    v.querySelector('.pvx').addEventListener('click',close);v.addEventListener('click',e=>{if(e.target===v)close()});
+    th.forEach(b=>b.addEventListener('click',()=>show(b.dataset.v)));
+    addEventListener('keydown',e=>{if(v.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowRight'||e.key==='ArrowLeft')show(view==='lg'?'tasarim':'lg')});
+    st.addEventListener('click',e=>{if(st.classList.contains('z')){st.classList.remove('z');return}const r=im.getBoundingClientRect(),fx=(e.clientX-r.left)/r.width,fy=(e.clientY-r.top)/r.height;st.classList.add('z');requestAnimationFrame(()=>{st.scrollLeft=fx*im.offsetWidth-st.clientWidth/2;st.scrollTop=fy*im.offsetHeight-st.clientHeight/2})});
+    let drag=null;st.addEventListener('mousedown',e=>{if(!st.classList.contains('z'))return;drag={x:e.clientX,y:e.clientY,l:st.scrollLeft,t:st.scrollTop,m:false};e.preventDefault()});
+    addEventListener('mousemove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>4)drag.m=true;st.scrollLeft=drag.l-dx;st.scrollTop=drag.t-dy});
+    addEventListener('mouseup',()=>{if(drag&&drag.m){st.addEventListener('click',ev=>ev.stopImmediatePropagation(),{capture:true,once:true})}drag=null});
+  })();
   const lbx = document.createElement('div'); lbx.className = 'lbx'; lbx.hidden = true; lbx.innerHTML = '<img alt="">'; document.body.appendChild(lbx);
   lbx.addEventListener('click', () => { lbx.hidden = true; });
   addEventListener('keydown', e => { if (e.key === 'Escape') lbx.hidden = true; });
