@@ -93,7 +93,7 @@
     "en": "10,000 TL + VAT"
    },
    "open": true,
-   "capacity": 0,
+   "capacity": 30,
    "net": 10000,
    "vat": 20
   },
