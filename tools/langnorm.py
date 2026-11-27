@@ -5,6 +5,8 @@ def norm(h, lang='tr'):
     h = re.sub(r'<div class="hright">.*?</details></div>', '<details class="langs"></details>', h, flags=re.S)
     h = re.sub(r'<a class="hcart" id="hcart".*?</a>', '', h, flags=re.S)
     h = re.sub(r'<style id="hcart-css">.*?</style>', '', h, flags=re.S)
+    h = re.sub(r'<style id="ddm-css">.*?</style>', '', h, flags=re.S)
+    h = re.sub(r'<script id="ddm-js">.*?</script>', '', h, flags=re.S)
     h = re.sub(r'<script id="hcart-js">.*?</script>', '', h, flags=re.S)
     h = re.sub(r'<details class="langs">.*?</details>', a, h, flags=re.S)
     h = re.sub(r'<style id="langs-css">.*?</style>', '', h, flags=re.S)

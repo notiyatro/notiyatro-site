@@ -108,6 +108,32 @@ def cart_link(cur):
     lab = CART_TX.get(cur, 'Cart')
     return f'<a class="hcart" id="hcart" href="{home}#sepet" aria-label="{lab}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11h10.2L20 7H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.6" fill="currentColor"/><circle cx="17" cy="19" r="1.6" fill="currentColor"/></svg><b>0</b></a>'
 
+# ---- dropdowns under Atölyeler / Kamplar in the main nav (all pages, all languages)
+DD_TX = {'tr':('Tüm atölyeler','Tüm kamplar'),'en':('All workshops','All camps'),'de':('Alle Workshops','Alle Camps'),'ru':('Все мастер-классы','Все лагеря'),
+         'fr':('Tous les ateliers','Tous les camps'),'es':('Todos los talleres','Todos los campamentos'),'it':('Tutti i workshop','Tutti i campi'),'el':('Όλα τα εργαστήρια','Όλες οι κατασκηνώσεις')}
+DD_SHORT = {'pfs-2027-01':'Prague Film School — Acting for Film','central-2027-02':'Royal Central — Audition Bootcamp','frantic-2027-03':'Frantic Assembly — Scott Graham',
+            'isc-winter-2027':'ISC — Winter Edition','isc-summer-2027':'ISC — Summer Edition'}
+DD_CSS = '<style id="ddm-css">nav.main .dd{position:relative;display:flex;flex-direction:column}nav.main .dd>a{display:inline-flex;align-items:center;gap:6px}nav.main .dd>a::after{content:"";display:inline-block;flex:none;box-sizing:border-box;width:8px;height:8px;border:0;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-1px,-1px);transition:transform .2s;margin-left:2px}nav.main .dd.open>a::after{transform:rotate(-135deg) translate(-2px,-2px)}.ddp{display:none;position:absolute;top:calc(100% + 6px);left:0;min-width:320px;background:#fff;color:#000;border:1px solid rgba(0,0,0,.1);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.18);padding:8px;z-index:90}.dd.open .ddp{display:block;animation:ddin .18s ease}@keyframes ddin{from{opacity:0;transform:translateY(-4px)}}.ddp a{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:2px;padding:10px 12px!important;border-radius:10px!important;border:0!important;color:#000!important;text-decoration:none;font-size:15px!important;white-space:normal!important}.ddp a::after{display:none!important}.ddp a:hover{background:#f3efd8!important}.ddp a small{font-size:12px;font-weight:600;color:#666}.ddp a.ddall{margin-top:4px;border-top:1px solid #eee!important;border-radius:0 0 10px 10px!important;color:#E4452F!important}nav.main.ddcol .ddp{position:static;min-width:0;box-shadow:none;border:0;border-radius:0;padding:0 0 8px 12px;background:transparent}nav.main.ddcol .ddp a{color:inherit!important;font-size:16px!important;padding:10px 4px!important}nav.main.ddcol .ddp a small{color:inherit;opacity:.65}</style>'
+def dd_js(cur, root):
+    import json as _j
+    progs = _j.load(open(f'{root}/data/programs.json'))['programs']
+    data = [{'id': p['id'], 't': DD_SHORT.get(p['id'], p['title']['en']), 's': p.get('start', ''), 'k': p.get('type', '')} for p in progs if p.get('start', '') >= __import__('datetime').date.today().isoformat()]
+    home = EQUIV['home'].get(cur, EQUIV['home']['*']).format(l=cur)
+    loc = LOCALE.get(cur, 'en-GB') if cur != 'tr' else 'tr-TR'
+    return ('<script id="ddm-js">(()=>{const P=' + _j.dumps(data, ensure_ascii=False) + ',H=' + _j.dumps(home) + ',T=' + _j.dumps(DD_TX.get(cur, DD_TX['en']), ensure_ascii=False) + ',LC=' + _j.dumps(loc) + ';'
+      'const nav=document.querySelector("nav.main");if(!nav)return;const fmt=d=>{try{return new Date(d+"T12:00:00").toLocaleDateString(LC,{month:"long",year:"numeric"})}catch(_){return d}};'
+      'const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\\"":"&quot;"}[c]));'
+      'const kindOf=a=>{const h=a.getAttribute("href")||"";return /(atolyeler|workshops)\\/?$/.test(h)?"atolye":/(kamplar|camps)\\/?$/.test(h)?"kamp":null};'
+      '[...nav.querySelectorAll(":scope > a")].forEach(a=>{const k=kindOf(a);if(!k)return;const items=P.filter(p=>p.k===k);const w=document.createElement("div");w.className="dd";a.replaceWith(w);w.appendChild(a);a.setAttribute("aria-haspopup","true");a.setAttribute("aria-expanded","false");'
+      'const pn=document.createElement("div");pn.className="ddp";pn.innerHTML=items.map(p=>`<a href="${H}#p-${p.id}">${esc(p.t)}<small>${esc(fmt(p.s))}</small></a>`).join("")+`<a class="ddall" href="${a.getAttribute("href")}">${esc(k==="atolye"?T[0]:T[1])} →</a>`;w.appendChild(pn);'
+      'const set=o=>{nav.querySelectorAll(".dd.open").forEach(x=>{if(x!==w){x.classList.remove("open");x.firstChild.setAttribute("aria-expanded","false")}});w.classList.toggle("open",o);a.setAttribute("aria-expanded",String(o))};'
+      'const fine=matchMedia("(hover:hover) and (pointer:fine)");let tm,hv=0;'
+      'a.addEventListener("click",e=>{e.preventDefault();nav.classList.toggle("ddcol",getComputedStyle(nav).flexDirection==="column");set(Date.now()-hv<700?true:!w.classList.contains("open"))});'
+      'w.addEventListener("mouseenter",()=>{if(!fine.matches||getComputedStyle(nav).flexDirection==="column")return;clearTimeout(tm);nav.classList.remove("ddcol");if(!w.classList.contains("open"))hv=Date.now();set(true)});w.addEventListener("mouseleave",()=>{if(!fine.matches||getComputedStyle(nav).flexDirection==="column")return;tm=setTimeout(()=>set(false),180)});'
+      'pn.addEventListener("click",e=>{if(e.target.closest("a"))set(false)})});'
+      'document.addEventListener("click",e=>{if(!e.target.closest(".dd"))nav.querySelectorAll(".dd.open").forEach(x=>{x.classList.remove("open");x.firstChild.setAttribute("aria-expanded","false")})});'
+      'addEventListener("keydown",e=>{if(e.key==="Escape")nav.querySelectorAll(".dd.open").forEach(x=>{x.classList.remove("open");x.firstChild.setAttribute("aria-expanded","false")})})})()</script>')
+
 WA_NUM = '905304808292'
 WA_TX = {'tr': ('WhatsApp Canlı Destek', 'Merhaba, atölyeleriniz ve kamplarınız hakkında bilgi almak istiyorum.'), 'en': ('WhatsApp Live Support', 'Hello, I’d like some information about your workshops and camps.'),
          'de': ('WhatsApp Live-Support', 'Hallo, ich hätte gerne Informationen zu Ihren Workshops und Camps.'), 'ru': ('Онлайн-поддержка WhatsApp', 'Здравствуйте, я хотел(а) бы узнать о ваших мастер-классах и лагерях.'),
@@ -139,6 +165,9 @@ def place_switchers(langs):
         h2 = re.sub(r'<style id="hcart-css">.*?</style>', '', h2, flags=re.S)
         h2 = re.sub(r'<script id="hcart-js">.*?</script>', '', h2, flags=re.S)
         if not rel.startswith('yonetim'): h2 = h2.replace('</head>', CART_CSS + '</head>', 1).replace('</body>', CART_JS + '</body>', 1)
+        h2 = re.sub(r'<style id="ddm-css">.*?</style>', '', h2, flags=re.S)
+        h2 = re.sub(r'<script id="ddm-js">.*?</script>', '', h2, flags=re.S)
+        if not rel.startswith('yonetim') and '<nav class="main"' in h2: h2 = h2.replace('</head>', DD_CSS + '</head>', 1).replace('</body>', dd_js(cur, ROOT) + '</body>', 1)
         h2 = re.sub(r'<style id="langs-css">.*?</style>', '', h2, flags=re.S).replace('</head>', SWITCH_CSS + '</head>', 1)
         h2 = re.sub(r'<script id="langs-js">.*?</script>', '', h2, flags=re.S).replace('</body>', SWITCH_JS + '</body>', 1)
         h2 = re.sub(r'<style id="wa-css">.*?</style>', '', h2, flags=re.S)
