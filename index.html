@@ -415,6 +415,7 @@ main{overflow-x:clip}
 .psize{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--c2)}
 .psize select{background:#000;color:var(--c);border:1px solid var(--c);border-radius:8px;padding:5px 6px;font:700 13px Urbanist,sans-serif}
 .padd{width:100%;justify-content:center}
+.pstep{width:100%;display:grid;gap:6px}.pstep[hidden],.padd[hidden]{display:none!important}.pqty{display:flex;align-items:center;justify-content:space-between;background:var(--c);color:#000;border-radius:999px;padding:4px;min-height:48px}.pqty button{width:40px;height:40px;border-radius:50%;border:0;background:#000;color:var(--c);font:900 20px/1 Urbanist,sans-serif;cursor:pointer}.pqty button:disabled{opacity:.35;cursor:default}.pqty span{font:900 18px Urbanist,sans-serif}.pgo{background:none;border:0;color:var(--c);font:700 13px Urbanist,sans-serif;cursor:pointer;text-decoration:underline;justify-self:center;padding:2px}
 .padd.ok{background:#16632b!important;border-color:#16632b!important;color:#fff!important}
 @media(max-width:1000px){.pgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.pspec{margin-left:10px;margin-right:10px}.pgrid{grid-template-columns:1fr 1fr;gap:12px}.pcard h3{font-size:15px}.padd{font-size:14px;padding:10px 8px;white-space:nowrap}.pbuy{margin:auto 10px 12px}.pcard h3,.pcard>p{margin-left:10px;margin-right:10px}}
@@ -475,6 +476,7 @@ main{overflow-x:clip}
       <a class="btn ghost" href="#partner"><span class="lg">Vajra Theatre</span><span class="sm">Vajra</span></a>
       
     </div>
+    
     
     
     
@@ -838,7 +840,7 @@ main{overflow-x:clip}
     const set=o=>{sec.classList.toggle('open',o);box.hidden=!o;bts.forEach(b=>b.setAttribute('aria-expanded',o));if(o){box.querySelectorAll('.mcard').forEach(c=>{c.style.animation='none';c.offsetHeight;c.style.animation=''});setTimeout(()=>box.scrollIntoView({behavior:'smooth',block:'start'}),120)}};
     bts.forEach(b=>b.addEventListener('click',()=>set(box.hidden)));})();
   (()=>{const sec=document.getElementById('hediyeler');if(!sec)return;const dr=document.getElementById('sdrawer'),list=document.getElementById('slist'),cnt=sec.querySelector('.scount'),sum=document.getElementById('ssum'),form=document.getElementById('sform'),err=document.getElementById('serr'),done=document.getElementById('sdone'),empty=document.getElementById('sempty'),tot=document.getElementById('stotal');
-    const ST={err:'Lütfen tüm alanları doldur ve koşulları onayla.',fail:'Bir sorun oluştu. Lütfen tekrar dene.',wait:'İşleniyor…',added:'Eklendi',rm:'Kaldır'};
+    const ST={err:'Lütfen tüm alanları doldur ve koşulları onayla.',fail:'Bir sorun oluştu. Lütfen tekrar dene.',wait:'İşleniyor…',added:'Eklendi',rm:'Kaldır',dec:'Bir azalt',inc:'Bir artır',go:'Sepete git'};
     const info=id=>{const c=sec.querySelector(`.pcard[data-id="${id}"]`);return{name:c.querySelector('h3').textContent,img:c.querySelector('img').getAttribute('src'),price:+c.dataset.price}};
     let cart=[];try{cart=JSON.parse(localStorage.getItem('no-cart')||'[]').filter(x=>sec.querySelector(`.pcard[data-id="${x.id}"]`))}catch(_){cart=[]}
     const save=()=>{try{localStorage.setItem('no-cart',JSON.stringify(cart))}catch(_){}dispatchEvent(new Event('cart'))};
@@ -846,9 +848,13 @@ main{overflow-x:clip}
     const SHIP={ist:120,out:190,pickup:0};const fee=()=>SHIP[(form.querySelector('[name=delivery]:checked')||{}).value]||0;
     const render=()=>{const n=cart.reduce((a,x)=>a+x.qty,0);cnt.textContent=n;empty.hidden=!!cart.length;tot.hidden=!cart.length;form.hidden=!cart.length;
       list.innerHTML=cart.map((x,k)=>{const p=info(x.id);return `<div class="sline"><img src="${p.img}" alt=""><div><b>${esc(p.name)}${x.size?' · '+esc(x.size):''}</b><small>${tl(p.price)}</small><div class="sqty"><button type="button" data-q="${k}" data-d="-1" aria-label="-">−</button><span>${x.qty}</span><button type="button" data-q="${k}" data-d="1" aria-label="+">+</button><button type="button" class="srm" data-r="${k}">${esc(ST.rm)}</button></div></div><b>${tl(p.price*x.qty)}</b></div>`}).join('');
-      const sub=cart.reduce((a,x)=>a+info(x.id).price*x.qty,0);document.getElementById('ssubt').textContent=tl(sub);document.getElementById('sship').textContent=tl(fee());document.getElementById('ssub2').hidden=!cart.length;sum.textContent=tl(sub+fee());save()};
+      const sub=cart.reduce((a,x)=>a+info(x.id).price*x.qty,0);document.getElementById('ssubt').textContent=tl(sub);document.getElementById('sship').textContent=tl(fee());document.getElementById('ssub2').hidden=!cart.length;sum.textContent=tl(sub+fee());save();if(typeof cards==='function')cards()};
     const open=()=>{done.hidden=true;render();dr.hidden=false;document.body.style.overflow='hidden'};const close=()=>{dr.hidden=true;document.body.style.overflow=''};
-    sec.querySelectorAll('.padd').forEach(b=>b.addEventListener('click',()=>{const c=b.closest('.pcard'),id=c.dataset.id,sel=c.querySelector('select'),size=sel?sel.value:'';const f=cart.find(x=>x.id===id&&x.size===size);f?f.qty=Math.min(10,f.qty+1):cart.push({id,size,qty:1});render();const t=b.textContent;b.classList.add('ok');b.textContent=ST.added;setTimeout(()=>{b.classList.remove('ok');b.textContent=t},1200)}));
+    const key=c=>{const sel=c.querySelector('select');return{id:c.dataset.id,size:sel?sel.value:''}};
+    const bump=(c,d)=>{const k=key(c),i=cart.findIndex(x=>x.id===k.id&&x.size===k.size);if(i<0){if(d>0)cart.push({...k,qty:1})}else{cart[i].qty+=d;if(cart[i].qty<1)cart.splice(i,1);else cart[i].qty=Math.min(10,cart[i].qty)}render()};
+    sec.querySelectorAll('.pcard').forEach(c=>{const b=c.querySelector('.padd');const st=document.createElement('div');st.className='pstep';st.hidden=true;st.innerHTML=`<div class="pqty"><button type="button" class="pdec" aria-label="${esc(ST.dec)}">−</button><span aria-live="polite">1</span><button type="button" class="pinc" aria-label="${esc(ST.inc)}">+</button></div><button type="button" class="pgo">${esc(ST.go)} →</button>`;b.after(st);
+      b.addEventListener('click',()=>bump(c,1));st.querySelector('.pdec').addEventListener('click',()=>bump(c,-1));st.querySelector('.pinc').addEventListener('click',()=>bump(c,1));st.querySelector('.pgo').addEventListener('click',()=>open());const sel=c.querySelector('select');if(sel)sel.addEventListener('change',render)});
+    var cards=()=>sec.querySelectorAll('.pcard').forEach(c=>{const k=key(c),f=cart.find(x=>x.id===k.id&&x.size===k.size),q=f?f.qty:0;c.querySelector('.padd').hidden=q>0;const st=c.querySelector('.pstep');st.hidden=!q;st.querySelector('span').textContent=q;st.querySelector('.pinc').disabled=q>=10});
     sec.querySelector('.scart').addEventListener('click',open);dr.querySelectorAll('[data-close]').forEach(x=>x.addEventListener('click',close));addEventListener('keydown',e=>{if(e.key==='Escape'&&!dr.hidden)close()});
     list.addEventListener('click',e=>{const q=e.target.closest('[data-q]'),r=e.target.closest('[data-r]');if(q){const x=cart[+q.dataset.q];x.qty=Math.max(1,Math.min(10,x.qty+(+q.dataset.d)))}if(r)cart.splice(+r.dataset.r,1);render()});
     const ship=form.querySelector('.sship');form.querySelectorAll('[name=delivery]').forEach(r=>r.addEventListener('change',()=>{ship.hidden=form.delivery.value==='pickup';render()}));

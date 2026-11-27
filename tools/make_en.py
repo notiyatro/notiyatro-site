@@ -53,6 +53,7 @@ T=[
 ('aria-label="Sepeti aç"','aria-label="Open cart"'),
 ('aria-label="Kapat"','aria-label="Close"'),
 ('>Hediyeler<','>Gifts<'),
+("'Bir azalt'","'Decrease'"),("'Bir artır'","'Increase'"),("'Sepete git'","'Go to cart'"),
 ('>NO Tiyatro tasarımları<','>NO Tiyatro designs<'),
 ('>Çehov’dan Shakespeare’e, Beckett’ten sahnenin unutulmaz replikleri; NO Tiyatro’nun kendi kolaj tasarımlarıyla.<','>Unforgettable lines from the stage, from Chekhov and Shakespeare to Beckett, in NO Tiyatro’s own collage designs.<'),
 ('>KDV dahil<','>VAT included<'),

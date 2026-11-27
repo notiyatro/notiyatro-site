@@ -1,5 +1,8 @@
 # New strings added after the first translation pass: EN -> {lang: text}.
 X = {
+'Decrease': {'de': 'Weniger', 'ru': 'Уменьшить', 'fr': 'Diminuer', 'es': 'Disminuir', 'it': 'Diminuisci', 'el': 'Μείωση'},
+'Increase': {'de': 'Mehr', 'ru': 'Увеличить', 'fr': 'Augmenter', 'es': 'Aumentar', 'it': 'Aumenta', 'el': 'Αύξηση'},
+'Go to cart': {'de': 'Zum Warenkorb', 'ru': 'Перейти в корзину', 'fr': 'Voir le panier', 'es': 'Ir al carrito', 'it': 'Vai al carrello', 'el': 'Μετάβαση στο καλάθι'},
 'NO Tiyatro designs': {'de': 'Designs von NO Tiyatro', 'ru': 'Дизайн NO Tiyatro', 'fr': 'Créations NO Tiyatro', 'es': 'Diseños de NO Tiyatro', 'it': 'Design NO Tiyatro', 'el': 'Σχέδια NO Tiyatro'},
 'Unforgettable lines from the stage, from Chekhov and Shakespeare to Beckett, in NO Tiyatro’s own collage designs.': {'de': 'Unvergessliche Bühnenzeilen von Tschechow und Shakespeare bis Beckett, in eigenen Collagen von NO Tiyatro.', 'ru': 'Незабываемые реплики со сцены — от Чехова и Шекспира до Беккета — в авторских коллажах NO Tiyatro.', 'fr': 'Des répliques inoubliables de la scène, de Tchekhov et Shakespeare à Beckett, dans les collages de NO Tiyatro.', 'es': 'Frases inolvidables del escenario, de Chéjov y Shakespeare a Beckett, en los collages propios de NO Tiyatro.', 'it': 'Battute indimenticabili dal palcoscenico, da Čechov e Shakespeare a Beckett, nei collage di NO Tiyatro.', 'el': 'Αξέχαστες ατάκες της σκηνής, από τον Τσέχοφ και τον Σαίξπηρ ως τον Μπέκετ, στα κολάζ του NO Tiyatro.'},
 'Shipping within Istanbul 120 TL': {'de': 'Versand innerhalb Istanbuls 120 TL', 'ru': 'Доставка по Стамбулу 120 TL', 'fr': 'Livraison à Istanbul 120 TL', 'es': 'Envío en Estambul 120 TL', 'it': 'Spedizione a Istanbul 120 TL', 'el': 'Αποστολή εντός Κωνσταντινούπολης 120 TL'},
