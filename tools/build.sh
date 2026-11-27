@@ -7,3 +7,4 @@ python3 make_en.py
 python3 make_workshops.py
 python3 make_payment.py
 python3 make_lang.py
+python3 inject_icons.py
